@@ -33,6 +33,8 @@ namespace Chromaseed
         readonly Control[] labels9to16ColorRGB;
         readonly Control[] panels13to24SeedWords;
         readonly Control[] panels1to24SeedWords;
+        readonly Control[] buttons9to16Colours;
+        readonly Control[] labelsColourNumbers9to16;
         #endregion
 
         #region rounded form
@@ -80,6 +82,8 @@ namespace Chromaseed
             labels9to16ColorRGB = new Control[] { lblColorRGB9, lblColorRGB10, lblColorRGB11, lblColorRGB12, lblColorRGB13, lblColorRGB14, lblColorRGB15, lblColorRGB16 };
             panels1to24SeedWords = new Control[] { panelSeedWordColor1, panelSeedWordColor2, panelSeedWordColor3, panelSeedWordColor4, panelSeedWordColor5, panelSeedWordColor6, panelSeedWordColor7, panelSeedWordColor8, panelSeedWordColor9, panelSeedWordColor10, panelSeedWordColor11, panelSeedWordColor12, panelSeedWordColor13, panelSeedWordColor14, panelSeedWordColor15, panelSeedWordColor16, panelSeedWordColor17, panelSeedWordColor18, panelSeedWordColor19, panelSeedWordColor20, panelSeedWordColor21, panelSeedWordColor22, panelSeedWordColor23, panelSeedWordColor24 };
             panels13to24SeedWords = new Control[] { panelSeedWordColor13, panelSeedWordColor14, panelSeedWordColor15, panelSeedWordColor16, panelSeedWordColor17, panelSeedWordColor18, panelSeedWordColor19, panelSeedWordColor20, panelSeedWordColor21, panelSeedWordColor22, panelSeedWordColor23, panelSeedWordColor24 };
+            buttons9to16Colours = new Control[] { btnColor9, btnColor10, btnColor11, btnColor12, btnColor13, btnColor14, btnColor15, btnColor16 };
+            labelsColourNumbers9to16 = new Control[] { lblColour9, lblColour10, lblColour11, lblColour12, lblColour13, lblColour14, lblColour15, lblColour16 };
             #endregion
 
             #region load bip39 words and set up controls
@@ -168,8 +172,20 @@ namespace Chromaseed
                 control.BackColor = Color.IndianRed;
             }
 
+            foreach (Control control in buttons9to16Colours)
+            {
+                control.Text = "▔";
+            }
+
+            foreach (Control control in labelsColourNumbers9to16)
+            {
+                control.Enabled = true;
+            }
+
             btn24SeedWords.Enabled = false;
             btn12SeedWords.Enabled = true;
+            btn8Colours.Enabled = true;
+            btn16Colours.Enabled = false;
         }
 
         private void Btn12SeedWords_Click(object sender, EventArgs e)
@@ -224,8 +240,20 @@ namespace Chromaseed
                 control.BackColor = Color.FromArgb(20, 20, 20);
             }
 
+            foreach (Control control in buttons9to16Colours)
+            {
+                control.Text = "";
+            }
+
+            foreach (Control control in labelsColourNumbers9to16)
+            {
+                control.Enabled = false;
+            }
+
             btn24SeedWords.Enabled = true;
             btn12SeedWords.Enabled = false;
+            btn8Colours.Enabled = false;
+            btn16Colours.Enabled = true;
         }
         #endregion
 
@@ -608,27 +636,6 @@ namespace Chromaseed
 
         private void LblColorDecimal_TextChanged(object sender, EventArgs e)
         {
-            /*
-            for (int i = 1; i <= 16; i++)
-            {
-                // find the decimal and hex labels
-
-                if (this.Controls.Find($"lblColorDecimal{i}", true).FirstOrDefault() is Label decimalLabel && this.Controls.Find($"lblColorHex{i}", true).FirstOrDefault() is Label hexLabel)
-                {
-                    // Parse the decimal value (assuming it's an 8-digit number)
-                    if (int.TryParse(decimalLabel.Text, out int decimalValue))
-                    {
-                        // Convert to hexadecimal and store in the hex label
-                        hexLabel.Text = "#" + decimalValue.ToString("X6"); // "X8" for 8-character uppercase hex string
-                    }
-                    else
-                    {
-                        // Handle invalid decimal input if necessary
-                        hexLabel.Text = "-------";
-                    }
-                }
-            }
-            */
             for (int i = 1; i <= 16; i++)
             {
                 // find the decimal and hex labels
@@ -665,34 +672,6 @@ namespace Chromaseed
 
         private void LblColorHex_TextChanged(object sender, EventArgs e)
         {
-            /*
-            for (int i = 1; i <= 16; i++)
-            {
-                // Find the hex and RGB labels
-
-                if (this.Controls.Find($"lblColorHex{i}", true).FirstOrDefault() is Label hexLabel && this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label rgbLabel)
-                {
-                    string hexValue = hexLabel.Text;
-
-                    // Validate and remove '#' from hex string if necessary
-                    if (!string.IsNullOrEmpty(hexValue) && hexValue.StartsWith("#") && hexValue.Length == 7)
-                    {
-                        // Convert hex to RGB
-                        int r = Convert.ToInt32(hexValue.Substring(1, 2), 16); // Red (chars 1 and 2)
-                        int g = Convert.ToInt32(hexValue.Substring(3, 2), 16); // Green (chars 3 and 4)
-                        int b = Convert.ToInt32(hexValue.Substring(5, 2), 16); // Blue (chars 5 and 6)
-
-                        // Assign the RGB value in the format "R, G, B"
-                        rgbLabel.Text = $"{r},{g},{b}";
-                    }
-                    else
-                    {
-                        // Handle invalid hex format
-                        rgbLabel.Text = "---,---,---";
-                    }
-                }
-            }
-            */
             for (int i = 1; i <= 16; i++)
             {
                 // Find the hex and RGB labels
@@ -712,7 +691,7 @@ namespace Chromaseed
                         // Assign the RGB value in the format "R, G, B"
                         rgbLabel.Text = $"{r},{g},{b}";
 
-                        if (btnRGBorHex.Text == "Hex")
+                        if (btnRGBorHex.Text == "HEX")
                         {
                             if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
                             {
@@ -728,14 +707,16 @@ namespace Chromaseed
                     {
                         // Handle invalid hex format
                         rgbLabel.Text = "---,---,---";
-                        TextBox textBox = this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() as TextBox;
-                        textBox.Text = "---,---,---";
+                        if (Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
+                        {
+                            textBox.Text = "---,---,---";
+                        }
                     }
                 }
             }
         }
 
-        private void lblColorRGB_TextChanged(object sender, EventArgs e)
+        private void LblColorRGB_TextChanged(object sender, EventArgs e)
         {
             for (int i = 1; i <= 16; i++)
             {
@@ -750,7 +731,7 @@ namespace Chromaseed
                     {
                         btnColor.Text = "";
 
-                        string colorString = RGBLabel.Text; 
+                        string colorString = RGBLabel.Text;
 
                         // Split the string by commas
                         string[] rgbValues = colorString.Split(',');
@@ -769,6 +750,20 @@ namespace Chromaseed
                     }
 
                 }
+            }
+        }
+
+        private void btnRGBorHex_Click(object sender, EventArgs e)
+        {
+            if (btnRGBorHex.Text == "HEX")
+            {
+                btnRGBorHex.Text = "RGB";
+                LblColorDecimal_TextChanged(sender, e);
+            }
+            else
+            {
+                btnRGBorHex.Text = "HEX";
+                LblColorHex_TextChanged(sender, e);
             }
         }
     }
