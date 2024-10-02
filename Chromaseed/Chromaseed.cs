@@ -62,7 +62,7 @@ namespace Chromaseed
 
             #region rounded panels
 
-            Control[] panelsToBeRounded = new Control[] { panelSeedWords, panelSuggestionBoxSurround, panelColours };
+            Control[] panelsToBeRounded = new Control[] { panelSeedWords, panelSuggestionBoxSurround, panelColours, panelWordsContainer, panelColoursContainer };
 
             foreach (Control control in panelsToBeRounded)
             {
@@ -174,6 +174,7 @@ namespace Chromaseed
 
             foreach (Control control in buttons9to16Colours)
             {
+                control.Enabled = true;
                 control.Text = "▔";
             }
 
@@ -242,6 +243,7 @@ namespace Chromaseed
 
             foreach (Control control in buttons9to16Colours)
             {
+                control.Enabled = false;
                 control.Text = "";
             }
 
@@ -709,7 +711,7 @@ namespace Chromaseed
                         rgbLabel.Text = "---,---,---";
                         if (Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
                         {
-                            textBox.Text = "---,---,---";
+                            textBox.Text = "";
                         }
                     }
                 }
@@ -753,7 +755,7 @@ namespace Chromaseed
             }
         }
 
-        private void btnRGBorHex_Click(object sender, EventArgs e)
+        private void BtnRGBorHex_Click(object sender, EventArgs e)
         {
             if (btnRGBorHex.Text == "HEX")
             {
@@ -764,6 +766,59 @@ namespace Chromaseed
             {
                 btnRGBorHex.Text = "HEX";
                 LblColorHex_TextChanged(sender, e);
+            }
+        }
+
+        private void BtnConvert_Click(object sender, EventArgs e)
+        {
+            if (btnConvert.Text == "▶")
+            {
+                btnConvert.Text = "◀";
+                label25.Text = "◀";
+                label26.Text = "◀";
+                label26.ForeColor = Color.DarkGray;
+                panelColoursContainer.BackColor = Color.DarkGray;
+                label25.ForeColor = Color.FromArgb(80, 80, 80);
+                panelWordsContainer.BackColor = Color.FromArgb(80, 80, 80);
+                panel4.BackColor = Color.DarkGray;
+                panel3.BackColor = Color.FromArgb(80, 80, 80);
+            }
+            else
+            {
+                btnConvert.Text = "▶";
+                label25.Text = "▶";
+                label26.Text = "▶";
+                label25.ForeColor = Color.DarkGray;
+                panelWordsContainer.BackColor = Color.DarkGray;
+                label26.ForeColor = Color.FromArgb(80, 80, 80);
+                panelColoursContainer.BackColor = Color.FromArgb(80, 80, 80);
+                panel3.BackColor = Color.DarkGray;
+                panel4.BackColor = Color.FromArgb(80, 80, 80);
+            }
+        }
+
+        private void TextBoxColor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (btnConvert.Text == "▶")
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void TextBoxColor_Enter(object sender, EventArgs e)
+        {
+            if (btnConvert.Text == "▶")
+            {
+                btnDummyButton.Focus();
+            }
+        }
+
+        private void BtnNumberOfColours_Click(object sender, EventArgs e)
+        {
+            if (btnConvert.Text == "▶")
+            {
+                return;
             }
         }
     }
