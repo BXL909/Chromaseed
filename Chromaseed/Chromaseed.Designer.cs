@@ -59,8 +59,9 @@ namespace Chromaseed
             lblErrorMessage = new Label();
             suggestionBox = new ListBox();
             btnExit = new CustomControls.RJControls.RJButton();
-            btnShowHideSeedWords = new CustomControls.RJControls.RJButton();
+            btnShowWords = new CustomControls.RJControls.RJButton();
             panelSeedWords = new Panel();
+            btnHideWords = new CustomControls.RJControls.RJButton();
             label23 = new Label();
             label24 = new Label();
             label21 = new Label();
@@ -83,7 +84,6 @@ namespace Chromaseed
             label6 = new Label();
             label3 = new Label();
             label4 = new Label();
-            label99 = new Label();
             panelSuggestionBoxSurround = new Panel();
             panel1 = new Panel();
             btn24SeedWords = new CustomControls.RJControls.RJButton();
@@ -113,6 +113,7 @@ namespace Chromaseed
             panelSeedWordColor16 = new Panel();
             panelSeedWordColor24 = new Panel();
             lblSeedPointer = new Label();
+            label99 = new Label();
             lblWord1Position = new Label();
             lblWord2Position = new Label();
             lblWord3Position = new Label();
@@ -202,6 +203,7 @@ namespace Chromaseed
             lblColorRGB2 = new Label();
             lblColorRGB1 = new Label();
             panelColours = new Panel();
+            btnHex = new CustomControls.RJControls.RJButton();
             btnColor16 = new CustomControls.RJControls.RJButton();
             btnColor15 = new CustomControls.RJControls.RJButton();
             btnColor14 = new CustomControls.RJControls.RJButton();
@@ -218,9 +220,8 @@ namespace Chromaseed
             btnColor3 = new CustomControls.RJControls.RJButton();
             btnColor2 = new CustomControls.RJControls.RJButton();
             btnColor1 = new CustomControls.RJControls.RJButton();
-            btnRGBorHex = new CustomControls.RJControls.RJButton();
+            btnRGB = new CustomControls.RJControls.RJButton();
             lblColour15 = new Label();
-            label47 = new Label();
             lblColour16 = new Label();
             btn16Colours = new CustomControls.RJControls.RJButton();
             btn8Colours = new CustomControls.RJControls.RJButton();
@@ -254,7 +255,8 @@ namespace Chromaseed
             lblColour2 = new Label();
             lblColour4 = new Label();
             lblColour3 = new Label();
-            label50 = new Label();
+            lblColourPointer = new Label();
+            label47 = new Label();
             panel2 = new Panel();
             panelWordsContainer = new Panel();
             panelColoursContainer = new Panel();
@@ -715,32 +717,33 @@ namespace Chromaseed
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += BtnExit_Click;
             // 
-            // btnShowHideSeedWords
+            // btnShowWords
             // 
-            btnShowHideSeedWords.BackColor = Color.Transparent;
-            btnShowHideSeedWords.BackgroundColor = Color.Transparent;
-            btnShowHideSeedWords.BorderColor = Color.DarkGray;
-            btnShowHideSeedWords.BorderRadius = 3;
-            btnShowHideSeedWords.BorderSize = 1;
-            btnShowHideSeedWords.FlatAppearance.BorderSize = 0;
-            btnShowHideSeedWords.FlatAppearance.MouseDownBackColor = Color.FromArgb(15, 15, 15);
-            btnShowHideSeedWords.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 15, 15);
-            btnShowHideSeedWords.FlatStyle = FlatStyle.Flat;
-            btnShowHideSeedWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            btnShowHideSeedWords.ForeColor = Color.DarkGray;
-            btnShowHideSeedWords.Location = new Point(158, 10);
-            btnShowHideSeedWords.Name = "btnShowHideSeedWords";
-            btnShowHideSeedWords.Padding = new Padding(1, 0, 0, 0);
-            btnShowHideSeedWords.Size = new Size(56, 20);
-            btnShowHideSeedWords.TabIndex = 31;
-            btnShowHideSeedWords.Text = "SHOW";
-            btnShowHideSeedWords.TextColor = Color.DarkGray;
-            btnShowHideSeedWords.UseVisualStyleBackColor = false;
-            btnShowHideSeedWords.Click += BtnObscureSeedWords_Click;
+            btnShowWords.BackColor = Color.Transparent;
+            btnShowWords.BackgroundColor = Color.Transparent;
+            btnShowWords.BorderColor = Color.DarkGray;
+            btnShowWords.BorderRadius = 3;
+            btnShowWords.BorderSize = 1;
+            btnShowWords.FlatAppearance.BorderSize = 0;
+            btnShowWords.FlatAppearance.MouseDownBackColor = Color.FromArgb(15, 15, 15);
+            btnShowWords.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 15, 15);
+            btnShowWords.FlatStyle = FlatStyle.Flat;
+            btnShowWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnShowWords.ForeColor = Color.DarkGray;
+            btnShowWords.Location = new Point(92, 10);
+            btnShowWords.Name = "btnShowWords";
+            btnShowWords.Padding = new Padding(1, 0, 0, 0);
+            btnShowWords.Size = new Size(56, 20);
+            btnShowWords.TabIndex = 31;
+            btnShowWords.Text = "SHOW";
+            btnShowWords.TextColor = Color.DarkGray;
+            btnShowWords.UseVisualStyleBackColor = false;
+            btnShowWords.Click += BtnShowWords_Click;
             // 
             // panelSeedWords
             // 
             panelSeedWords.BackColor = Color.FromArgb(40, 40, 40);
+            panelSeedWords.Controls.Add(btnHideWords);
             panelSeedWords.Controls.Add(label23);
             panelSeedWords.Controls.Add(label24);
             panelSeedWords.Controls.Add(label21);
@@ -763,14 +766,13 @@ namespace Chromaseed
             panelSeedWords.Controls.Add(label6);
             panelSeedWords.Controls.Add(label3);
             panelSeedWords.Controls.Add(label4);
-            panelSeedWords.Controls.Add(label99);
             panelSeedWords.Controls.Add(panelSuggestionBoxSurround);
             panelSeedWords.Controls.Add(btn24SeedWords);
             panelSeedWords.Controls.Add(textBoxSeedWord24);
             panelSeedWords.Controls.Add(btn12SeedWords);
             panelSeedWords.Controls.Add(textBoxSeedWord23);
             panelSeedWords.Controls.Add(textBoxSeedWord22);
-            panelSeedWords.Controls.Add(btnShowHideSeedWords);
+            panelSeedWords.Controls.Add(btnShowWords);
             panelSeedWords.Controls.Add(textBoxSeedWord21);
             panelSeedWords.Controls.Add(textBoxSeedWord20);
             panelSeedWords.Controls.Add(textBoxSeedWord19);
@@ -823,6 +825,30 @@ namespace Chromaseed
             panelSeedWords.Name = "panelSeedWords";
             panelSeedWords.Size = new Size(225, 574);
             panelSeedWords.TabIndex = 32;
+            // 
+            // btnHideWords
+            // 
+            btnHideWords.BackColor = Color.Transparent;
+            btnHideWords.BackgroundColor = Color.Transparent;
+            btnHideWords.BorderColor = Color.DarkGray;
+            btnHideWords.BorderRadius = 3;
+            btnHideWords.BorderSize = 1;
+            btnHideWords.Enabled = false;
+            btnHideWords.FlatAppearance.BorderSize = 0;
+            btnHideWords.FlatAppearance.MouseDownBackColor = Color.FromArgb(15, 15, 15);
+            btnHideWords.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 15, 15);
+            btnHideWords.FlatStyle = FlatStyle.Flat;
+            btnHideWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnHideWords.ForeColor = Color.DarkGray;
+            btnHideWords.Location = new Point(158, 10);
+            btnHideWords.Name = "btnHideWords";
+            btnHideWords.Padding = new Padding(1, 0, 0, 0);
+            btnHideWords.Size = new Size(56, 20);
+            btnHideWords.TabIndex = 82;
+            btnHideWords.Text = "HIDE";
+            btnHideWords.TextColor = Color.DarkGray;
+            btnHideWords.UseVisualStyleBackColor = false;
+            btnHideWords.Click += btnHideWords_Click;
             // 
             // label23
             // 
@@ -1100,17 +1126,6 @@ namespace Chromaseed
             label4.Text = "4";
             label4.TextAlign = ContentAlignment.TopRight;
             // 
-            // label99
-            // 
-            label99.AutoSize = true;
-            label99.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label99.ForeColor = Color.DarkGray;
-            label99.Location = new Point(3, 13);
-            label99.Name = "label99";
-            label99.Size = new Size(77, 15);
-            label99.TabIndex = 33;
-            label99.Text = "SEED WORDS";
-            // 
             // panelSuggestionBoxSurround
             // 
             panelSuggestionBoxSurround.BackColor = Color.FromArgb(50, 50, 50);
@@ -1141,7 +1156,7 @@ namespace Chromaseed
             btn24SeedWords.FlatStyle = FlatStyle.Flat;
             btn24SeedWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn24SeedWords.ForeColor = Color.DarkGray;
-            btn24SeedWords.Location = new Point(122, 10);
+            btn24SeedWords.Location = new Point(52, 10);
             btn24SeedWords.Name = "btn24SeedWords";
             btn24SeedWords.Padding = new Padding(1, 0, 0, 0);
             btn24SeedWords.Size = new Size(30, 20);
@@ -1165,7 +1180,7 @@ namespace Chromaseed
             btn12SeedWords.FlatStyle = FlatStyle.Flat;
             btn12SeedWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn12SeedWords.ForeColor = Color.DarkGray;
-            btn12SeedWords.Location = new Point(86, 10);
+            btn12SeedWords.Location = new Point(12, 10);
             btn12SeedWords.Name = "btn12SeedWords";
             btn12SeedWords.Padding = new Padding(1, 0, 0, 0);
             btn12SeedWords.Size = new Size(30, 20);
@@ -1389,6 +1404,17 @@ namespace Chromaseed
             lblSeedPointer.Size = new Size(29, 28);
             lblSeedPointer.TabIndex = 81;
             lblSeedPointer.Text = "▶";
+            // 
+            // label99
+            // 
+            label99.AutoSize = true;
+            label99.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label99.ForeColor = Color.DarkOrange;
+            label99.Location = new Point(247, 77);
+            label99.Name = "label99";
+            label99.Size = new Size(77, 15);
+            label99.TabIndex = 33;
+            label99.Text = "SEED WORDS";
             // 
             // lblWord1Position
             // 
@@ -2537,6 +2563,7 @@ namespace Chromaseed
             // panelColours
             // 
             panelColours.BackColor = Color.FromArgb(40, 40, 40);
+            panelColours.Controls.Add(btnHex);
             panelColours.Controls.Add(btnColor16);
             panelColours.Controls.Add(btnColor15);
             panelColours.Controls.Add(btnColor14);
@@ -2553,9 +2580,8 @@ namespace Chromaseed
             panelColours.Controls.Add(btnColor3);
             panelColours.Controls.Add(btnColor2);
             panelColours.Controls.Add(btnColor1);
-            panelColours.Controls.Add(btnRGBorHex);
+            panelColours.Controls.Add(btnRGB);
             panelColours.Controls.Add(lblColour15);
-            panelColours.Controls.Add(label47);
             panelColours.Controls.Add(lblColour16);
             panelColours.Controls.Add(btn16Colours);
             panelColours.Controls.Add(btn8Colours);
@@ -2589,11 +2615,35 @@ namespace Chromaseed
             panelColours.Controls.Add(lblColour2);
             panelColours.Controls.Add(lblColour4);
             panelColours.Controls.Add(lblColour3);
-            panelColours.Controls.Add(label50);
+            panelColours.Controls.Add(lblColourPointer);
             panelColours.Location = new Point(642, 78);
             panelColours.Name = "panelColours";
             panelColours.Size = new Size(179, 574);
             panelColours.TabIndex = 82;
+            // 
+            // btnHex
+            // 
+            btnHex.BackColor = Color.Transparent;
+            btnHex.BackgroundColor = Color.Transparent;
+            btnHex.BorderColor = Color.DarkGray;
+            btnHex.BorderRadius = 3;
+            btnHex.BorderSize = 1;
+            btnHex.Enabled = false;
+            btnHex.FlatAppearance.BorderSize = 0;
+            btnHex.FlatAppearance.MouseDownBackColor = Color.FromArgb(15, 15, 15);
+            btnHex.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 15, 15);
+            btnHex.FlatStyle = FlatStyle.Flat;
+            btnHex.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnHex.ForeColor = Color.DarkGray;
+            btnHex.Location = new Point(83, 10);
+            btnHex.Name = "btnHex";
+            btnHex.Padding = new Padding(1, 0, 0, 0);
+            btnHex.Size = new Size(37, 20);
+            btnHex.TabIndex = 139;
+            btnHex.Text = "HEX";
+            btnHex.TextColor = Color.DarkGray;
+            btnHex.UseVisualStyleBackColor = false;
+            btnHex.Click += btnHex_Click;
             // 
             // btnColor16
             // 
@@ -2947,28 +2997,28 @@ namespace Chromaseed
             btnColor1.TextColor = Color.LightCoral;
             btnColor1.UseVisualStyleBackColor = false;
             // 
-            // btnRGBorHex
+            // btnRGB
             // 
-            btnRGBorHex.BackColor = Color.Transparent;
-            btnRGBorHex.BackgroundColor = Color.Transparent;
-            btnRGBorHex.BorderColor = Color.DarkGray;
-            btnRGBorHex.BorderRadius = 3;
-            btnRGBorHex.BorderSize = 1;
-            btnRGBorHex.FlatAppearance.BorderSize = 0;
-            btnRGBorHex.FlatAppearance.MouseDownBackColor = Color.FromArgb(15, 15, 15);
-            btnRGBorHex.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 15, 15);
-            btnRGBorHex.FlatStyle = FlatStyle.Flat;
-            btnRGBorHex.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRGBorHex.ForeColor = Color.DarkGray;
-            btnRGBorHex.Location = new Point(131, 10);
-            btnRGBorHex.Name = "btnRGBorHex";
-            btnRGBorHex.Padding = new Padding(1, 0, 0, 0);
-            btnRGBorHex.Size = new Size(37, 20);
-            btnRGBorHex.TabIndex = 82;
-            btnRGBorHex.Text = "RGB";
-            btnRGBorHex.TextColor = Color.DarkGray;
-            btnRGBorHex.UseVisualStyleBackColor = false;
-            btnRGBorHex.Click += BtnRGBorHex_Click;
+            btnRGB.BackColor = Color.Transparent;
+            btnRGB.BackgroundColor = Color.Transparent;
+            btnRGB.BorderColor = Color.DarkGray;
+            btnRGB.BorderRadius = 3;
+            btnRGB.BorderSize = 1;
+            btnRGB.FlatAppearance.BorderSize = 0;
+            btnRGB.FlatAppearance.MouseDownBackColor = Color.FromArgb(15, 15, 15);
+            btnRGB.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 15, 15);
+            btnRGB.FlatStyle = FlatStyle.Flat;
+            btnRGB.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRGB.ForeColor = Color.DarkGray;
+            btnRGB.Location = new Point(131, 10);
+            btnRGB.Name = "btnRGB";
+            btnRGB.Padding = new Padding(1, 0, 0, 0);
+            btnRGB.Size = new Size(37, 20);
+            btnRGB.TabIndex = 82;
+            btnRGB.Text = "RGB";
+            btnRGB.TextColor = Color.DarkGray;
+            btnRGB.UseVisualStyleBackColor = false;
+            btnRGB.Click += BtnRGB_Click;
             // 
             // lblColour15
             // 
@@ -2981,17 +3031,6 @@ namespace Chromaseed
             lblColour15.Size = new Size(19, 13);
             lblColour15.TabIndex = 71;
             lblColour15.Text = "15";
-            // 
-            // label47
-            // 
-            label47.AutoSize = true;
-            label47.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label47.ForeColor = Color.DarkGray;
-            label47.Location = new Point(3, 13);
-            label47.Name = "label47";
-            label47.Size = new Size(60, 15);
-            label47.TabIndex = 33;
-            label47.Text = "COLOURS";
             // 
             // lblColour16
             // 
@@ -3018,7 +3057,7 @@ namespace Chromaseed
             btn16Colours.FlatStyle = FlatStyle.Flat;
             btn16Colours.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn16Colours.ForeColor = Color.DarkGray;
-            btn16Colours.Location = new Point(97, 10);
+            btn16Colours.Location = new Point(46, 10);
             btn16Colours.Name = "btn16Colours";
             btn16Colours.Padding = new Padding(1, 0, 0, 0);
             btn16Colours.Size = new Size(28, 20);
@@ -3042,7 +3081,7 @@ namespace Chromaseed
             btn8Colours.FlatStyle = FlatStyle.Flat;
             btn8Colours.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn8Colours.ForeColor = Color.DarkGray;
-            btn8Colours.Location = new Point(63, 10);
+            btn8Colours.Location = new Point(9, 10);
             btn8Colours.Name = "btn8Colours";
             btn8Colours.Padding = new Padding(1, 0, 0, 0);
             btn8Colours.Size = new Size(28, 20);
@@ -3073,6 +3112,7 @@ namespace Chromaseed
             textBoxColor1.Name = "textBoxColor1";
             textBoxColor1.Size = new Size(99, 16);
             textBoxColor1.TabIndex = 0;
+            textBoxColor1.TextChanged += textBoxColor_TextChanged;
             textBoxColor1.Enter += TextBoxColor_Enter;
             textBoxColor1.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3097,6 +3137,7 @@ namespace Chromaseed
             textBoxColor4.Name = "textBoxColor4";
             textBoxColor4.Size = new Size(99, 16);
             textBoxColor4.TabIndex = 3;
+            textBoxColor4.TextChanged += textBoxColor_TextChanged;
             textBoxColor4.Enter += TextBoxColor_Enter;
             textBoxColor4.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3109,6 +3150,7 @@ namespace Chromaseed
             textBoxColor5.Name = "textBoxColor5";
             textBoxColor5.Size = new Size(99, 16);
             textBoxColor5.TabIndex = 4;
+            textBoxColor5.TextChanged += textBoxColor_TextChanged;
             textBoxColor5.Enter += TextBoxColor_Enter;
             textBoxColor5.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3133,6 +3175,7 @@ namespace Chromaseed
             textBoxColor3.Name = "textBoxColor3";
             textBoxColor3.Size = new Size(99, 16);
             textBoxColor3.TabIndex = 2;
+            textBoxColor3.TextChanged += textBoxColor_TextChanged;
             textBoxColor3.Enter += TextBoxColor_Enter;
             textBoxColor3.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3145,6 +3188,7 @@ namespace Chromaseed
             textBoxColor6.Name = "textBoxColor6";
             textBoxColor6.Size = new Size(99, 16);
             textBoxColor6.TabIndex = 5;
+            textBoxColor6.TextChanged += textBoxColor_TextChanged;
             textBoxColor6.Enter += TextBoxColor_Enter;
             textBoxColor6.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3169,6 +3213,7 @@ namespace Chromaseed
             textBoxColor2.Name = "textBoxColor2";
             textBoxColor2.Size = new Size(99, 16);
             textBoxColor2.TabIndex = 1;
+            textBoxColor2.TextChanged += textBoxColor_TextChanged;
             textBoxColor2.Enter += TextBoxColor_Enter;
             textBoxColor2.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3181,6 +3226,7 @@ namespace Chromaseed
             textBoxColor7.Name = "textBoxColor7";
             textBoxColor7.Size = new Size(99, 16);
             textBoxColor7.TabIndex = 6;
+            textBoxColor7.TextChanged += textBoxColor_TextChanged;
             textBoxColor7.Enter += TextBoxColor_Enter;
             textBoxColor7.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3205,6 +3251,7 @@ namespace Chromaseed
             textBoxColor8.Name = "textBoxColor8";
             textBoxColor8.Size = new Size(99, 16);
             textBoxColor8.TabIndex = 7;
+            textBoxColor8.TextChanged += textBoxColor_TextChanged;
             textBoxColor8.Enter += TextBoxColor_Enter;
             textBoxColor8.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3218,6 +3265,7 @@ namespace Chromaseed
             textBoxColor9.Name = "textBoxColor9";
             textBoxColor9.Size = new Size(99, 16);
             textBoxColor9.TabIndex = 8;
+            textBoxColor9.TextChanged += textBoxColor_TextChanged;
             textBoxColor9.Enter += TextBoxColor_Enter;
             textBoxColor9.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3243,6 +3291,7 @@ namespace Chromaseed
             textBoxColor10.Name = "textBoxColor10";
             textBoxColor10.Size = new Size(99, 16);
             textBoxColor10.TabIndex = 9;
+            textBoxColor10.TextChanged += textBoxColor_TextChanged;
             textBoxColor10.Enter += TextBoxColor_Enter;
             textBoxColor10.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3256,6 +3305,7 @@ namespace Chromaseed
             textBoxColor11.Name = "textBoxColor11";
             textBoxColor11.Size = new Size(99, 16);
             textBoxColor11.TabIndex = 10;
+            textBoxColor11.TextChanged += textBoxColor_TextChanged;
             textBoxColor11.Enter += TextBoxColor_Enter;
             textBoxColor11.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3281,6 +3331,7 @@ namespace Chromaseed
             textBoxColor12.Name = "textBoxColor12";
             textBoxColor12.Size = new Size(99, 16);
             textBoxColor12.TabIndex = 11;
+            textBoxColor12.TextChanged += textBoxColor_TextChanged;
             textBoxColor12.Enter += TextBoxColor_Enter;
             textBoxColor12.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3294,6 +3345,7 @@ namespace Chromaseed
             textBoxColor13.Name = "textBoxColor13";
             textBoxColor13.Size = new Size(99, 16);
             textBoxColor13.TabIndex = 12;
+            textBoxColor13.TextChanged += textBoxColor_TextChanged;
             textBoxColor13.Enter += TextBoxColor_Enter;
             textBoxColor13.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3318,6 +3370,7 @@ namespace Chromaseed
             textBoxColor14.Name = "textBoxColor14";
             textBoxColor14.Size = new Size(99, 16);
             textBoxColor14.TabIndex = 13;
+            textBoxColor14.TextChanged += textBoxColor_TextChanged;
             textBoxColor14.Enter += TextBoxColor_Enter;
             textBoxColor14.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3331,6 +3384,7 @@ namespace Chromaseed
             textBoxColor15.Name = "textBoxColor15";
             textBoxColor15.Size = new Size(99, 16);
             textBoxColor15.TabIndex = 14;
+            textBoxColor15.TextChanged += textBoxColor_TextChanged;
             textBoxColor15.Enter += TextBoxColor_Enter;
             textBoxColor15.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3355,6 +3409,7 @@ namespace Chromaseed
             textBoxColor16.Name = "textBoxColor16";
             textBoxColor16.Size = new Size(99, 16);
             textBoxColor16.TabIndex = 15;
+            textBoxColor16.TextChanged += textBoxColor_TextChanged;
             textBoxColor16.Enter += TextBoxColor_Enter;
             textBoxColor16.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3413,16 +3468,27 @@ namespace Chromaseed
             lblColour3.TabIndex = 59;
             lblColour3.Text = "3";
             // 
-            // label50
+            // lblColourPointer
             // 
-            label50.AutoSize = true;
-            label50.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label50.ForeColor = Color.FromArgb(60, 60, 60);
-            label50.Location = new Point(27, 44);
-            label50.Name = "label50";
-            label50.Size = new Size(29, 28);
-            label50.TabIndex = 81;
-            label50.Text = "◀";
+            lblColourPointer.AutoSize = true;
+            lblColourPointer.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            lblColourPointer.ForeColor = Color.FromArgb(60, 60, 60);
+            lblColourPointer.Location = new Point(27, 44);
+            lblColourPointer.Name = "lblColourPointer";
+            lblColourPointer.Size = new Size(29, 28);
+            lblColourPointer.TabIndex = 81;
+            lblColourPointer.Text = "◀";
+            // 
+            // label47
+            // 
+            label47.AutoSize = true;
+            label47.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label47.ForeColor = Color.DarkOrange;
+            label47.Location = new Point(569, 78);
+            label47.Name = "label47";
+            label47.Size = new Size(60, 15);
+            label47.TabIndex = 33;
+            label47.Text = "COLOURS";
             // 
             // panel2
             // 
@@ -3547,20 +3613,20 @@ namespace Chromaseed
             btnConvert.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 15, 15);
             btnConvert.FlatStyle = FlatStyle.Flat;
             btnConvert.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            btnConvert.ForeColor = Color.DarkGray;
+            btnConvert.ForeColor = Color.DarkOrange;
             btnConvert.Location = new Point(429, 88);
             btnConvert.Name = "btnConvert";
             btnConvert.Padding = new Padding(2, 0, 0, 0);
             btnConvert.Size = new Size(24, 20);
             btnConvert.TabIndex = 126;
             btnConvert.Text = "▶";
-            btnConvert.TextColor = Color.DarkGray;
+            btnConvert.TextColor = Color.DarkOrange;
             btnConvert.UseVisualStyleBackColor = false;
             btnConvert.Click += BtnConvert_Click;
             // 
             // panel3
             // 
-            panel3.BackColor = Color.DarkGray;
+            panel3.BackColor = Color.FromArgb(80, 80, 80);
             panel3.Location = new Point(246, 98);
             panel3.Name = "panel3";
             panel3.Size = new Size(192, 1);
@@ -3649,6 +3715,8 @@ namespace Chromaseed
             Controls.Add(label25);
             Controls.Add(label26);
             Controls.Add(btnDummyButton);
+            Controls.Add(label47);
+            Controls.Add(label99);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Chromaseed";
             StartPosition = FormStartPosition.CenterScreen;
@@ -3696,7 +3764,7 @@ namespace Chromaseed
         private Label lblErrorMessage;
         private ListBox suggestionBox;
         private CustomControls.RJControls.RJButton btnExit;
-        private CustomControls.RJControls.RJButton btnShowHideSeedWords;
+        private CustomControls.RJControls.RJButton btnShowWords;
         private Panel panelSeedWords;
         private CustomControls.RJControls.RJButton btn12SeedWords;
         private CustomControls.RJControls.RJButton btn24SeedWords;
@@ -3874,8 +3942,8 @@ namespace Chromaseed
         private TextBox textBoxColor4;
         private Label lblColour1;
         private Label lblColour2;
-        private Label label50;
-        private CustomControls.RJControls.RJButton btnRGBorHex;
+        private Label lblColourPointer;
+        private CustomControls.RJControls.RJButton btnRGB;
         private CustomControls.RJControls.RJButton btnColor1;
         private CustomControls.RJControls.RJButton btnColor2;
         private CustomControls.RJControls.RJButton btnColor16;
@@ -3902,5 +3970,7 @@ namespace Chromaseed
         private Panel panel4;
         private Label label27;
         private CustomControls.RJControls.RJButton btnDummyButton;
+        private CustomControls.RJControls.RJButton btnHideWords;
+        private CustomControls.RJControls.RJButton btnHex;
     }
 }
