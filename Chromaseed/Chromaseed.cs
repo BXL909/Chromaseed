@@ -30,7 +30,9 @@ namespace Chromaseed
         readonly Control[] labels13to24SeedWords;
         readonly Control[] labels13to24WordPositions;
         readonly Control[] labels9to16Merge;
+        readonly Control[] labelsAllColorDecimal;
         readonly Control[] labels9to16ColorDecimal;
+        readonly Control[] labels1to8ColorDecimal;
         readonly Control[] labels9to16ColorHex;
         readonly Control[] labels9to16ColorRGB;
         readonly Control[] panels13to24SeedWords;
@@ -82,7 +84,9 @@ namespace Chromaseed
             labels13to24SeedWords = new Control[] { label13, label14, label15, label16, label17, label18, label19, label20, label21, label22, label23, label24 };
             labels13to24WordPositions = new Control[] { lblWord13Position, lblWord14Position, lblWord15Position, lblWord16Position, lblWord17Position, lblWord18Position, lblWord19Position, lblWord20Position, lblWord21Position, lblWord22Position, lblWord23Position, lblWord24Position };
             labels9to16Merge = new Control[] { lblMerge9, lblMerge10, lblMerge11, lblMerge12, lblMerge13, lblMerge14, lblMerge15, lblMerge16 };
+            labels1to8ColorDecimal = new Control[] { lblColorDecimal1, lblColorDecimal2, lblColorDecimal3, lblColorDecimal4, lblColorDecimal5, lblColorDecimal6, lblColorDecimal7, lblColorDecimal8 };
             labels9to16ColorDecimal = new Control[] { lblColorDecimal9, lblColorDecimal10, lblColorDecimal11, lblColorDecimal12, lblColorDecimal13, lblColorDecimal14, lblColorDecimal15, lblColorDecimal16 };
+            labelsAllColorDecimal = new Control[] { lblColorDecimal1, lblColorDecimal2, lblColorDecimal3, lblColorDecimal4, lblColorDecimal5, lblColorDecimal6, lblColorDecimal7, lblColorDecimal8, lblColorDecimal9, lblColorDecimal10, lblColorDecimal11, lblColorDecimal12, lblColorDecimal13, lblColorDecimal14, lblColorDecimal15, lblColorDecimal16 };
             labels9to16ColorHex = new Control[] { lblColorHex9, lblColorHex10, lblColorHex11, lblColorHex12, lblColorHex13, lblColorHex14, lblColorHex15, lblColorHex16 };
             labels9to16ColorRGB = new Control[] { lblColorRGB9, lblColorRGB10, lblColorRGB11, lblColorRGB12, lblColorRGB13, lblColorRGB14, lblColorRGB15, lblColorRGB16 };
             panels1to24SeedWords = new Control[] { panelSeedWordColor1, panelSeedWordColor2, panelSeedWordColor3, panelSeedWordColor4, panelSeedWordColor5, panelSeedWordColor6, panelSeedWordColor7, panelSeedWordColor8, panelSeedWordColor9, panelSeedWordColor10, panelSeedWordColor11, panelSeedWordColor12, panelSeedWordColor13, panelSeedWordColor14, panelSeedWordColor15, panelSeedWordColor16, panelSeedWordColor17, panelSeedWordColor18, panelSeedWordColor19, panelSeedWordColor20, panelSeedWordColor21, panelSeedWordColor22, panelSeedWordColor23, panelSeedWordColor24 };
@@ -124,7 +128,7 @@ namespace Chromaseed
             btnShowWords.Enabled = false;
         }
 
-        private void btnHideWords_Click(object sender, EventArgs e)
+        private void BtnHideWords_Click(object sender, EventArgs e)
         {
             foreach (TextBox textbox in textBoxesAllSeedWords)
             {
@@ -276,6 +280,12 @@ namespace Chromaseed
 
         private void SeedTextBox_Enter(object sender, EventArgs e)
         {
+            if (btnConvert.Text == "◀")
+            {
+                btnDummyButton.Focus();
+                return;
+            }
+
             if (sender is TextBox textBox)
             {
                 lblSeedPointer.Location = new Point(lblSeedPointer.Location.X, textBox.Location.Y - 8);
@@ -596,6 +606,38 @@ namespace Chromaseed
 
                 }
             }
+
+            if (btnConvert.Text == "◀")
+            {
+                bool allColoursSet = true;
+
+                //if all the decimal values are populated, sort them in memory only before next step
+                if (!btn8Colours.Enabled)
+                {
+                    foreach (Control control in labels1to8ColorDecimal)
+                    {
+                        if (control.Text == "--------")
+                        {
+                            allColoursSet = false;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Control control in labelsAllColorDecimal)
+                    {
+                        if (control.Text == "--------")
+                        {
+                            allColoursSet = false;
+                        }
+                    }
+                }
+                if (allColoursSet)
+                {
+                    MessageBox.Show($"sort the decimal list low to high, remove first 2 digits, then next step.");
+                }
+
+            }
         }
         #endregion
 
@@ -635,7 +677,7 @@ namespace Chromaseed
 
                         if (btnConvert.Text == "◀")
                         {
-                            string hex = hexLabel.Text.Substring(1);
+                            string hex = hexLabel.Text[1..];
 
                             // Convert hex to decimal
                             int decimalValue = Convert.ToInt32(hex, 16);
@@ -644,9 +686,9 @@ namespace Chromaseed
 
                             if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
                             {
-                                label.Text = decimalValue.ToString("D8"); 
+                                label.Text = decimalValue.ToString("D8");
                             }
-                            
+
                         }
 
                     }
@@ -712,7 +754,7 @@ namespace Chromaseed
             LblColorHex_TextChanged(sender, e);
         }
 
-        private void btnHex_Click(object sender, EventArgs e)
+        private void BtnHex_Click(object sender, EventArgs e)
         {
             btnRGB.Enabled = true;
             btnHex.Enabled = false;
@@ -774,6 +816,7 @@ namespace Chromaseed
                 {
                     textbox.Text = string.Empty;
                 }
+
             }
         }
         #endregion
@@ -832,17 +875,165 @@ namespace Chromaseed
                 {
                     lblColourPointer.Location = new Point(lblColourPointer.Location.X, textBox.Location.Y - 8);
                     activeColourBox = textBox;
-                    
+
                 }
             }
         }
 
-        private void BtnNumberOfColours_Click(object sender, EventArgs e)
+        private void Btn8Colours_Click(object sender, EventArgs e)
         {
             if (btnConvert.Text == "▶")
             {
                 return;
             }
+
+            btn8Colours.Enabled = false;
+            btn16Colours.Enabled = true;
+
+            foreach (TextBox textbox in textBoxes13to24SeedWords)
+            {
+                textbox.Enabled = false;
+                textbox.Text = "";
+                if (textbox == activeSeedBox)
+                {
+                    activeSeedBox = textBoxSeedWord1;
+                }
+            }
+
+            foreach (Control control in labels13to24SeedWords)
+            {
+                control.Enabled = false;
+            }
+
+            foreach (Control control in labels13to24WordPositions)
+            {
+                control.ForeColor = Color.Black;
+                control.Text = "----";
+            }
+
+            foreach (Control control in labels9to16Merge)
+            {
+                control.ForeColor = Color.Black;
+                control.Text = "------";
+            }
+
+            foreach (Control control in labels9to16ColorDecimal)
+            {
+                control.ForeColor = Color.Black;
+                control.Text = "--------";
+            }
+
+            foreach (Control control in labels9to16ColorHex)
+            {
+                control.ForeColor = Color.Black;
+                control.Text = "-------";
+            }
+
+            foreach (Control control in labels9to16ColorRGB)
+            {
+                control.ForeColor = Color.Black;
+                control.Text = "---,---,---";
+            }
+
+            foreach (Control control in panels13to24SeedWords)
+            {
+                control.BackColor = Color.FromArgb(20, 20, 20);
+            }
+
+            foreach (Control control in buttons9to16Colours)
+            {
+                control.Enabled = false;
+                control.Text = "";
+            }
+
+            foreach (Control control in labelsColourNumbers9to16)
+            {
+                control.Enabled = false;
+            }
+
+            foreach (TextBox textbox in textBoxesColours9to16)
+            {
+                textbox.Enabled = false;
+                textbox.Text = string.Empty;
+            }
+
+            btn24SeedWords.Enabled = true;
+            btn12SeedWords.Enabled = false;
+            btn8Colours.Enabled = false;
+            btn16Colours.Enabled = true;
+        }
+
+        private void Btn16Colours_Click(object sender, EventArgs e)
+        {
+            if (btnConvert.Text == "▶")
+            {
+                return;
+            }
+
+            btn8Colours.Enabled = true;
+            btn16Colours.Enabled = false;
+
+            foreach (TextBox textbox in textBoxes13to24SeedWords)
+            {
+                textbox.Enabled = true;
+                textbox.Text = "";
+            }
+
+            foreach (Control control in labels13to24SeedWords)
+            {
+                control.Enabled = true;
+            }
+
+            foreach (Control control in labels13to24WordPositions)
+            {
+                control.ForeColor = Color.DimGray;
+            }
+
+            foreach (Control control in labels9to16Merge)
+            {
+                control.ForeColor = Color.DimGray;
+            }
+
+            foreach (Control control in labels9to16ColorDecimal)
+            {
+                control.ForeColor = Color.DimGray;
+            }
+
+            foreach (Control control in labels9to16ColorHex)
+            {
+                control.ForeColor = Color.DimGray;
+            }
+
+            foreach (Control control in labels9to16ColorRGB)
+            {
+                control.ForeColor = Color.DimGray;
+            }
+
+            foreach (Control control in panels13to24SeedWords)
+            {
+                control.BackColor = Color.IndianRed;
+            }
+
+            foreach (Control control in buttons9to16Colours)
+            {
+                control.Enabled = true;
+                control.Text = "▔";
+            }
+
+            foreach (Control control in labelsColourNumbers9to16)
+            {
+                control.Enabled = true;
+            }
+
+            foreach (TextBox textbox in textBoxesColours9to16)
+            { 
+                textbox.Enabled = true;
+            }
+
+            btn24SeedWords.Enabled = false;
+            btn12SeedWords.Enabled = true;
+            btn8Colours.Enabled = true;
+            btn16Colours.Enabled = false;
         }
 
         #region common
@@ -939,7 +1130,7 @@ namespace Chromaseed
 
 
 
-        private void textBoxColor_TextChanged(object sender, EventArgs e)
+        private void TextBoxColor_TextChanged(object sender, EventArgs e)
         {
             if (btnConvert.Text == "◀")
             {
@@ -990,5 +1181,7 @@ namespace Chromaseed
                 }
             }
         }
+
+        
     }
 }

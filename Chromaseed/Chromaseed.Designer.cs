@@ -848,7 +848,7 @@ namespace Chromaseed
             btnHideWords.Text = "HIDE";
             btnHideWords.TextColor = Color.DarkGray;
             btnHideWords.UseVisualStyleBackColor = false;
-            btnHideWords.Click += btnHideWords_Click;
+            btnHideWords.Click += BtnHideWords_Click;
             // 
             // label23
             // 
@@ -2643,7 +2643,7 @@ namespace Chromaseed
             btnHex.Text = "HEX";
             btnHex.TextColor = Color.DarkGray;
             btnHex.UseVisualStyleBackColor = false;
-            btnHex.Click += btnHex_Click;
+            btnHex.Click += BtnHex_Click;
             // 
             // btnColor16
             // 
@@ -3065,7 +3065,7 @@ namespace Chromaseed
             btn16Colours.Text = "16";
             btn16Colours.TextColor = Color.DarkGray;
             btn16Colours.UseVisualStyleBackColor = false;
-            btn16Colours.Click += BtnNumberOfColours_Click;
+            btn16Colours.Click += Btn16Colours_Click;
             // 
             // btn8Colours
             // 
@@ -3089,7 +3089,7 @@ namespace Chromaseed
             btn8Colours.Text = "8";
             btn8Colours.TextColor = Color.DarkGray;
             btn8Colours.UseVisualStyleBackColor = false;
-            btn8Colours.Click += BtnNumberOfColours_Click;
+            btn8Colours.Click += Btn8Colours_Click;
             // 
             // lblColour13
             // 
@@ -3112,7 +3112,7 @@ namespace Chromaseed
             textBoxColor1.Name = "textBoxColor1";
             textBoxColor1.Size = new Size(99, 16);
             textBoxColor1.TabIndex = 0;
-            textBoxColor1.TextChanged += textBoxColor_TextChanged;
+            textBoxColor1.TextChanged += TextBoxColor_TextChanged;
             textBoxColor1.Enter += TextBoxColor_Enter;
             textBoxColor1.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3137,7 +3137,7 @@ namespace Chromaseed
             textBoxColor4.Name = "textBoxColor4";
             textBoxColor4.Size = new Size(99, 16);
             textBoxColor4.TabIndex = 3;
-            textBoxColor4.TextChanged += textBoxColor_TextChanged;
+            textBoxColor4.TextChanged += TextBoxColor_TextChanged;
             textBoxColor4.Enter += TextBoxColor_Enter;
             textBoxColor4.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3150,7 +3150,7 @@ namespace Chromaseed
             textBoxColor5.Name = "textBoxColor5";
             textBoxColor5.Size = new Size(99, 16);
             textBoxColor5.TabIndex = 4;
-            textBoxColor5.TextChanged += textBoxColor_TextChanged;
+            textBoxColor5.TextChanged += TextBoxColor_TextChanged;
             textBoxColor5.Enter += TextBoxColor_Enter;
             textBoxColor5.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3175,7 +3175,7 @@ namespace Chromaseed
             textBoxColor3.Name = "textBoxColor3";
             textBoxColor3.Size = new Size(99, 16);
             textBoxColor3.TabIndex = 2;
-            textBoxColor3.TextChanged += textBoxColor_TextChanged;
+            textBoxColor3.TextChanged += TextBoxColor_TextChanged;
             textBoxColor3.Enter += TextBoxColor_Enter;
             textBoxColor3.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3188,7 +3188,7 @@ namespace Chromaseed
             textBoxColor6.Name = "textBoxColor6";
             textBoxColor6.Size = new Size(99, 16);
             textBoxColor6.TabIndex = 5;
-            textBoxColor6.TextChanged += textBoxColor_TextChanged;
+            textBoxColor6.TextChanged += TextBoxColor_TextChanged;
             textBoxColor6.Enter += TextBoxColor_Enter;
             textBoxColor6.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3213,7 +3213,7 @@ namespace Chromaseed
             textBoxColor2.Name = "textBoxColor2";
             textBoxColor2.Size = new Size(99, 16);
             textBoxColor2.TabIndex = 1;
-            textBoxColor2.TextChanged += textBoxColor_TextChanged;
+            textBoxColor2.TextChanged += TextBoxColor_TextChanged;
             textBoxColor2.Enter += TextBoxColor_Enter;
             textBoxColor2.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3226,7 +3226,7 @@ namespace Chromaseed
             textBoxColor7.Name = "textBoxColor7";
             textBoxColor7.Size = new Size(99, 16);
             textBoxColor7.TabIndex = 6;
-            textBoxColor7.TextChanged += textBoxColor_TextChanged;
+            textBoxColor7.TextChanged += TextBoxColor_TextChanged;
             textBoxColor7.Enter += TextBoxColor_Enter;
             textBoxColor7.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3251,7 +3251,7 @@ namespace Chromaseed
             textBoxColor8.Name = "textBoxColor8";
             textBoxColor8.Size = new Size(99, 16);
             textBoxColor8.TabIndex = 7;
-            textBoxColor8.TextChanged += textBoxColor_TextChanged;
+            textBoxColor8.TextChanged += TextBoxColor_TextChanged;
             textBoxColor8.Enter += TextBoxColor_Enter;
             textBoxColor8.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3265,7 +3265,7 @@ namespace Chromaseed
             textBoxColor9.Name = "textBoxColor9";
             textBoxColor9.Size = new Size(99, 16);
             textBoxColor9.TabIndex = 8;
-            textBoxColor9.TextChanged += textBoxColor_TextChanged;
+            textBoxColor9.TextChanged += TextBoxColor_TextChanged;
             textBoxColor9.Enter += TextBoxColor_Enter;
             textBoxColor9.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3291,7 +3291,7 @@ namespace Chromaseed
             textBoxColor10.Name = "textBoxColor10";
             textBoxColor10.Size = new Size(99, 16);
             textBoxColor10.TabIndex = 9;
-            textBoxColor10.TextChanged += textBoxColor_TextChanged;
+            textBoxColor10.TextChanged += TextBoxColor_TextChanged;
             textBoxColor10.Enter += TextBoxColor_Enter;
             textBoxColor10.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3305,7 +3305,7 @@ namespace Chromaseed
             textBoxColor11.Name = "textBoxColor11";
             textBoxColor11.Size = new Size(99, 16);
             textBoxColor11.TabIndex = 10;
-            textBoxColor11.TextChanged += textBoxColor_TextChanged;
+            textBoxColor11.TextChanged += TextBoxColor_TextChanged;
             textBoxColor11.Enter += TextBoxColor_Enter;
             textBoxColor11.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3331,7 +3331,7 @@ namespace Chromaseed
             textBoxColor12.Name = "textBoxColor12";
             textBoxColor12.Size = new Size(99, 16);
             textBoxColor12.TabIndex = 11;
-            textBoxColor12.TextChanged += textBoxColor_TextChanged;
+            textBoxColor12.TextChanged += TextBoxColor_TextChanged;
             textBoxColor12.Enter += TextBoxColor_Enter;
             textBoxColor12.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3345,7 +3345,7 @@ namespace Chromaseed
             textBoxColor13.Name = "textBoxColor13";
             textBoxColor13.Size = new Size(99, 16);
             textBoxColor13.TabIndex = 12;
-            textBoxColor13.TextChanged += textBoxColor_TextChanged;
+            textBoxColor13.TextChanged += TextBoxColor_TextChanged;
             textBoxColor13.Enter += TextBoxColor_Enter;
             textBoxColor13.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3370,7 +3370,7 @@ namespace Chromaseed
             textBoxColor14.Name = "textBoxColor14";
             textBoxColor14.Size = new Size(99, 16);
             textBoxColor14.TabIndex = 13;
-            textBoxColor14.TextChanged += textBoxColor_TextChanged;
+            textBoxColor14.TextChanged += TextBoxColor_TextChanged;
             textBoxColor14.Enter += TextBoxColor_Enter;
             textBoxColor14.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3384,7 +3384,7 @@ namespace Chromaseed
             textBoxColor15.Name = "textBoxColor15";
             textBoxColor15.Size = new Size(99, 16);
             textBoxColor15.TabIndex = 14;
-            textBoxColor15.TextChanged += textBoxColor_TextChanged;
+            textBoxColor15.TextChanged += TextBoxColor_TextChanged;
             textBoxColor15.Enter += TextBoxColor_Enter;
             textBoxColor15.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3409,7 +3409,7 @@ namespace Chromaseed
             textBoxColor16.Name = "textBoxColor16";
             textBoxColor16.Size = new Size(99, 16);
             textBoxColor16.TabIndex = 15;
-            textBoxColor16.TextChanged += textBoxColor_TextChanged;
+            textBoxColor16.TextChanged += TextBoxColor_TextChanged;
             textBoxColor16.Enter += TextBoxColor_Enter;
             textBoxColor16.KeyPress += TextBoxColor_KeyPress;
             // 
@@ -3612,12 +3612,11 @@ namespace Chromaseed
             btnConvert.FlatAppearance.MouseDownBackColor = Color.FromArgb(15, 15, 15);
             btnConvert.FlatAppearance.MouseOverBackColor = Color.FromArgb(15, 15, 15);
             btnConvert.FlatStyle = FlatStyle.Flat;
-            btnConvert.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnConvert.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnConvert.ForeColor = Color.DarkOrange;
-            btnConvert.Location = new Point(429, 88);
+            btnConvert.Location = new Point(424, 81);
             btnConvert.Name = "btnConvert";
-            btnConvert.Padding = new Padding(2, 0, 0, 0);
-            btnConvert.Size = new Size(24, 20);
+            btnConvert.Size = new Size(34, 34);
             btnConvert.TabIndex = 126;
             btnConvert.Text = "▶";
             btnConvert.TextColor = Color.DarkOrange;
@@ -3701,9 +3700,9 @@ namespace Chromaseed
             BackColor = Color.FromArgb(30, 30, 30);
             CancelButton = btnExit;
             ClientSize = new Size(834, 667);
+            Controls.Add(btnConvert);
             Controls.Add(label27);
             Controls.Add(panel4);
-            Controls.Add(btnConvert);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panelColours);
