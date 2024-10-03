@@ -735,8 +735,8 @@ namespace Chromaseed
                 panelColoursContainer.BackColor = Color.DarkGray;
                 label25.ForeColor = Color.FromArgb(80, 80, 80);
                 panelWordsContainer.BackColor = Color.FromArgb(80, 80, 80);
-                panel4.BackColor = Color.DarkGray;
-                panel3.BackColor = Color.FromArgb(80, 80, 80);
+                //panel4.BackColor = Color.DarkGray;
+                //panel3.BackColor = Color.FromArgb(80, 80, 80);
                 foreach (TextBox textbox in textBoxesAllSeedWords)
                 {
                     textbox.Text = string.Empty;
@@ -764,8 +764,8 @@ namespace Chromaseed
                 panelWordsContainer.BackColor = Color.DarkGray;
                 label26.ForeColor = Color.FromArgb(80, 80, 80);
                 panelColoursContainer.BackColor = Color.FromArgb(80, 80, 80);
-                panel3.BackColor = Color.DarkGray;
-                panel4.BackColor = Color.FromArgb(80, 80, 80);
+                //panel3.BackColor = Color.DarkGray;
+                //panel4.BackColor = Color.FromArgb(80, 80, 80);
                 foreach (TextBox textbox in textBoxesAllColours)
                 {
                     textbox.Text = string.Empty;
