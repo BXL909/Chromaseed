@@ -5,14 +5,16 @@
 //!● Download.......... tbc
 //
 //TODO LIST______________________________________________________________________________________________
-//trigger textchanged events when seed length changes midway through
+//
 //BUG LIST_______________________________________________________________________________________________
+//
 //!░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 #region Using
 using CustomControls.RJControls;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 #endregion
 
 namespace Chromaseed
@@ -44,6 +46,9 @@ namespace Chromaseed
         readonly Control[] panels9to16Colors;
         readonly TextBox[] textBoxesColours1to8;
         readonly TextBox[] textBoxesColours9to16;
+        readonly Control[] panelsSwatchesForColors9To16;
+        readonly Control[] patternButtons;
+        readonly Control[] controlsToColor;
         #endregion
 
         #region rounded form
@@ -71,7 +76,7 @@ namespace Chromaseed
 
             #region rounded panels
 
-            Control[] panelsToBeRounded = new Control[] { panelSeedWords, panelSuggestionBoxSurround, panelColours, panelWordsContainer, panelColoursContainer };
+            Control[] panelsToBeRounded = new Control[] { panelMenu, panelSeedWords, panelSuggestionBoxSurround, panelColours, panelWordsContainer, panelColoursContainer, panelStripesLeft, panelStripesLeftContainer, panelStripesRight, panelStripesRightContainer, panelCirclesLeft, panelCirclesLeftContainer, panelCirclesRight, panelCirclesRightContainer, panelSquaresLeft, panelSquaresLeftContainer, panelSquaresRight, panelSquaresRightContainer };
 
             foreach (Control control in panelsToBeRounded)
             {
@@ -102,6 +107,9 @@ namespace Chromaseed
             panels1to16Colors = new Control[] { panelColor1, panelColor2, panelColor3, panelColor4, panelColor5, panelColor6, panelColor7, panelColor8, panelColor9, panelColor10, panelColor11, panelColor12, panelColor13, panelColor14, panelColor15, panelColor16 };
             panels1to8Colors = new Control[] { panelColor1, panelColor2, panelColor3, panelColor4, panelColor5, panelColor6, panelColor7, panelColor8 };
             panels9to16Colors = new Control[] { panelColor9, panelColor10, panelColor11, panelColor12, panelColor13, panelColor14, panelColor15, panelColor16 };
+            panelsSwatchesForColors9To16 = new Control[] { panelSwatch2, panelSwatch4, panelSwatch6, panelSwatch8, panelSwatch10, panelSwatch12, panelSwatch14, panelSwatch16 };
+            patternButtons = new Control[] { btnMenuCircles, btnMenuSwatches, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral };
+            controlsToColor = new Control[] { panelSquaresLeft, panelCirclesLeft, panelStripesLeft, panelRGBLabels, panelHexLabels };
             #endregion
 
             #region load bip39 words and set up controls
@@ -121,6 +129,8 @@ namespace Chromaseed
             suggestionBox.Items.AddRange(bip39Words.Values.ToArray());
             #endregion
         }
+
+        #region WORD AND COLOUR SELECTION
 
         #region switch between converting from seed to colours or colours to seed
         private void BtnConvert_Click(object sender, EventArgs e)
@@ -1021,6 +1031,37 @@ namespace Chromaseed
                     }
                 }
             }
+
+            // if all colours are populated enabled the patterns
+            int numberOfColours = 8;
+            if (!btn16Colours.Enabled)
+            {
+                numberOfColours = 16;
+            }
+
+            bool allColoursSet = true;
+
+            for (int i = 1; i <= numberOfColours; i++)
+            {
+                if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label RGBLabel)
+                {
+                    if (RGBLabel.Text == "---,---,---")
+                    {
+                        allColoursSet = false;
+                    }
+                }
+            }
+
+            if (allColoursSet)
+            {
+                btnDummyButton.Text = "allcoloursset";
+
+            }
+            else
+            {
+                btnDummyButton.Text = "";
+
+            }
         }
         #endregion
 
@@ -1490,7 +1531,7 @@ namespace Chromaseed
             if (sender is TextBox textBox)
             {
                 if (textBox.Text == "")
-                { 
+                {
                     textBox.SelectionStart = 0;
                     textBox.SelectionLength = 0;
                 }
@@ -1636,7 +1677,7 @@ namespace Chromaseed
                 Panel panel = (Panel)sender;
 
                 System.Drawing.Drawing2D.GraphicsPath path = new();
-                int cornerRadius = 20;
+                int cornerRadius = 7;
                 path.AddArc(0, 0, cornerRadius, cornerRadius, 180, 90);
                 path.AddArc(panel.Width - cornerRadius, 0, cornerRadius, cornerRadius, 270, 90);
                 path.AddArc(panel.Width - cornerRadius, panel.Height - cornerRadius, cornerRadius, cornerRadius, 0, 90);
@@ -1674,5 +1715,579 @@ namespace Chromaseed
         #endregion
 
         #endregion
+
+        #endregion
+
+        bool eightColours = false;
+
+        List<Color> colorList = new();
+
+        private void BtnDummyButton_TextChanged(object sender, EventArgs e)
+        {
+            if (btnDummyButton.Text == "allcoloursset")
+            {
+                if (!btn8Colours.Enabled)
+                {
+                    eightColours = true;
+                }
+                else
+                {
+                    eightColours = false;
+                }
+
+                #region populate the colorList with 8 or 16 colours
+                for (int i = 1; i <= 16; i++)
+                {
+                    // Find the label (lblColorRGB1 through lblColorRGB16)
+                    if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label rgbLabel)
+                    {
+                        string rgbValue = rgbLabel.Text;
+
+                        // Check if the label contains a valid RGB value (not '---,---,---')
+                        if (!string.IsNullOrWhiteSpace(rgbValue) && rgbValue != "---,---,---")
+                        {
+                            // Split the RGB string into its components
+                            string[] rgbParts = rgbValue.Split(',');
+
+                            // Ensure that there are exactly 3 parts and they are valid integers
+                            if (rgbParts.Length == 3 &&
+                                int.TryParse(rgbParts[0], out int r) &&
+                                int.TryParse(rgbParts[1], out int g) &&
+                                int.TryParse(rgbParts[2], out int b))
+                            {
+                                // Add the valid RGB value to the list
+                                colorList.Add(Color.FromArgb(r, g, b));
+                            }
+                        }
+                    }
+                }
+
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+
+                #endregion
+                foreach (Control control in patternButtons)
+                {
+                    control.Enabled = true;
+                }
+            }
+            else // there are no longer 8 or 16 valid colours selected
+            {
+                foreach (Control control in patternButtons)
+                {
+                    control.Enabled = false;
+                }
+                colorList.Clear();
+                colorList = new List<Color>();
+            }
+        }
+
+        #region MENU
+        private void BtnMenuConvert_Click(object sender, EventArgs e)
+        {
+            panelConverter.Visible = true;
+            panelRGBLabels.Visible = false;
+            panelHexLabels.Visible = false;
+            panelSaveImage.Visible = false;
+            panelConverter.BringToFront();
+
+        }
+
+        private void BtnMenuStripes_Click(object sender, EventArgs e)
+        {
+            panelPatternStripes.Visible = true;
+            panelPatternStripes.BringToFront();
+            SetupStripes();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+        }
+
+        private void BtnMenuCircles_Click(object sender, EventArgs e)
+        {
+            panelPatternCircles.Visible = true;
+            panelPatternCircles.BringToFront();
+            SetupCircles(panelImageCircles, colorList);
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+        }
+
+        private void BtnMenuSquares_Click(object sender, EventArgs e)
+        {
+            panelPatternSquares.Visible = true;
+            panelPatternSquares.BringToFront();
+            SetupSquares(panelImageSquares, colorList);
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+        }
+
+        private void btnMenuMandelbrot_Click(object sender, EventArgs e)
+        {
+            panelPatternMandelbrot.Visible = true;
+            panelPatternMandelbrot.BringToFront();
+            SetupMandelbrot(panelImageMandelbrot, colorList);
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+        }
+
+        private void btnMenuSpiral_Click(object sender, EventArgs e)
+        {
+            panelPatternSpiral.Visible = true;
+            panelPatternSpiral.BringToFront();
+            SetupSpiral(panelImageSpiral, colorList);
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+        }
+        #endregion
+
+        #region Stripes
+
+        private void SetupStripes()
+        {
+            if (eightColours)
+            {
+                panelSwatch1.BackColor = colorList[0];
+                panelSwatch3.BackColor = colorList[1];
+                panelSwatch5.BackColor = colorList[2];
+                panelSwatch7.BackColor = colorList[3];
+                panelSwatch9.BackColor = colorList[4];
+                panelSwatch11.BackColor = colorList[5];
+                panelSwatch13.BackColor = colorList[6];
+                panelSwatch15.BackColor = colorList[7];
+
+                foreach (Control control in panelsSwatchesForColors9To16)
+                {
+                    control.Visible = false;
+                }
+            }
+            else
+            {
+                panelSwatch1.BackColor = colorList[0];
+                panelSwatch2.BackColor = colorList[1];
+                panelSwatch3.BackColor = colorList[2];
+                panelSwatch4.BackColor = colorList[3];
+                panelSwatch5.BackColor = colorList[4];
+                panelSwatch6.BackColor = colorList[5];
+                panelSwatch7.BackColor = colorList[6];
+                panelSwatch8.BackColor = colorList[7];
+                panelSwatch9.BackColor = colorList[8];
+                panelSwatch10.BackColor = colorList[9];
+                panelSwatch11.BackColor = colorList[10];
+                panelSwatch12.BackColor = colorList[11];
+                panelSwatch13.BackColor = colorList[12];
+                panelSwatch14.BackColor = colorList[13];
+                panelSwatch15.BackColor = colorList[14];
+                panelSwatch16.BackColor = colorList[15];
+
+                foreach (Control control in panelsSwatchesForColors9To16)
+                {
+                    control.Visible = true;
+                }
+            }
+
+        }
+
+        private void BtnStripesSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupStripes();
+        }
+
+        private void BtnStripesSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupStripes();
+        }
+
+        private void BtnStripesSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupStripes();
+        }
+
+        private void BtnStripesSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupStripes();
+        }
+
+        #endregion
+
+        #region Circles
+
+        private void SetupCircles(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            int centerX = panel.Width / 2;
+            int centerY = panel.Height / 2;
+
+            int maxRadius = (int)Math.Ceiling(Math.Sqrt(Math.Pow(panel.Width, 2) + Math.Pow(panel.Height, 2)) / 2);
+
+            int step = maxRadius / colorList.Count;
+
+            int colorIndex = 0;
+            for (int radius = maxRadius; radius > 0; radius -= step)
+            {
+                using SolidBrush brush = new(colorList[colorIndex]);
+
+                g.FillEllipse(brush, centerX - radius, centerY - radius, radius * 2, radius * 2);
+
+                colorIndex = (colorIndex + 1) % colorList.Count;
+            }
+        }
+
+        private void BtnCirclesSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupCircles(panelImageCircles, colorList);
+        }
+
+        private void BtnCirclesSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupCircles(panelImageCircles, colorList);
+        }
+
+        private void BtnCirclesSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupCircles(panelImageCircles, colorList);
+        }
+
+        private void BtnCirclesSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupCircles(panelImageCircles, colorList);
+        }
+
+        #endregion
+
+        #region Squares
+
+        private void SetupSquares(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            int numColors = colorList.Count;
+            int numColumns, numRows;
+
+            if (numColors == 8)
+            {
+                numColumns = 4;
+                numRows = 2;
+            }
+            else if (numColors == 16)
+            {
+                numColumns = 4;
+                numRows = 4;
+            }
+            else
+            {
+                throw new ArgumentException("Only lists with 8 or 16 colors are supported.");
+            }
+
+            int squareWidth = panel.Width / numColumns;
+            int squareHeight = panel.Height / numRows;
+
+            for (int row = 0; row < numRows; row++)
+            {
+                for (int col = 0; col < numColumns; col++)
+                {
+                    int colorIndex = row * numColumns + col;
+
+                    if (colorIndex >= numColors)
+                        break;
+
+                    Panel colorPanel = new()
+                    {
+                        BackColor = colorList[colorIndex],
+                        Width = squareWidth,
+                        Height = squareHeight,
+                        Left = col * squareWidth,
+                        Top = row * squareHeight
+                    };
+
+                    panel.Controls.Add(colorPanel);
+                }
+            }
+        }
+
+        private void BtnSquaresSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupSquares(panelImageSquares, colorList);
+        }
+
+        private void BtnSquaresSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupSquares(panelImageSquares, colorList);
+        }
+
+        private void BtnSquaresSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupSquares(panelImageSquares, colorList);
+        }
+
+        private void BtnSquaresSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupSquares(panelImageSquares, colorList);
+        }
+
+        #endregion
+
+        #region save area of form as image
+
+        private void SaveAreaAsImage(Rectangle captureArea)
+        {
+            // Convert the form-relative coordinates to screen coordinates
+            Point formLocationOnScreen = this.PointToScreen(captureArea.Location);
+
+            // Create a bitmap with the size of the capture area
+            Bitmap bitmap = new(captureArea.Width, captureArea.Height);
+
+            // Create a graphics object from the bitmap
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                // Capture the specified area of the form into the bitmap
+                g.CopyFromScreen(formLocationOnScreen, Point.Empty, captureArea.Size);
+            }
+
+            using SaveFileDialog saveFileDialog = new();
+            saveFileDialog.Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap Image|*.bmp";
+            saveFileDialog.Title = "Save area as image";
+            saveFileDialog.FileName = "Chromaseed.png";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileExtension = System.IO.Path.GetExtension(saveFileDialog.FileName).ToLower();
+
+                switch (fileExtension)
+                {
+                    case ".jpg":
+                        bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        break;
+                    case ".bmp":
+                        bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
+                        break;
+                    default:
+                        bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                        break;
+                }
+
+                MessageBox.Show("Selected area of the form saved successfully!");
+            }
+        }
+
+        private void ShowSaveImagePanel()
+        {
+            panelSaveImage.Visible = true;
+            panelSaveImage.BringToFront();
+
+        }
+
+        private void BtnSaveImage_Click(object sender, EventArgs e)
+        {
+            if (checkBoxHex.Checked && checkBoxRGB.Checked)
+            {
+                Rectangle captureArea = new(135, 82, 640, 568);
+                SaveAreaAsImage(captureArea);
+            }
+
+            if (!checkBoxHex.Checked && !checkBoxRGB.Checked)
+            {
+                Rectangle captureArea = new(205, 82, 570, 568);
+                SaveAreaAsImage(captureArea);
+            }
+
+            if (checkBoxHex.Checked && !checkBoxRGB.Checked)
+            {
+                Rectangle captureArea = new(135, 82, 640, 568);
+                panelRGBLabels.Visible = false;
+                SaveAreaAsImage(captureArea);
+                panelRGBLabels.Visible = true;
+            }
+
+            if (!checkBoxHex.Checked && checkBoxRGB.Checked)
+            {
+                Rectangle captureArea = new(135, 82, 640, 568);
+                panelHexLabels.Visible = false;
+                SaveAreaAsImage(captureArea);
+                panelHexLabels.Visible = true;
+            }
+        }
+        #endregion
+
+        #region populate hex and rgb keys
+
+        private void PopulateHexKey()
+        {
+            if (eightColours)
+            {
+                lblHex1.Text = lblColorHex1.Text;
+                lblHex2.Text = lblColorHex2.Text;
+                lblHex3.Text = lblColorHex3.Text;
+                lblHex4.Text = lblColorHex4.Text;
+                lblHex5.Text = lblColorHex5.Text;
+                lblHex6.Text = lblColorHex6.Text;
+                lblHex7.Text = lblColorHex7.Text;
+                lblHex8.Text = lblColorHex8.Text;
+                panelHexLabels.Height = 108;
+                panelHexLabels.Location = new Point(panelHexLabels.Location.X, 84);
+            }
+            else
+            {
+                lblHex1.Text = lblColorHex1.Text;
+                lblHex2.Text = lblColorHex2.Text;
+                lblHex3.Text = lblColorHex3.Text;
+                lblHex4.Text = lblColorHex4.Text;
+                lblHex5.Text = lblColorHex5.Text;
+                lblHex6.Text = lblColorHex6.Text;
+                lblHex7.Text = lblColorHex7.Text;
+                lblHex8.Text = lblColorHex8.Text;
+                lblHex9.Text = lblColorHex9.Text;
+                lblHex10.Text = lblColorHex10.Text;
+                lblHex11.Text = lblColorHex11.Text;
+                lblHex12.Text = lblColorHex12.Text;
+                lblHex13.Text = lblColorHex13.Text;
+                lblHex14.Text = lblColorHex14.Text;
+                lblHex15.Text = lblColorHex15.Text;
+                lblHex16.Text = lblColorHex16.Text;
+                panelHexLabels.Height = 216;
+                panelHexLabels.Location = new Point(panelHexLabels.Location.X, 84);
+            }
+            panelHexLabels.BringToFront();
+            panelHexLabels.Visible = true;
+        }
+
+        private void PopulateRGBKey()
+        {
+            if (eightColours)
+            {
+                lblRGB1.Text = lblColorRGB1.Text;
+                lblRGB2.Text = lblColorRGB2.Text;
+                lblRGB3.Text = lblColorRGB3.Text;
+                lblRGB4.Text = lblColorRGB4.Text;
+                lblRGB5.Text = lblColorRGB5.Text;
+                lblRGB6.Text = lblColorRGB6.Text;
+                lblRGB7.Text = lblColorRGB7.Text;
+                lblRGB8.Text = lblColorRGB8.Text;
+                panelRGBLabels.Height = 108;
+                panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 538);
+            }
+            else
+            {
+                lblRGB1.Text = lblColorRGB1.Text;
+                lblRGB2.Text = lblColorRGB2.Text;
+                lblRGB3.Text = lblColorRGB3.Text;
+                lblRGB4.Text = lblColorRGB4.Text;
+                lblRGB5.Text = lblColorRGB5.Text;
+                lblRGB6.Text = lblColorRGB6.Text;
+                lblRGB7.Text = lblColorRGB7.Text;
+                lblRGB8.Text = lblColorRGB8.Text;
+                lblRGB9.Text = lblColorRGB9.Text;
+                lblRGB10.Text = lblColorRGB10.Text;
+                lblRGB11.Text = lblColorRGB11.Text;
+                lblRGB12.Text = lblColorRGB12.Text;
+                lblRGB13.Text = lblColorRGB13.Text;
+                lblRGB14.Text = lblColorRGB14.Text;
+                lblRGB15.Text = lblColorRGB15.Text;
+                lblRGB16.Text = lblColorRGB16.Text;
+                panelRGBLabels.Height = 216;
+                panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 430);
+            }
+            panelRGBLabels.BringToFront();
+            panelRGBLabels.Visible = true;
+        }
+
+        #endregion
+
+        private void SetupMandelbrot(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            int width = panel.Width;
+            int height = panel.Height;
+            int colorCount = colorList.Count;
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    double a = (x - width / 2.0) * 4.0 / width;
+                    double b = (y - height / 2.0) * 4.0 / height;
+
+                    double ca = a;
+                    double cb = b;
+
+                    int n = 0;
+                    int maxIterations = 100;
+
+                    while (n < maxIterations)
+                    {
+                        double aa = a * a - b * b;
+                        double bb = 2 * a * b;
+
+                        a = aa + ca;
+                        b = bb + cb;
+
+                        if (Math.Abs(a + b) > 16)
+                        {
+                            break;
+                        }
+
+                        n++;
+                    }
+
+                    int colorIndex = n % colorCount;
+                    Color color = colorList[colorIndex];
+
+                    g.FillRectangle(new SolidBrush(color), x, y, 1, 1);
+                }
+            }
+        }
+
+        private void SetupSpiral(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor); 
+
+            int centerX = panel.Width / 2;
+            int centerY = panel.Height / 2;
+
+            double angle = 0;
+            double radius = 0;
+            double angleStep = 0.1; 
+            double radiusStep = 3;  
+            int colorIndex = 0;
+
+            while (radius < Math.Max(panel.Width, panel.Height))
+            {
+                using Pen pen = new(colorList[colorIndex], 4); // 4px thick line
+
+                int x = centerX + (int)(radius * Math.Cos(angle));
+                int y = centerY + (int)(radius * Math.Sin(angle));
+
+                g.DrawLine(pen, centerX, centerY, x, y);
+
+                angle += angleStep;
+                radius += radiusStep;
+                colorIndex = (colorIndex + 1) % colorList.Count;
+            }
+        }
     }
 }
