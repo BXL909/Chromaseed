@@ -1,6 +1,6 @@
 ﻿//!░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 //+++CHROMASEED
-//!● Homepage.......... tbc
+//!● Homepage.......... https://chromaseed.btcdir.org
 //!● Version history... tbc
 //!● Download.......... tbc
 //
@@ -49,6 +49,20 @@ namespace Chromaseed
         readonly Control[] panelsSwatchesForColors9To16;
         readonly Control[] patternButtons;
         readonly Control[] controlsToColor;
+
+        #region pattern specific variables
+        string phrase = "Chancellor on brink of second bailout for banks";
+        string textGridPhrase = "All your base are belong to us";
+        int noiseSize = 3;
+        int radialAngle = 64; 
+        int radialRays = 128;
+        int hexagonComplexity = 3;
+        int distortionAmount = 25;
+        int mosaicNumPoints = 100;
+        #endregion
+
+        bool eightColours = false;
+        List<Color> colorList = new();
         #endregion
 
         #region rounded form
@@ -76,7 +90,7 @@ namespace Chromaseed
 
             #region rounded panels
 
-            Control[] panelsToBeRounded = new Control[] { panelMenu, panelSeedWords, panelSuggestionBoxSurround, panelColours, panelWordsContainer, panelColoursContainer, panelStripesLeft, panelStripesLeftContainer, panelStripesRight, panelStripesRightContainer, panelCirclesLeft, panelCirclesLeftContainer, panelCirclesRight, panelCirclesRightContainer, panelSquaresLeft, panelSquaresLeftContainer, panelSquaresRight, panelSquaresRightContainer };
+            Control[] panelsToBeRounded = new Control[] { panelMenu, panelSeedWords, panelSuggestionBoxSurround, panelColours, panelWordsContainer, panelColoursContainer, panelStripesLeft, panelStripesLeftContainer, panelStripesRight, panelStripesRightContainer, panelCirclesLeft, panelCirclesLeftContainer, panelCirclesRight, panelCirclesRightContainer, panelSquaresLeft, panelSquaresLeftContainer, panelSquaresRight, panelSquaresRightContainer, panelRadialLeft, panelRadialLeftContainer, panelRadialRight, panelRadialRightContainer, panelNoiseLeftContainer, panelNoiseRightContainer, panelNoiseLeft, panelNoiseRight, panelHexagonLeftContainer, panelHexagonsLeft, panelHexagonsRight, panelHexagonsRightContainer, panelSpiralRight, panelSpiralRightContainer, panelSpiralLeft, panelSpiralLeftContainer, panelMandelbrotLeft, panel1MandelbrotLeftContainer, panelMandelbrotRight, panelMandelbrotRightContainer, panelSymbolsLeft, panelSymbolsLeftContainer, panelSymbolsRight, panelSymbolsRightContainer, panelBrinkLeft, panelBrinkLeftContainer, panelBrinkRight, panelBrinkRightContainer, panelSquiggleLeft, panelSquiggleLeftContainer, panelSquiggleRight, panelSquiggleRightContainer, panelTilesLeft, panelTilesLeftContainer, panelTilesRight, panelTilesRightContainer, panelMultibrotLeft, panelMultibrotLeftContainer, panelMultibrotRight, panelMultibrotRightContainer, panelPhoenixLeft, panelPhoenixLeftContainer, panelPhoenixRight, panelPhoenixRightContainer, panelTricornLeft, panelTricornLeftContainer, panelTricornRight, panelTricornRightContainer };
 
             foreach (Control control in panelsToBeRounded)
             {
@@ -108,7 +122,7 @@ namespace Chromaseed
             panels1to8Colors = new Control[] { panelColor1, panelColor2, panelColor3, panelColor4, panelColor5, panelColor6, panelColor7, panelColor8 };
             panels9to16Colors = new Control[] { panelColor9, panelColor10, panelColor11, panelColor12, panelColor13, panelColor14, panelColor15, panelColor16 };
             panelsSwatchesForColors9To16 = new Control[] { panelSwatch2, panelSwatch4, panelSwatch6, panelSwatch8, panelSwatch10, panelSwatch12, panelSwatch14, panelSwatch16 };
-            patternButtons = new Control[] { btnMenuCircles, btnMenuSwatches, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral };
+            patternButtons = new Control[] { btnMenuCircles, btnMenuSwatches, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral, btnMenuRadial, btnMenuNoise, btnMenuHexagons, btnMenuSquiggle, btnMenuBrink, btnMenuSymbols, btnMenuTiles, btnMenuMultibrot, btnMenuPhoenix, btnMenuTricorn, btnMenuJulia, btnMenuTextGrid };
             controlsToColor = new Control[] { panelSquaresLeft, panelCirclesLeft, panelStripesLeft, panelRGBLabels, panelHexLabels };
             #endregion
 
@@ -1718,10 +1732,6 @@ namespace Chromaseed
 
         #endregion
 
-        bool eightColours = false;
-
-        List<Color> colorList = new();
-
         private void BtnDummyButton_TextChanged(object sender, EventArgs e)
         {
             if (btnDummyButton.Text == "allcoloursset")
@@ -1796,54 +1806,177 @@ namespace Chromaseed
         {
             panelPatternStripes.Visible = true;
             panelPatternStripes.BringToFront();
-            SetupStripes();
             PopulateHexKey();
             PopulateRGBKey();
             ShowSaveImagePanel();
+            SetupStripes();
         }
 
         private void BtnMenuCircles_Click(object sender, EventArgs e)
         {
             panelPatternCircles.Visible = true;
             panelPatternCircles.BringToFront();
-            SetupCircles(panelImageCircles, colorList);
             PopulateHexKey();
             PopulateRGBKey();
             ShowSaveImagePanel();
+            SetupCircles(panelImageCircles, colorList);
         }
 
         private void BtnMenuSquares_Click(object sender, EventArgs e)
         {
             panelPatternSquares.Visible = true;
             panelPatternSquares.BringToFront();
-            SetupSquares(panelImageSquares, colorList);
             PopulateHexKey();
             PopulateRGBKey();
             ShowSaveImagePanel();
+            SetupSquares(panelImageSquares, colorList);
         }
 
-        private void btnMenuMandelbrot_Click(object sender, EventArgs e)
+        private void BtnMenuMandelbrot_Click(object sender, EventArgs e)
         {
             panelPatternMandelbrot.Visible = true;
             panelPatternMandelbrot.BringToFront();
-            SetupMandelbrot(panelImageMandelbrot, colorList);
             PopulateHexKey();
             PopulateRGBKey();
             ShowSaveImagePanel();
+            SetupMandelbrot(panelImageMandelbrot, colorList);
         }
 
-        private void btnMenuSpiral_Click(object sender, EventArgs e)
+        private void BtnMenuSpiral_Click(object sender, EventArgs e)
         {
             panelPatternSpiral.Visible = true;
             panelPatternSpiral.BringToFront();
-            SetupSpiral(panelImageSpiral, colorList);
             PopulateHexKey();
             PopulateRGBKey();
             ShowSaveImagePanel();
+            SetupSpiral(panelImageSpiral, colorList);
         }
+
+        private void BtnMenuNoise_Click(object sender, EventArgs e)
+        {
+            panelPatternNoise.Visible = true;
+            panelPatternNoise.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupNoise(panelImageNoise, colorList);
+        }
+
+        private void BtnMenuHexagons_Click(object sender, EventArgs e)
+        {
+            panelPatternHexagons.Visible = true;
+            panelPatternHexagons.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupHexagons(panelImageHexagons, colorList);
+        }
+
+        private void BtnMenuSquiggle_Click(object sender, EventArgs e)
+        {
+            panelPatternSquiggle.Visible = true;
+            panelPatternSquiggle.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupDistortion(panelImageSquiggle, colorList);
+        }
+
+        private void BtnMenuRadial_Click(object sender, EventArgs e)
+        {
+            panelPatternRadial.Visible = true;
+            panelPatternRadial.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupRadial(panelImageRadial, colorList);
+        }
+
+        private void BtnMenuBrink_Click(object sender, EventArgs e)
+        {
+            panelPatternBrink.Visible = true;
+            panelPatternBrink.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupBrink(panelImageBrink, phrase, colorList);
+        }
+
+        private void BtnMenuSymbols_Click(object sender, EventArgs e)
+        {
+            panelPatternSymbols.Visible = true;
+            panelPatternSymbols.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupSymbols(panelImageSymbols, colorList);
+        }
+
+        private void BtnMenuTiles_Click(object sender, EventArgs e)
+        {
+            panelPatternTiles.Visible = true;
+            panelPatternTiles.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupTiles(panelImageTiles, colorList);
+        }
+
+        private void BtnMenuMultibrot_Click(object sender, EventArgs e)
+        {
+            panelPatternMultibrot.Visible = true;
+            panelPatternMultibrot.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupMultibrotSet(panelImageMultibrot, colorList);
+        }
+
+        private void BtnMenuPhoenix_Click(object sender, EventArgs e)
+        {
+            panelPatternPhoenix.Visible = true;
+            panelPatternPhoenix.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupPhoenixFractal(panelImagePhoenix, colorList);
+        }
+
+        private void btnMenuTricorn_Click(object sender, EventArgs e)
+        {
+            panelPatternTricorn.Visible = true;
+            panelPatternTricorn.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupTricornFractal(panelImageTricorn, colorList);
+        }
+
+        private void btnMenuJulia_Click(object sender, EventArgs e)
+        {
+            panelPatternJulia.Visible = true;
+            panelPatternJulia.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+        }
+
+        private void btnMenuTextGrid_Click(object sender, EventArgs e)
+        {
+            panelPatternTextGrid.Visible = true;
+            panelPatternTextGrid.BringToFront();
+            PopulateHexKey();
+            PopulateRGBKey();
+            ShowSaveImagePanel();
+            SetupTextGrid(panelImageTextGrid, colorList, phrase);
+        }
+
         #endregion
 
-        #region Stripes
+        #region PATTERNS
+
+        #region *STRIPES
 
         private void SetupStripes()
         {
@@ -1916,7 +2049,7 @@ namespace Chromaseed
 
         #endregion
 
-        #region Circles
+        #region *CIRCLES
 
         private void SetupCircles(Panel panel, List<Color> colorList)
         {
@@ -1969,7 +2102,7 @@ namespace Chromaseed
 
         #endregion
 
-        #region Squares
+        #region *SQUARES
 
         private void SetupSquares(Panel panel, List<Color> colorList)
         {
@@ -2042,6 +2175,958 @@ namespace Chromaseed
             colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
             SetupSquares(panelImageSquares, colorList);
         }
+
+        #endregion
+
+        #region *SPIRAL
+
+        private void SetupSpiral(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            int centerX = panel.Width / 2;
+            int centerY = panel.Height / 2;
+
+            double angle = 0;
+            double radius = 0;
+            double angleStep = 0.1;
+            double radiusStep = 3;
+            int colorIndex = 0;
+
+            while (radius < Math.Max(panel.Width, panel.Height))
+            {
+                using Pen pen = new(colorList[colorIndex], 8);
+
+                int x = centerX + (int)(radius * Math.Cos(angle));
+                int y = centerY + (int)(radius * Math.Sin(angle));
+
+                g.DrawLine(pen, centerX, centerY, x, y);
+
+                angle += angleStep;
+                radius += radiusStep;
+                colorIndex = (colorIndex + 1) % colorList.Count;
+            }
+        }
+
+        private void BtnSpiralSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupSpiral(panelImageSpiral, colorList);
+        }
+
+        private void BtnSpiralSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupSpiral(panelImageSpiral, colorList);
+        }
+
+        private void BtnSpiralSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupSpiral(panelImageSpiral, colorList);
+        }
+
+        private void BtnSpiralSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupSpiral(panelImageSpiral, colorList);
+        }
+
+        #endregion
+
+        #region *MANDELBROT
+
+        private void SetupMandelbrot(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            int width = panel.Width;
+            int height = panel.Height;
+            int colorCount = colorList.Count;
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    double a = (x - width / 2.0) * 4.0 / width;
+                    double b = (y - height / 2.0) * 4.0 / height;
+
+                    double ca = a;
+                    double cb = b;
+
+                    int n = 0;
+                    int maxIterations = 100;
+
+                    while (n < maxIterations)
+                    {
+                        double aa = a * a - b * b;
+                        double bb = 2 * a * b;
+
+                        a = aa + ca;
+                        b = bb + cb;
+
+                        if (Math.Abs(a + b) > 16)
+                        {
+                            break;
+                        }
+
+                        n++;
+                    }
+
+                    int colorIndex = n % colorCount;
+                    Color color = colorList[colorIndex];
+
+                    g.FillRectangle(new SolidBrush(color), x, y, 1, 1);
+                }
+            }
+        }
+
+
+        private void BtnMandelbrotSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupMandelbrot(panelImageMandelbrot, colorList);
+        }
+
+        private void BtnMandelbrotSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupMandelbrot(panelImageMandelbrot, colorList);
+        }
+
+        private void BtnMandelbrotSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupMandelbrot(panelImageMandelbrot, colorList);
+        }
+
+        private void BtnMandelbrotSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupMandelbrot(panelImageMandelbrot, colorList);
+        }
+
+        #endregion
+
+        #region *NOISE
+
+        private void SetupNoise(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            Random random = new();
+            int colorIndex = 0;
+
+            for (int i = 0; i < 100000; i++)
+            {
+                colorIndex = random.Next(colorList.Count);
+                using SolidBrush brush = new(colorList[colorIndex]);
+
+                int x = random.Next(panel.Width);
+                int y = random.Next(panel.Height);
+                int size = random.Next(1, noiseSize);
+
+                g.FillRectangle(brush, x, y, size, size);
+            }
+        }
+
+        private void btnNoiseSize_Click(object sender, EventArgs e)
+        {
+            noiseSize = (int)numericUpDownNoiseSize.Value;
+            SetupNoise(panelImageNoise, colorList);
+        }
+
+        #endregion
+
+        #region *RADIAL
+
+        private void SetupRadial(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            Random random = new();
+            int centerX = panel.Width / 2;
+            int centerY = panel.Height / 2;
+            int colorIndex = 0;
+            double angleStep = Math.PI / radialAngle;
+
+            for (int i = 0; i < radialRays; i++)
+            {
+                using SolidBrush brush = new(colorList[colorIndex]);
+
+                double angle = i * angleStep;
+                int outerX1 = centerX + (int)(panel.Width * Math.Cos(angle));
+                int outerY1 = centerY + (int)(panel.Height * Math.Sin(angle));
+                int outerX2 = centerX + (int)(panel.Width * Math.Cos(angle + angleStep));
+                int outerY2 = centerY + (int)(panel.Height * Math.Sin(angle + angleStep));
+
+                Point[] points = { new(centerX, centerY), new(outerX1, outerY1), new(outerX2, outerY2) };
+                g.FillPolygon(brush, points);
+
+                colorIndex = (colorIndex + 1) % colorList.Count;
+            }
+        }
+
+        private void BtnRadialSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupRadial(panelImageRadial, colorList);
+        }
+
+        private void BtnRadialSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupRadial(panelImageRadial, colorList);
+        }
+
+        private void BtnRadialSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupRadial(panelImageRadial, colorList);
+        }
+
+        private void BtnRadialSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupRadial(panelImageRadial, colorList);
+        }
+
+        private void btnRadialRays_Click(object sender, EventArgs e)
+        {
+            if (comboBoxRadialRays.Text == "32")
+            {
+                radialAngle = 16;
+                radialRays = 32;
+            }
+            if (comboBoxRadialRays.Text == "64")
+            {
+                radialAngle = 32;
+                radialRays = 64;
+            }
+            if (comboBoxRadialRays.Text == "128")
+            {
+                radialAngle = 64;
+                radialRays = 128;
+            }
+            if (comboBoxRadialRays.Text == "256")
+            {
+                radialAngle = 128;
+                radialRays = 256;
+            }
+            if (comboBoxRadialRays.Text == "512")
+            {
+                radialAngle = 256;
+                radialRays = 512;
+            }
+            if (comboBoxRadialRays.Text == "1024")
+            {
+                radialAngle = 512;
+                radialRays = 1024;
+            }
+            if (comboBoxRadialRays.Text == "2048")
+            {
+                radialAngle = 1024;
+                radialRays = 2048;
+            }
+            SetupRadial(panelImageRadial, colorList);
+        }
+
+        #endregion
+
+        #region *HEXAGONS
+
+        private void SetupHexagons(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            Random random = new();
+            int colorIndex = 0;
+
+            void DrawHexagon(Graphics g, float x, float y, float size, int depth)
+            {
+                if (depth == 0) return;
+                using SolidBrush brush = new(colorList[colorIndex]);
+
+                PointF[] hexagon = new PointF[6];
+                for (int i = 0; i < 6; i++)
+                {
+                    double angle = i * Math.PI / 3;
+                    hexagon[i] = new PointF(x + size * (float)Math.Cos(angle), y + size * (float)Math.Sin(angle));
+                }
+                g.FillPolygon(brush, hexagon);
+
+                colorIndex = (colorIndex + 1) % colorList.Count;
+
+                float newSize = size * 0.5f;
+                for (int i = 0; i < 6; i++)
+                {
+                    DrawHexagon(g, hexagon[i].X, hexagon[i].Y, newSize, depth - 1);
+                }
+            }
+
+            float hexSize = panel.Width / 12f;
+            float hexHeight = (float)Math.Sqrt(3) * hexSize;
+
+            int rows = (int)(panel.Height / hexHeight) + 2;
+            int cols = (int)(panel.Width / (1.5 * hexSize)) + 2;
+
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    float x = col * 1.5f * hexSize;
+                    float y = row * hexHeight;
+                    if (col % 2 == 1)
+                    {
+                        y += hexHeight / 2;
+                    }
+
+                    DrawHexagon(g, x, y, hexSize, hexagonComplexity); // Depth set to 3, adjust for complexity
+                }
+            }
+        }
+
+        private void btnHexagonsSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupHexagons(panelImageHexagons, colorList);
+        }
+
+        private void btnHexagonsSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupHexagons(panelImageHexagons, colorList);
+        }
+
+        private void btnHexagonsSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupHexagons(panelImageHexagons, colorList);
+        }
+
+        private void btnHexagonsSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupHexagons(panelImageHexagons, colorList);
+        }
+
+        private void btnHexagonComplexity_Click(object sender, EventArgs e)
+        {
+            hexagonComplexity = (int)numericUpDownHexagonComplexity.Value;
+            SetupHexagons(panelImageHexagons, colorList);
+        }
+
+        #endregion
+
+        #region *DISTORTION
+
+        private void SetupDistortion(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            Random random = new();
+            int colorIndex = 0;
+            int centerX = panel.Width / 2;
+            int centerY = panel.Height / 2;
+
+            // Calculate a radius large enough to reach the farthest corners of the panel
+            int maxRadius = (int)Math.Ceiling(Math.Sqrt(centerX * centerX + centerY * centerY));
+
+            // Set a smaller step to add more circles
+            int step = 15; // Smaller step to increase circle count
+
+            // Continue drawing circles until the smallest radius is very small
+            for (int radius = maxRadius; radius > 0; radius -= step)
+            {
+                // Set the color from the list
+                using Pen pen = new(colorList[colorIndex], 3);
+
+                PointF[] points = new PointF[360];
+                for (int angle = 0; angle < 360; angle++)
+                {
+                    // Create distortion by altering the radii slightly
+                    float distortion = (float)(random.NextDouble() * distortionAmount - 10); // Random deviation
+                    points[angle] = new PointF(
+                        centerX + (float)((radius + distortion) * Math.Cos(angle * Math.PI / 180)),
+                        centerY + (float)((radius + distortion) * Math.Sin(angle * Math.PI / 180))
+                    );
+                }
+
+                // Draw the distorted circle, even if parts of it are outside the panel
+                g.DrawPolygon(pen, points);
+
+                // Cycle through the colors, repeating if necessary
+                colorIndex = (colorIndex + 1) % colorList.Count;
+            }
+        }
+
+        private void btnDistortionSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupDistortion(panelImageSquiggle, colorList);
+        }
+
+        private void btnDistortionSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupDistortion(panelImageSquiggle, colorList);
+        }
+
+        private void btnDistortionSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupDistortion(panelImageSquiggle, colorList);
+        }
+
+        private void btnDistortionSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupDistortion(panelImageSquiggle, colorList);
+        }
+
+        private void btnDistortionRefresh_Click(object sender, EventArgs e)
+        {
+            distortionAmount = (int)numericUpDownDistortion.Value;
+            SetupDistortion(panelImageSquiggle, colorList);
+        }
+
+        #endregion
+
+        #region *BRINK
+
+        private void SetupBrink(Panel panel, string phrase, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            Random random = new();
+            int colorIndex = 0;
+
+            string[] fontFamilies = { "Arial", "Times New Roman", "Verdana", "Courier New", "Comic Sans MS" };
+            int[] fontSizes = { 20, 30, 40, 50, 60, 80 };
+
+            for (int i = 0; i < 400; i++)
+            {
+                string fontFamily = fontFamilies[random.Next(0, fontFamilies.Length)];
+                int fontSize = fontSizes[random.Next(0, fontSizes.Length)];
+
+                using Brush brush = new SolidBrush(colorList[colorIndex]);
+
+                using Font font = new(fontFamily, fontSize, FontStyle.Bold);
+
+                int x = random.Next(0, panel.Width - 100);
+                int y = random.Next(0, panel.Height - 100);
+                float angle = random.Next(-180, 180);
+
+                g.TranslateTransform(x, y);
+                g.RotateTransform(angle);
+
+                g.DrawString(phrase, font, brush, 0, 0);
+
+                g.ResetTransform();
+
+                colorIndex = (colorIndex + 1) % colorList.Count;
+            }
+        }
+
+        private void btnBrinkRefreshText_Click(object sender, EventArgs e)
+        {
+            phrase = textBoxBrink.Text;
+            SetupBrink(panelImageBrink, phrase, colorList);
+        }
+
+        #endregion
+
+        #region *SYMBOLS
+
+        int fontSize = 20;
+
+        private void SetupSymbols(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            Random random = new();
+            int colorIndex = 0;
+
+            char[] asciiChars = { '@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.', '₿' };
+
+            using Font font = new("Courier New", fontSize, FontStyle.Bold);
+
+            int gridSize = 20;
+            for (int y = 0; y < panel.Height; y += gridSize)
+            {
+                for (int x = 0; x < panel.Width; x += gridSize)
+                {
+                    char asciiChar = asciiChars[random.Next(0, asciiChars.Length)];
+
+                    using Brush brush = new SolidBrush(colorList[colorIndex]);
+
+                    g.DrawString(asciiChar.ToString(), font, brush, new PointF(x, y));
+
+                    colorIndex = (colorIndex + 1) % colorList.Count;
+                }
+            }
+        }
+
+        private void BtnSymbolSize_Click(object sender, EventArgs e)
+        {
+            fontSize = (int)numericUpDownSymbolSize.Value;
+            SetupSymbols(panelImageSymbols, colorList);
+        }
+
+        #endregion
+
+        #region *TILES
+
+        private void SetupTiles(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            Random random = new();
+            int colorIndex = 0;
+
+            Point[] points = new Point[mosaicNumPoints];
+            for (int i = 0; i < mosaicNumPoints; i++)
+            {
+                points[i] = new Point(random.Next(panel.Width), random.Next(panel.Height));
+            }
+
+            for (int x = 0; x < panel.Width; x++)
+            {
+                for (int y = 0; y < panel.Height; y++)
+                {
+                    // Find the closest random point for each pixel
+                    int closestPointIndex = 0;
+                    double closestDistance = double.MaxValue;
+
+                    for (int i = 0; i < mosaicNumPoints; i++)
+                    {
+                        double dist = Math.Sqrt(Math.Pow(x - points[i].X, 2) + Math.Pow(y - points[i].Y, 2));
+                        if (dist < closestDistance)
+                        {
+                            closestDistance = dist;
+                            closestPointIndex = i;
+                        }
+                    }
+
+                    // Use a color based on the closest point's index
+                    colorIndex = closestPointIndex % colorList.Count;
+                    using SolidBrush brush = new(colorList[colorIndex]);
+                    g.FillRectangle(brush, x, y, 1, 1);
+                }
+            }
+        }
+
+        private void btnTilesCount_Click(object sender, EventArgs e)
+        {
+            mosaicNumPoints = (int)numericUpDownMosaicTiles.Value;
+            SetupTiles(panelImageTiles, colorList);
+        }
+
+        #endregion
+
+        #region *MULTIBROT
+
+        private void SetupMultibrotSet(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            int width = panel.Width;
+            int height = panel.Height;
+            Bitmap bitmap = new(width, height);
+
+            int colorCount = colorList.Count;
+            Random random = new();
+
+            double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
+            double xscale = (xmax - xmin) / width;
+            double yscale = (ymax - ymin) / height;
+            int maxIterations = 500;
+
+            for (int px = 0; px < width; px++)
+            {
+                for (int py = 0; py < height; py++)
+                {
+                    double x0 = xmin + px * xscale;
+                    double y0 = ymin + py * yscale;
+                    double x = 0.0, y = 0.0;
+                    int iteration = 0;
+
+                    while (x * x + y * y < 4 && iteration < maxIterations)
+                    {
+                        double xTemp = x * x * x - 3 * x * y * y + x0;
+                        y = 3 * x * x * y - y * y * y + y0;
+                        x = xTemp;
+                        iteration++;
+                    }
+
+                    int colorIndex = iteration % colorCount;
+                    Color color = (iteration == maxIterations) ? Color.Black : colorList[colorIndex];
+                    bitmap.SetPixel(px, py, color);
+                }
+            }
+
+            g.DrawImage(bitmap, 0, 0);
+        }
+
+        private void BtnMultibrotSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupMultibrotSet(panelImageMultibrot, colorList);
+        }
+
+        private void BtnMultibrotSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupMultibrotSet(panelImageMultibrot, colorList);
+        }
+
+        private void BtnMultibrotSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupMultibrotSet(panelImageMultibrot, colorList);
+        }
+
+        private void BtnMultibrotSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupMultibrotSet(panelImageMultibrot, colorList);
+        }
+
+        #endregion
+
+        #region *PHOENIX
+
+        private void SetupPhoenixFractal(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            int width = panel.Width;
+            int height = panel.Height;
+            Bitmap bitmap = new(width, height);
+
+            int colorCount = colorList.Count;
+            Random random = new();
+
+            double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
+            double xscale = (xmax - xmin) / width;
+            double yscale = (ymax - ymin) / height;
+            int maxIterations = 500;
+
+            // Phoenix specific variables
+            double p = -0.5, q = 0.0; 
+
+            for (int px = 0; px < width; px++)
+            {
+                for (int py = 0; py < height; py++)
+                {
+                    double x0 = xmin + px * xscale;
+                    double y0 = ymin + py * yscale;
+                    double x = 0.0, y = 0.0, xn = 0.0, yn = 0.0;
+                    int iteration = 0;
+
+                    // Phoenix fractal equation: z = z^2 + c + p*z_previous + q*z_previous^2
+                    while (x * x + y * y < 4 && iteration < maxIterations)
+                    {
+                        double xtemp = x * x - y * y + x0 + p * xn - q * (xn * xn - yn * yn);
+                        yn = y;
+                        y = 2 * x * y + y0 + p * yn - q * (2 * xn * yn);
+                        xn = x;
+                        x = xtemp;
+                        iteration++;
+                    }
+
+                    int colorIndex = iteration % colorCount;
+                    Color color = (iteration == maxIterations) ? Color.Black : colorList[colorIndex];
+                    bitmap.SetPixel(px, py, color);
+                }
+            }
+
+            g.DrawImage(bitmap, 0, 0);
+        }
+
+        private void BtnPhoenixSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupPhoenixFractal(panelImagePhoenix, colorList);
+        }
+
+        private void BtnPhoenixSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupPhoenixFractal(panelImagePhoenix, colorList);
+        }
+
+        private void BtnPhoenixSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupPhoenixFractal(panelImagePhoenix, colorList);
+        }
+
+        private void BtnPhoenixSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupPhoenixFractal(panelImagePhoenix, colorList);
+        }
+
+        #endregion
+
+        #region *TRICORN
+
+        private void SetupTricornFractal(Panel panel, List<Color> colorList)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            int width = panel.Width;
+            int height = panel.Height;
+            Bitmap bitmap = new(width, height);
+
+            int colorCount = colorList.Count;
+            Random random = new();
+
+            double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
+            double xscale = (xmax - xmin) / width;
+            double yscale = (ymax - ymin) / height;
+            int maxIterations = 500;
+
+            for (int px = 0; px < width; px++)
+            {
+                for (int py = 0; py < height; py++)
+                {
+                    double x0 = xmin + px * xscale;
+                    double y0 = ymin + py * yscale;
+                    double x = 0.0, y = 0.0;
+                    int iteration = 0;
+
+                    // Tricorn equation: z = conj(z^2) + c
+                    while (x * x + y * y < 4 && iteration < maxIterations)
+                    {
+                        double xTemp = x * x - y * y + x0;
+                        y = -2 * x * y + y0;
+                        x = xTemp;
+                        iteration++;
+                    }
+
+                    int colorIndex = iteration % colorCount;
+                    Color color = (iteration == maxIterations) ? Color.Black : colorList[colorIndex];
+                    bitmap.SetPixel(px, py, color);
+                }
+            }
+
+            g.DrawImage(bitmap, 0, 0);
+        }
+
+        private void BtnMenuTricornSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupTricornFractal(panelImageTricorn, colorList);
+        }
+
+        private void BtnMenuTricornSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupTricornFractal(panelImageTricorn, colorList);
+        }
+
+        private void BtnMenuTricornSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupTricornFractal(panelImageTricorn, colorList);
+        }
+
+        private void BtnMenuTricornSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupTricornFractal(panelImageTricorn, colorList);
+        }
+
+        #endregion
+
+        #region *JULIA
+
+        private void SetupJuliaSet(Panel panel, List<Color> colorList, double realPartC, double imaginaryPartC)
+        {
+            panel.Controls.Clear();
+
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            int width = panel.Width;
+            int height = panel.Height;
+            Bitmap bitmap = new(width, height);
+
+            int colorCount = colorList.Count;
+            Random random = new();
+
+            double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
+            double xscale = (xmax - xmin) / width;
+            double yscale = (ymax - ymin) / height;
+            int maxIterations = 500;
+
+            for (int px = 0; px < width; px++)
+            {
+                for (int py = 0; py < height; py++)
+                {
+                    double x = xmin + px * xscale;
+                    double y = ymin + py * yscale;
+                    int iteration = 0;
+
+                    // Julia set equation: z = z^2 + c (c is fixed, z varies)
+                    while (x * x + y * y < 4 && iteration < maxIterations)
+                    {
+                        double xTemp = x * x - y * y + realPartC;
+                        y = 2 * x * y + imaginaryPartC;
+                        x = xTemp;
+                        iteration++;
+                    }
+
+                    int colorIndex = iteration % colorCount;
+                    Color color = (iteration == maxIterations) ? Color.Black : colorList[colorIndex];
+                    bitmap.SetPixel(px, py, color);
+                }
+            }
+
+            g.DrawImage(bitmap, 0, 0);
+        }
+
+        private void BtnJuliaSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+        }
+
+        private void BtnJuliaSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+        }
+
+        private void BtnJuliaSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+        }
+
+        private void BtnJuliaSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+        }
+
+        #endregion
+
+        #region *TEXTGRID
+
+        private void SetupTextGrid(Panel panel, List<Color> colorList, string text)
+        {
+            panel.Controls.Clear();
+            using Graphics g = panel.CreateGraphics();
+            g.Clear(panel.BackColor);
+
+            Random random = new();
+            int colorIndex = 0;
+
+            int rows = 10;
+            int cols = 10;
+            float cellWidth = panel.Width / cols;
+            float cellHeight = panel.Height / rows;
+
+            using Font font = new("Arial", 24, FontStyle.Bold);
+
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    float x = col * cellWidth;
+                    float y = row * cellHeight;
+
+                    using Brush shapeBrush = new SolidBrush(colorList[(colorIndex + 1) % colorList.Count]);
+                    if (random.Next(2) == 0)
+                    {
+                        g.FillEllipse(shapeBrush, x, y, cellWidth, cellHeight);
+                    }
+                    else
+                    {
+                        g.FillRectangle(shapeBrush, x, y, cellWidth, cellHeight);
+                    }
+
+                    // Draw the text
+                    string letter = text[(row * cols + col) % text.Length].ToString();
+                    using Brush textBrush = new SolidBrush(colorList[colorIndex]);
+                    g.DrawString(letter, font, textBrush, x + 10, y + 10); // Text slightly inside
+
+                    colorIndex = (colorIndex + 1) % colorList.Count;
+                }
+            }
+        }
+
+        private void BtnTextGridSortByHue_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+        }
+
+        private void BtnTextGridSortByBrightness_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+        }
+
+        private void BtnTextGridSortByRGBSum_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+        }
+
+        private void BtnTextGridSortBySaturation_Click(object sender, EventArgs e)
+        {
+            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+        }
+
+        private void BtnTextGridUpdatePhrase_Click(object sender, EventArgs e)
+        {
+            textGridPhrase = textBoxTextGrid.Text;
+            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+        }
+
+
+        #endregion
 
         #endregion
 
@@ -2210,84 +3295,5 @@ namespace Chromaseed
         }
 
         #endregion
-
-        private void SetupMandelbrot(Panel panel, List<Color> colorList)
-        {
-            panel.Controls.Clear();
-
-            using Graphics g = panel.CreateGraphics();
-            g.Clear(panel.BackColor);
-
-            int width = panel.Width;
-            int height = panel.Height;
-            int colorCount = colorList.Count;
-
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    double a = (x - width / 2.0) * 4.0 / width;
-                    double b = (y - height / 2.0) * 4.0 / height;
-
-                    double ca = a;
-                    double cb = b;
-
-                    int n = 0;
-                    int maxIterations = 100;
-
-                    while (n < maxIterations)
-                    {
-                        double aa = a * a - b * b;
-                        double bb = 2 * a * b;
-
-                        a = aa + ca;
-                        b = bb + cb;
-
-                        if (Math.Abs(a + b) > 16)
-                        {
-                            break;
-                        }
-
-                        n++;
-                    }
-
-                    int colorIndex = n % colorCount;
-                    Color color = colorList[colorIndex];
-
-                    g.FillRectangle(new SolidBrush(color), x, y, 1, 1);
-                }
-            }
-        }
-
-        private void SetupSpiral(Panel panel, List<Color> colorList)
-        {
-            panel.Controls.Clear();
-
-            using Graphics g = panel.CreateGraphics();
-            g.Clear(panel.BackColor); 
-
-            int centerX = panel.Width / 2;
-            int centerY = panel.Height / 2;
-
-            double angle = 0;
-            double radius = 0;
-            double angleStep = 0.1; 
-            double radiusStep = 3;  
-            int colorIndex = 0;
-
-            while (radius < Math.Max(panel.Width, panel.Height))
-            {
-                using Pen pen = new(colorList[colorIndex], 4); // 4px thick line
-
-                int x = centerX + (int)(radius * Math.Cos(angle));
-                int y = centerY + (int)(radius * Math.Sin(angle));
-
-                g.DrawLine(pen, centerX, centerY, x, y);
-
-                angle += angleStep;
-                radius += radiusStep;
-                colorIndex = (colorIndex + 1) % colorList.Count;
-            }
-        }
     }
 }
