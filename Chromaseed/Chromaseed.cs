@@ -52,7 +52,7 @@ namespace Chromaseed
 
         #region pattern specific variables
         string phrase = "Chancellor on brink of second bailout for banks";
-        string textGridPhrase = "All your base are belong to us";
+        string textGridPhrase = "bxl909.github.io ";
         int noiseSize = 3;
         int radialAngle = 64; 
         int radialRays = 128;
@@ -406,6 +406,12 @@ namespace Chromaseed
                     textbox.Enabled = false;
                 }
                 LblMerge_TextChanged(sender, e);
+
+                if (btnDummyButton.Text == "allcoloursset")
+                {
+                    btnDummyButton.Text = "";
+                    btnDummyButton.Text = "allcoloursset";
+                }
             }
         }
         #endregion
@@ -1181,6 +1187,12 @@ namespace Chromaseed
             btn12SeedWords.Enabled = false;
             btn8Colours.Enabled = false;
             btn16Colours.Enabled = true;
+
+            if (btnDummyButton.Text == "allcoloursset")
+            {
+                btnDummyButton.Text = "";
+                btnDummyButton.Text = "allcoloursset";
+            }
         }
 
         private void Btn16Colours_Click(object sender, EventArgs e)
@@ -1969,7 +1981,7 @@ namespace Chromaseed
             PopulateHexKey();
             PopulateRGBKey();
             ShowSaveImagePanel();
-            SetupTextGrid(panelImageTextGrid, colorList, phrase);
+            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
         }
 
         #endregion
