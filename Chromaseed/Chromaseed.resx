@@ -120,4 +120,30 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Before you start using Chromaseed it is important to understand that the software relies on you typing in your seed phrase. Chromaseed itself has no online capability but it's important not to ever type your seed phrase in to an internet-connected device, and ideally not to ever type it in to ANY device, other than a dedicated signing device. Therefore, it is recommended that you do not use Chromaseed for any amount of bitcoin that you consider significant.
+
+Chromaseed converts your 12 or 24 word seed phrase into a series of 8 or 16 colours. Unlike your seed phrase, where the order of the words is of utmost importance, the order of the colours is not important at all. When the colours are translated back to words, the original order is preserved. The process is exactly the same as that first described by @EnteroPositivo (https://github.com/enteropositivo/bip39colors/tree/main/manual), and is easy to replicate manually, as below.
+
+Convert seed to colour:
+1. Create a single numeric string of 48 or 96 digits. The string is made up of sets of 4 digits. Each 4 digit set represents the position of each seed word in the alphabetically sorted BIP39 word list (filled with leading zeros if necessary).
+2. Split the numeric string into groups of 6 digits.
+3. Add a 2-digit sequential number to the start of each of the 6 digits (00, 02, 04, 06, 08, 10, 12, 14 or 00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16) resulting in either 8 or 16 8 digit numbers.
+4. Convert each of the 8 digit numbers to hexadecimal.
+
+Convert colour to seed:
+1. Convert the hexadecimal colours to decimal, and left fill with zeros if necessary, resulting in 8 or 16 8-digit values.
+2. Sort the 8 or 16 8-digit values from lowest to highest.
+3. Remove the first 2 digits, resulting in 8 or 16 6-digit values.
+4. Concatenate the 8/16 values into one string.
+5. Split the string into groups of 4 digits.
+6. Look up the positions in the alphabetically sorted BIP39 word list to determine the original seed phrase.
+
+Chromaseed produces a variety of coloured designs based on the colours derived from your seed phrase. These have been designed to use all of 'your' colours. Nevertheless, it's strongly recommended that when saving any of the designs, you also choose to save the actual colour values too. The colour values can be gleaned from the images using a colour picker tool, but given that your bitcoin relies on it*, it's recommended that you record the list of number values too.
+
+* refer back to the initial paragraph!</value>
+  </data>
 </root>

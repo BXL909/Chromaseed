@@ -12,9 +12,9 @@
 
 #region Using
 using CustomControls.RJControls;
+using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 #endregion
 
 namespace Chromaseed
@@ -54,7 +54,7 @@ namespace Chromaseed
         string phrase = "Chancellor on brink of second bailout for banks";
         string textGridPhrase = "bxl909.github.io ";
         int noiseSize = 3;
-        int radialAngle = 64; 
+        int radialAngle = 64;
         int radialRays = 128;
         int hexagonComplexity = 3;
         int distortionAmount = 25;
@@ -81,7 +81,8 @@ namespace Chromaseed
         public Chromaseed()
         {
             InitializeComponent();
-            activeSeedBox = textBoxSeedWord1;
+            this.BackgroundImage = Properties.Resources.BG1;
+            activeSeedBox = textBoxSeedWord1; 
             #region rounded form
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
@@ -90,7 +91,7 @@ namespace Chromaseed
 
             #region rounded panels
 
-            Control[] panelsToBeRounded = new Control[] { panelMenu, panelSeedWords, panelSuggestionBoxSurround, panelColours, panelWordsContainer, panelColoursContainer, panelStripesLeft, panelStripesLeftContainer, panelStripesRight, panelStripesRightContainer, panelCirclesLeft, panelCirclesLeftContainer, panelCirclesRight, panelCirclesRightContainer, panelSquaresLeft, panelSquaresLeftContainer, panelSquaresRight, panelSquaresRightContainer, panelRadialLeft, panelRadialLeftContainer, panelRadialRight, panelRadialRightContainer, panelNoiseLeftContainer, panelNoiseRightContainer, panelNoiseLeft, panelNoiseRight, panelHexagonLeftContainer, panelHexagonsLeft, panelHexagonsRight, panelHexagonsRightContainer, panelSpiralRight, panelSpiralRightContainer, panelSpiralLeft, panelSpiralLeftContainer, panelMandelbrotLeft, panel1MandelbrotLeftContainer, panelMandelbrotRight, panelMandelbrotRightContainer, panelSymbolsLeft, panelSymbolsLeftContainer, panelSymbolsRight, panelSymbolsRightContainer, panelBrinkLeft, panelBrinkLeftContainer, panelBrinkRight, panelBrinkRightContainer, panelSquiggleLeft, panelSquiggleLeftContainer, panelSquiggleRight, panelSquiggleRightContainer, panelTilesLeft, panelTilesLeftContainer, panelTilesRight, panelTilesRightContainer, panelMultibrotLeft, panelMultibrotLeftContainer, panelMultibrotRight, panelMultibrotRightContainer, panelPhoenixLeft, panelPhoenixLeftContainer, panelPhoenixRight, panelPhoenixRightContainer, panelTricornLeft, panelTricornLeftContainer, panelTricornRight, panelTricornRightContainer };
+            Control[] panelsToBeRounded = new Control[] { panelMenu, panelSeedWords, panelSuggestionBoxSurround, panelColours, panelWordsContainer, panelColoursContainer, panelStripesLeft, panelStripesLeftContainer, panelStripesRight, panelStripesRightContainer, panelCirclesLeft, panelCirclesLeftContainer, panelCirclesRight, panelCirclesRightContainer, panelSquaresLeft, panelSquaresLeftContainer, panelSquaresRight, panelSquaresRightContainer, panelRadialLeft, panelRadialLeftContainer, panelRadialRight, panelRadialRightContainer, panelNoiseLeftContainer, panelNoiseRightContainer, panelNoiseLeft, panelNoiseRight, panelHexagonLeftContainer, panelHexagonsLeft, panelHexagonsRight, panelHexagonsRightContainer, panelSpiralRight, panelSpiralRightContainer, panelSpiralLeft, panelSpiralLeftContainer, panelMandelbrotLeft, panel1MandelbrotLeftContainer, panelMandelbrotRight, panelMandelbrotRightContainer, panelSymbolsLeft, panelSymbolsLeftContainer, panelSymbolsRight, panelSymbolsRightContainer, panelBrinkLeft, panelBrinkLeftContainer, panelBrinkRight, panelBrinkRightContainer, panelSquiggleLeft, panelSquiggleLeftContainer, panelSquiggleRight, panelSquiggleRightContainer, panelTilesLeft, panelTilesLeftContainer, panelTilesRight, panelTilesRightContainer, panelMultibrotLeft, panelMultibrotLeftContainer, panelMultibrotRight, panelMultibrotRightContainer, panelPhoenixLeft, panelPhoenixLeftContainer, panelPhoenixRight, panelPhoenixRightContainer, panelTricornLeft, panelTricornLeftContainer, panelTricornRight, panelTricornRightContainer, panelDocs, panelDocsContainer };
 
             foreach (Control control in panelsToBeRounded)
             {
@@ -122,7 +123,8 @@ namespace Chromaseed
             panels1to8Colors = new Control[] { panelColor1, panelColor2, panelColor3, panelColor4, panelColor5, panelColor6, panelColor7, panelColor8 };
             panels9to16Colors = new Control[] { panelColor9, panelColor10, panelColor11, panelColor12, panelColor13, panelColor14, panelColor15, panelColor16 };
             panelsSwatchesForColors9To16 = new Control[] { panelSwatch2, panelSwatch4, panelSwatch6, panelSwatch8, panelSwatch10, panelSwatch12, panelSwatch14, panelSwatch16 };
-            patternButtons = new Control[] { btnMenuCircles, btnMenuSwatches, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral, btnMenuRadial, btnMenuNoise, btnMenuHexagons, btnMenuSquiggle, btnMenuBrink, btnMenuSymbols, btnMenuTiles, btnMenuMultibrot, btnMenuPhoenix, btnMenuTricorn, btnMenuJulia, btnMenuTextGrid };
+            patternButtons = new Control[] { btnMenuCircles, btnMenuStripes, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral, btnMenuRadial, btnMenuNoise, btnMenuHexagons, btnMenuDistortion, btnMenuBrink, btnMenuSymbols, btnMenuTiles, btnMenuMultibrot, btnMenuPhoenix, btnMenuTricorn, btnMenuJulia, btnMenuTextGrid };
+            //patternButtons = new Control[] { btnMenuCircles, btnMenuSwatches, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral, btnMenuRadial, btnMenuNoise, btnMenuHexagons, btnMenuSquiggle, btnMenuBrink, btnMenuSymbols, btnMenuTiles, btnMenuMultibrot, btnMenuPhoenix, btnMenuTricorn, btnMenuJulia, btnMenuTextGrid };
             controlsToColor = new Control[] { panelSquaresLeft, panelCirclesLeft, panelStripesLeft, panelRGBLabels, panelHexLabels };
             #endregion
 
@@ -1639,109 +1641,6 @@ namespace Chromaseed
         #endregion
         #endregion
 
-        #region common
-
-        private static int GetPartIndex(int caretPosition)
-        {
-            // Determine which part of the RGB the caret is in
-            if (caretPosition < 3)
-                return 0;  // Red part
-            else if (caretPosition < 7)
-                return 1;  // Green part
-            else
-                return 2;  // Blue part
-        }
-
-        #region load bip39 words
-        void LoadBip39Words()
-        {
-            string[] words = File.ReadAllLines("bip39-wordlist.txt");
-            for (int i = 0; i < words.Length; i++)
-            {
-                bip39Words.Add(i, words[i]);
-            }
-        }
-        #endregion
-
-        #region border around form
-        private void Chromaseed_Paint(object sender, PaintEventArgs e)
-        {
-            using var pen = new Pen(Color.FromArgb(80, 80, 80), 1);
-            var rect = ClientRectangle;
-            rect.Inflate(-1, -1);
-            e.Graphics.DrawPath(pen, GetRoundedRect(rect, 15));
-        }
-
-        private static GraphicsPath GetRoundedRect(Rectangle rectangle, int radius)
-        {
-            GraphicsPath path = new();
-            path.AddArc(rectangle.X, rectangle.Y, radius, radius, 180, 90);
-            path.AddArc(rectangle.Width - radius, rectangle.Y, radius, radius, 270, 90);
-            path.AddArc(rectangle.Width - radius, rectangle.Height - radius, radius, radius, 0, 90);
-            path.AddArc(rectangle.X, rectangle.Height - radius, radius, radius, 90, 90);
-            path.CloseFigure();
-            return path;
-        }
-        #endregion
-
-        #region exit
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        #endregion
-
-        #region rounded panels
-        private void Panel_Paint(object? sender, PaintEventArgs e)
-        {
-            try
-            {
-                if (sender == null)
-                {
-                    return;
-                }
-                Panel panel = (Panel)sender;
-
-                System.Drawing.Drawing2D.GraphicsPath path = new();
-                int cornerRadius = 7;
-                path.AddArc(0, 0, cornerRadius, cornerRadius, 180, 90);
-                path.AddArc(panel.Width - cornerRadius, 0, cornerRadius, cornerRadius, 270, 90);
-                path.AddArc(panel.Width - cornerRadius, panel.Height - cornerRadius, cornerRadius, cornerRadius, 0, 90);
-                path.AddArc(0, panel.Height - cornerRadius, cornerRadius, cornerRadius, 90, 90);
-                path.CloseFigure();
-
-                panel.Region = new Region(path);
-            }
-            catch (Exception ex)
-            {
-                HandleException(ex, "Panel_Paint");
-            }
-        }
-        #endregion
-
-        #region error handler
-        private void HandleException(Exception ex, string methodName)
-        {
-            string errorMessage;
-            errorMessage = $"Error in {methodName}: {ex.Message}";
-
-            const int MaxErrorMessageLength = 130;
-
-            if (errorMessage.Length > MaxErrorMessageLength)
-            {
-                errorMessage = $"{errorMessage[..MaxErrorMessageLength]}...";
-            }
-
-            lblErrorMessage.Invoke((MethodInvoker)delegate
-            {
-                lblErrorMessage.Text = errorMessage;
-
-            });
-        }
-        #endregion
-
-        #endregion
-
         #endregion
 
         private void BtnDummyButton_TextChanged(object sender, EventArgs e)
@@ -2858,7 +2757,7 @@ namespace Chromaseed
             int maxIterations = 500;
 
             // Phoenix specific variables
-            double p = -0.5, q = 0.0; 
+            double p = -0.5, q = 0.0;
 
             for (int px = 0; px < width; px++)
             {
@@ -3305,6 +3204,157 @@ namespace Chromaseed
             panelRGBLabels.BringToFront();
             panelRGBLabels.Visible = true;
         }
+
+        #endregion
+
+        private void btnReadme_Click(object sender, EventArgs e)
+        {
+            panelHelp.Visible = true;
+            panelHelp.BringToFront();
+        }
+
+        private void btnDismissDocs_Click(object sender, EventArgs e)
+        {
+            panelHelp.Visible = false;
+            panelHelp.SendToBack();
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            // display semi-transparent overlay form
+            Form overlay = new overlay()
+            {
+                Owner = this,
+                StartPosition = FormStartPosition.CenterParent,
+                FormBorderStyle = FormBorderStyle.None,
+                BackColor = Color.Black,
+                Opacity = 0.5,
+            };
+            overlay.StartPosition = FormStartPosition.CenterParent;
+            // Calculate the overlay form's location to place it in the center of the parent form
+            overlay.StartPosition = FormStartPosition.Manual;
+            int parentCenterX = this.Location.X + this.Width / 2;
+            int parentCenterY = this.Location.Y + this.Height / 2;
+            int overlayX = parentCenterX - overlay.Width / 2;
+            int overlayY = parentCenterY - overlay.Height / 2;
+            overlay.Location = new Point(overlayX, overlayY);
+            overlay.Show(this);
+
+            // display about screen on top of the overlay
+            Form frm = new About()
+            {
+                Owner = this,
+                StartPosition = FormStartPosition.CenterParent,
+            };
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog(this);
+
+            overlay.Close();
+            this.Focus();
+            this.BringToFront();
+
+        }
+
+        #region common
+
+        private static int GetPartIndex(int caretPosition)
+        {
+            // Determine which part of the RGB the caret is in
+            if (caretPosition < 3)
+                return 0;  // Red part
+            else if (caretPosition < 7)
+                return 1;  // Green part
+            else
+                return 2;  // Blue part
+        }
+
+        #region load bip39 words
+        void LoadBip39Words()
+        {
+            string[] words = File.ReadAllLines("bip39-wordlist.txt");
+            for (int i = 0; i < words.Length; i++)
+            {
+                bip39Words.Add(i, words[i]);
+            }
+        }
+        #endregion
+
+        #region border around form
+        private void Chromaseed_Paint(object sender, PaintEventArgs e)
+        {
+            using var pen = new Pen(Color.FromArgb(80, 80, 80), 1);
+            var rect = ClientRectangle;
+            rect.Inflate(-1, -1);
+            e.Graphics.DrawPath(pen, GetRoundedRect(rect, 15));
+        }
+
+        private static GraphicsPath GetRoundedRect(Rectangle rectangle, int radius)
+        {
+            GraphicsPath path = new();
+            path.AddArc(rectangle.X, rectangle.Y, radius, radius, 180, 90);
+            path.AddArc(rectangle.Width - radius, rectangle.Y, radius, radius, 270, 90);
+            path.AddArc(rectangle.Width - radius, rectangle.Height - radius, radius, radius, 0, 90);
+            path.AddArc(rectangle.X, rectangle.Height - radius, radius, radius, 90, 90);
+            path.CloseFigure();
+            return path;
+        }
+        #endregion
+
+        #region exit
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
+
+        #region rounded panels
+        private void Panel_Paint(object? sender, PaintEventArgs e)
+        {
+            try
+            {
+                if (sender == null)
+                {
+                    return;
+                }
+                Panel panel = (Panel)sender;
+
+                System.Drawing.Drawing2D.GraphicsPath path = new();
+                int cornerRadius = 7;
+                path.AddArc(0, 0, cornerRadius, cornerRadius, 180, 90);
+                path.AddArc(panel.Width - cornerRadius, 0, cornerRadius, cornerRadius, 270, 90);
+                path.AddArc(panel.Width - cornerRadius, panel.Height - cornerRadius, cornerRadius, cornerRadius, 0, 90);
+                path.AddArc(0, panel.Height - cornerRadius, cornerRadius, cornerRadius, 90, 90);
+                path.CloseFigure();
+
+                panel.Region = new Region(path);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "Panel_Paint");
+            }
+        }
+        #endregion
+
+        #region error handler
+        private void HandleException(Exception ex, string methodName)
+        {
+            string errorMessage;
+            errorMessage = $"Error in {methodName}: {ex.Message}";
+
+            const int MaxErrorMessageLength = 130;
+
+            if (errorMessage.Length > MaxErrorMessageLength)
+            {
+                errorMessage = $"{errorMessage[..MaxErrorMessageLength]}...";
+            }
+
+            //lblErrorMessage.Invoke((MethodInvoker)delegate
+            // {
+            //                lblErrorMessage.Text = errorMessage;
+
+            //          });
+        }
+        #endregion
 
         #endregion
     }
