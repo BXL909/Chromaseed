@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 #endregion
 
 namespace Chromaseed
-{
+{ 
     public partial class Chromaseed : Form
     {
         #region variable declarations
