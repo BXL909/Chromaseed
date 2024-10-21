@@ -305,6 +305,10 @@ namespace Chromaseed
             btnConvert = new CustomControls.RJControls.RJButton();
             panelPatternStripes = new Panel();
             panelStripesRight = new Panel();
+            btnStripesSortByRGBSum = new CustomControls.RJControls.RJButton();
+            btnStripesSortByBrightness = new CustomControls.RJControls.RJButton();
+            btnStripesSortBySaturation = new CustomControls.RJControls.RJButton();
+            btnStripesSortByHue = new CustomControls.RJControls.RJButton();
             panelStripesLeft = new Panel();
             panelImageSwatches = new Panel();
             panelSwatch8 = new Panel();
@@ -372,6 +376,7 @@ namespace Chromaseed
             panelSquaresRightContainer = new Panel();
             panelSquaresLeftContainer = new Panel();
             panelSaveImage = new Panel();
+            btnSaveImage = new CustomControls.RJControls.RJButton();
             panel8 = new Panel();
             panel7 = new Panel();
             panel6 = new Panel();
@@ -481,6 +486,7 @@ namespace Chromaseed
             panelHelp = new Panel();
             panelDocsContainer = new Panel();
             panelDocs = new Panel();
+            btnDismissDocs = new CustomControls.RJControls.RJButton();
             label27 = new Label();
             rjButton1 = new CustomControls.RJControls.RJButton();
             btnAbout = new CustomControls.RJControls.RJButton();
@@ -494,6 +500,7 @@ namespace Chromaseed
             panelPatternButtons.SuspendLayout();
             panelConverter.SuspendLayout();
             panelPatternStripes.SuspendLayout();
+            panelStripesRight.SuspendLayout();
             panelStripesLeft.SuspendLayout();
             panelImageSwatches.SuspendLayout();
             panelPatternCircles.SuspendLayout();
@@ -1057,7 +1064,7 @@ namespace Chromaseed
             btnHideWords.FlatStyle = FlatStyle.Flat;
             btnHideWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnHideWords.ForeColor = Color.DarkGray;
-            btnHideWords.Location = new Point(147, 12);
+            btnHideWords.Location = new Point(145, 7);
             btnHideWords.Name = "btnHideWords";
             btnHideWords.Size = new Size(42, 21);
             btnHideWords.TabIndex = 163;
@@ -1077,7 +1084,7 @@ namespace Chromaseed
             btnShowWords.FlatStyle = FlatStyle.Flat;
             btnShowWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnShowWords.ForeColor = Color.DarkGray;
-            btnShowWords.Location = new Point(85, 12);
+            btnShowWords.Location = new Point(88, 7);
             btnShowWords.Name = "btnShowWords";
             btnShowWords.Size = new Size(50, 21);
             btnShowWords.TabIndex = 162;
@@ -1097,7 +1104,7 @@ namespace Chromaseed
             btn24SeedWords.FlatStyle = FlatStyle.Flat;
             btn24SeedWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn24SeedWords.ForeColor = Color.DarkGray;
-            btn24SeedWords.Location = new Point(46, 12);
+            btn24SeedWords.Location = new Point(51, 7);
             btn24SeedWords.Name = "btn24SeedWords";
             btn24SeedWords.Size = new Size(30, 21);
             btn24SeedWords.TabIndex = 161;
@@ -1118,7 +1125,7 @@ namespace Chromaseed
             btn12SeedWords.FlatStyle = FlatStyle.Flat;
             btn12SeedWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn12SeedWords.ForeColor = Color.DarkGray;
-            btn12SeedWords.Location = new Point(4, 13);
+            btn12SeedWords.Location = new Point(8, 7);
             btn12SeedWords.Name = "btn12SeedWords";
             btn12SeedWords.Size = new Size(36, 21);
             btn12SeedWords.TabIndex = 160;
@@ -2960,17 +2967,16 @@ namespace Chromaseed
             btnColor16.BackColor = Color.Black;
             btnColor16.BackgroundColor = Color.Black;
             btnColor16.BorderColor = Color.DarkGray;
-            btnColor16.BorderRadius = 5;
+            btnColor16.BorderRadius = 0;
             btnColor16.BorderSize = 0;
             btnColor16.FlatAppearance.BorderSize = 0;
             btnColor16.FlatStyle = FlatStyle.Flat;
-            btnColor16.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor16.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor16.ForeColor = Color.IndianRed;
             btnColor16.Location = new Point(9, 535);
             btnColor16.Name = "btnColor16";
-            btnColor16.Size = new Size(16, 16);
+            btnColor16.Size = new Size(17, 17);
             btnColor16.TabIndex = 175;
-            btnColor16.Text = "▔";
             btnColor16.TextAlign = ContentAlignment.TopLeft;
             btnColor16.TextColor = Color.IndianRed;
             btnColor16.UseVisualStyleBackColor = false;
@@ -2981,17 +2987,16 @@ namespace Chromaseed
             btnColor15.BackColor = Color.Black;
             btnColor15.BackgroundColor = Color.Black;
             btnColor15.BorderColor = Color.DarkGray;
-            btnColor15.BorderRadius = 5;
+            btnColor15.BorderRadius = 0;
             btnColor15.BorderSize = 0;
             btnColor15.FlatAppearance.BorderSize = 0;
             btnColor15.FlatStyle = FlatStyle.Flat;
-            btnColor15.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor15.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor15.ForeColor = Color.IndianRed;
             btnColor15.Location = new Point(9, 513);
             btnColor15.Name = "btnColor15";
-            btnColor15.Size = new Size(16, 16);
+            btnColor15.Size = new Size(17, 17);
             btnColor15.TabIndex = 174;
-            btnColor15.Text = "▔";
             btnColor15.TextAlign = ContentAlignment.TopLeft;
             btnColor15.TextColor = Color.IndianRed;
             btnColor15.UseVisualStyleBackColor = false;
@@ -3002,17 +3007,16 @@ namespace Chromaseed
             btnColor14.BackColor = Color.Black;
             btnColor14.BackgroundColor = Color.Black;
             btnColor14.BorderColor = Color.DarkGray;
-            btnColor14.BorderRadius = 5;
+            btnColor14.BorderRadius = 0;
             btnColor14.BorderSize = 0;
             btnColor14.FlatAppearance.BorderSize = 0;
             btnColor14.FlatStyle = FlatStyle.Flat;
-            btnColor14.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor14.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor14.ForeColor = Color.IndianRed;
             btnColor14.Location = new Point(9, 469);
             btnColor14.Name = "btnColor14";
-            btnColor14.Size = new Size(16, 16);
+            btnColor14.Size = new Size(17, 17);
             btnColor14.TabIndex = 173;
-            btnColor14.Text = "▔";
             btnColor14.TextAlign = ContentAlignment.TopLeft;
             btnColor14.TextColor = Color.IndianRed;
             btnColor14.UseVisualStyleBackColor = false;
@@ -3023,17 +3027,16 @@ namespace Chromaseed
             btnColor13.BackColor = Color.Black;
             btnColor13.BackgroundColor = Color.Black;
             btnColor13.BorderColor = Color.DarkGray;
-            btnColor13.BorderRadius = 5;
+            btnColor13.BorderRadius = 0;
             btnColor13.BorderSize = 0;
             btnColor13.FlatAppearance.BorderSize = 0;
             btnColor13.FlatStyle = FlatStyle.Flat;
-            btnColor13.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor13.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor13.ForeColor = Color.IndianRed;
             btnColor13.Location = new Point(9, 447);
             btnColor13.Name = "btnColor13";
-            btnColor13.Size = new Size(16, 16);
+            btnColor13.Size = new Size(17, 17);
             btnColor13.TabIndex = 172;
-            btnColor13.Text = "▔";
             btnColor13.TextAlign = ContentAlignment.TopLeft;
             btnColor13.TextColor = Color.IndianRed;
             btnColor13.UseVisualStyleBackColor = false;
@@ -3044,17 +3047,16 @@ namespace Chromaseed
             btnColor12.BackColor = Color.Black;
             btnColor12.BackgroundColor = Color.Black;
             btnColor12.BorderColor = Color.DarkGray;
-            btnColor12.BorderRadius = 5;
+            btnColor12.BorderRadius = 0;
             btnColor12.BorderSize = 0;
             btnColor12.FlatAppearance.BorderSize = 0;
             btnColor12.FlatStyle = FlatStyle.Flat;
-            btnColor12.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor12.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor12.ForeColor = Color.IndianRed;
             btnColor12.Location = new Point(9, 403);
             btnColor12.Name = "btnColor12";
-            btnColor12.Size = new Size(16, 16);
+            btnColor12.Size = new Size(17, 17);
             btnColor12.TabIndex = 171;
-            btnColor12.Text = "▔";
             btnColor12.TextAlign = ContentAlignment.TopLeft;
             btnColor12.TextColor = Color.IndianRed;
             btnColor12.UseVisualStyleBackColor = false;
@@ -3065,17 +3067,16 @@ namespace Chromaseed
             btnColor11.BackColor = Color.Black;
             btnColor11.BackgroundColor = Color.Black;
             btnColor11.BorderColor = Color.DarkGray;
-            btnColor11.BorderRadius = 5;
+            btnColor11.BorderRadius = 0;
             btnColor11.BorderSize = 0;
             btnColor11.FlatAppearance.BorderSize = 0;
             btnColor11.FlatStyle = FlatStyle.Flat;
-            btnColor11.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor11.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor11.ForeColor = Color.IndianRed;
             btnColor11.Location = new Point(9, 381);
             btnColor11.Name = "btnColor11";
-            btnColor11.Size = new Size(16, 16);
+            btnColor11.Size = new Size(17, 17);
             btnColor11.TabIndex = 170;
-            btnColor11.Text = "▔";
             btnColor11.TextAlign = ContentAlignment.TopLeft;
             btnColor11.TextColor = Color.IndianRed;
             btnColor11.UseVisualStyleBackColor = false;
@@ -3086,17 +3087,16 @@ namespace Chromaseed
             btnColor10.BackColor = Color.Black;
             btnColor10.BackgroundColor = Color.Black;
             btnColor10.BorderColor = Color.DarkGray;
-            btnColor10.BorderRadius = 5;
+            btnColor10.BorderRadius = 0;
             btnColor10.BorderSize = 0;
             btnColor10.FlatAppearance.BorderSize = 0;
             btnColor10.FlatStyle = FlatStyle.Flat;
-            btnColor10.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor10.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor10.ForeColor = Color.IndianRed;
             btnColor10.Location = new Point(9, 337);
             btnColor10.Name = "btnColor10";
-            btnColor10.Size = new Size(16, 16);
+            btnColor10.Size = new Size(17, 17);
             btnColor10.TabIndex = 169;
-            btnColor10.Text = "▔";
             btnColor10.TextAlign = ContentAlignment.TopLeft;
             btnColor10.TextColor = Color.IndianRed;
             btnColor10.UseVisualStyleBackColor = false;
@@ -3107,17 +3107,16 @@ namespace Chromaseed
             btnColor9.BackColor = Color.Black;
             btnColor9.BackgroundColor = Color.Black;
             btnColor9.BorderColor = Color.DarkGray;
-            btnColor9.BorderRadius = 5;
+            btnColor9.BorderRadius = 0;
             btnColor9.BorderSize = 0;
             btnColor9.FlatAppearance.BorderSize = 0;
             btnColor9.FlatStyle = FlatStyle.Flat;
-            btnColor9.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor9.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor9.ForeColor = Color.IndianRed;
             btnColor9.Location = new Point(9, 315);
             btnColor9.Name = "btnColor9";
-            btnColor9.Size = new Size(16, 16);
+            btnColor9.Size = new Size(17, 17);
             btnColor9.TabIndex = 168;
-            btnColor9.Text = "▔";
             btnColor9.TextAlign = ContentAlignment.TopLeft;
             btnColor9.TextColor = Color.IndianRed;
             btnColor9.UseVisualStyleBackColor = false;
@@ -3128,15 +3127,15 @@ namespace Chromaseed
             btnColor8.BackColor = Color.Black;
             btnColor8.BackgroundColor = Color.Black;
             btnColor8.BorderColor = Color.DarkGray;
-            btnColor8.BorderRadius = 5;
+            btnColor8.BorderRadius = 0;
             btnColor8.BorderSize = 0;
             btnColor8.FlatAppearance.BorderSize = 0;
             btnColor8.FlatStyle = FlatStyle.Flat;
-            btnColor8.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor8.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor8.ForeColor = Color.IndianRed;
             btnColor8.Location = new Point(9, 271);
             btnColor8.Name = "btnColor8";
-            btnColor8.Size = new Size(16, 16);
+            btnColor8.Size = new Size(17, 17);
             btnColor8.TabIndex = 167;
             btnColor8.Text = "▔";
             btnColor8.TextAlign = ContentAlignment.TopLeft;
@@ -3149,15 +3148,15 @@ namespace Chromaseed
             btnColor7.BackColor = Color.Black;
             btnColor7.BackgroundColor = Color.Black;
             btnColor7.BorderColor = Color.DarkGray;
-            btnColor7.BorderRadius = 5;
+            btnColor7.BorderRadius = 0;
             btnColor7.BorderSize = 0;
             btnColor7.FlatAppearance.BorderSize = 0;
             btnColor7.FlatStyle = FlatStyle.Flat;
-            btnColor7.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor7.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor7.ForeColor = Color.IndianRed;
             btnColor7.Location = new Point(9, 249);
             btnColor7.Name = "btnColor7";
-            btnColor7.Size = new Size(16, 16);
+            btnColor7.Size = new Size(17, 17);
             btnColor7.TabIndex = 166;
             btnColor7.Text = "▔";
             btnColor7.TextAlign = ContentAlignment.TopLeft;
@@ -3170,15 +3169,15 @@ namespace Chromaseed
             btnColor6.BackColor = Color.Black;
             btnColor6.BackgroundColor = Color.Black;
             btnColor6.BorderColor = Color.DarkGray;
-            btnColor6.BorderRadius = 5;
+            btnColor6.BorderRadius = 0;
             btnColor6.BorderSize = 0;
             btnColor6.FlatAppearance.BorderSize = 0;
             btnColor6.FlatStyle = FlatStyle.Flat;
-            btnColor6.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor6.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor6.ForeColor = Color.IndianRed;
             btnColor6.Location = new Point(9, 205);
             btnColor6.Name = "btnColor6";
-            btnColor6.Size = new Size(16, 16);
+            btnColor6.Size = new Size(17, 17);
             btnColor6.TabIndex = 165;
             btnColor6.Text = "▔";
             btnColor6.TextAlign = ContentAlignment.TopLeft;
@@ -3191,15 +3190,15 @@ namespace Chromaseed
             btnColor5.BackColor = Color.Black;
             btnColor5.BackgroundColor = Color.Black;
             btnColor5.BorderColor = Color.DarkGray;
-            btnColor5.BorderRadius = 5;
+            btnColor5.BorderRadius = 0;
             btnColor5.BorderSize = 0;
             btnColor5.FlatAppearance.BorderSize = 0;
             btnColor5.FlatStyle = FlatStyle.Flat;
-            btnColor5.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor5.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor5.ForeColor = Color.IndianRed;
             btnColor5.Location = new Point(9, 183);
             btnColor5.Name = "btnColor5";
-            btnColor5.Size = new Size(16, 16);
+            btnColor5.Size = new Size(17, 17);
             btnColor5.TabIndex = 164;
             btnColor5.Text = "▔";
             btnColor5.TextAlign = ContentAlignment.TopLeft;
@@ -3212,15 +3211,15 @@ namespace Chromaseed
             btnColor4.BackColor = Color.Black;
             btnColor4.BackgroundColor = Color.Black;
             btnColor4.BorderColor = Color.DarkGray;
-            btnColor4.BorderRadius = 5;
+            btnColor4.BorderRadius = 0;
             btnColor4.BorderSize = 0;
             btnColor4.FlatAppearance.BorderSize = 0;
             btnColor4.FlatStyle = FlatStyle.Flat;
-            btnColor4.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor4.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor4.ForeColor = Color.IndianRed;
             btnColor4.Location = new Point(9, 139);
             btnColor4.Name = "btnColor4";
-            btnColor4.Size = new Size(16, 16);
+            btnColor4.Size = new Size(17, 17);
             btnColor4.TabIndex = 163;
             btnColor4.Text = "▔";
             btnColor4.TextAlign = ContentAlignment.TopLeft;
@@ -3233,15 +3232,15 @@ namespace Chromaseed
             btnColor3.BackColor = Color.Black;
             btnColor3.BackgroundColor = Color.Black;
             btnColor3.BorderColor = Color.DarkGray;
-            btnColor3.BorderRadius = 5;
+            btnColor3.BorderRadius = 0;
             btnColor3.BorderSize = 0;
             btnColor3.FlatAppearance.BorderSize = 0;
             btnColor3.FlatStyle = FlatStyle.Flat;
-            btnColor3.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor3.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor3.ForeColor = Color.IndianRed;
             btnColor3.Location = new Point(9, 117);
             btnColor3.Name = "btnColor3";
-            btnColor3.Size = new Size(16, 16);
+            btnColor3.Size = new Size(17, 17);
             btnColor3.TabIndex = 162;
             btnColor3.Text = "▔";
             btnColor3.TextAlign = ContentAlignment.TopLeft;
@@ -3254,15 +3253,15 @@ namespace Chromaseed
             btnColor2.BackColor = Color.Black;
             btnColor2.BackgroundColor = Color.Black;
             btnColor2.BorderColor = Color.DarkGray;
-            btnColor2.BorderRadius = 5;
+            btnColor2.BorderRadius = 0;
             btnColor2.BorderSize = 0;
             btnColor2.FlatAppearance.BorderSize = 0;
             btnColor2.FlatStyle = FlatStyle.Flat;
-            btnColor2.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor2.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor2.ForeColor = Color.IndianRed;
             btnColor2.Location = new Point(9, 73);
             btnColor2.Name = "btnColor2";
-            btnColor2.Size = new Size(16, 16);
+            btnColor2.Size = new Size(17, 17);
             btnColor2.TabIndex = 161;
             btnColor2.Text = "▔";
             btnColor2.TextAlign = ContentAlignment.TopLeft;
@@ -3275,15 +3274,15 @@ namespace Chromaseed
             btnColor1.BackColor = Color.Black;
             btnColor1.BackgroundColor = Color.Black;
             btnColor1.BorderColor = Color.DarkGray;
-            btnColor1.BorderRadius = 5;
+            btnColor1.BorderRadius = 0;
             btnColor1.BorderSize = 0;
             btnColor1.FlatAppearance.BorderSize = 0;
             btnColor1.FlatStyle = FlatStyle.Flat;
-            btnColor1.Font = new Font("Segoe UI", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            btnColor1.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnColor1.ForeColor = Color.IndianRed;
             btnColor1.Location = new Point(9, 51);
             btnColor1.Name = "btnColor1";
-            btnColor1.Size = new Size(16, 16);
+            btnColor1.Size = new Size(17, 17);
             btnColor1.TabIndex = 160;
             btnColor1.Text = "▔";
             btnColor1.TextAlign = ContentAlignment.TopLeft;
@@ -3302,7 +3301,7 @@ namespace Chromaseed
             btnRGB.FlatStyle = FlatStyle.Flat;
             btnRGB.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnRGB.ForeColor = Color.DarkGray;
-            btnRGB.Location = new Point(107, 9);
+            btnRGB.Location = new Point(111, 7);
             btnRGB.Name = "btnRGB";
             btnRGB.Size = new Size(38, 21);
             btnRGB.TabIndex = 159;
@@ -3323,7 +3322,7 @@ namespace Chromaseed
             btnHex.FlatStyle = FlatStyle.Flat;
             btnHex.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnHex.ForeColor = Color.DarkGray;
-            btnHex.Location = new Point(67, 9);
+            btnHex.Location = new Point(69, 7);
             btnHex.Name = "btnHex";
             btnHex.Size = new Size(36, 21);
             btnHex.TabIndex = 158;
@@ -3343,7 +3342,7 @@ namespace Chromaseed
             btn16Colours.FlatStyle = FlatStyle.Flat;
             btn16Colours.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn16Colours.ForeColor = Color.DarkGray;
-            btn16Colours.Location = new Point(33, 9);
+            btn16Colours.Location = new Point(33, 7);
             btn16Colours.Name = "btn16Colours";
             btn16Colours.Size = new Size(30, 21);
             btn16Colours.TabIndex = 157;
@@ -3364,7 +3363,7 @@ namespace Chromaseed
             btn8Colours.FlatStyle = FlatStyle.Flat;
             btn8Colours.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn8Colours.ForeColor = Color.DarkGray;
-            btn8Colours.Location = new Point(9, 9);
+            btn8Colours.Location = new Point(6, 7);
             btn8Colours.Name = "btn8Colours";
             btn8Colours.Size = new Size(21, 21);
             btn8Colours.TabIndex = 156;
@@ -4179,7 +4178,7 @@ namespace Chromaseed
             btnMenuTextGrid.Text = "TEXTGRID";
             btnMenuTextGrid.TextColor = Color.DarkGray;
             btnMenuTextGrid.UseVisualStyleBackColor = false;
-            btnMenuTextGrid.Click += btnMenuTextGrid_Click;
+            btnMenuTextGrid.Click += BtnMenuTextGrid_Click;
             // 
             // btnMenuJulia
             // 
@@ -4200,7 +4199,7 @@ namespace Chromaseed
             btnMenuJulia.Text = "JULIA";
             btnMenuJulia.TextColor = Color.DarkGray;
             btnMenuJulia.UseVisualStyleBackColor = false;
-            btnMenuJulia.Click += btnMenuJulia_Click;
+            btnMenuJulia.Click += BtnMenuJulia_Click;
             // 
             // btnMenuTricorn
             // 
@@ -4221,7 +4220,7 @@ namespace Chromaseed
             btnMenuTricorn.Text = "TRICORN";
             btnMenuTricorn.TextColor = Color.DarkGray;
             btnMenuTricorn.UseVisualStyleBackColor = false;
-            btnMenuTricorn.Click += btnMenuTricorn_Click;
+            btnMenuTricorn.Click += BtnMenuTricorn_Click;
             // 
             // btnMenuPhoenix
             // 
@@ -4531,7 +4530,7 @@ namespace Chromaseed
             panelConverter.Controls.Add(label47);
             panelConverter.Controls.Add(label26);
             panelConverter.Controls.Add(label25);
-            panelConverter.Location = new Point(125, 76);
+            panelConverter.Location = new Point(131, 90);
             panelConverter.Name = "panelConverter";
             panelConverter.Size = new Size(797, 584);
             panelConverter.TabIndex = 134;
@@ -4548,6 +4547,7 @@ namespace Chromaseed
             btnConvert.ForeColor = Color.DarkGray;
             btnConvert.Location = new Point(399, 4);
             btnConvert.Name = "btnConvert";
+            btnConvert.Padding = new Padding(4, 0, 0, 0);
             btnConvert.Size = new Size(28, 28);
             btnConvert.TabIndex = 130;
             btnConvert.Text = "▶";
@@ -4561,7 +4561,7 @@ namespace Chromaseed
             panelPatternStripes.Controls.Add(panelStripesLeft);
             panelPatternStripes.Controls.Add(panelStripesRightContainer);
             panelPatternStripes.Controls.Add(panelStripesLeftContainer);
-            panelPatternStripes.Location = new Point(125, 76);
+            panelPatternStripes.Location = new Point(131, 90);
             panelPatternStripes.Name = "panelPatternStripes";
             panelPatternStripes.Size = new Size(797, 584);
             panelPatternStripes.TabIndex = 135;
@@ -4570,10 +4570,94 @@ namespace Chromaseed
             // panelStripesRight
             // 
             panelStripesRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelStripesRight.Controls.Add(btnStripesSortByRGBSum);
+            panelStripesRight.Controls.Add(btnStripesSortByBrightness);
+            panelStripesRight.Controls.Add(btnStripesSortBySaturation);
+            panelStripesRight.Controls.Add(btnStripesSortByHue);
             panelStripesRight.Location = new Point(665, 3);
             panelStripesRight.Name = "panelStripesRight";
             panelStripesRight.Size = new Size(124, 574);
             panelStripesRight.TabIndex = 82;
+            // 
+            // btnStripesSortByRGBSum
+            // 
+            btnStripesSortByRGBSum.BackColor = Color.Transparent;
+            btnStripesSortByRGBSum.BackgroundColor = Color.Transparent;
+            btnStripesSortByRGBSum.BorderColor = Color.DarkGray;
+            btnStripesSortByRGBSum.BorderRadius = 5;
+            btnStripesSortByRGBSum.BorderSize = 1;
+            btnStripesSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnStripesSortByRGBSum.FlatStyle = FlatStyle.Flat;
+            btnStripesSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStripesSortByRGBSum.ForeColor = Color.DarkGray;
+            btnStripesSortByRGBSum.Location = new Point(12, 100);
+            btnStripesSortByRGBSum.Name = "btnStripesSortByRGBSum";
+            btnStripesSortByRGBSum.Size = new Size(100, 21);
+            btnStripesSortByRGBSum.TabIndex = 135;
+            btnStripesSortByRGBSum.Text = "BY RGB SUM";
+            btnStripesSortByRGBSum.TextColor = Color.DarkGray;
+            btnStripesSortByRGBSum.UseVisualStyleBackColor = false;
+            btnStripesSortByRGBSum.Click += BtnStripesSortByRGBSum_Click;
+            // 
+            // btnStripesSortByBrightness
+            // 
+            btnStripesSortByBrightness.BackColor = Color.Transparent;
+            btnStripesSortByBrightness.BackgroundColor = Color.Transparent;
+            btnStripesSortByBrightness.BorderColor = Color.DarkGray;
+            btnStripesSortByBrightness.BorderRadius = 5;
+            btnStripesSortByBrightness.BorderSize = 1;
+            btnStripesSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnStripesSortByBrightness.FlatStyle = FlatStyle.Flat;
+            btnStripesSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStripesSortByBrightness.ForeColor = Color.DarkGray;
+            btnStripesSortByBrightness.Location = new Point(12, 71);
+            btnStripesSortByBrightness.Name = "btnStripesSortByBrightness";
+            btnStripesSortByBrightness.Size = new Size(100, 21);
+            btnStripesSortByBrightness.TabIndex = 134;
+            btnStripesSortByBrightness.Text = "BY BRIGHTNESS";
+            btnStripesSortByBrightness.TextColor = Color.DarkGray;
+            btnStripesSortByBrightness.UseVisualStyleBackColor = false;
+            btnStripesSortByBrightness.Click += BtnStripesSortByBrightness_Click;
+            // 
+            // btnStripesSortBySaturation
+            // 
+            btnStripesSortBySaturation.BackColor = Color.Transparent;
+            btnStripesSortBySaturation.BackgroundColor = Color.Transparent;
+            btnStripesSortBySaturation.BorderColor = Color.DarkGray;
+            btnStripesSortBySaturation.BorderRadius = 5;
+            btnStripesSortBySaturation.BorderSize = 1;
+            btnStripesSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnStripesSortBySaturation.FlatStyle = FlatStyle.Flat;
+            btnStripesSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStripesSortBySaturation.ForeColor = Color.DarkGray;
+            btnStripesSortBySaturation.Location = new Point(12, 42);
+            btnStripesSortBySaturation.Name = "btnStripesSortBySaturation";
+            btnStripesSortBySaturation.Size = new Size(100, 21);
+            btnStripesSortBySaturation.TabIndex = 133;
+            btnStripesSortBySaturation.Text = "BY SATURATION";
+            btnStripesSortBySaturation.TextColor = Color.DarkGray;
+            btnStripesSortBySaturation.UseVisualStyleBackColor = false;
+            btnStripesSortBySaturation.Click += BtnStripesSortBySaturation_Click;
+            // 
+            // btnStripesSortByHue
+            // 
+            btnStripesSortByHue.BackColor = Color.Transparent;
+            btnStripesSortByHue.BackgroundColor = Color.Transparent;
+            btnStripesSortByHue.BorderColor = Color.DarkGray;
+            btnStripesSortByHue.BorderRadius = 5;
+            btnStripesSortByHue.BorderSize = 1;
+            btnStripesSortByHue.FlatAppearance.BorderSize = 0;
+            btnStripesSortByHue.FlatStyle = FlatStyle.Flat;
+            btnStripesSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStripesSortByHue.ForeColor = Color.DarkGray;
+            btnStripesSortByHue.Location = new Point(12, 13);
+            btnStripesSortByHue.Name = "btnStripesSortByHue";
+            btnStripesSortByHue.Size = new Size(100, 21);
+            btnStripesSortByHue.TabIndex = 132;
+            btnStripesSortByHue.Text = "BY HUE";
+            btnStripesSortByHue.TextColor = Color.DarkGray;
+            btnStripesSortByHue.UseVisualStyleBackColor = false;
+            btnStripesSortByHue.Click += BtnStripesSortByHue_Click;
             // 
             // panelStripesLeft
             // 
@@ -4741,7 +4825,7 @@ namespace Chromaseed
             panelPatternCircles.Controls.Add(panelCirclesLeft);
             panelPatternCircles.Controls.Add(panelCirclesRightContainer);
             panelPatternCircles.Controls.Add(panelCirclesLeftContainer);
-            panelPatternCircles.Location = new Point(125, 76);
+            panelPatternCircles.Location = new Point(131, 90);
             panelPatternCircles.Name = "panelPatternCircles";
             panelPatternCircles.Size = new Size(797, 584);
             panelPatternCircles.TabIndex = 136;
@@ -4806,7 +4890,7 @@ namespace Chromaseed
             panelHexLabels.Controls.Add(lblHex3);
             panelHexLabels.Controls.Add(lblHex2);
             panelHexLabels.Controls.Add(lblHex1);
-            panelHexLabels.Location = new Point(134, 84);
+            panelHexLabels.Location = new Point(134, 109);
             panelHexLabels.Name = "panelHexLabels";
             panelHexLabels.Size = new Size(55, 216);
             panelHexLabels.TabIndex = 137;
@@ -5007,7 +5091,7 @@ namespace Chromaseed
             panelRGBLabels.Controls.Add(lblRGB3);
             panelRGBLabels.Controls.Add(lblRGB2);
             panelRGBLabels.Controls.Add(lblRGB1);
-            panelRGBLabels.Location = new Point(134, 436);
+            panelRGBLabels.Location = new Point(134, 451);
             panelRGBLabels.Name = "panelRGBLabels";
             panelRGBLabels.Size = new Size(73, 216);
             panelRGBLabels.TabIndex = 138;
@@ -5195,7 +5279,7 @@ namespace Chromaseed
             panelPatternSquares.Controls.Add(panelSquaresLeft);
             panelPatternSquares.Controls.Add(panelSquaresRightContainer);
             panelPatternSquares.Controls.Add(panelSquaresLeftContainer);
-            panelPatternSquares.Location = new Point(125, 76);
+            panelPatternSquares.Location = new Point(131, 90);
             panelPatternSquares.Name = "panelPatternSquares";
             panelPatternSquares.Size = new Size(797, 584);
             panelPatternSquares.TabIndex = 139;
@@ -5244,16 +5328,37 @@ namespace Chromaseed
             // panelSaveImage
             // 
             panelSaveImage.BackColor = Color.FromArgb(40, 40, 40);
+            panelSaveImage.Controls.Add(btnSaveImage);
             panelSaveImage.Controls.Add(panel8);
             panelSaveImage.Controls.Add(panel7);
             panelSaveImage.Controls.Add(panel6);
             panelSaveImage.Controls.Add(checkBoxRGB);
             panelSaveImage.Controls.Add(checkBoxHex);
-            panelSaveImage.Location = new Point(790, 565);
+            panelSaveImage.Location = new Point(798, 581);
             panelSaveImage.Name = "panelSaveImage";
             panelSaveImage.Size = new Size(120, 81);
             panelSaveImage.TabIndex = 140;
             panelSaveImage.Visible = false;
+            // 
+            // btnSaveImage
+            // 
+            btnSaveImage.BackColor = Color.Transparent;
+            btnSaveImage.BackgroundColor = Color.Transparent;
+            btnSaveImage.BorderColor = Color.DarkGray;
+            btnSaveImage.BorderRadius = 5;
+            btnSaveImage.BorderSize = 1;
+            btnSaveImage.FlatAppearance.BorderSize = 0;
+            btnSaveImage.FlatStyle = FlatStyle.Flat;
+            btnSaveImage.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSaveImage.ForeColor = Color.DarkGray;
+            btnSaveImage.Location = new Point(8, 14);
+            btnSaveImage.Name = "btnSaveImage";
+            btnSaveImage.Size = new Size(80, 21);
+            btnSaveImage.TabIndex = 143;
+            btnSaveImage.Text = "SAVE IMAGE";
+            btnSaveImage.TextColor = Color.DarkGray;
+            btnSaveImage.UseVisualStyleBackColor = false;
+            btnSaveImage.Click += BtnSaveImage_Click;
             // 
             // panel8
             // 
@@ -5313,7 +5418,7 @@ namespace Chromaseed
             panelPatternMandelbrot.Controls.Add(panelMandelbrotLeft);
             panelPatternMandelbrot.Controls.Add(panelMandelbrotRightContainer);
             panelPatternMandelbrot.Controls.Add(panel1MandelbrotLeftContainer);
-            panelPatternMandelbrot.Location = new Point(125, 76);
+            panelPatternMandelbrot.Location = new Point(131, 90);
             panelPatternMandelbrot.Name = "panelPatternMandelbrot";
             panelPatternMandelbrot.Size = new Size(797, 584);
             panelPatternMandelbrot.TabIndex = 141;
@@ -5365,7 +5470,7 @@ namespace Chromaseed
             panelPatternSpiral.Controls.Add(panelSpiralLeft);
             panelPatternSpiral.Controls.Add(panelSpiralRightContainer);
             panelPatternSpiral.Controls.Add(panelSpiralLeftContainer);
-            panelPatternSpiral.Location = new Point(125, 76);
+            panelPatternSpiral.Location = new Point(131, 90);
             panelPatternSpiral.Name = "panelPatternSpiral";
             panelPatternSpiral.Size = new Size(797, 584);
             panelPatternSpiral.TabIndex = 142;
@@ -5417,7 +5522,7 @@ namespace Chromaseed
             panelPatternRadial.Controls.Add(panelRadialLeft);
             panelPatternRadial.Controls.Add(panelRadialRightContainer);
             panelPatternRadial.Controls.Add(panelRadialLeftContainer);
-            panelPatternRadial.Location = new Point(125, 76);
+            panelPatternRadial.Location = new Point(131, 90);
             panelPatternRadial.Name = "panelPatternRadial";
             panelPatternRadial.Size = new Size(797, 584);
             panelPatternRadial.TabIndex = 143;
@@ -5493,7 +5598,7 @@ namespace Chromaseed
             panelPatternNoise.Controls.Add(panelNoiseLeft);
             panelPatternNoise.Controls.Add(panelNoiseRightContainer);
             panelPatternNoise.Controls.Add(panelNoiseLeftContainer);
-            panelPatternNoise.Location = new Point(125, 76);
+            panelPatternNoise.Location = new Point(131, 90);
             panelPatternNoise.Name = "panelPatternNoise";
             panelPatternNoise.Size = new Size(797, 584);
             panelPatternNoise.TabIndex = 144;
@@ -5570,7 +5675,7 @@ namespace Chromaseed
             panelPatternHexagons.Controls.Add(panelHexagonsLeft);
             panelPatternHexagons.Controls.Add(panelHexagonsRightContainer);
             panelPatternHexagons.Controls.Add(panelHexagonLeftContainer);
-            panelPatternHexagons.Location = new Point(125, 76);
+            panelPatternHexagons.Location = new Point(131, 90);
             panelPatternHexagons.Name = "panelPatternHexagons";
             panelPatternHexagons.Size = new Size(797, 584);
             panelPatternHexagons.TabIndex = 145;
@@ -5647,7 +5752,7 @@ namespace Chromaseed
             panelPatternSquiggle.Controls.Add(panelSquiggleLeft);
             panelPatternSquiggle.Controls.Add(panelSquiggleRightContainer);
             panelPatternSquiggle.Controls.Add(panelSquiggleLeftContainer);
-            panelPatternSquiggle.Location = new Point(125, 76);
+            panelPatternSquiggle.Location = new Point(131, 90);
             panelPatternSquiggle.Name = "panelPatternSquiggle";
             panelPatternSquiggle.Size = new Size(797, 584);
             panelPatternSquiggle.TabIndex = 146;
@@ -5724,7 +5829,7 @@ namespace Chromaseed
             panelPatternBrink.Controls.Add(panelBrinkLeft);
             panelPatternBrink.Controls.Add(panelBrinkRightContainer);
             panelPatternBrink.Controls.Add(panelBrinkLeftContainer);
-            panelPatternBrink.Location = new Point(125, 76);
+            panelPatternBrink.Location = new Point(131, 90);
             panelPatternBrink.Name = "panelPatternBrink";
             panelPatternBrink.Size = new Size(797, 584);
             panelPatternBrink.TabIndex = 147;
@@ -5800,7 +5905,7 @@ namespace Chromaseed
             panelPatternSymbols.Controls.Add(panelSymbolsLeft);
             panelPatternSymbols.Controls.Add(panelSymbolsRightContainer);
             panelPatternSymbols.Controls.Add(panelSymbolsLeftContainer);
-            panelPatternSymbols.Location = new Point(125, 76);
+            panelPatternSymbols.Location = new Point(131, 90);
             panelPatternSymbols.Name = "panelPatternSymbols";
             panelPatternSymbols.Size = new Size(797, 584);
             panelPatternSymbols.TabIndex = 148;
@@ -5876,7 +5981,7 @@ namespace Chromaseed
             panelPatternTiles.Controls.Add(panelTilesLeft);
             panelPatternTiles.Controls.Add(panelTilesRightContainer);
             panelPatternTiles.Controls.Add(panelTilesLeftContainer);
-            panelPatternTiles.Location = new Point(125, 76);
+            panelPatternTiles.Location = new Point(131, 90);
             panelPatternTiles.Name = "panelPatternTiles";
             panelPatternTiles.Size = new Size(797, 584);
             panelPatternTiles.TabIndex = 149;
@@ -5953,7 +6058,7 @@ namespace Chromaseed
             panelPatternMultibrot.Controls.Add(panelMultibrotLeft);
             panelPatternMultibrot.Controls.Add(panelMultibrotRightContainer);
             panelPatternMultibrot.Controls.Add(panelMultibrotLeftContainer);
-            panelPatternMultibrot.Location = new Point(125, 76);
+            panelPatternMultibrot.Location = new Point(131, 90);
             panelPatternMultibrot.Name = "panelPatternMultibrot";
             panelPatternMultibrot.Size = new Size(797, 584);
             panelPatternMultibrot.TabIndex = 150;
@@ -6005,7 +6110,7 @@ namespace Chromaseed
             panelPatternPhoenix.Controls.Add(panelPhoenixLeft);
             panelPatternPhoenix.Controls.Add(panelPhoenixRightContainer);
             panelPatternPhoenix.Controls.Add(panelPhoenixLeftContainer);
-            panelPatternPhoenix.Location = new Point(125, 76);
+            panelPatternPhoenix.Location = new Point(131, 90);
             panelPatternPhoenix.Name = "panelPatternPhoenix";
             panelPatternPhoenix.Size = new Size(797, 584);
             panelPatternPhoenix.TabIndex = 151;
@@ -6057,7 +6162,7 @@ namespace Chromaseed
             panelPatternTricorn.Controls.Add(panelTricornLeft);
             panelPatternTricorn.Controls.Add(panelTricornRightContainer);
             panelPatternTricorn.Controls.Add(panelTricornLeftContainer);
-            panelPatternTricorn.Location = new Point(125, 76);
+            panelPatternTricorn.Location = new Point(131, 90);
             panelPatternTricorn.Name = "panelPatternTricorn";
             panelPatternTricorn.Size = new Size(797, 584);
             panelPatternTricorn.TabIndex = 152;
@@ -6109,7 +6214,7 @@ namespace Chromaseed
             panelPatternJulia.Controls.Add(panelJuliaLeft);
             panelPatternJulia.Controls.Add(panelJuliaRightContainer);
             panelPatternJulia.Controls.Add(panelJuliaLeftContainer);
-            panelPatternJulia.Location = new Point(125, 76);
+            panelPatternJulia.Location = new Point(131, 90);
             panelPatternJulia.Name = "panelPatternJulia";
             panelPatternJulia.Size = new Size(797, 584);
             panelPatternJulia.TabIndex = 153;
@@ -6161,7 +6266,7 @@ namespace Chromaseed
             panelPatternTextGrid.Controls.Add(panelTextGridLeft);
             panelPatternTextGrid.Controls.Add(panelTextGridRightContainer);
             panelPatternTextGrid.Controls.Add(panelTextGridLeftContainer);
-            panelPatternTextGrid.Location = new Point(125, 76);
+            panelPatternTextGrid.Location = new Point(131, 90);
             panelPatternTextGrid.Name = "panelPatternTextGrid";
             panelPatternTextGrid.Size = new Size(797, 584);
             panelPatternTextGrid.TabIndex = 154;
@@ -6245,7 +6350,7 @@ namespace Chromaseed
             // panelHelp
             // 
             panelHelp.Controls.Add(panelDocsContainer);
-            panelHelp.Location = new Point(125, 76);
+            panelHelp.Location = new Point(131, 90);
             panelHelp.Name = "panelHelp";
             panelHelp.Size = new Size(797, 584);
             panelHelp.TabIndex = 156;
@@ -6263,11 +6368,32 @@ namespace Chromaseed
             // panelDocs
             // 
             panelDocs.BackColor = Color.FromArgb(40, 40, 40);
+            panelDocs.Controls.Add(btnDismissDocs);
             panelDocs.Controls.Add(label27);
             panelDocs.Location = new Point(1, 1);
             panelDocs.Name = "panelDocs";
             panelDocs.Size = new Size(789, 574);
             panelDocs.TabIndex = 32;
+            // 
+            // btnDismissDocs
+            // 
+            btnDismissDocs.BackColor = Color.Transparent;
+            btnDismissDocs.BackgroundColor = Color.Transparent;
+            btnDismissDocs.BorderColor = Color.DarkGray;
+            btnDismissDocs.BorderRadius = 5;
+            btnDismissDocs.BorderSize = 1;
+            btnDismissDocs.FlatAppearance.BorderSize = 0;
+            btnDismissDocs.FlatStyle = FlatStyle.Flat;
+            btnDismissDocs.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDismissDocs.ForeColor = Color.DarkGray;
+            btnDismissDocs.Location = new Point(3, 463);
+            btnDismissDocs.Name = "btnDismissDocs";
+            btnDismissDocs.Size = new Size(60, 21);
+            btnDismissDocs.TabIndex = 132;
+            btnDismissDocs.Text = "CLOSE";
+            btnDismissDocs.TextColor = Color.DarkGray;
+            btnDismissDocs.UseVisualStyleBackColor = false;
+            btnDismissDocs.Click += BtnDismissDocs_Click;
             // 
             // label27
             // 
@@ -6289,14 +6415,14 @@ namespace Chromaseed
             rjButton1.FlatStyle = FlatStyle.Flat;
             rjButton1.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             rjButton1.ForeColor = Color.DarkGray;
-            rjButton1.Location = new Point(801, 12);
+            rjButton1.Location = new Point(807, 12);
             rjButton1.Name = "rjButton1";
             rjButton1.Size = new Size(60, 21);
             rjButton1.TabIndex = 131;
             rjButton1.Text = "README";
             rjButton1.TextColor = Color.DarkGray;
             rjButton1.UseVisualStyleBackColor = false;
-            rjButton1.Click += btnReadme_Click;
+            rjButton1.Click += BtnReadme_Click;
             // 
             // btnAbout
             // 
@@ -6309,14 +6435,14 @@ namespace Chromaseed
             btnAbout.FlatStyle = FlatStyle.Flat;
             btnAbout.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnAbout.ForeColor = Color.DarkGray;
-            btnAbout.Location = new Point(867, 12);
+            btnAbout.Location = new Point(873, 12);
             btnAbout.Name = "btnAbout";
             btnAbout.Size = new Size(21, 21);
             btnAbout.TabIndex = 157;
             btnAbout.Text = "?";
             btnAbout.TextColor = Color.DarkGray;
             btnAbout.UseVisualStyleBackColor = false;
-            btnAbout.Click += btnAbout_Click;
+            btnAbout.Click += BtnAbout_Click;
             // 
             // btnExit
             // 
@@ -6329,7 +6455,7 @@ namespace Chromaseed
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnExit.ForeColor = Color.DarkGray;
-            btnExit.Location = new Point(894, 12);
+            btnExit.Location = new Point(900, 12);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(21, 21);
             btnExit.TabIndex = 158;
@@ -6349,7 +6475,7 @@ namespace Chromaseed
             btnDummyButton.FlatStyle = FlatStyle.Flat;
             btnDummyButton.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnDummyButton.ForeColor = Color.DarkGray;
-            btnDummyButton.Location = new Point(735, 12);
+            btnDummyButton.Location = new Point(741, 12);
             btnDummyButton.Name = "btnDummyButton";
             btnDummyButton.Size = new Size(60, 21);
             btnDummyButton.TabIndex = 159;
@@ -6365,13 +6491,15 @@ namespace Chromaseed
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
             CancelButton = btnExit;
-            ClientSize = new Size(927, 667);
+            ClientSize = new Size(940, 689);
+            Controls.Add(panelPatternStripes);
+            Controls.Add(panelSaveImage);
+            Controls.Add(panelConverter);
+            Controls.Add(panelHelp);
             Controls.Add(btnDummyButton);
             Controls.Add(btnExit);
             Controls.Add(btnAbout);
             Controls.Add(rjButton1);
-            Controls.Add(panelConverter);
-            Controls.Add(panelHelp);
             Controls.Add(panelPatternRadial);
             Controls.Add(lblErrorMessage);
             Controls.Add(panelPatternTiles);
@@ -6388,8 +6516,6 @@ namespace Chromaseed
             Controls.Add(panelPatternSpiral);
             Controls.Add(panelPatternMandelbrot);
             Controls.Add(panelPatternSquares);
-            Controls.Add(panelSaveImage);
-            Controls.Add(panelPatternStripes);
             Controls.Add(panelPatternCircles);
             Controls.Add(panelRGBLabels);
             Controls.Add(panelHexLabels);
@@ -6411,6 +6537,7 @@ namespace Chromaseed
             panelConverter.ResumeLayout(false);
             panelConverter.PerformLayout();
             panelPatternStripes.ResumeLayout(false);
+            panelStripesRight.ResumeLayout(false);
             panelStripesLeft.ResumeLayout(false);
             panelImageSwatches.ResumeLayout(false);
             panelPatternCircles.ResumeLayout(false);
@@ -7011,6 +7138,12 @@ namespace Chromaseed
         private CustomControls.RJControls.RJButton btnMenuStripes;
         private CustomControls.RJControls.RJButton btnMenuSquares;
         private CustomControls.RJControls.RJButton btnMenuMandelbrot;
+        private CustomControls.RJControls.RJButton btnStripesSortByRGBSum;
+        private CustomControls.RJControls.RJButton btnStripesSortByBrightness;
+        private CustomControls.RJControls.RJButton btnStripesSortBySaturation;
+        private CustomControls.RJControls.RJButton btnStripesSortByHue;
+        //private CustomControls.RJControls.RJButton btnSaveImage;
+        //private CustomControls.RJControls.RJButton btnDismissDocs;
         //private CustomControls.RJControls.RJButton btnColor4;
         //private CustomControls.RJControls.RJButton btnColor3;
         //private CustomControls.RJControls.RJButton btnColor2;

@@ -31,6 +31,8 @@ namespace Chromaseed
         public About()
         {
             InitializeComponent();
+            pictureBox1.BackgroundImage = Properties.Resources.PnVlfRPD_400x400;
+            pictureBox2.BackgroundImage = Properties.Resources.smalllogo;
 
             #region rounded form
             this.FormBorderStyle = FormBorderStyle.None;

@@ -35,7 +35,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(927, 667);
+            ClientSize = new Size(940, 689);
             FormBorderStyle = FormBorderStyle.None;
             Name = "overlay";
             ShowInTaskbar = false;

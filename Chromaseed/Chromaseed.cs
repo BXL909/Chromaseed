@@ -1853,7 +1853,7 @@ namespace Chromaseed
             SetupPhoenixFractal(panelImagePhoenix, colorList);
         }
 
-        private void btnMenuTricorn_Click(object sender, EventArgs e)
+        private void BtnMenuTricorn_Click(object sender, EventArgs e)
         {
             panelPatternTricorn.Visible = true;
             panelPatternTricorn.BringToFront();
@@ -1863,7 +1863,7 @@ namespace Chromaseed
             SetupTricornFractal(panelImageTricorn, colorList);
         }
 
-        private void btnMenuJulia_Click(object sender, EventArgs e)
+        private void BtnMenuJulia_Click(object sender, EventArgs e)
         {
             panelPatternJulia.Visible = true;
             panelPatternJulia.BringToFront();
@@ -1873,7 +1873,7 @@ namespace Chromaseed
             SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
         }
 
-        private void btnMenuTextGrid_Click(object sender, EventArgs e)
+        private void BtnMenuTextGrid_Click(object sender, EventArgs e)
         {
             panelPatternTextGrid.Visible = true;
             panelPatternTextGrid.BringToFront();
@@ -1962,7 +1962,7 @@ namespace Chromaseed
 
         #region *CIRCLES
 
-        private void SetupCircles(Panel panel, List<Color> colorList)
+        private static void SetupCircles(Panel panel, List<Color> colorList)
         {
             panel.Controls.Clear();
 
@@ -2250,7 +2250,7 @@ namespace Chromaseed
             }
         }
 
-        private void btnNoiseSize_Click(object sender, EventArgs e)
+        private void BtnNoiseSize_Click(object sender, EventArgs e)
         {
             noiseSize = (int)numericUpDownNoiseSize.Value;
             SetupNoise(panelImageNoise, colorList);
@@ -2314,7 +2314,7 @@ namespace Chromaseed
             SetupRadial(panelImageRadial, colorList);
         }
 
-        private void btnRadialRays_Click(object sender, EventArgs e)
+        private void BtnRadialRays_Click(object sender, EventArgs e)
         {
             if (comboBoxRadialRays.Text == "32")
             {
@@ -2412,31 +2412,31 @@ namespace Chromaseed
             }
         }
 
-        private void btnHexagonsSortByHue_Click(object sender, EventArgs e)
+        private void BtnHexagonsSortByHue_Click(object sender, EventArgs e)
         {
             colorList = colorList.OrderBy(c => c.GetHue()).ToList();
             SetupHexagons(panelImageHexagons, colorList);
         }
 
-        private void btnHexagonsSortByBrightness_Click(object sender, EventArgs e)
+        private void BtnHexagonsSortByBrightness_Click(object sender, EventArgs e)
         {
             colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
             SetupHexagons(panelImageHexagons, colorList);
         }
 
-        private void btnHexagonsSortByRGBSum_Click(object sender, EventArgs e)
+        private void BtnHexagonsSortByRGBSum_Click(object sender, EventArgs e)
         {
             colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
             SetupHexagons(panelImageHexagons, colorList);
         }
 
-        private void btnHexagonsSortBySaturation_Click(object sender, EventArgs e)
+        private void BtnHexagonsSortBySaturation_Click(object sender, EventArgs e)
         {
             colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
             SetupHexagons(panelImageHexagons, colorList);
         }
 
-        private void btnHexagonComplexity_Click(object sender, EventArgs e)
+        private void BtnHexagonComplexity_Click(object sender, EventArgs e)
         {
             hexagonComplexity = (int)numericUpDownHexagonComplexity.Value;
             SetupHexagons(panelImageHexagons, colorList);
@@ -2489,31 +2489,31 @@ namespace Chromaseed
             }
         }
 
-        private void btnDistortionSortByHue_Click(object sender, EventArgs e)
+        private void BtnDistortionSortByHue_Click(object sender, EventArgs e)
         {
             colorList = colorList.OrderBy(c => c.GetHue()).ToList();
             SetupDistortion(panelImageSquiggle, colorList);
         }
 
-        private void btnDistortionSortByBrightness_Click(object sender, EventArgs e)
+        private void BtnDistortionSortByBrightness_Click(object sender, EventArgs e)
         {
             colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
             SetupDistortion(panelImageSquiggle, colorList);
         }
 
-        private void btnDistortionSortByRGBSum_Click(object sender, EventArgs e)
+        private void BtnDistortionSortByRGBSum_Click(object sender, EventArgs e)
         {
             colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
             SetupDistortion(panelImageSquiggle, colorList);
         }
 
-        private void btnDistortionSortBySaturation_Click(object sender, EventArgs e)
+        private void BtnDistortionSortBySaturation_Click(object sender, EventArgs e)
         {
             colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
             SetupDistortion(panelImageSquiggle, colorList);
         }
 
-        private void btnDistortionRefresh_Click(object sender, EventArgs e)
+        private void BtnDistortionRefresh_Click(object sender, EventArgs e)
         {
             distortionAmount = (int)numericUpDownDistortion.Value;
             SetupDistortion(panelImageSquiggle, colorList);
@@ -2560,7 +2560,7 @@ namespace Chromaseed
             }
         }
 
-        private void btnBrinkRefreshText_Click(object sender, EventArgs e)
+        private void BtnBrinkRefreshText_Click(object sender, EventArgs e)
         {
             phrase = textBoxBrink.Text;
             SetupBrink(panelImageBrink, phrase, colorList);
@@ -2654,7 +2654,7 @@ namespace Chromaseed
             }
         }
 
-        private void btnTilesCount_Click(object sender, EventArgs e)
+        private void BtnTilesCount_Click(object sender, EventArgs e)
         {
             mosaicNumPoints = (int)numericUpDownMosaicTiles.Value;
             SetupTiles(panelImageTiles, colorList);
@@ -3138,7 +3138,7 @@ namespace Chromaseed
                 lblHex7.Text = lblColorHex7.Text;
                 lblHex8.Text = lblColorHex8.Text;
                 panelHexLabels.Height = 108;
-                panelHexLabels.Location = new Point(panelHexLabels.Location.X, 84);
+                panelHexLabels.Location = new Point(panelHexLabels.Location.X, 99);
             }
             else
             {
@@ -3159,7 +3159,7 @@ namespace Chromaseed
                 lblHex15.Text = lblColorHex15.Text;
                 lblHex16.Text = lblColorHex16.Text;
                 panelHexLabels.Height = 216;
-                panelHexLabels.Location = new Point(panelHexLabels.Location.X, 84);
+                panelHexLabels.Location = new Point(panelHexLabels.Location.X, 99);
             }
             panelHexLabels.BringToFront();
             panelHexLabels.Visible = true;
@@ -3178,7 +3178,7 @@ namespace Chromaseed
                 lblRGB7.Text = lblColorRGB7.Text;
                 lblRGB8.Text = lblColorRGB8.Text;
                 panelRGBLabels.Height = 108;
-                panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 538);
+                panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 553);
             }
             else
             {
@@ -3199,7 +3199,7 @@ namespace Chromaseed
                 lblRGB15.Text = lblColorRGB15.Text;
                 lblRGB16.Text = lblColorRGB16.Text;
                 panelRGBLabels.Height = 216;
-                panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 430);
+                panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 445);
             }
             panelRGBLabels.BringToFront();
             panelRGBLabels.Visible = true;
@@ -3207,19 +3207,19 @@ namespace Chromaseed
 
         #endregion
 
-        private void btnReadme_Click(object sender, EventArgs e)
+        private void BtnReadme_Click(object sender, EventArgs e)
         {
             panelHelp.Visible = true;
             panelHelp.BringToFront();
         }
 
-        private void btnDismissDocs_Click(object sender, EventArgs e)
+        private void BtnDismissDocs_Click(object sender, EventArgs e)
         {
             panelHelp.Visible = false;
             panelHelp.SendToBack();
         }
 
-        private void btnAbout_Click(object sender, EventArgs e)
+        private void BtnAbout_Click(object sender, EventArgs e)
         {
             // display semi-transparent overlay form
             Form overlay = new overlay()
