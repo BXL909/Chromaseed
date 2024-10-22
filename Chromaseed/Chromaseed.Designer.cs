@@ -1153,6 +1153,8 @@ namespace Chromaseed
             btnHideWords.BorderSize = 1;
             btnHideWords.Enabled = false;
             btnHideWords.FlatAppearance.BorderSize = 0;
+            btnHideWords.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnHideWords.FlatAppearance.MouseOverBackColor = Color.Black;
             btnHideWords.FlatStyle = FlatStyle.Flat;
             btnHideWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnHideWords.ForeColor = Color.DarkGray;
@@ -1173,6 +1175,8 @@ namespace Chromaseed
             btnShowWords.BorderRadius = 5;
             btnShowWords.BorderSize = 1;
             btnShowWords.FlatAppearance.BorderSize = 0;
+            btnShowWords.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnShowWords.FlatAppearance.MouseOverBackColor = Color.Black;
             btnShowWords.FlatStyle = FlatStyle.Flat;
             btnShowWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnShowWords.ForeColor = Color.DarkGray;
@@ -1193,6 +1197,8 @@ namespace Chromaseed
             btn24SeedWords.BorderRadius = 5;
             btn24SeedWords.BorderSize = 1;
             btn24SeedWords.FlatAppearance.BorderSize = 0;
+            btn24SeedWords.FlatAppearance.MouseDownBackColor = Color.Black;
+            btn24SeedWords.FlatAppearance.MouseOverBackColor = Color.Black;
             btn24SeedWords.FlatStyle = FlatStyle.Flat;
             btn24SeedWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn24SeedWords.ForeColor = Color.DarkGray;
@@ -1214,6 +1220,8 @@ namespace Chromaseed
             btn12SeedWords.BorderSize = 1;
             btn12SeedWords.Enabled = false;
             btn12SeedWords.FlatAppearance.BorderSize = 0;
+            btn12SeedWords.FlatAppearance.MouseDownBackColor = Color.Black;
+            btn12SeedWords.FlatAppearance.MouseOverBackColor = Color.Black;
             btn12SeedWords.FlatStyle = FlatStyle.Flat;
             btn12SeedWords.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn12SeedWords.ForeColor = Color.DarkGray;
@@ -3390,6 +3398,8 @@ namespace Chromaseed
             btnRGB.BorderRadius = 5;
             btnRGB.BorderSize = 1;
             btnRGB.FlatAppearance.BorderSize = 0;
+            btnRGB.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnRGB.FlatAppearance.MouseOverBackColor = Color.Black;
             btnRGB.FlatStyle = FlatStyle.Flat;
             btnRGB.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnRGB.ForeColor = Color.DarkGray;
@@ -3411,6 +3421,8 @@ namespace Chromaseed
             btnHex.BorderSize = 1;
             btnHex.Enabled = false;
             btnHex.FlatAppearance.BorderSize = 0;
+            btnHex.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnHex.FlatAppearance.MouseOverBackColor = Color.Black;
             btnHex.FlatStyle = FlatStyle.Flat;
             btnHex.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnHex.ForeColor = Color.DarkGray;
@@ -3431,6 +3443,8 @@ namespace Chromaseed
             btn16Colours.BorderRadius = 5;
             btn16Colours.BorderSize = 1;
             btn16Colours.FlatAppearance.BorderSize = 0;
+            btn16Colours.FlatAppearance.MouseDownBackColor = Color.Black;
+            btn16Colours.FlatAppearance.MouseOverBackColor = Color.Black;
             btn16Colours.FlatStyle = FlatStyle.Flat;
             btn16Colours.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn16Colours.ForeColor = Color.DarkGray;
@@ -3452,6 +3466,8 @@ namespace Chromaseed
             btn8Colours.BorderSize = 1;
             btn8Colours.Enabled = false;
             btn8Colours.FlatAppearance.BorderSize = 0;
+            btn8Colours.FlatAppearance.MouseDownBackColor = Color.Black;
+            btn8Colours.FlatAppearance.MouseOverBackColor = Color.Black;
             btn8Colours.FlatStyle = FlatStyle.Flat;
             btn8Colours.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btn8Colours.ForeColor = Color.DarkGray;
@@ -4215,6 +4231,8 @@ namespace Chromaseed
             btnMenuConvert.BorderRadius = 5;
             btnMenuConvert.BorderSize = 0;
             btnMenuConvert.FlatAppearance.BorderSize = 0;
+            btnMenuConvert.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuConvert.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuConvert.FlatStyle = FlatStyle.Flat;
             btnMenuConvert.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuConvert.ForeColor = Color.DarkGray;
@@ -4260,6 +4278,8 @@ namespace Chromaseed
             btnMenuTextGrid.BorderSize = 0;
             btnMenuTextGrid.Enabled = false;
             btnMenuTextGrid.FlatAppearance.BorderSize = 0;
+            btnMenuTextGrid.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuTextGrid.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuTextGrid.FlatStyle = FlatStyle.Flat;
             btnMenuTextGrid.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuTextGrid.ForeColor = Color.DarkGray;
@@ -4281,6 +4301,8 @@ namespace Chromaseed
             btnMenuJulia.BorderSize = 0;
             btnMenuJulia.Enabled = false;
             btnMenuJulia.FlatAppearance.BorderSize = 0;
+            btnMenuJulia.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuJulia.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuJulia.FlatStyle = FlatStyle.Flat;
             btnMenuJulia.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuJulia.ForeColor = Color.DarkGray;
@@ -4302,6 +4324,8 @@ namespace Chromaseed
             btnMenuTricorn.BorderSize = 0;
             btnMenuTricorn.Enabled = false;
             btnMenuTricorn.FlatAppearance.BorderSize = 0;
+            btnMenuTricorn.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuTricorn.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuTricorn.FlatStyle = FlatStyle.Flat;
             btnMenuTricorn.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuTricorn.ForeColor = Color.DarkGray;
@@ -4323,6 +4347,8 @@ namespace Chromaseed
             btnMenuPhoenix.BorderSize = 0;
             btnMenuPhoenix.Enabled = false;
             btnMenuPhoenix.FlatAppearance.BorderSize = 0;
+            btnMenuPhoenix.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuPhoenix.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuPhoenix.FlatStyle = FlatStyle.Flat;
             btnMenuPhoenix.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuPhoenix.ForeColor = Color.DarkGray;
@@ -4344,6 +4370,8 @@ namespace Chromaseed
             btnMenuMultibrot.BorderSize = 0;
             btnMenuMultibrot.Enabled = false;
             btnMenuMultibrot.FlatAppearance.BorderSize = 0;
+            btnMenuMultibrot.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuMultibrot.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuMultibrot.FlatStyle = FlatStyle.Flat;
             btnMenuMultibrot.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuMultibrot.ForeColor = Color.DarkGray;
@@ -4365,6 +4393,8 @@ namespace Chromaseed
             btnMenuTiles.BorderSize = 0;
             btnMenuTiles.Enabled = false;
             btnMenuTiles.FlatAppearance.BorderSize = 0;
+            btnMenuTiles.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuTiles.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuTiles.FlatStyle = FlatStyle.Flat;
             btnMenuTiles.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuTiles.ForeColor = Color.DarkGray;
@@ -4386,6 +4416,8 @@ namespace Chromaseed
             btnMenuSymbols.BorderSize = 0;
             btnMenuSymbols.Enabled = false;
             btnMenuSymbols.FlatAppearance.BorderSize = 0;
+            btnMenuSymbols.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuSymbols.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuSymbols.FlatStyle = FlatStyle.Flat;
             btnMenuSymbols.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuSymbols.ForeColor = Color.DarkGray;
@@ -4407,6 +4439,8 @@ namespace Chromaseed
             btnMenuBrink.BorderSize = 0;
             btnMenuBrink.Enabled = false;
             btnMenuBrink.FlatAppearance.BorderSize = 0;
+            btnMenuBrink.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuBrink.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuBrink.FlatStyle = FlatStyle.Flat;
             btnMenuBrink.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuBrink.ForeColor = Color.DarkGray;
@@ -4428,6 +4462,8 @@ namespace Chromaseed
             btnMenuDistortion.BorderSize = 0;
             btnMenuDistortion.Enabled = false;
             btnMenuDistortion.FlatAppearance.BorderSize = 0;
+            btnMenuDistortion.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuDistortion.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuDistortion.FlatStyle = FlatStyle.Flat;
             btnMenuDistortion.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuDistortion.ForeColor = Color.DarkGray;
@@ -4449,6 +4485,8 @@ namespace Chromaseed
             btnMenuHexagons.BorderSize = 0;
             btnMenuHexagons.Enabled = false;
             btnMenuHexagons.FlatAppearance.BorderSize = 0;
+            btnMenuHexagons.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuHexagons.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuHexagons.FlatStyle = FlatStyle.Flat;
             btnMenuHexagons.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuHexagons.ForeColor = Color.DarkGray;
@@ -4470,6 +4508,8 @@ namespace Chromaseed
             btnMenuNoise.BorderSize = 0;
             btnMenuNoise.Enabled = false;
             btnMenuNoise.FlatAppearance.BorderSize = 0;
+            btnMenuNoise.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuNoise.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuNoise.FlatStyle = FlatStyle.Flat;
             btnMenuNoise.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuNoise.ForeColor = Color.DarkGray;
@@ -4491,6 +4531,8 @@ namespace Chromaseed
             btnMenuRadial.BorderSize = 0;
             btnMenuRadial.Enabled = false;
             btnMenuRadial.FlatAppearance.BorderSize = 0;
+            btnMenuRadial.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuRadial.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuRadial.FlatStyle = FlatStyle.Flat;
             btnMenuRadial.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuRadial.ForeColor = Color.DarkGray;
@@ -4512,6 +4554,8 @@ namespace Chromaseed
             btnMenuSpiral.BorderSize = 0;
             btnMenuSpiral.Enabled = false;
             btnMenuSpiral.FlatAppearance.BorderSize = 0;
+            btnMenuSpiral.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuSpiral.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuSpiral.FlatStyle = FlatStyle.Flat;
             btnMenuSpiral.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuSpiral.ForeColor = Color.DarkGray;
@@ -4533,6 +4577,8 @@ namespace Chromaseed
             btnMenuMandelbrot.BorderSize = 0;
             btnMenuMandelbrot.Enabled = false;
             btnMenuMandelbrot.FlatAppearance.BorderSize = 0;
+            btnMenuMandelbrot.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuMandelbrot.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuMandelbrot.FlatStyle = FlatStyle.Flat;
             btnMenuMandelbrot.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuMandelbrot.ForeColor = Color.DarkGray;
@@ -4554,6 +4600,8 @@ namespace Chromaseed
             btnMenuSquares.BorderSize = 0;
             btnMenuSquares.Enabled = false;
             btnMenuSquares.FlatAppearance.BorderSize = 0;
+            btnMenuSquares.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuSquares.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuSquares.FlatStyle = FlatStyle.Flat;
             btnMenuSquares.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuSquares.ForeColor = Color.DarkGray;
@@ -4575,6 +4623,8 @@ namespace Chromaseed
             btnMenuCircles.BorderSize = 0;
             btnMenuCircles.Enabled = false;
             btnMenuCircles.FlatAppearance.BorderSize = 0;
+            btnMenuCircles.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuCircles.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuCircles.FlatStyle = FlatStyle.Flat;
             btnMenuCircles.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuCircles.ForeColor = Color.DarkGray;
@@ -4596,6 +4646,8 @@ namespace Chromaseed
             btnMenuStripes.BorderSize = 0;
             btnMenuStripes.Enabled = false;
             btnMenuStripes.FlatAppearance.BorderSize = 0;
+            btnMenuStripes.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMenuStripes.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMenuStripes.FlatStyle = FlatStyle.Flat;
             btnMenuStripes.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuStripes.ForeColor = Color.DarkGray;
@@ -4635,6 +4687,8 @@ namespace Chromaseed
             btnConvert.BorderRadius = 5;
             btnConvert.BorderSize = 1;
             btnConvert.FlatAppearance.BorderSize = 0;
+            btnConvert.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnConvert.FlatAppearance.MouseOverBackColor = Color.Black;
             btnConvert.FlatStyle = FlatStyle.Flat;
             btnConvert.ForeColor = Color.DarkGray;
             btnConvert.Location = new Point(399, 4);
@@ -4687,6 +4741,8 @@ namespace Chromaseed
             btnStripesSortByHue.BorderRadius = 5;
             btnStripesSortByHue.BorderSize = 1;
             btnStripesSortByHue.FlatAppearance.BorderSize = 0;
+            btnStripesSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnStripesSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnStripesSortByHue.FlatStyle = FlatStyle.Flat;
             btnStripesSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnStripesSortByHue.ForeColor = Color.DarkGray;
@@ -4707,6 +4763,8 @@ namespace Chromaseed
             btnStripesSortByRGBSum.BorderRadius = 5;
             btnStripesSortByRGBSum.BorderSize = 1;
             btnStripesSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnStripesSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnStripesSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnStripesSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnStripesSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnStripesSortByRGBSum.ForeColor = Color.DarkGray;
@@ -4727,6 +4785,8 @@ namespace Chromaseed
             btnStripesSortBySaturation.BorderRadius = 5;
             btnStripesSortBySaturation.BorderSize = 1;
             btnStripesSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnStripesSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnStripesSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnStripesSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnStripesSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnStripesSortBySaturation.ForeColor = Color.DarkGray;
@@ -4747,6 +4807,8 @@ namespace Chromaseed
             btnStripesSortByBrightness.BorderRadius = 5;
             btnStripesSortByBrightness.BorderSize = 1;
             btnStripesSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnStripesSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnStripesSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnStripesSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnStripesSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnStripesSortByBrightness.ForeColor = Color.DarkGray;
@@ -4959,6 +5021,8 @@ namespace Chromaseed
             btnCirclesSortByHue.BorderRadius = 5;
             btnCirclesSortByHue.BorderSize = 1;
             btnCirclesSortByHue.FlatAppearance.BorderSize = 0;
+            btnCirclesSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnCirclesSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnCirclesSortByHue.FlatStyle = FlatStyle.Flat;
             btnCirclesSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnCirclesSortByHue.ForeColor = Color.DarkGray;
@@ -4979,6 +5043,8 @@ namespace Chromaseed
             btnCirclesSortByRGBSum.BorderRadius = 5;
             btnCirclesSortByRGBSum.BorderSize = 1;
             btnCirclesSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnCirclesSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnCirclesSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnCirclesSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnCirclesSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnCirclesSortByRGBSum.ForeColor = Color.DarkGray;
@@ -4999,6 +5065,8 @@ namespace Chromaseed
             btnCirclesSortBySaturation.BorderRadius = 5;
             btnCirclesSortBySaturation.BorderSize = 1;
             btnCirclesSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnCirclesSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnCirclesSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnCirclesSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnCirclesSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnCirclesSortBySaturation.ForeColor = Color.DarkGray;
@@ -5019,6 +5087,8 @@ namespace Chromaseed
             btnCirclesSortByBrightness.BorderRadius = 5;
             btnCirclesSortByBrightness.BorderSize = 1;
             btnCirclesSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnCirclesSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnCirclesSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnCirclesSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnCirclesSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnCirclesSortByBrightness.ForeColor = Color.DarkGray;
@@ -5505,6 +5575,8 @@ namespace Chromaseed
             btnSquaresSortByHue.BorderRadius = 5;
             btnSquaresSortByHue.BorderSize = 1;
             btnSquaresSortByHue.FlatAppearance.BorderSize = 0;
+            btnSquaresSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSquaresSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSquaresSortByHue.FlatStyle = FlatStyle.Flat;
             btnSquaresSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSquaresSortByHue.ForeColor = Color.DarkGray;
@@ -5525,6 +5597,8 @@ namespace Chromaseed
             btnSquaresSortByRGBSum.BorderRadius = 5;
             btnSquaresSortByRGBSum.BorderSize = 1;
             btnSquaresSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnSquaresSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSquaresSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSquaresSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnSquaresSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSquaresSortByRGBSum.ForeColor = Color.DarkGray;
@@ -5545,6 +5619,8 @@ namespace Chromaseed
             btnSquaresSortBySaturation.BorderRadius = 5;
             btnSquaresSortBySaturation.BorderSize = 1;
             btnSquaresSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnSquaresSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSquaresSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSquaresSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnSquaresSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSquaresSortBySaturation.ForeColor = Color.DarkGray;
@@ -5565,6 +5641,8 @@ namespace Chromaseed
             btnSquaresSortByBrightness.BorderRadius = 5;
             btnSquaresSortByBrightness.BorderSize = 1;
             btnSquaresSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnSquaresSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSquaresSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSquaresSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnSquaresSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSquaresSortByBrightness.ForeColor = Color.DarkGray;
@@ -5736,6 +5814,8 @@ namespace Chromaseed
             btnMandelbrotSortByHue.BorderRadius = 5;
             btnMandelbrotSortByHue.BorderSize = 1;
             btnMandelbrotSortByHue.FlatAppearance.BorderSize = 0;
+            btnMandelbrotSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMandelbrotSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMandelbrotSortByHue.FlatStyle = FlatStyle.Flat;
             btnMandelbrotSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMandelbrotSortByHue.ForeColor = Color.DarkGray;
@@ -5756,6 +5836,8 @@ namespace Chromaseed
             btnMandelbrotSortByRGBSum.BorderRadius = 5;
             btnMandelbrotSortByRGBSum.BorderSize = 1;
             btnMandelbrotSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnMandelbrotSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMandelbrotSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMandelbrotSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnMandelbrotSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMandelbrotSortByRGBSum.ForeColor = Color.DarkGray;
@@ -5776,6 +5858,8 @@ namespace Chromaseed
             btnMandelbrotSortBySaturation.BorderRadius = 5;
             btnMandelbrotSortBySaturation.BorderSize = 1;
             btnMandelbrotSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnMandelbrotSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMandelbrotSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMandelbrotSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnMandelbrotSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMandelbrotSortBySaturation.ForeColor = Color.DarkGray;
@@ -5796,6 +5880,8 @@ namespace Chromaseed
             btnMandelbrotSortByBrightness.BorderRadius = 5;
             btnMandelbrotSortByBrightness.BorderSize = 1;
             btnMandelbrotSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnMandelbrotSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMandelbrotSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMandelbrotSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnMandelbrotSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMandelbrotSortByBrightness.ForeColor = Color.DarkGray;
@@ -5880,6 +5966,8 @@ namespace Chromaseed
             btnSpiralSortByHue.BorderRadius = 5;
             btnSpiralSortByHue.BorderSize = 1;
             btnSpiralSortByHue.FlatAppearance.BorderSize = 0;
+            btnSpiralSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSpiralSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSpiralSortByHue.FlatStyle = FlatStyle.Flat;
             btnSpiralSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSpiralSortByHue.ForeColor = Color.DarkGray;
@@ -5900,6 +5988,8 @@ namespace Chromaseed
             btnSpiralSortByRGBSum.BorderRadius = 5;
             btnSpiralSortByRGBSum.BorderSize = 1;
             btnSpiralSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnSpiralSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSpiralSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSpiralSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnSpiralSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSpiralSortByRGBSum.ForeColor = Color.DarkGray;
@@ -5920,6 +6010,8 @@ namespace Chromaseed
             btnSpiralSortBySaturation.BorderRadius = 5;
             btnSpiralSortBySaturation.BorderSize = 1;
             btnSpiralSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnSpiralSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSpiralSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSpiralSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnSpiralSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSpiralSortBySaturation.ForeColor = Color.DarkGray;
@@ -5940,6 +6032,8 @@ namespace Chromaseed
             btnSpiralSortByBrightness.BorderRadius = 5;
             btnSpiralSortByBrightness.BorderSize = 1;
             btnSpiralSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnSpiralSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSpiralSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSpiralSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnSpiralSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSpiralSortByBrightness.ForeColor = Color.DarkGray;
@@ -6016,6 +6110,8 @@ namespace Chromaseed
             btnRadialRays.BorderRadius = 5;
             btnRadialRays.BorderSize = 1;
             btnRadialRays.FlatAppearance.BorderSize = 0;
+            btnRadialRays.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnRadialRays.FlatAppearance.MouseOverBackColor = Color.Black;
             btnRadialRays.FlatStyle = FlatStyle.Flat;
             btnRadialRays.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnRadialRays.ForeColor = Color.DarkGray;
@@ -6047,6 +6143,8 @@ namespace Chromaseed
             btnRadialSortByHue.BorderRadius = 5;
             btnRadialSortByHue.BorderSize = 1;
             btnRadialSortByHue.FlatAppearance.BorderSize = 0;
+            btnRadialSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnRadialSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnRadialSortByHue.FlatStyle = FlatStyle.Flat;
             btnRadialSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnRadialSortByHue.ForeColor = Color.DarkGray;
@@ -6067,6 +6165,8 @@ namespace Chromaseed
             btnRadialSortByRGBSum.BorderRadius = 5;
             btnRadialSortByRGBSum.BorderSize = 1;
             btnRadialSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnRadialSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnRadialSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnRadialSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnRadialSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnRadialSortByRGBSum.ForeColor = Color.DarkGray;
@@ -6087,6 +6187,8 @@ namespace Chromaseed
             btnRadialSortBySaturation.BorderRadius = 5;
             btnRadialSortBySaturation.BorderSize = 1;
             btnRadialSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnRadialSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnRadialSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnRadialSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnRadialSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnRadialSortBySaturation.ForeColor = Color.DarkGray;
@@ -6107,6 +6209,8 @@ namespace Chromaseed
             btnRadialSortByBrightness.BorderRadius = 5;
             btnRadialSortByBrightness.BorderSize = 1;
             btnRadialSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnRadialSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnRadialSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnRadialSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnRadialSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnRadialSortByBrightness.ForeColor = Color.DarkGray;
@@ -6204,6 +6308,8 @@ namespace Chromaseed
             btnNoiseSize.BorderRadius = 5;
             btnNoiseSize.BorderSize = 1;
             btnNoiseSize.FlatAppearance.BorderSize = 0;
+            btnNoiseSize.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnNoiseSize.FlatAppearance.MouseOverBackColor = Color.Black;
             btnNoiseSize.FlatStyle = FlatStyle.Flat;
             btnNoiseSize.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnNoiseSize.ForeColor = Color.DarkGray;
@@ -6303,6 +6409,8 @@ namespace Chromaseed
             btnHexagonComplexity.BorderRadius = 5;
             btnHexagonComplexity.BorderSize = 1;
             btnHexagonComplexity.FlatAppearance.BorderSize = 0;
+            btnHexagonComplexity.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnHexagonComplexity.FlatAppearance.MouseOverBackColor = Color.Black;
             btnHexagonComplexity.FlatStyle = FlatStyle.Flat;
             btnHexagonComplexity.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnHexagonComplexity.ForeColor = Color.DarkGray;
@@ -6334,6 +6442,8 @@ namespace Chromaseed
             btnHexagonsSortByHue.BorderRadius = 5;
             btnHexagonsSortByHue.BorderSize = 1;
             btnHexagonsSortByHue.FlatAppearance.BorderSize = 0;
+            btnHexagonsSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnHexagonsSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnHexagonsSortByHue.FlatStyle = FlatStyle.Flat;
             btnHexagonsSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnHexagonsSortByHue.ForeColor = Color.DarkGray;
@@ -6354,6 +6464,8 @@ namespace Chromaseed
             btnHexagonsSortByRGBSum.BorderRadius = 5;
             btnHexagonsSortByRGBSum.BorderSize = 1;
             btnHexagonsSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnHexagonsSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnHexagonsSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnHexagonsSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnHexagonsSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnHexagonsSortByRGBSum.ForeColor = Color.DarkGray;
@@ -6374,6 +6486,8 @@ namespace Chromaseed
             btnHexagonsSortBySaturation.BorderRadius = 5;
             btnHexagonsSortBySaturation.BorderSize = 1;
             btnHexagonsSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnHexagonsSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnHexagonsSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnHexagonsSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnHexagonsSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnHexagonsSortBySaturation.ForeColor = Color.DarkGray;
@@ -6394,6 +6508,8 @@ namespace Chromaseed
             btnHexagonsSortByBrightness.BorderRadius = 5;
             btnHexagonsSortByBrightness.BorderSize = 1;
             btnHexagonsSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnHexagonsSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnHexagonsSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnHexagonsSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnHexagonsSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnHexagonsSortByBrightness.ForeColor = Color.DarkGray;
@@ -6493,6 +6609,8 @@ namespace Chromaseed
             btnDistortionRefresh.BorderRadius = 5;
             btnDistortionRefresh.BorderSize = 1;
             btnDistortionRefresh.FlatAppearance.BorderSize = 0;
+            btnDistortionRefresh.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnDistortionRefresh.FlatAppearance.MouseOverBackColor = Color.Black;
             btnDistortionRefresh.FlatStyle = FlatStyle.Flat;
             btnDistortionRefresh.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnDistortionRefresh.ForeColor = Color.DarkGray;
@@ -6524,6 +6642,8 @@ namespace Chromaseed
             btnDistortionSortByHue.BorderRadius = 5;
             btnDistortionSortByHue.BorderSize = 1;
             btnDistortionSortByHue.FlatAppearance.BorderSize = 0;
+            btnDistortionSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnDistortionSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnDistortionSortByHue.FlatStyle = FlatStyle.Flat;
             btnDistortionSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnDistortionSortByHue.ForeColor = Color.DarkGray;
@@ -6544,6 +6664,8 @@ namespace Chromaseed
             btnDistortionSortByRGBSum.BorderRadius = 5;
             btnDistortionSortByRGBSum.BorderSize = 1;
             btnDistortionSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnDistortionSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnDistortionSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnDistortionSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnDistortionSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnDistortionSortByRGBSum.ForeColor = Color.DarkGray;
@@ -6564,6 +6686,8 @@ namespace Chromaseed
             btnDistortionSortBySaturation.BorderRadius = 5;
             btnDistortionSortBySaturation.BorderSize = 1;
             btnDistortionSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnDistortionSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnDistortionSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnDistortionSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnDistortionSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnDistortionSortBySaturation.ForeColor = Color.DarkGray;
@@ -6584,6 +6708,8 @@ namespace Chromaseed
             btnDistortionSortByBrightness.BorderRadius = 5;
             btnDistortionSortByBrightness.BorderSize = 1;
             btnDistortionSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnDistortionSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnDistortionSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnDistortionSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnDistortionSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnDistortionSortByBrightness.ForeColor = Color.DarkGray;
@@ -6682,6 +6808,8 @@ namespace Chromaseed
             btnBrinkRefreshText.BorderRadius = 5;
             btnBrinkRefreshText.BorderSize = 1;
             btnBrinkRefreshText.FlatAppearance.BorderSize = 0;
+            btnBrinkRefreshText.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnBrinkRefreshText.FlatAppearance.MouseOverBackColor = Color.Black;
             btnBrinkRefreshText.FlatStyle = FlatStyle.Flat;
             btnBrinkRefreshText.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnBrinkRefreshText.ForeColor = Color.DarkGray;
@@ -6779,6 +6907,8 @@ namespace Chromaseed
             btnSymbolSize.BorderRadius = 5;
             btnSymbolSize.BorderSize = 1;
             btnSymbolSize.FlatAppearance.BorderSize = 0;
+            btnSymbolSize.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSymbolSize.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSymbolSize.FlatStyle = FlatStyle.Flat;
             btnSymbolSize.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSymbolSize.ForeColor = Color.DarkGray;
@@ -6876,6 +7006,8 @@ namespace Chromaseed
             btnTilesCount.BorderRadius = 5;
             btnTilesCount.BorderSize = 1;
             btnTilesCount.FlatAppearance.BorderSize = 0;
+            btnTilesCount.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTilesCount.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTilesCount.FlatStyle = FlatStyle.Flat;
             btnTilesCount.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTilesCount.ForeColor = Color.DarkGray;
@@ -6983,6 +7115,8 @@ namespace Chromaseed
             btnMultibrotSortByHue.BorderRadius = 5;
             btnMultibrotSortByHue.BorderSize = 1;
             btnMultibrotSortByHue.FlatAppearance.BorderSize = 0;
+            btnMultibrotSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMultibrotSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMultibrotSortByHue.FlatStyle = FlatStyle.Flat;
             btnMultibrotSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMultibrotSortByHue.ForeColor = Color.DarkGray;
@@ -7003,6 +7137,8 @@ namespace Chromaseed
             btnMultibrotSortByRGBSum.BorderRadius = 5;
             btnMultibrotSortByRGBSum.BorderSize = 1;
             btnMultibrotSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnMultibrotSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMultibrotSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMultibrotSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnMultibrotSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMultibrotSortByRGBSum.ForeColor = Color.DarkGray;
@@ -7023,6 +7159,8 @@ namespace Chromaseed
             btnMultibrotSortBySaturation.BorderRadius = 5;
             btnMultibrotSortBySaturation.BorderSize = 1;
             btnMultibrotSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnMultibrotSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMultibrotSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMultibrotSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnMultibrotSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMultibrotSortBySaturation.ForeColor = Color.DarkGray;
@@ -7043,6 +7181,8 @@ namespace Chromaseed
             btnMultibrotSortByBrightness.BorderRadius = 5;
             btnMultibrotSortByBrightness.BorderSize = 1;
             btnMultibrotSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnMultibrotSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnMultibrotSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnMultibrotSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnMultibrotSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMultibrotSortByBrightness.ForeColor = Color.DarkGray;
@@ -7127,6 +7267,8 @@ namespace Chromaseed
             btnPhoenixSortByHue.BorderRadius = 5;
             btnPhoenixSortByHue.BorderSize = 1;
             btnPhoenixSortByHue.FlatAppearance.BorderSize = 0;
+            btnPhoenixSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnPhoenixSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnPhoenixSortByHue.FlatStyle = FlatStyle.Flat;
             btnPhoenixSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnPhoenixSortByHue.ForeColor = Color.DarkGray;
@@ -7147,6 +7289,8 @@ namespace Chromaseed
             btnPhoenixSortByRGBSum.BorderRadius = 5;
             btnPhoenixSortByRGBSum.BorderSize = 1;
             btnPhoenixSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnPhoenixSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnPhoenixSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnPhoenixSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnPhoenixSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnPhoenixSortByRGBSum.ForeColor = Color.DarkGray;
@@ -7167,6 +7311,8 @@ namespace Chromaseed
             btnPhoenixSortBySaturation.BorderRadius = 5;
             btnPhoenixSortBySaturation.BorderSize = 1;
             btnPhoenixSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnPhoenixSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnPhoenixSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnPhoenixSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnPhoenixSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnPhoenixSortBySaturation.ForeColor = Color.DarkGray;
@@ -7187,6 +7333,8 @@ namespace Chromaseed
             btnPhoenixSortByBrightness.BorderRadius = 5;
             btnPhoenixSortByBrightness.BorderSize = 1;
             btnPhoenixSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnPhoenixSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnPhoenixSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnPhoenixSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnPhoenixSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnPhoenixSortByBrightness.ForeColor = Color.DarkGray;
@@ -7271,6 +7419,8 @@ namespace Chromaseed
             btnTricornSortByHue.BorderRadius = 5;
             btnTricornSortByHue.BorderSize = 1;
             btnTricornSortByHue.FlatAppearance.BorderSize = 0;
+            btnTricornSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTricornSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTricornSortByHue.FlatStyle = FlatStyle.Flat;
             btnTricornSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTricornSortByHue.ForeColor = Color.DarkGray;
@@ -7291,6 +7441,8 @@ namespace Chromaseed
             btnTricornSortByRGBSum.BorderRadius = 5;
             btnTricornSortByRGBSum.BorderSize = 1;
             btnTricornSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnTricornSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTricornSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTricornSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnTricornSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTricornSortByRGBSum.ForeColor = Color.DarkGray;
@@ -7311,6 +7463,8 @@ namespace Chromaseed
             btnTricornSortBySaturation.BorderRadius = 5;
             btnTricornSortBySaturation.BorderSize = 1;
             btnTricornSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnTricornSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTricornSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTricornSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnTricornSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTricornSortBySaturation.ForeColor = Color.DarkGray;
@@ -7331,6 +7485,8 @@ namespace Chromaseed
             btnTricornSortByBrightness.BorderRadius = 5;
             btnTricornSortByBrightness.BorderSize = 1;
             btnTricornSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnTricornSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTricornSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTricornSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnTricornSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTricornSortByBrightness.ForeColor = Color.DarkGray;
@@ -7415,6 +7571,8 @@ namespace Chromaseed
             btnJuliaSortByHue.BorderRadius = 5;
             btnJuliaSortByHue.BorderSize = 1;
             btnJuliaSortByHue.FlatAppearance.BorderSize = 0;
+            btnJuliaSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnJuliaSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnJuliaSortByHue.FlatStyle = FlatStyle.Flat;
             btnJuliaSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnJuliaSortByHue.ForeColor = Color.DarkGray;
@@ -7435,6 +7593,8 @@ namespace Chromaseed
             btnJuliaSortByRGBSum.BorderRadius = 5;
             btnJuliaSortByRGBSum.BorderSize = 1;
             btnJuliaSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnJuliaSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnJuliaSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnJuliaSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnJuliaSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnJuliaSortByRGBSum.ForeColor = Color.DarkGray;
@@ -7455,6 +7615,8 @@ namespace Chromaseed
             btnJuliaSortBySaturation.BorderRadius = 5;
             btnJuliaSortBySaturation.BorderSize = 1;
             btnJuliaSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnJuliaSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnJuliaSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnJuliaSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnJuliaSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnJuliaSortBySaturation.ForeColor = Color.DarkGray;
@@ -7475,6 +7637,8 @@ namespace Chromaseed
             btnJuliaSortByBrightness.BorderRadius = 5;
             btnJuliaSortByBrightness.BorderSize = 1;
             btnJuliaSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnJuliaSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnJuliaSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnJuliaSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnJuliaSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnJuliaSortByBrightness.ForeColor = Color.DarkGray;
@@ -7551,6 +7715,8 @@ namespace Chromaseed
             btnTextGridUpdatePhrase.BorderRadius = 5;
             btnTextGridUpdatePhrase.BorderSize = 1;
             btnTextGridUpdatePhrase.FlatAppearance.BorderSize = 0;
+            btnTextGridUpdatePhrase.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTextGridUpdatePhrase.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTextGridUpdatePhrase.FlatStyle = FlatStyle.Flat;
             btnTextGridUpdatePhrase.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTextGridUpdatePhrase.ForeColor = Color.DarkGray;
@@ -7582,6 +7748,8 @@ namespace Chromaseed
             btnTextGridSortByHue.BorderRadius = 5;
             btnTextGridSortByHue.BorderSize = 1;
             btnTextGridSortByHue.FlatAppearance.BorderSize = 0;
+            btnTextGridSortByHue.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTextGridSortByHue.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTextGridSortByHue.FlatStyle = FlatStyle.Flat;
             btnTextGridSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTextGridSortByHue.ForeColor = Color.DarkGray;
@@ -7602,6 +7770,8 @@ namespace Chromaseed
             btnTextGridSortByRGBSum.BorderRadius = 5;
             btnTextGridSortByRGBSum.BorderSize = 1;
             btnTextGridSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnTextGridSortByRGBSum.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTextGridSortByRGBSum.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTextGridSortByRGBSum.FlatStyle = FlatStyle.Flat;
             btnTextGridSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTextGridSortByRGBSum.ForeColor = Color.DarkGray;
@@ -7622,6 +7792,8 @@ namespace Chromaseed
             btnTextGridSortBySaturation.BorderRadius = 5;
             btnTextGridSortBySaturation.BorderSize = 1;
             btnTextGridSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnTextGridSortBySaturation.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTextGridSortBySaturation.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTextGridSortBySaturation.FlatStyle = FlatStyle.Flat;
             btnTextGridSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTextGridSortBySaturation.ForeColor = Color.DarkGray;
@@ -7642,6 +7814,8 @@ namespace Chromaseed
             btnTextGridSortByBrightness.BorderRadius = 5;
             btnTextGridSortByBrightness.BorderSize = 1;
             btnTextGridSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnTextGridSortByBrightness.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnTextGridSortByBrightness.FlatAppearance.MouseOverBackColor = Color.Black;
             btnTextGridSortByBrightness.FlatStyle = FlatStyle.Flat;
             btnTextGridSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnTextGridSortByBrightness.ForeColor = Color.DarkGray;
@@ -7784,6 +7958,8 @@ namespace Chromaseed
             rjButton1.BorderRadius = 5;
             rjButton1.BorderSize = 1;
             rjButton1.FlatAppearance.BorderSize = 0;
+            rjButton1.FlatAppearance.MouseDownBackColor = Color.Black;
+            rjButton1.FlatAppearance.MouseOverBackColor = Color.Black;
             rjButton1.FlatStyle = FlatStyle.Flat;
             rjButton1.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             rjButton1.ForeColor = Color.DarkGray;
@@ -7804,6 +7980,8 @@ namespace Chromaseed
             btnAbout.BorderRadius = 5;
             btnAbout.BorderSize = 1;
             btnAbout.FlatAppearance.BorderSize = 0;
+            btnAbout.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnAbout.FlatAppearance.MouseOverBackColor = Color.Black;
             btnAbout.FlatStyle = FlatStyle.Flat;
             btnAbout.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnAbout.ForeColor = Color.DarkGray;
@@ -7824,6 +8002,8 @@ namespace Chromaseed
             btnExit.BorderRadius = 5;
             btnExit.BorderSize = 1;
             btnExit.FlatAppearance.BorderSize = 0;
+            btnExit.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnExit.FlatAppearance.MouseOverBackColor = Color.Black;
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnExit.ForeColor = Color.DarkGray;
@@ -7844,6 +8024,7 @@ namespace Chromaseed
             btnDummyButton.BorderRadius = 5;
             btnDummyButton.BorderSize = 1;
             btnDummyButton.FlatAppearance.BorderSize = 0;
+            btnDummyButton.FlatAppearance.MouseOverBackColor = Color.Black;
             btnDummyButton.FlatStyle = FlatStyle.Flat;
             btnDummyButton.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnDummyButton.ForeColor = Color.DarkGray;
@@ -7880,26 +8061,26 @@ namespace Chromaseed
             BackColor = Color.FromArgb(30, 30, 30);
             CancelButton = btnExit;
             ClientSize = new Size(940, 689);
-            Controls.Add(lblFileSaved);
-            Controls.Add(panelPatternTextGrid);
-            Controls.Add(panelPatternJulia);
             Controls.Add(panelPatternTricorn);
-            Controls.Add(panelPatternPhoenix);
-            Controls.Add(panelPatternMultibrot);
-            Controls.Add(panelPatternSquiggle);
             Controls.Add(panelPatternTiles);
+            Controls.Add(panelPatternTextGrid);
             Controls.Add(panelPatternSymbols);
-            Controls.Add(panelPatternBrink);
+            Controls.Add(panelPatternStripes);
+            Controls.Add(panelPatternSquiggle);
+            Controls.Add(panelPatternSquares);
+            Controls.Add(panelPatternSpiral);
+            Controls.Add(panelPatternRadial);
+            Controls.Add(panelPatternPhoenix);
+            Controls.Add(panelPatternNoise);
+            Controls.Add(panelPatternMultibrot);
+            Controls.Add(panelPatternMandelbrot);
+            Controls.Add(panelPatternJulia);
             Controls.Add(panelPatternHexagons);
             Controls.Add(panelPatternCircles);
-            Controls.Add(panelPatternNoise);
-            Controls.Add(panelPatternRadial);
-            Controls.Add(panelPatternSpiral);
-            Controls.Add(panelPatternMandelbrot);
-            Controls.Add(panelPatternSquares);
-            Controls.Add(panelPatternStripes);
-            Controls.Add(panelSaveImage);
+            Controls.Add(panelPatternBrink);
             Controls.Add(panelConverter);
+            Controls.Add(lblFileSaved);
+            Controls.Add(panelSaveImage);
             Controls.Add(panelHelp);
             Controls.Add(btnDummyButton);
             Controls.Add(btnExit);
@@ -7910,6 +8091,7 @@ namespace Chromaseed
             Controls.Add(panelHexLabels);
             Controls.Add(panelMenu);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Chromaseed";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Chromaseed";
