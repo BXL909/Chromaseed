@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 #endregion
 
 namespace Chromaseed
-{ 
+{
     public partial class Chromaseed : Form
     {
         #region variable declarations
@@ -80,9 +80,10 @@ namespace Chromaseed
 
         public Chromaseed()
         {
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             InitializeComponent();
             this.BackgroundImage = Properties.Resources.BG1;
-            activeSeedBox = textBoxSeedWord1; 
+            activeSeedBox = textBoxSeedWord1;
             #region rounded form
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
@@ -1705,16 +1706,17 @@ namespace Chromaseed
         #region MENU
         private void BtnMenuConvert_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelConverter.Visible = true;
             panelRGBLabels.Visible = false;
             panelHexLabels.Visible = false;
             panelSaveImage.Visible = false;
             panelConverter.BringToFront();
-
         }
 
         private void BtnMenuStripes_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternStripes.Visible = true;
             panelPatternStripes.BringToFront();
             PopulateHexKey();
@@ -1725,6 +1727,7 @@ namespace Chromaseed
 
         private void BtnMenuCircles_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternCircles.Visible = true;
             panelPatternCircles.BringToFront();
             PopulateHexKey();
@@ -1735,6 +1738,7 @@ namespace Chromaseed
 
         private void BtnMenuSquares_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternSquares.Visible = true;
             panelPatternSquares.BringToFront();
             PopulateHexKey();
@@ -1745,6 +1749,7 @@ namespace Chromaseed
 
         private void BtnMenuMandelbrot_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternMandelbrot.Visible = true;
             panelPatternMandelbrot.BringToFront();
             PopulateHexKey();
@@ -1755,6 +1760,7 @@ namespace Chromaseed
 
         private void BtnMenuSpiral_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternSpiral.Visible = true;
             panelPatternSpiral.BringToFront();
             PopulateHexKey();
@@ -1765,6 +1771,7 @@ namespace Chromaseed
 
         private void BtnMenuNoise_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternNoise.Visible = true;
             panelPatternNoise.BringToFront();
             PopulateHexKey();
@@ -1775,6 +1782,7 @@ namespace Chromaseed
 
         private void BtnMenuHexagons_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternHexagons.Visible = true;
             panelPatternHexagons.BringToFront();
             PopulateHexKey();
@@ -1785,6 +1793,7 @@ namespace Chromaseed
 
         private void BtnMenuSquiggle_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternSquiggle.Visible = true;
             panelPatternSquiggle.BringToFront();
             PopulateHexKey();
@@ -1795,6 +1804,7 @@ namespace Chromaseed
 
         private void BtnMenuRadial_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternRadial.Visible = true;
             panelPatternRadial.BringToFront();
             PopulateHexKey();
@@ -1805,6 +1815,7 @@ namespace Chromaseed
 
         private void BtnMenuBrink_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternBrink.Visible = true;
             panelPatternBrink.BringToFront();
             PopulateHexKey();
@@ -1815,6 +1826,7 @@ namespace Chromaseed
 
         private void BtnMenuSymbols_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternSymbols.Visible = true;
             panelPatternSymbols.BringToFront();
             PopulateHexKey();
@@ -1825,6 +1837,7 @@ namespace Chromaseed
 
         private void BtnMenuTiles_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternTiles.Visible = true;
             panelPatternTiles.BringToFront();
             PopulateHexKey();
@@ -1835,6 +1848,7 @@ namespace Chromaseed
 
         private void BtnMenuMultibrot_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternMultibrot.Visible = true;
             panelPatternMultibrot.BringToFront();
             PopulateHexKey();
@@ -1845,6 +1859,7 @@ namespace Chromaseed
 
         private void BtnMenuPhoenix_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternPhoenix.Visible = true;
             panelPatternPhoenix.BringToFront();
             PopulateHexKey();
@@ -1855,6 +1870,7 @@ namespace Chromaseed
 
         private void BtnMenuTricorn_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternTricorn.Visible = true;
             panelPatternTricorn.BringToFront();
             PopulateHexKey();
@@ -1865,6 +1881,7 @@ namespace Chromaseed
 
         private void BtnMenuJulia_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternJulia.Visible = true;
             panelPatternJulia.BringToFront();
             PopulateHexKey();
@@ -1875,6 +1892,7 @@ namespace Chromaseed
 
         private void BtnMenuTextGrid_Click(object sender, EventArgs e)
         {
+            btnDummyButton.Focus();
             panelPatternTextGrid.Visible = true;
             panelPatternTextGrid.BringToFront();
             PopulateHexKey();
@@ -3357,5 +3375,6 @@ namespace Chromaseed
         #endregion
 
         #endregion
+
     }
 }

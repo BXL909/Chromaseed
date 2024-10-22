@@ -454,6 +454,12 @@ namespace Chromaseed
             panelHexagonLeftContainer = new Panel();
             panelPatternSquiggle = new Panel();
             panelSquiggleRight = new Panel();
+            btnDistortionRefresh = new CustomControls.RJControls.RJButton();
+            panel15 = new Panel();
+            btnDistortionSortByHue = new CustomControls.RJControls.RJButton();
+            btnDistortionSortByRGBSum = new CustomControls.RJControls.RJButton();
+            btnDistortionSortBySaturation = new CustomControls.RJControls.RJButton();
+            btnDistortionSortByBrightness = new CustomControls.RJControls.RJButton();
             label32 = new Label();
             numericUpDownDistortion = new NumericUpDown();
             panelSquiggleLeft = new Panel();
@@ -462,6 +468,7 @@ namespace Chromaseed
             panelSquiggleLeftContainer = new Panel();
             panelPatternBrink = new Panel();
             panelBrinkRight = new Panel();
+            btnBrinkRefreshText = new CustomControls.RJControls.RJButton();
             label29 = new Label();
             textBoxBrink = new TextBox();
             panelBrinkLeft = new Panel();
@@ -470,6 +477,7 @@ namespace Chromaseed
             panelBrinkLeftContainer = new Panel();
             panelPatternSymbols = new Panel();
             panelSymbolsRight = new Panel();
+            btnSymbolSize = new CustomControls.RJControls.RJButton();
             label33 = new Label();
             numericUpDownSymbolSize = new NumericUpDown();
             panelSymbolsLeft = new Panel();
@@ -478,6 +486,7 @@ namespace Chromaseed
             panelSymbolsLeftContainer = new Panel();
             panelPatternTiles = new Panel();
             panelTilesRight = new Panel();
+            btnTilesCount = new CustomControls.RJControls.RJButton();
             label34 = new Label();
             numericUpDownMosaicTiles = new NumericUpDown();
             panelTilesLeft = new Panel();
@@ -486,30 +495,56 @@ namespace Chromaseed
             panelTilesLeftContainer = new Panel();
             panelPatternMultibrot = new Panel();
             panelMultibrotRight = new Panel();
+            panel16 = new Panel();
+            btnMultibrotSortByHue = new CustomControls.RJControls.RJButton();
+            btnMultibrotSortByRGBSum = new CustomControls.RJControls.RJButton();
+            btnMultibrotSortBySaturation = new CustomControls.RJControls.RJButton();
+            btnMultibrotSortByBrightness = new CustomControls.RJControls.RJButton();
             panelMultibrotLeft = new Panel();
             panelImageMultibrot = new Panel();
             panelMultibrotRightContainer = new Panel();
             panelMultibrotLeftContainer = new Panel();
             panelPatternPhoenix = new Panel();
             panelPhoenixRight = new Panel();
+            panel17 = new Panel();
+            btnPhoenixSortByHue = new CustomControls.RJControls.RJButton();
+            btnPhoenixSortByRGBSum = new CustomControls.RJControls.RJButton();
+            btnPhoenixSortBySaturation = new CustomControls.RJControls.RJButton();
+            btnPhoenixSortByBrightness = new CustomControls.RJControls.RJButton();
             panelPhoenixLeft = new Panel();
             panelImagePhoenix = new Panel();
             panelPhoenixRightContainer = new Panel();
             panelPhoenixLeftContainer = new Panel();
             panelPatternTricorn = new Panel();
             panelTricornRight = new Panel();
+            panel18 = new Panel();
+            btnTricornSortByHue = new CustomControls.RJControls.RJButton();
+            btnTricornSortByRGBSum = new CustomControls.RJControls.RJButton();
+            btnTricornSortBySaturation = new CustomControls.RJControls.RJButton();
+            btnTricornSortByBrightness = new CustomControls.RJControls.RJButton();
             panelTricornLeft = new Panel();
             panelImageTricorn = new Panel();
             panelTricornRightContainer = new Panel();
             panelTricornLeftContainer = new Panel();
             panelPatternJulia = new Panel();
             panelJuliaRight = new Panel();
+            panel19 = new Panel();
+            btnJuliaSortByHue = new CustomControls.RJControls.RJButton();
+            btnJuliaSortByRGBSum = new CustomControls.RJControls.RJButton();
+            btnJuliaSortBySaturation = new CustomControls.RJControls.RJButton();
+            btnJuliaSortByBrightness = new CustomControls.RJControls.RJButton();
             panelJuliaLeft = new Panel();
             panelImageJulia = new Panel();
             panelJuliaRightContainer = new Panel();
             panelJuliaLeftContainer = new Panel();
             panelPatternTextGrid = new Panel();
             panelTextGridRight = new Panel();
+            btnTextGridUpdatePhrase = new CustomControls.RJControls.RJButton();
+            panel20 = new Panel();
+            btnTextGridSortByHue = new CustomControls.RJControls.RJButton();
+            btnTextGridSortByRGBSum = new CustomControls.RJControls.RJButton();
+            btnTextGridSortBySaturation = new CustomControls.RJControls.RJButton();
+            btnTextGridSortByBrightness = new CustomControls.RJControls.RJButton();
             label28 = new Label();
             textBoxTextGrid = new TextBox();
             panelTextGridLeft = new Panel();
@@ -572,6 +607,7 @@ namespace Chromaseed
             panelHexagonsLeft.SuspendLayout();
             panelPatternSquiggle.SuspendLayout();
             panelSquiggleRight.SuspendLayout();
+            panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownDistortion).BeginInit();
             panelSquiggleLeft.SuspendLayout();
             panelPatternBrink.SuspendLayout();
@@ -586,15 +622,24 @@ namespace Chromaseed
             ((System.ComponentModel.ISupportInitialize)numericUpDownMosaicTiles).BeginInit();
             panelTilesLeft.SuspendLayout();
             panelPatternMultibrot.SuspendLayout();
+            panelMultibrotRight.SuspendLayout();
+            panel16.SuspendLayout();
             panelMultibrotLeft.SuspendLayout();
             panelPatternPhoenix.SuspendLayout();
+            panelPhoenixRight.SuspendLayout();
+            panel17.SuspendLayout();
             panelPhoenixLeft.SuspendLayout();
             panelPatternTricorn.SuspendLayout();
+            panelTricornRight.SuspendLayout();
+            panel18.SuspendLayout();
             panelTricornLeft.SuspendLayout();
             panelPatternJulia.SuspendLayout();
+            panelJuliaRight.SuspendLayout();
+            panel19.SuspendLayout();
             panelJuliaLeft.SuspendLayout();
             panelPatternTextGrid.SuspendLayout();
             panelTextGridRight.SuspendLayout();
+            panel20.SuspendLayout();
             panelTextGridLeft.SuspendLayout();
             panelHelp.SuspendLayout();
             panelDocsContainer.SuspendLayout();
@@ -4216,7 +4261,7 @@ namespace Chromaseed
             btnMenuTextGrid.FlatStyle = FlatStyle.Flat;
             btnMenuTextGrid.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuTextGrid.ForeColor = Color.DarkGray;
-            btnMenuTextGrid.Location = new Point(0, 434);
+            btnMenuTextGrid.Location = new Point(0, 418);
             btnMenuTextGrid.Name = "btnMenuTextGrid";
             btnMenuTextGrid.Size = new Size(100, 21);
             btnMenuTextGrid.TabIndex = 181;
@@ -4237,7 +4282,7 @@ namespace Chromaseed
             btnMenuJulia.FlatStyle = FlatStyle.Flat;
             btnMenuJulia.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuJulia.ForeColor = Color.DarkGray;
-            btnMenuJulia.Location = new Point(0, 407);
+            btnMenuJulia.Location = new Point(0, 392);
             btnMenuJulia.Name = "btnMenuJulia";
             btnMenuJulia.Size = new Size(100, 21);
             btnMenuJulia.TabIndex = 180;
@@ -4258,7 +4303,7 @@ namespace Chromaseed
             btnMenuTricorn.FlatStyle = FlatStyle.Flat;
             btnMenuTricorn.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuTricorn.ForeColor = Color.DarkGray;
-            btnMenuTricorn.Location = new Point(0, 380);
+            btnMenuTricorn.Location = new Point(0, 366);
             btnMenuTricorn.Name = "btnMenuTricorn";
             btnMenuTricorn.Size = new Size(100, 21);
             btnMenuTricorn.TabIndex = 179;
@@ -4279,7 +4324,7 @@ namespace Chromaseed
             btnMenuPhoenix.FlatStyle = FlatStyle.Flat;
             btnMenuPhoenix.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuPhoenix.ForeColor = Color.DarkGray;
-            btnMenuPhoenix.Location = new Point(0, 353);
+            btnMenuPhoenix.Location = new Point(0, 340);
             btnMenuPhoenix.Name = "btnMenuPhoenix";
             btnMenuPhoenix.Size = new Size(100, 21);
             btnMenuPhoenix.TabIndex = 178;
@@ -4300,7 +4345,7 @@ namespace Chromaseed
             btnMenuMultibrot.FlatStyle = FlatStyle.Flat;
             btnMenuMultibrot.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuMultibrot.ForeColor = Color.DarkGray;
-            btnMenuMultibrot.Location = new Point(0, 326);
+            btnMenuMultibrot.Location = new Point(0, 314);
             btnMenuMultibrot.Name = "btnMenuMultibrot";
             btnMenuMultibrot.Size = new Size(100, 21);
             btnMenuMultibrot.TabIndex = 177;
@@ -4321,7 +4366,7 @@ namespace Chromaseed
             btnMenuTiles.FlatStyle = FlatStyle.Flat;
             btnMenuTiles.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuTiles.ForeColor = Color.DarkGray;
-            btnMenuTiles.Location = new Point(0, 299);
+            btnMenuTiles.Location = new Point(0, 288);
             btnMenuTiles.Name = "btnMenuTiles";
             btnMenuTiles.Size = new Size(100, 21);
             btnMenuTiles.TabIndex = 176;
@@ -4342,7 +4387,7 @@ namespace Chromaseed
             btnMenuSymbols.FlatStyle = FlatStyle.Flat;
             btnMenuSymbols.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuSymbols.ForeColor = Color.DarkGray;
-            btnMenuSymbols.Location = new Point(0, 272);
+            btnMenuSymbols.Location = new Point(0, 262);
             btnMenuSymbols.Name = "btnMenuSymbols";
             btnMenuSymbols.Size = new Size(100, 21);
             btnMenuSymbols.TabIndex = 175;
@@ -4363,11 +4408,11 @@ namespace Chromaseed
             btnMenuBrink.FlatStyle = FlatStyle.Flat;
             btnMenuBrink.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuBrink.ForeColor = Color.DarkGray;
-            btnMenuBrink.Location = new Point(0, 244);
+            btnMenuBrink.Location = new Point(0, 236);
             btnMenuBrink.Name = "btnMenuBrink";
             btnMenuBrink.Size = new Size(100, 21);
             btnMenuBrink.TabIndex = 174;
-            btnMenuBrink.Text = "BRINK";
+            btnMenuBrink.Text = "TEXTJUMBLE";
             btnMenuBrink.TextColor = Color.DarkGray;
             btnMenuBrink.UseVisualStyleBackColor = false;
             btnMenuBrink.Click += BtnMenuBrink_Click;
@@ -4384,7 +4429,7 @@ namespace Chromaseed
             btnMenuDistortion.FlatStyle = FlatStyle.Flat;
             btnMenuDistortion.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuDistortion.ForeColor = Color.DarkGray;
-            btnMenuDistortion.Location = new Point(0, 217);
+            btnMenuDistortion.Location = new Point(0, 210);
             btnMenuDistortion.Name = "btnMenuDistortion";
             btnMenuDistortion.Size = new Size(100, 21);
             btnMenuDistortion.TabIndex = 173;
@@ -4405,7 +4450,7 @@ namespace Chromaseed
             btnMenuHexagons.FlatStyle = FlatStyle.Flat;
             btnMenuHexagons.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuHexagons.ForeColor = Color.DarkGray;
-            btnMenuHexagons.Location = new Point(0, 190);
+            btnMenuHexagons.Location = new Point(0, 184);
             btnMenuHexagons.Name = "btnMenuHexagons";
             btnMenuHexagons.Size = new Size(100, 21);
             btnMenuHexagons.TabIndex = 172;
@@ -4426,7 +4471,7 @@ namespace Chromaseed
             btnMenuNoise.FlatStyle = FlatStyle.Flat;
             btnMenuNoise.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuNoise.ForeColor = Color.DarkGray;
-            btnMenuNoise.Location = new Point(0, 163);
+            btnMenuNoise.Location = new Point(0, 158);
             btnMenuNoise.Name = "btnMenuNoise";
             btnMenuNoise.Size = new Size(100, 21);
             btnMenuNoise.TabIndex = 171;
@@ -4447,7 +4492,7 @@ namespace Chromaseed
             btnMenuRadial.FlatStyle = FlatStyle.Flat;
             btnMenuRadial.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuRadial.ForeColor = Color.DarkGray;
-            btnMenuRadial.Location = new Point(0, 135);
+            btnMenuRadial.Location = new Point(0, 132);
             btnMenuRadial.Name = "btnMenuRadial";
             btnMenuRadial.Size = new Size(100, 21);
             btnMenuRadial.TabIndex = 170;
@@ -4468,7 +4513,7 @@ namespace Chromaseed
             btnMenuSpiral.FlatStyle = FlatStyle.Flat;
             btnMenuSpiral.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuSpiral.ForeColor = Color.DarkGray;
-            btnMenuSpiral.Location = new Point(0, 109);
+            btnMenuSpiral.Location = new Point(0, 106);
             btnMenuSpiral.Name = "btnMenuSpiral";
             btnMenuSpiral.Size = new Size(100, 21);
             btnMenuSpiral.TabIndex = 169;
@@ -4489,7 +4534,7 @@ namespace Chromaseed
             btnMenuMandelbrot.FlatStyle = FlatStyle.Flat;
             btnMenuMandelbrot.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuMandelbrot.ForeColor = Color.DarkGray;
-            btnMenuMandelbrot.Location = new Point(0, 82);
+            btnMenuMandelbrot.Location = new Point(0, 80);
             btnMenuMandelbrot.Name = "btnMenuMandelbrot";
             btnMenuMandelbrot.Size = new Size(100, 21);
             btnMenuMandelbrot.TabIndex = 168;
@@ -4510,7 +4555,7 @@ namespace Chromaseed
             btnMenuSquares.FlatStyle = FlatStyle.Flat;
             btnMenuSquares.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuSquares.ForeColor = Color.DarkGray;
-            btnMenuSquares.Location = new Point(0, 55);
+            btnMenuSquares.Location = new Point(0, 54);
             btnMenuSquares.Name = "btnMenuSquares";
             btnMenuSquares.Size = new Size(100, 21);
             btnMenuSquares.TabIndex = 167;
@@ -6429,6 +6474,8 @@ namespace Chromaseed
             // panelSquiggleRight
             // 
             panelSquiggleRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelSquiggleRight.Controls.Add(btnDistortionRefresh);
+            panelSquiggleRight.Controls.Add(panel15);
             panelSquiggleRight.Controls.Add(label32);
             panelSquiggleRight.Controls.Add(numericUpDownDistortion);
             panelSquiggleRight.Location = new Point(665, 3);
@@ -6436,12 +6483,123 @@ namespace Chromaseed
             panelSquiggleRight.Size = new Size(124, 574);
             panelSquiggleRight.TabIndex = 82;
             // 
+            // btnDistortionRefresh
+            // 
+            btnDistortionRefresh.BackColor = Color.Transparent;
+            btnDistortionRefresh.BackgroundColor = Color.Transparent;
+            btnDistortionRefresh.BorderColor = Color.DarkGray;
+            btnDistortionRefresh.BorderRadius = 5;
+            btnDistortionRefresh.BorderSize = 1;
+            btnDistortionRefresh.FlatAppearance.BorderSize = 0;
+            btnDistortionRefresh.FlatStyle = FlatStyle.Flat;
+            btnDistortionRefresh.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDistortionRefresh.ForeColor = Color.DarkGray;
+            btnDistortionRefresh.Location = new Point(53, 149);
+            btnDistortionRefresh.Name = "btnDistortionRefresh";
+            btnDistortionRefresh.Size = new Size(59, 21);
+            btnDistortionRefresh.TabIndex = 140;
+            btnDistortionRefresh.Text = "APPLY";
+            btnDistortionRefresh.TextColor = Color.DarkGray;
+            btnDistortionRefresh.UseVisualStyleBackColor = false;
+            btnDistortionRefresh.Click += BtnDistortionRefresh_Click;
+            // 
+            // panel15
+            // 
+            panel15.Controls.Add(btnDistortionSortByHue);
+            panel15.Controls.Add(btnDistortionSortByRGBSum);
+            panel15.Controls.Add(btnDistortionSortBySaturation);
+            panel15.Controls.Add(btnDistortionSortByBrightness);
+            panel15.Location = new Point(6, 0);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(114, 123);
+            panel15.TabIndex = 139;
+            // 
+            // btnDistortionSortByHue
+            // 
+            btnDistortionSortByHue.BackColor = Color.Transparent;
+            btnDistortionSortByHue.BackgroundColor = Color.Transparent;
+            btnDistortionSortByHue.BorderColor = Color.DarkGray;
+            btnDistortionSortByHue.BorderRadius = 5;
+            btnDistortionSortByHue.BorderSize = 1;
+            btnDistortionSortByHue.FlatAppearance.BorderSize = 0;
+            btnDistortionSortByHue.FlatStyle = FlatStyle.Flat;
+            btnDistortionSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDistortionSortByHue.ForeColor = Color.DarkGray;
+            btnDistortionSortByHue.Location = new Point(6, 9);
+            btnDistortionSortByHue.Name = "btnDistortionSortByHue";
+            btnDistortionSortByHue.Size = new Size(100, 21);
+            btnDistortionSortByHue.TabIndex = 132;
+            btnDistortionSortByHue.Text = "BY HUE";
+            btnDistortionSortByHue.TextColor = Color.DarkGray;
+            btnDistortionSortByHue.UseVisualStyleBackColor = false;
+            btnDistortionSortByHue.Click += BtnDistortionSortByHue_Click;
+            // 
+            // btnDistortionSortByRGBSum
+            // 
+            btnDistortionSortByRGBSum.BackColor = Color.Transparent;
+            btnDistortionSortByRGBSum.BackgroundColor = Color.Transparent;
+            btnDistortionSortByRGBSum.BorderColor = Color.DarkGray;
+            btnDistortionSortByRGBSum.BorderRadius = 5;
+            btnDistortionSortByRGBSum.BorderSize = 1;
+            btnDistortionSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnDistortionSortByRGBSum.FlatStyle = FlatStyle.Flat;
+            btnDistortionSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDistortionSortByRGBSum.ForeColor = Color.DarkGray;
+            btnDistortionSortByRGBSum.Location = new Point(6, 96);
+            btnDistortionSortByRGBSum.Name = "btnDistortionSortByRGBSum";
+            btnDistortionSortByRGBSum.Size = new Size(100, 21);
+            btnDistortionSortByRGBSum.TabIndex = 135;
+            btnDistortionSortByRGBSum.Text = "BY RGB SUM";
+            btnDistortionSortByRGBSum.TextColor = Color.DarkGray;
+            btnDistortionSortByRGBSum.UseVisualStyleBackColor = false;
+            btnDistortionSortByRGBSum.Click += BtnDistortionSortByRGBSum_Click;
+            // 
+            // btnDistortionSortBySaturation
+            // 
+            btnDistortionSortBySaturation.BackColor = Color.Transparent;
+            btnDistortionSortBySaturation.BackgroundColor = Color.Transparent;
+            btnDistortionSortBySaturation.BorderColor = Color.DarkGray;
+            btnDistortionSortBySaturation.BorderRadius = 5;
+            btnDistortionSortBySaturation.BorderSize = 1;
+            btnDistortionSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnDistortionSortBySaturation.FlatStyle = FlatStyle.Flat;
+            btnDistortionSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDistortionSortBySaturation.ForeColor = Color.DarkGray;
+            btnDistortionSortBySaturation.Location = new Point(6, 38);
+            btnDistortionSortBySaturation.Name = "btnDistortionSortBySaturation";
+            btnDistortionSortBySaturation.Size = new Size(100, 21);
+            btnDistortionSortBySaturation.TabIndex = 133;
+            btnDistortionSortBySaturation.Text = "BY SATURATION";
+            btnDistortionSortBySaturation.TextColor = Color.DarkGray;
+            btnDistortionSortBySaturation.UseVisualStyleBackColor = false;
+            btnDistortionSortBySaturation.Click += BtnDistortionSortBySaturation_Click;
+            // 
+            // btnDistortionSortByBrightness
+            // 
+            btnDistortionSortByBrightness.BackColor = Color.Transparent;
+            btnDistortionSortByBrightness.BackgroundColor = Color.Transparent;
+            btnDistortionSortByBrightness.BorderColor = Color.DarkGray;
+            btnDistortionSortByBrightness.BorderRadius = 5;
+            btnDistortionSortByBrightness.BorderSize = 1;
+            btnDistortionSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnDistortionSortByBrightness.FlatStyle = FlatStyle.Flat;
+            btnDistortionSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDistortionSortByBrightness.ForeColor = Color.DarkGray;
+            btnDistortionSortByBrightness.Location = new Point(6, 67);
+            btnDistortionSortByBrightness.Name = "btnDistortionSortByBrightness";
+            btnDistortionSortByBrightness.Size = new Size(100, 21);
+            btnDistortionSortByBrightness.TabIndex = 134;
+            btnDistortionSortByBrightness.Text = "BY BRIGHTNESS";
+            btnDistortionSortByBrightness.TextColor = Color.DarkGray;
+            btnDistortionSortByBrightness.UseVisualStyleBackColor = false;
+            btnDistortionSortByBrightness.Click += BtnDistortionSortByBrightness_Click;
+            // 
             // label32
             // 
             label32.AutoSize = true;
             label32.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label32.ForeColor = Color.DarkGray;
-            label32.Location = new Point(7, 118);
+            label32.Location = new Point(7, 130);
             label32.Name = "label32";
             label32.Size = new Size(73, 15);
             label32.TabIndex = 138;
@@ -6451,7 +6609,7 @@ namespace Chromaseed
             // 
             numericUpDownDistortion.BackColor = Color.FromArgb(30, 30, 30);
             numericUpDownDistortion.ForeColor = Color.DarkGray;
-            numericUpDownDistortion.Location = new Point(8, 137);
+            numericUpDownDistortion.Location = new Point(8, 149);
             numericUpDownDistortion.Maximum = new decimal(new int[] { 150, 0, 0, 0 });
             numericUpDownDistortion.Minimum = new decimal(new int[] { 5, 0, 0, 0 });
             numericUpDownDistortion.Name = "numericUpDownDistortion";
@@ -6506,12 +6664,33 @@ namespace Chromaseed
             // panelBrinkRight
             // 
             panelBrinkRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelBrinkRight.Controls.Add(btnBrinkRefreshText);
             panelBrinkRight.Controls.Add(label29);
             panelBrinkRight.Controls.Add(textBoxBrink);
             panelBrinkRight.Location = new Point(665, 3);
             panelBrinkRight.Name = "panelBrinkRight";
             panelBrinkRight.Size = new Size(124, 574);
             panelBrinkRight.TabIndex = 82;
+            // 
+            // btnBrinkRefreshText
+            // 
+            btnBrinkRefreshText.BackColor = Color.Transparent;
+            btnBrinkRefreshText.BackgroundColor = Color.Transparent;
+            btnBrinkRefreshText.BorderColor = Color.DarkGray;
+            btnBrinkRefreshText.BorderRadius = 5;
+            btnBrinkRefreshText.BorderSize = 1;
+            btnBrinkRefreshText.FlatAppearance.BorderSize = 0;
+            btnBrinkRefreshText.FlatStyle = FlatStyle.Flat;
+            btnBrinkRefreshText.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBrinkRefreshText.ForeColor = Color.DarkGray;
+            btnBrinkRefreshText.Location = new Point(12, 114);
+            btnBrinkRefreshText.Name = "btnBrinkRefreshText";
+            btnBrinkRefreshText.Size = new Size(59, 21);
+            btnBrinkRefreshText.TabIndex = 159;
+            btnBrinkRefreshText.Text = "APPLY";
+            btnBrinkRefreshText.TextColor = Color.DarkGray;
+            btnBrinkRefreshText.UseVisualStyleBackColor = false;
+            btnBrinkRefreshText.Click += BtnBrinkRefreshText_Click;
             // 
             // label29
             // 
@@ -6582,12 +6761,33 @@ namespace Chromaseed
             // panelSymbolsRight
             // 
             panelSymbolsRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelSymbolsRight.Controls.Add(btnSymbolSize);
             panelSymbolsRight.Controls.Add(label33);
             panelSymbolsRight.Controls.Add(numericUpDownSymbolSize);
             panelSymbolsRight.Location = new Point(665, 3);
             panelSymbolsRight.Name = "panelSymbolsRight";
             panelSymbolsRight.Size = new Size(124, 574);
             panelSymbolsRight.TabIndex = 82;
+            // 
+            // btnSymbolSize
+            // 
+            btnSymbolSize.BackColor = Color.Transparent;
+            btnSymbolSize.BackgroundColor = Color.Transparent;
+            btnSymbolSize.BorderColor = Color.DarkGray;
+            btnSymbolSize.BorderRadius = 5;
+            btnSymbolSize.BorderSize = 1;
+            btnSymbolSize.FlatAppearance.BorderSize = 0;
+            btnSymbolSize.FlatStyle = FlatStyle.Flat;
+            btnSymbolSize.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSymbolSize.ForeColor = Color.DarkGray;
+            btnSymbolSize.Location = new Point(57, 33);
+            btnSymbolSize.Name = "btnSymbolSize";
+            btnSymbolSize.Size = new Size(59, 21);
+            btnSymbolSize.TabIndex = 160;
+            btnSymbolSize.Text = "APPLY";
+            btnSymbolSize.TextColor = Color.DarkGray;
+            btnSymbolSize.UseVisualStyleBackColor = false;
+            btnSymbolSize.Click += BtnSymbolSize_Click;
             // 
             // label33
             // 
@@ -6658,12 +6858,33 @@ namespace Chromaseed
             // panelTilesRight
             // 
             panelTilesRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelTilesRight.Controls.Add(btnTilesCount);
             panelTilesRight.Controls.Add(label34);
             panelTilesRight.Controls.Add(numericUpDownMosaicTiles);
             panelTilesRight.Location = new Point(665, 3);
             panelTilesRight.Name = "panelTilesRight";
             panelTilesRight.Size = new Size(124, 574);
             panelTilesRight.TabIndex = 82;
+            // 
+            // btnTilesCount
+            // 
+            btnTilesCount.BackColor = Color.Transparent;
+            btnTilesCount.BackgroundColor = Color.Transparent;
+            btnTilesCount.BorderColor = Color.DarkGray;
+            btnTilesCount.BorderRadius = 5;
+            btnTilesCount.BorderSize = 1;
+            btnTilesCount.FlatAppearance.BorderSize = 0;
+            btnTilesCount.FlatStyle = FlatStyle.Flat;
+            btnTilesCount.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTilesCount.ForeColor = Color.DarkGray;
+            btnTilesCount.Location = new Point(57, 28);
+            btnTilesCount.Name = "btnTilesCount";
+            btnTilesCount.Size = new Size(59, 21);
+            btnTilesCount.TabIndex = 161;
+            btnTilesCount.Text = "APPLY";
+            btnTilesCount.TextColor = Color.DarkGray;
+            btnTilesCount.UseVisualStyleBackColor = false;
+            btnTilesCount.Click += BtnTilesCount_Click;
             // 
             // label34
             // 
@@ -6735,10 +6956,102 @@ namespace Chromaseed
             // panelMultibrotRight
             // 
             panelMultibrotRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelMultibrotRight.Controls.Add(panel16);
             panelMultibrotRight.Location = new Point(665, 3);
             panelMultibrotRight.Name = "panelMultibrotRight";
             panelMultibrotRight.Size = new Size(124, 574);
             panelMultibrotRight.TabIndex = 82;
+            // 
+            // panel16
+            // 
+            panel16.Controls.Add(btnMultibrotSortByHue);
+            panel16.Controls.Add(btnMultibrotSortByRGBSum);
+            panel16.Controls.Add(btnMultibrotSortBySaturation);
+            panel16.Controls.Add(btnMultibrotSortByBrightness);
+            panel16.Location = new Point(6, 0);
+            panel16.Name = "panel16";
+            panel16.Size = new Size(114, 123);
+            panel16.TabIndex = 140;
+            // 
+            // btnMultibrotSortByHue
+            // 
+            btnMultibrotSortByHue.BackColor = Color.Transparent;
+            btnMultibrotSortByHue.BackgroundColor = Color.Transparent;
+            btnMultibrotSortByHue.BorderColor = Color.DarkGray;
+            btnMultibrotSortByHue.BorderRadius = 5;
+            btnMultibrotSortByHue.BorderSize = 1;
+            btnMultibrotSortByHue.FlatAppearance.BorderSize = 0;
+            btnMultibrotSortByHue.FlatStyle = FlatStyle.Flat;
+            btnMultibrotSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMultibrotSortByHue.ForeColor = Color.DarkGray;
+            btnMultibrotSortByHue.Location = new Point(6, 9);
+            btnMultibrotSortByHue.Name = "btnMultibrotSortByHue";
+            btnMultibrotSortByHue.Size = new Size(100, 21);
+            btnMultibrotSortByHue.TabIndex = 132;
+            btnMultibrotSortByHue.Text = "BY HUE";
+            btnMultibrotSortByHue.TextColor = Color.DarkGray;
+            btnMultibrotSortByHue.UseVisualStyleBackColor = false;
+            btnMultibrotSortByHue.Click += BtnMultibrotSortByHue_Click;
+            // 
+            // btnMultibrotSortByRGBSum
+            // 
+            btnMultibrotSortByRGBSum.BackColor = Color.Transparent;
+            btnMultibrotSortByRGBSum.BackgroundColor = Color.Transparent;
+            btnMultibrotSortByRGBSum.BorderColor = Color.DarkGray;
+            btnMultibrotSortByRGBSum.BorderRadius = 5;
+            btnMultibrotSortByRGBSum.BorderSize = 1;
+            btnMultibrotSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnMultibrotSortByRGBSum.FlatStyle = FlatStyle.Flat;
+            btnMultibrotSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMultibrotSortByRGBSum.ForeColor = Color.DarkGray;
+            btnMultibrotSortByRGBSum.Location = new Point(6, 96);
+            btnMultibrotSortByRGBSum.Name = "btnMultibrotSortByRGBSum";
+            btnMultibrotSortByRGBSum.Size = new Size(100, 21);
+            btnMultibrotSortByRGBSum.TabIndex = 135;
+            btnMultibrotSortByRGBSum.Text = "BY RGB SUM";
+            btnMultibrotSortByRGBSum.TextColor = Color.DarkGray;
+            btnMultibrotSortByRGBSum.UseVisualStyleBackColor = false;
+            btnMultibrotSortByRGBSum.Click += BtnMultibrotSortByRGBSum_Click;
+            // 
+            // btnMultibrotSortBySaturation
+            // 
+            btnMultibrotSortBySaturation.BackColor = Color.Transparent;
+            btnMultibrotSortBySaturation.BackgroundColor = Color.Transparent;
+            btnMultibrotSortBySaturation.BorderColor = Color.DarkGray;
+            btnMultibrotSortBySaturation.BorderRadius = 5;
+            btnMultibrotSortBySaturation.BorderSize = 1;
+            btnMultibrotSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnMultibrotSortBySaturation.FlatStyle = FlatStyle.Flat;
+            btnMultibrotSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMultibrotSortBySaturation.ForeColor = Color.DarkGray;
+            btnMultibrotSortBySaturation.Location = new Point(6, 38);
+            btnMultibrotSortBySaturation.Name = "btnMultibrotSortBySaturation";
+            btnMultibrotSortBySaturation.Size = new Size(100, 21);
+            btnMultibrotSortBySaturation.TabIndex = 133;
+            btnMultibrotSortBySaturation.Text = "BY SATURATION";
+            btnMultibrotSortBySaturation.TextColor = Color.DarkGray;
+            btnMultibrotSortBySaturation.UseVisualStyleBackColor = false;
+            btnMultibrotSortBySaturation.Click += BtnMultibrotSortBySaturation_Click;
+            // 
+            // btnMultibrotSortByBrightness
+            // 
+            btnMultibrotSortByBrightness.BackColor = Color.Transparent;
+            btnMultibrotSortByBrightness.BackgroundColor = Color.Transparent;
+            btnMultibrotSortByBrightness.BorderColor = Color.DarkGray;
+            btnMultibrotSortByBrightness.BorderRadius = 5;
+            btnMultibrotSortByBrightness.BorderSize = 1;
+            btnMultibrotSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnMultibrotSortByBrightness.FlatStyle = FlatStyle.Flat;
+            btnMultibrotSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMultibrotSortByBrightness.ForeColor = Color.DarkGray;
+            btnMultibrotSortByBrightness.Location = new Point(6, 67);
+            btnMultibrotSortByBrightness.Name = "btnMultibrotSortByBrightness";
+            btnMultibrotSortByBrightness.Size = new Size(100, 21);
+            btnMultibrotSortByBrightness.TabIndex = 134;
+            btnMultibrotSortByBrightness.Text = "BY BRIGHTNESS";
+            btnMultibrotSortByBrightness.TextColor = Color.DarkGray;
+            btnMultibrotSortByBrightness.UseVisualStyleBackColor = false;
+            btnMultibrotSortByBrightness.Click += BtnMultibrotSortByBrightness_Click;
             // 
             // panelMultibrotLeft
             // 
@@ -6787,10 +7100,102 @@ namespace Chromaseed
             // panelPhoenixRight
             // 
             panelPhoenixRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelPhoenixRight.Controls.Add(panel17);
             panelPhoenixRight.Location = new Point(665, 3);
             panelPhoenixRight.Name = "panelPhoenixRight";
             panelPhoenixRight.Size = new Size(124, 574);
             panelPhoenixRight.TabIndex = 82;
+            // 
+            // panel17
+            // 
+            panel17.Controls.Add(btnPhoenixSortByHue);
+            panel17.Controls.Add(btnPhoenixSortByRGBSum);
+            panel17.Controls.Add(btnPhoenixSortBySaturation);
+            panel17.Controls.Add(btnPhoenixSortByBrightness);
+            panel17.Location = new Point(6, 0);
+            panel17.Name = "panel17";
+            panel17.Size = new Size(114, 123);
+            panel17.TabIndex = 141;
+            // 
+            // btnPhoenixSortByHue
+            // 
+            btnPhoenixSortByHue.BackColor = Color.Transparent;
+            btnPhoenixSortByHue.BackgroundColor = Color.Transparent;
+            btnPhoenixSortByHue.BorderColor = Color.DarkGray;
+            btnPhoenixSortByHue.BorderRadius = 5;
+            btnPhoenixSortByHue.BorderSize = 1;
+            btnPhoenixSortByHue.FlatAppearance.BorderSize = 0;
+            btnPhoenixSortByHue.FlatStyle = FlatStyle.Flat;
+            btnPhoenixSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPhoenixSortByHue.ForeColor = Color.DarkGray;
+            btnPhoenixSortByHue.Location = new Point(6, 9);
+            btnPhoenixSortByHue.Name = "btnPhoenixSortByHue";
+            btnPhoenixSortByHue.Size = new Size(100, 21);
+            btnPhoenixSortByHue.TabIndex = 132;
+            btnPhoenixSortByHue.Text = "BY HUE";
+            btnPhoenixSortByHue.TextColor = Color.DarkGray;
+            btnPhoenixSortByHue.UseVisualStyleBackColor = false;
+            btnPhoenixSortByHue.Click += BtnPhoenixSortByHue_Click;
+            // 
+            // btnPhoenixSortByRGBSum
+            // 
+            btnPhoenixSortByRGBSum.BackColor = Color.Transparent;
+            btnPhoenixSortByRGBSum.BackgroundColor = Color.Transparent;
+            btnPhoenixSortByRGBSum.BorderColor = Color.DarkGray;
+            btnPhoenixSortByRGBSum.BorderRadius = 5;
+            btnPhoenixSortByRGBSum.BorderSize = 1;
+            btnPhoenixSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnPhoenixSortByRGBSum.FlatStyle = FlatStyle.Flat;
+            btnPhoenixSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPhoenixSortByRGBSum.ForeColor = Color.DarkGray;
+            btnPhoenixSortByRGBSum.Location = new Point(6, 96);
+            btnPhoenixSortByRGBSum.Name = "btnPhoenixSortByRGBSum";
+            btnPhoenixSortByRGBSum.Size = new Size(100, 21);
+            btnPhoenixSortByRGBSum.TabIndex = 135;
+            btnPhoenixSortByRGBSum.Text = "BY RGB SUM";
+            btnPhoenixSortByRGBSum.TextColor = Color.DarkGray;
+            btnPhoenixSortByRGBSum.UseVisualStyleBackColor = false;
+            btnPhoenixSortByRGBSum.Click += BtnPhoenixSortByRGBSum_Click;
+            // 
+            // btnPhoenixSortBySaturation
+            // 
+            btnPhoenixSortBySaturation.BackColor = Color.Transparent;
+            btnPhoenixSortBySaturation.BackgroundColor = Color.Transparent;
+            btnPhoenixSortBySaturation.BorderColor = Color.DarkGray;
+            btnPhoenixSortBySaturation.BorderRadius = 5;
+            btnPhoenixSortBySaturation.BorderSize = 1;
+            btnPhoenixSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnPhoenixSortBySaturation.FlatStyle = FlatStyle.Flat;
+            btnPhoenixSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPhoenixSortBySaturation.ForeColor = Color.DarkGray;
+            btnPhoenixSortBySaturation.Location = new Point(6, 38);
+            btnPhoenixSortBySaturation.Name = "btnPhoenixSortBySaturation";
+            btnPhoenixSortBySaturation.Size = new Size(100, 21);
+            btnPhoenixSortBySaturation.TabIndex = 133;
+            btnPhoenixSortBySaturation.Text = "BY SATURATION";
+            btnPhoenixSortBySaturation.TextColor = Color.DarkGray;
+            btnPhoenixSortBySaturation.UseVisualStyleBackColor = false;
+            btnPhoenixSortBySaturation.Click += BtnPhoenixSortBySaturation_Click;
+            // 
+            // btnPhoenixSortByBrightness
+            // 
+            btnPhoenixSortByBrightness.BackColor = Color.Transparent;
+            btnPhoenixSortByBrightness.BackgroundColor = Color.Transparent;
+            btnPhoenixSortByBrightness.BorderColor = Color.DarkGray;
+            btnPhoenixSortByBrightness.BorderRadius = 5;
+            btnPhoenixSortByBrightness.BorderSize = 1;
+            btnPhoenixSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnPhoenixSortByBrightness.FlatStyle = FlatStyle.Flat;
+            btnPhoenixSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPhoenixSortByBrightness.ForeColor = Color.DarkGray;
+            btnPhoenixSortByBrightness.Location = new Point(6, 67);
+            btnPhoenixSortByBrightness.Name = "btnPhoenixSortByBrightness";
+            btnPhoenixSortByBrightness.Size = new Size(100, 21);
+            btnPhoenixSortByBrightness.TabIndex = 134;
+            btnPhoenixSortByBrightness.Text = "BY BRIGHTNESS";
+            btnPhoenixSortByBrightness.TextColor = Color.DarkGray;
+            btnPhoenixSortByBrightness.UseVisualStyleBackColor = false;
+            btnPhoenixSortByBrightness.Click += BtnPhoenixSortByBrightness_Click;
             // 
             // panelPhoenixLeft
             // 
@@ -6839,10 +7244,102 @@ namespace Chromaseed
             // panelTricornRight
             // 
             panelTricornRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelTricornRight.Controls.Add(panel18);
             panelTricornRight.Location = new Point(665, 3);
             panelTricornRight.Name = "panelTricornRight";
             panelTricornRight.Size = new Size(124, 574);
             panelTricornRight.TabIndex = 82;
+            // 
+            // panel18
+            // 
+            panel18.Controls.Add(btnTricornSortByHue);
+            panel18.Controls.Add(btnTricornSortByRGBSum);
+            panel18.Controls.Add(btnTricornSortBySaturation);
+            panel18.Controls.Add(btnTricornSortByBrightness);
+            panel18.Location = new Point(6, 0);
+            panel18.Name = "panel18";
+            panel18.Size = new Size(114, 123);
+            panel18.TabIndex = 142;
+            // 
+            // btnTricornSortByHue
+            // 
+            btnTricornSortByHue.BackColor = Color.Transparent;
+            btnTricornSortByHue.BackgroundColor = Color.Transparent;
+            btnTricornSortByHue.BorderColor = Color.DarkGray;
+            btnTricornSortByHue.BorderRadius = 5;
+            btnTricornSortByHue.BorderSize = 1;
+            btnTricornSortByHue.FlatAppearance.BorderSize = 0;
+            btnTricornSortByHue.FlatStyle = FlatStyle.Flat;
+            btnTricornSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTricornSortByHue.ForeColor = Color.DarkGray;
+            btnTricornSortByHue.Location = new Point(6, 9);
+            btnTricornSortByHue.Name = "btnTricornSortByHue";
+            btnTricornSortByHue.Size = new Size(100, 21);
+            btnTricornSortByHue.TabIndex = 132;
+            btnTricornSortByHue.Text = "BY HUE";
+            btnTricornSortByHue.TextColor = Color.DarkGray;
+            btnTricornSortByHue.UseVisualStyleBackColor = false;
+            btnTricornSortByHue.Click += BtnMenuTricornSortByHue_Click;
+            // 
+            // btnTricornSortByRGBSum
+            // 
+            btnTricornSortByRGBSum.BackColor = Color.Transparent;
+            btnTricornSortByRGBSum.BackgroundColor = Color.Transparent;
+            btnTricornSortByRGBSum.BorderColor = Color.DarkGray;
+            btnTricornSortByRGBSum.BorderRadius = 5;
+            btnTricornSortByRGBSum.BorderSize = 1;
+            btnTricornSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnTricornSortByRGBSum.FlatStyle = FlatStyle.Flat;
+            btnTricornSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTricornSortByRGBSum.ForeColor = Color.DarkGray;
+            btnTricornSortByRGBSum.Location = new Point(6, 96);
+            btnTricornSortByRGBSum.Name = "btnTricornSortByRGBSum";
+            btnTricornSortByRGBSum.Size = new Size(100, 21);
+            btnTricornSortByRGBSum.TabIndex = 135;
+            btnTricornSortByRGBSum.Text = "BY RGB SUM";
+            btnTricornSortByRGBSum.TextColor = Color.DarkGray;
+            btnTricornSortByRGBSum.UseVisualStyleBackColor = false;
+            btnTricornSortByRGBSum.Click += BtnMenuTricornSortByRGBSum_Click;
+            // 
+            // btnTricornSortBySaturation
+            // 
+            btnTricornSortBySaturation.BackColor = Color.Transparent;
+            btnTricornSortBySaturation.BackgroundColor = Color.Transparent;
+            btnTricornSortBySaturation.BorderColor = Color.DarkGray;
+            btnTricornSortBySaturation.BorderRadius = 5;
+            btnTricornSortBySaturation.BorderSize = 1;
+            btnTricornSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnTricornSortBySaturation.FlatStyle = FlatStyle.Flat;
+            btnTricornSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTricornSortBySaturation.ForeColor = Color.DarkGray;
+            btnTricornSortBySaturation.Location = new Point(6, 38);
+            btnTricornSortBySaturation.Name = "btnTricornSortBySaturation";
+            btnTricornSortBySaturation.Size = new Size(100, 21);
+            btnTricornSortBySaturation.TabIndex = 133;
+            btnTricornSortBySaturation.Text = "BY SATURATION";
+            btnTricornSortBySaturation.TextColor = Color.DarkGray;
+            btnTricornSortBySaturation.UseVisualStyleBackColor = false;
+            btnTricornSortBySaturation.Click += BtnMenuTricornSortBySaturation_Click;
+            // 
+            // btnTricornSortByBrightness
+            // 
+            btnTricornSortByBrightness.BackColor = Color.Transparent;
+            btnTricornSortByBrightness.BackgroundColor = Color.Transparent;
+            btnTricornSortByBrightness.BorderColor = Color.DarkGray;
+            btnTricornSortByBrightness.BorderRadius = 5;
+            btnTricornSortByBrightness.BorderSize = 1;
+            btnTricornSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnTricornSortByBrightness.FlatStyle = FlatStyle.Flat;
+            btnTricornSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTricornSortByBrightness.ForeColor = Color.DarkGray;
+            btnTricornSortByBrightness.Location = new Point(6, 67);
+            btnTricornSortByBrightness.Name = "btnTricornSortByBrightness";
+            btnTricornSortByBrightness.Size = new Size(100, 21);
+            btnTricornSortByBrightness.TabIndex = 134;
+            btnTricornSortByBrightness.Text = "BY BRIGHTNESS";
+            btnTricornSortByBrightness.TextColor = Color.DarkGray;
+            btnTricornSortByBrightness.UseVisualStyleBackColor = false;
+            btnTricornSortByBrightness.Click += BtnMenuTricornSortByBrightness_Click;
             // 
             // panelTricornLeft
             // 
@@ -6891,10 +7388,102 @@ namespace Chromaseed
             // panelJuliaRight
             // 
             panelJuliaRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelJuliaRight.Controls.Add(panel19);
             panelJuliaRight.Location = new Point(665, 3);
             panelJuliaRight.Name = "panelJuliaRight";
             panelJuliaRight.Size = new Size(124, 574);
             panelJuliaRight.TabIndex = 82;
+            // 
+            // panel19
+            // 
+            panel19.Controls.Add(btnJuliaSortByHue);
+            panel19.Controls.Add(btnJuliaSortByRGBSum);
+            panel19.Controls.Add(btnJuliaSortBySaturation);
+            panel19.Controls.Add(btnJuliaSortByBrightness);
+            panel19.Location = new Point(6, 0);
+            panel19.Name = "panel19";
+            panel19.Size = new Size(114, 123);
+            panel19.TabIndex = 143;
+            // 
+            // btnJuliaSortByHue
+            // 
+            btnJuliaSortByHue.BackColor = Color.Transparent;
+            btnJuliaSortByHue.BackgroundColor = Color.Transparent;
+            btnJuliaSortByHue.BorderColor = Color.DarkGray;
+            btnJuliaSortByHue.BorderRadius = 5;
+            btnJuliaSortByHue.BorderSize = 1;
+            btnJuliaSortByHue.FlatAppearance.BorderSize = 0;
+            btnJuliaSortByHue.FlatStyle = FlatStyle.Flat;
+            btnJuliaSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnJuliaSortByHue.ForeColor = Color.DarkGray;
+            btnJuliaSortByHue.Location = new Point(6, 9);
+            btnJuliaSortByHue.Name = "btnJuliaSortByHue";
+            btnJuliaSortByHue.Size = new Size(100, 21);
+            btnJuliaSortByHue.TabIndex = 132;
+            btnJuliaSortByHue.Text = "BY HUE";
+            btnJuliaSortByHue.TextColor = Color.DarkGray;
+            btnJuliaSortByHue.UseVisualStyleBackColor = false;
+            btnJuliaSortByHue.Click += BtnJuliaSortByHue_Click;
+            // 
+            // btnJuliaSortByRGBSum
+            // 
+            btnJuliaSortByRGBSum.BackColor = Color.Transparent;
+            btnJuliaSortByRGBSum.BackgroundColor = Color.Transparent;
+            btnJuliaSortByRGBSum.BorderColor = Color.DarkGray;
+            btnJuliaSortByRGBSum.BorderRadius = 5;
+            btnJuliaSortByRGBSum.BorderSize = 1;
+            btnJuliaSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnJuliaSortByRGBSum.FlatStyle = FlatStyle.Flat;
+            btnJuliaSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnJuliaSortByRGBSum.ForeColor = Color.DarkGray;
+            btnJuliaSortByRGBSum.Location = new Point(6, 96);
+            btnJuliaSortByRGBSum.Name = "btnJuliaSortByRGBSum";
+            btnJuliaSortByRGBSum.Size = new Size(100, 21);
+            btnJuliaSortByRGBSum.TabIndex = 135;
+            btnJuliaSortByRGBSum.Text = "BY RGB SUM";
+            btnJuliaSortByRGBSum.TextColor = Color.DarkGray;
+            btnJuliaSortByRGBSum.UseVisualStyleBackColor = false;
+            btnJuliaSortByRGBSum.Click += BtnJuliaSortByRGBSum_Click;
+            // 
+            // btnJuliaSortBySaturation
+            // 
+            btnJuliaSortBySaturation.BackColor = Color.Transparent;
+            btnJuliaSortBySaturation.BackgroundColor = Color.Transparent;
+            btnJuliaSortBySaturation.BorderColor = Color.DarkGray;
+            btnJuliaSortBySaturation.BorderRadius = 5;
+            btnJuliaSortBySaturation.BorderSize = 1;
+            btnJuliaSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnJuliaSortBySaturation.FlatStyle = FlatStyle.Flat;
+            btnJuliaSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnJuliaSortBySaturation.ForeColor = Color.DarkGray;
+            btnJuliaSortBySaturation.Location = new Point(6, 38);
+            btnJuliaSortBySaturation.Name = "btnJuliaSortBySaturation";
+            btnJuliaSortBySaturation.Size = new Size(100, 21);
+            btnJuliaSortBySaturation.TabIndex = 133;
+            btnJuliaSortBySaturation.Text = "BY SATURATION";
+            btnJuliaSortBySaturation.TextColor = Color.DarkGray;
+            btnJuliaSortBySaturation.UseVisualStyleBackColor = false;
+            btnJuliaSortBySaturation.Click += BtnJuliaSortBySaturation_Click;
+            // 
+            // btnJuliaSortByBrightness
+            // 
+            btnJuliaSortByBrightness.BackColor = Color.Transparent;
+            btnJuliaSortByBrightness.BackgroundColor = Color.Transparent;
+            btnJuliaSortByBrightness.BorderColor = Color.DarkGray;
+            btnJuliaSortByBrightness.BorderRadius = 5;
+            btnJuliaSortByBrightness.BorderSize = 1;
+            btnJuliaSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnJuliaSortByBrightness.FlatStyle = FlatStyle.Flat;
+            btnJuliaSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnJuliaSortByBrightness.ForeColor = Color.DarkGray;
+            btnJuliaSortByBrightness.Location = new Point(6, 67);
+            btnJuliaSortByBrightness.Name = "btnJuliaSortByBrightness";
+            btnJuliaSortByBrightness.Size = new Size(100, 21);
+            btnJuliaSortByBrightness.TabIndex = 134;
+            btnJuliaSortByBrightness.Text = "BY BRIGHTNESS";
+            btnJuliaSortByBrightness.TextColor = Color.DarkGray;
+            btnJuliaSortByBrightness.UseVisualStyleBackColor = false;
+            btnJuliaSortByBrightness.Click += BtnJuliaSortByBrightness_Click;
             // 
             // panelJuliaLeft
             // 
@@ -6943,6 +7532,8 @@ namespace Chromaseed
             // panelTextGridRight
             // 
             panelTextGridRight.BackColor = Color.FromArgb(40, 40, 40);
+            panelTextGridRight.Controls.Add(btnTextGridUpdatePhrase);
+            panelTextGridRight.Controls.Add(panel20);
             panelTextGridRight.Controls.Add(label28);
             panelTextGridRight.Controls.Add(textBoxTextGrid);
             panelTextGridRight.Location = new Point(665, 3);
@@ -6950,12 +7541,123 @@ namespace Chromaseed
             panelTextGridRight.Size = new Size(124, 574);
             panelTextGridRight.TabIndex = 82;
             // 
+            // btnTextGridUpdatePhrase
+            // 
+            btnTextGridUpdatePhrase.BackColor = Color.Transparent;
+            btnTextGridUpdatePhrase.BackgroundColor = Color.Transparent;
+            btnTextGridUpdatePhrase.BorderColor = Color.DarkGray;
+            btnTextGridUpdatePhrase.BorderRadius = 5;
+            btnTextGridUpdatePhrase.BorderSize = 1;
+            btnTextGridUpdatePhrase.FlatAppearance.BorderSize = 0;
+            btnTextGridUpdatePhrase.FlatStyle = FlatStyle.Flat;
+            btnTextGridUpdatePhrase.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTextGridUpdatePhrase.ForeColor = Color.DarkGray;
+            btnTextGridUpdatePhrase.Location = new Point(9, 227);
+            btnTextGridUpdatePhrase.Name = "btnTextGridUpdatePhrase";
+            btnTextGridUpdatePhrase.Size = new Size(64, 21);
+            btnTextGridUpdatePhrase.TabIndex = 157;
+            btnTextGridUpdatePhrase.Text = "APPLY";
+            btnTextGridUpdatePhrase.TextColor = Color.DarkGray;
+            btnTextGridUpdatePhrase.UseVisualStyleBackColor = false;
+            btnTextGridUpdatePhrase.Click += BtnTextGridUpdatePhrase_Click;
+            // 
+            // panel20
+            // 
+            panel20.Controls.Add(btnTextGridSortByHue);
+            panel20.Controls.Add(btnTextGridSortByRGBSum);
+            panel20.Controls.Add(btnTextGridSortBySaturation);
+            panel20.Controls.Add(btnTextGridSortByBrightness);
+            panel20.Location = new Point(6, 0);
+            panel20.Name = "panel20";
+            panel20.Size = new Size(114, 123);
+            panel20.TabIndex = 156;
+            // 
+            // btnTextGridSortByHue
+            // 
+            btnTextGridSortByHue.BackColor = Color.Transparent;
+            btnTextGridSortByHue.BackgroundColor = Color.Transparent;
+            btnTextGridSortByHue.BorderColor = Color.DarkGray;
+            btnTextGridSortByHue.BorderRadius = 5;
+            btnTextGridSortByHue.BorderSize = 1;
+            btnTextGridSortByHue.FlatAppearance.BorderSize = 0;
+            btnTextGridSortByHue.FlatStyle = FlatStyle.Flat;
+            btnTextGridSortByHue.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTextGridSortByHue.ForeColor = Color.DarkGray;
+            btnTextGridSortByHue.Location = new Point(6, 9);
+            btnTextGridSortByHue.Name = "btnTextGridSortByHue";
+            btnTextGridSortByHue.Size = new Size(100, 21);
+            btnTextGridSortByHue.TabIndex = 132;
+            btnTextGridSortByHue.Text = "BY HUE";
+            btnTextGridSortByHue.TextColor = Color.DarkGray;
+            btnTextGridSortByHue.UseVisualStyleBackColor = false;
+            btnTextGridSortByHue.Click += BtnTextGridSortByHue_Click;
+            // 
+            // btnTextGridSortByRGBSum
+            // 
+            btnTextGridSortByRGBSum.BackColor = Color.Transparent;
+            btnTextGridSortByRGBSum.BackgroundColor = Color.Transparent;
+            btnTextGridSortByRGBSum.BorderColor = Color.DarkGray;
+            btnTextGridSortByRGBSum.BorderRadius = 5;
+            btnTextGridSortByRGBSum.BorderSize = 1;
+            btnTextGridSortByRGBSum.FlatAppearance.BorderSize = 0;
+            btnTextGridSortByRGBSum.FlatStyle = FlatStyle.Flat;
+            btnTextGridSortByRGBSum.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTextGridSortByRGBSum.ForeColor = Color.DarkGray;
+            btnTextGridSortByRGBSum.Location = new Point(6, 96);
+            btnTextGridSortByRGBSum.Name = "btnTextGridSortByRGBSum";
+            btnTextGridSortByRGBSum.Size = new Size(100, 21);
+            btnTextGridSortByRGBSum.TabIndex = 135;
+            btnTextGridSortByRGBSum.Text = "BY RGB SUM";
+            btnTextGridSortByRGBSum.TextColor = Color.DarkGray;
+            btnTextGridSortByRGBSum.UseVisualStyleBackColor = false;
+            btnTextGridSortByRGBSum.Click += BtnTextGridSortByRGBSum_Click;
+            // 
+            // btnTextGridSortBySaturation
+            // 
+            btnTextGridSortBySaturation.BackColor = Color.Transparent;
+            btnTextGridSortBySaturation.BackgroundColor = Color.Transparent;
+            btnTextGridSortBySaturation.BorderColor = Color.DarkGray;
+            btnTextGridSortBySaturation.BorderRadius = 5;
+            btnTextGridSortBySaturation.BorderSize = 1;
+            btnTextGridSortBySaturation.FlatAppearance.BorderSize = 0;
+            btnTextGridSortBySaturation.FlatStyle = FlatStyle.Flat;
+            btnTextGridSortBySaturation.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTextGridSortBySaturation.ForeColor = Color.DarkGray;
+            btnTextGridSortBySaturation.Location = new Point(6, 38);
+            btnTextGridSortBySaturation.Name = "btnTextGridSortBySaturation";
+            btnTextGridSortBySaturation.Size = new Size(100, 21);
+            btnTextGridSortBySaturation.TabIndex = 133;
+            btnTextGridSortBySaturation.Text = "BY SATURATION";
+            btnTextGridSortBySaturation.TextColor = Color.DarkGray;
+            btnTextGridSortBySaturation.UseVisualStyleBackColor = false;
+            btnTextGridSortBySaturation.Click += BtnTextGridSortBySaturation_Click;
+            // 
+            // btnTextGridSortByBrightness
+            // 
+            btnTextGridSortByBrightness.BackColor = Color.Transparent;
+            btnTextGridSortByBrightness.BackgroundColor = Color.Transparent;
+            btnTextGridSortByBrightness.BorderColor = Color.DarkGray;
+            btnTextGridSortByBrightness.BorderRadius = 5;
+            btnTextGridSortByBrightness.BorderSize = 1;
+            btnTextGridSortByBrightness.FlatAppearance.BorderSize = 0;
+            btnTextGridSortByBrightness.FlatStyle = FlatStyle.Flat;
+            btnTextGridSortByBrightness.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTextGridSortByBrightness.ForeColor = Color.DarkGray;
+            btnTextGridSortByBrightness.Location = new Point(6, 67);
+            btnTextGridSortByBrightness.Name = "btnTextGridSortByBrightness";
+            btnTextGridSortByBrightness.Size = new Size(100, 21);
+            btnTextGridSortByBrightness.TabIndex = 134;
+            btnTextGridSortByBrightness.Text = "BY BRIGHTNESS";
+            btnTextGridSortByBrightness.TextColor = Color.DarkGray;
+            btnTextGridSortByBrightness.UseVisualStyleBackColor = false;
+            btnTextGridSortByBrightness.Click += BtnTextGridSortByBrightness_Click;
+            // 
             // label28
             // 
             label28.AutoSize = true;
             label28.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label28.ForeColor = Color.DarkGray;
-            label28.Location = new Point(7, 123);
+            label28.Location = new Point(7, 131);
             label28.Name = "label28";
             label28.Size = new Size(85, 15);
             label28.TabIndex = 155;
@@ -6966,7 +7668,7 @@ namespace Chromaseed
             textBoxTextGrid.BackColor = Color.FromArgb(30, 30, 30);
             textBoxTextGrid.BorderStyle = BorderStyle.None;
             textBoxTextGrid.ForeColor = Color.DarkGray;
-            textBoxTextGrid.Location = new Point(9, 142);
+            textBoxTextGrid.Location = new Point(9, 148);
             textBoxTextGrid.Multiline = true;
             textBoxTextGrid.Name = "textBoxTextGrid";
             textBoxTextGrid.Size = new Size(104, 74);
@@ -7083,7 +7785,7 @@ namespace Chromaseed
             rjButton1.FlatStyle = FlatStyle.Flat;
             rjButton1.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             rjButton1.ForeColor = Color.DarkGray;
-            rjButton1.Location = new Point(807, 12);
+            rjButton1.Location = new Point(814, 12);
             rjButton1.Name = "rjButton1";
             rjButton1.Size = new Size(60, 21);
             rjButton1.TabIndex = 131;
@@ -7103,7 +7805,7 @@ namespace Chromaseed
             btnAbout.FlatStyle = FlatStyle.Flat;
             btnAbout.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnAbout.ForeColor = Color.DarkGray;
-            btnAbout.Location = new Point(873, 12);
+            btnAbout.Location = new Point(880, 12);
             btnAbout.Name = "btnAbout";
             btnAbout.Size = new Size(21, 21);
             btnAbout.TabIndex = 157;
@@ -7123,7 +7825,7 @@ namespace Chromaseed
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnExit.ForeColor = Color.DarkGray;
-            btnExit.Location = new Point(900, 12);
+            btnExit.Location = new Point(907, 12);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(21, 21);
             btnExit.TabIndex = 158;
@@ -7143,7 +7845,7 @@ namespace Chromaseed
             btnDummyButton.FlatStyle = FlatStyle.Flat;
             btnDummyButton.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnDummyButton.ForeColor = Color.DarkGray;
-            btnDummyButton.Location = new Point(741, 12);
+            btnDummyButton.Location = new Point(748, 12);
             btnDummyButton.Name = "btnDummyButton";
             btnDummyButton.Size = new Size(60, 21);
             btnDummyButton.TabIndex = 159;
@@ -7160,6 +7862,15 @@ namespace Chromaseed
             BackColor = Color.FromArgb(30, 30, 30);
             CancelButton = btnExit;
             ClientSize = new Size(940, 689);
+            Controls.Add(panelPatternTextGrid);
+            Controls.Add(panelPatternJulia);
+            Controls.Add(panelPatternTricorn);
+            Controls.Add(panelPatternPhoenix);
+            Controls.Add(panelPatternMultibrot);
+            Controls.Add(panelPatternSquiggle);
+            Controls.Add(panelPatternTiles);
+            Controls.Add(panelPatternSymbols);
+            Controls.Add(panelPatternBrink);
             Controls.Add(panelPatternHexagons);
             Controls.Add(panelPatternCircles);
             Controls.Add(panelPatternNoise);
@@ -7176,15 +7887,6 @@ namespace Chromaseed
             Controls.Add(btnAbout);
             Controls.Add(rjButton1);
             Controls.Add(lblErrorMessage);
-            Controls.Add(panelPatternTiles);
-            Controls.Add(panelPatternSymbols);
-            Controls.Add(panelPatternSquiggle);
-            Controls.Add(panelPatternJulia);
-            Controls.Add(panelPatternBrink);
-            Controls.Add(panelPatternTextGrid);
-            Controls.Add(panelPatternTricorn);
-            Controls.Add(panelPatternPhoenix);
-            Controls.Add(panelPatternMultibrot);
             Controls.Add(panelRGBLabels);
             Controls.Add(panelHexLabels);
             Controls.Add(panelMenu);
@@ -7250,6 +7952,7 @@ namespace Chromaseed
             panelPatternSquiggle.ResumeLayout(false);
             panelSquiggleRight.ResumeLayout(false);
             panelSquiggleRight.PerformLayout();
+            panel15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)numericUpDownDistortion).EndInit();
             panelSquiggleLeft.ResumeLayout(false);
             panelPatternBrink.ResumeLayout(false);
@@ -7267,16 +7970,25 @@ namespace Chromaseed
             ((System.ComponentModel.ISupportInitialize)numericUpDownMosaicTiles).EndInit();
             panelTilesLeft.ResumeLayout(false);
             panelPatternMultibrot.ResumeLayout(false);
+            panelMultibrotRight.ResumeLayout(false);
+            panel16.ResumeLayout(false);
             panelMultibrotLeft.ResumeLayout(false);
             panelPatternPhoenix.ResumeLayout(false);
+            panelPhoenixRight.ResumeLayout(false);
+            panel17.ResumeLayout(false);
             panelPhoenixLeft.ResumeLayout(false);
             panelPatternTricorn.ResumeLayout(false);
+            panelTricornRight.ResumeLayout(false);
+            panel18.ResumeLayout(false);
             panelTricornLeft.ResumeLayout(false);
             panelPatternJulia.ResumeLayout(false);
+            panelJuliaRight.ResumeLayout(false);
+            panel19.ResumeLayout(false);
             panelJuliaLeft.ResumeLayout(false);
             panelPatternTextGrid.ResumeLayout(false);
             panelTextGridRight.ResumeLayout(false);
             panelTextGridRight.PerformLayout();
+            panel20.ResumeLayout(false);
             panelTextGridLeft.ResumeLayout(false);
             panelHelp.ResumeLayout(false);
             panelDocsContainer.ResumeLayout(false);
@@ -7830,6 +8542,36 @@ namespace Chromaseed
         private CustomControls.RJControls.RJButton btnNoiseSize;
         //private CustomControls.RJControls.RJButton btnHexagonComplexity;
         private Panel panel14;
+        //private CustomControls.RJControls.RJButton btnDistortionRefresh;
+        private Panel panel15;
+        private CustomControls.RJControls.RJButton btnDistortionSortByHue;
+        private CustomControls.RJControls.RJButton btnDistortionSortByRGBSum;
+        private CustomControls.RJControls.RJButton btnDistortionSortBySaturation;
+        private CustomControls.RJControls.RJButton btnDistortionSortByBrightness;
+        private Panel panel16;
+        private Panel panel17;
+        private Panel panel18;
+        private CustomControls.RJControls.RJButton btnTricornSortByHue;
+        private CustomControls.RJControls.RJButton btnTricornSortByRGBSum;
+        private CustomControls.RJControls.RJButton btnTricornSortBySaturation;
+        private CustomControls.RJControls.RJButton btnTricornSortByBrightness;
+        private Panel panel19;
+        private CustomControls.RJControls.RJButton btnTextGridUpdatePhrase;
+        private Panel panel20;
+        //private CustomControls.RJControls.RJButton btnTextGridSortByRGBSum;
+        //private CustomControls.RJControls.RJButton btnTextGridSortBySaturation;
+        //private CustomControls.RJControls.RJButton btnTextGridSortByBrightness;
+        //private CustomControls.RJControls.RJButton btnPhoenixSortByHue;
+        //private CustomControls.RJControls.RJButton btnPhoenixSortByRGBSum;
+        //private CustomControls.RJControls.RJButton btnPhoenixSortBySaturation;
+        //private CustomControls.RJControls.RJButton btnPhoenixSortByBrightness;
+        //private CustomControls.RJControls.RJButton btnMultibrotSortByHue;
+        //private CustomControls.RJControls.RJButton btnMultibrotSortByRGBSum;
+        //private CustomControls.RJControls.RJButton btnMultibrotSortBySaturation;
+        //private CustomControls.RJControls.RJButton btnMultibrotSortByBrightness;
+        //private CustomControls.RJControls.RJButton btnTilesCount;
+        //private CustomControls.RJControls.RJButton btnSymbolSize;
+        //private CustomControls.RJControls.RJButton btnBrinkRefreshText;
         //private CustomControls.RJControls.RJButton btnHexagonsSortByHue;
         //private CustomControls.RJControls.RJButton btnHexagonsSortByRGBSum;
         //private CustomControls.RJControls.RJButton btnHexagonsSortBySaturation;
