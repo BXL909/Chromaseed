@@ -5710,6 +5710,8 @@ namespace Chromaseed
             btnSaveImage.BorderRadius = 5;
             btnSaveImage.BorderSize = 1;
             btnSaveImage.FlatAppearance.BorderSize = 0;
+            btnSaveImage.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnSaveImage.FlatAppearance.MouseOverBackColor = Color.Black;
             btnSaveImage.FlatStyle = FlatStyle.Flat;
             btnSaveImage.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnSaveImage.ForeColor = Color.DarkGray;
@@ -7929,6 +7931,8 @@ namespace Chromaseed
             btnDismissDocs.BorderRadius = 5;
             btnDismissDocs.BorderSize = 1;
             btnDismissDocs.FlatAppearance.BorderSize = 0;
+            btnDismissDocs.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnDismissDocs.FlatAppearance.MouseOverBackColor = Color.Black;
             btnDismissDocs.FlatStyle = FlatStyle.Flat;
             btnDismissDocs.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             btnDismissDocs.ForeColor = Color.DarkGray;
@@ -8061,6 +8065,7 @@ namespace Chromaseed
             BackColor = Color.FromArgb(30, 30, 30);
             CancelButton = btnExit;
             ClientSize = new Size(940, 689);
+            Controls.Add(panelHelp);
             Controls.Add(panelPatternTricorn);
             Controls.Add(panelPatternTiles);
             Controls.Add(panelPatternTextGrid);
@@ -8081,7 +8086,6 @@ namespace Chromaseed
             Controls.Add(panelConverter);
             Controls.Add(lblFileSaved);
             Controls.Add(panelSaveImage);
-            Controls.Add(panelHelp);
             Controls.Add(btnDummyButton);
             Controls.Add(btnExit);
             Controls.Add(btnAbout);
