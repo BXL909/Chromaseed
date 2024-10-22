@@ -3097,8 +3097,9 @@ namespace Chromaseed
                         bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
                         break;
                 }
+                lblFileSaved.Visible = true;
+                timer1.Start();
 
-                MessageBox.Show("Selected area of the form saved successfully!");
             }
         }
 
@@ -3113,19 +3114,19 @@ namespace Chromaseed
         {
             if (checkBoxHex.Checked && checkBoxRGB.Checked)
             {
-                Rectangle captureArea = new(135, 82, 640, 568);
+                Rectangle captureArea = new(135, 94, 645, 570);
                 SaveAreaAsImage(captureArea);
             }
 
             if (!checkBoxHex.Checked && !checkBoxRGB.Checked)
             {
-                Rectangle captureArea = new(205, 82, 570, 568);
+                Rectangle captureArea = new(209, 94, 574, 570);
                 SaveAreaAsImage(captureArea);
             }
 
             if (checkBoxHex.Checked && !checkBoxRGB.Checked)
             {
-                Rectangle captureArea = new(135, 82, 640, 568);
+                Rectangle captureArea = new(135, 94, 645, 570);
                 panelRGBLabels.Visible = false;
                 SaveAreaAsImage(captureArea);
                 panelRGBLabels.Visible = true;
@@ -3133,7 +3134,7 @@ namespace Chromaseed
 
             if (!checkBoxHex.Checked && checkBoxRGB.Checked)
             {
-                Rectangle captureArea = new(135, 82, 640, 568);
+                Rectangle captureArea = new(135, 94, 645, 570);
                 panelHexLabels.Visible = false;
                 SaveAreaAsImage(captureArea);
                 panelHexLabels.Visible = true;
@@ -3376,5 +3377,10 @@ namespace Chromaseed
 
         #endregion
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblFileSaved.Visible = false;
+            timer1.Stop();
+        }
     }
 }

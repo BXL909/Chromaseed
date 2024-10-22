@@ -561,6 +561,8 @@ namespace Chromaseed
             btnAbout = new CustomControls.RJControls.RJButton();
             btnExit = new CustomControls.RJControls.RJButton();
             btnDummyButton = new CustomControls.RJControls.RJButton();
+            lblFileSaved = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             panelSeedWords.SuspendLayout();
             panelSuggestionBoxSurround.SuspendLayout();
             panelColours.SuspendLayout();
@@ -7855,6 +7857,22 @@ namespace Chromaseed
             btnDummyButton.Visible = false;
             btnDummyButton.TextChanged += BtnDummyButton_TextChanged;
             // 
+            // lblFileSaved
+            // 
+            lblFileSaved.AutoSize = true;
+            lblFileSaved.ForeColor = Color.OliveDrab;
+            lblFileSaved.Location = new Point(784, 45);
+            lblFileSaved.Name = "lblFileSaved";
+            lblFileSaved.Size = new Size(148, 15);
+            lblFileSaved.TabIndex = 160;
+            lblFileSaved.Text = "FILE SAVED SUCCESSFULLY";
+            lblFileSaved.Visible = false;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 5000;
+            timer1.Tick += timer1_Tick;
+            // 
             // Chromaseed
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -7862,6 +7880,7 @@ namespace Chromaseed
             BackColor = Color.FromArgb(30, 30, 30);
             CancelButton = btnExit;
             ClientSize = new Size(940, 689);
+            Controls.Add(lblFileSaved);
             Controls.Add(panelPatternTextGrid);
             Controls.Add(panelPatternJulia);
             Controls.Add(panelPatternTricorn);
@@ -8558,6 +8577,8 @@ namespace Chromaseed
         private Panel panel19;
         private CustomControls.RJControls.RJButton btnTextGridUpdatePhrase;
         private Panel panel20;
+        private Label lblFileSaved;
+        private System.Windows.Forms.Timer timer1;
         //private CustomControls.RJControls.RJButton btnTextGridSortByRGBSum;
         //private CustomControls.RJControls.RJButton btnTextGridSortBySaturation;
         //private CustomControls.RJControls.RJButton btnTextGridSortByBrightness;
