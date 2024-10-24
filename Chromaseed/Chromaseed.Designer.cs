@@ -563,6 +563,7 @@ namespace Chromaseed
             btnDummyButton = new CustomControls.RJControls.RJButton();
             lblFileSaved = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
             panelSeedWords.SuspendLayout();
             panelSuggestionBoxSurround.SuspendLayout();
             panelColours.SuspendLayout();
@@ -8056,7 +8057,12 @@ namespace Chromaseed
             // timer1
             // 
             timer1.Interval = 5000;
-            timer1.Tick += timer1_Tick;
+            timer1.Tick += Timer1_Tick;
+            // 
+            // timer2
+            // 
+            timer2.Interval = 6000;
+            // timer2.Tick += timer2_Tick;
             // 
             // Chromaseed
             // 
@@ -8065,6 +8071,7 @@ namespace Chromaseed
             BackColor = Color.FromArgb(30, 30, 30);
             CancelButton = btnExit;
             ClientSize = new Size(940, 689);
+            Controls.Add(panelConverter);
             Controls.Add(panelHelp);
             Controls.Add(panelPatternTricorn);
             Controls.Add(panelPatternTiles);
@@ -8083,7 +8090,6 @@ namespace Chromaseed
             Controls.Add(panelPatternHexagons);
             Controls.Add(panelPatternCircles);
             Controls.Add(panelPatternBrink);
-            Controls.Add(panelConverter);
             Controls.Add(lblFileSaved);
             Controls.Add(panelSaveImage);
             Controls.Add(btnDummyButton);
@@ -8099,6 +8105,7 @@ namespace Chromaseed
             Name = "Chromaseed";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Chromaseed";
+            Load += Chromaseed_Load;
             Paint += Chromaseed_Paint;
             panelSeedWords.ResumeLayout(false);
             panelSeedWords.PerformLayout();
@@ -8466,7 +8473,7 @@ namespace Chromaseed
         private Panel panelStripesLeft;
         private Panel panelStripesRightContainer;
         private Panel panelStripesLeftContainer;
-        private CustomControls.RJControls.RJButton btnMenuSwatches;
+        //private CustomControls.RJControls.RJButton btnMenuSwatches;
         private Panel panelSwatch7;
         private Panel panelSwatch5;
         private Panel panelSwatch3;
@@ -8483,10 +8490,10 @@ namespace Chromaseed
         private Panel panelSwatch8;
         private Panel panelSwatch6;
         private Panel panelSwatch4;
-        private CustomControls.RJControls.RJButton btnSwatchesSortBySaturation;
-        private CustomControls.RJControls.RJButton btnSwatchesSortByRGBSum;
-        private CustomControls.RJControls.RJButton btnSwatchesSortByBrightness;
-        private CustomControls.RJControls.RJButton btnSwatchesSortByHue;
+        //private CustomControls.RJControls.RJButton btnSwatchesSortBySaturation;
+        //private CustomControls.RJControls.RJButton btnSwatchesSortByRGBSum;
+        //private CustomControls.RJControls.RJButton btnSwatchesSortByBrightness;
+        //private CustomControls.RJControls.RJButton btnSwatchesSortByHue;
         private Panel panelImageSwatches;
         private Panel panelPatternCircles;
         private Panel panelCirclesRight;
@@ -8605,13 +8612,13 @@ namespace Chromaseed
         private Panel panelImageHexagons;
         private Panel panelHexagonsRightContainer;
         private Panel panelHexagonLeftContainer;
-        private CustomControls.RJControls.RJButton btnMenuSquiggle;
+        //private CustomControls.RJControls.RJButton btnMenuSquiggle;
         private Panel panelPatternSquiggle;
         private Panel panelSquiggleRight;
-        private CustomControls.RJControls.RJButton btnSquiggleSortBySaturation;
-        private CustomControls.RJControls.RJButton btnSquiggleSortByRGBSum;
-        private CustomControls.RJControls.RJButton btnSquiggleSortByBrightness;
-        private CustomControls.RJControls.RJButton btnSquiggleSortByHue;
+        //private CustomControls.RJControls.RJButton btnSquiggleSortBySaturation;
+        //private CustomControls.RJControls.RJButton btnSquiggleSortByRGBSum;
+        //private CustomControls.RJControls.RJButton btnSquiggleSortByBrightness;
+        //private CustomControls.RJControls.RJButton btnSquiggleSortByHue;
         private Panel panelSquiggleLeft;
         private Panel panelImageSquiggle;
         private Panel panelSquiggleRightContainer;
@@ -8662,10 +8669,10 @@ namespace Chromaseed
         private CustomControls.RJControls.RJButton btnMenuTricorn;
         private Panel panelPatternTricorn;
         private Panel panelTricornRight;
-        private CustomControls.RJControls.RJButton btnMenuTricornSortBySaturation;
-        private CustomControls.RJControls.RJButton btnMenuTricornSortByRGBSum;
-        private CustomControls.RJControls.RJButton btnMenuTricornSortByBrightness;
-        private CustomControls.RJControls.RJButton btnMenuTricornSortByHue;
+        //private CustomControls.RJControls.RJButton btnMenuTricornSortBySaturation;
+        //private CustomControls.RJControls.RJButton btnMenuTricornSortByRGBSum;
+        //private CustomControls.RJControls.RJButton btnMenuTricornSortByBrightness;
+        //private CustomControls.RJControls.RJButton btnMenuTricornSortByHue;
         private Panel panelTricornLeft;
         private Panel panelImageTricorn;
         private Panel panelTricornRightContainer;
@@ -8693,7 +8700,7 @@ namespace Chromaseed
         private Panel panelTextGridRightContainer;
         private Panel panelTextGridLeftContainer;
         private TextBox textBoxTextGrid;
-        private CustomControls.RJControls.RJButton btnTextGridRefreshText;
+    //    private CustomControls.RJControls.RJButton btnTextGridRefreshText;
         private Label label28;
         private Label label29;
         private CustomControls.RJControls.RJButton btnBrinkRefreshText;
@@ -8721,7 +8728,7 @@ namespace Chromaseed
         private Panel panelDocsContainer;
         private Label label27;
         private CustomControls.RJControls.RJButton btnDismissDocs;
-        private CustomControls.RJControls.RJButton btnReadme;
+        //private CustomControls.RJControls.RJButton btnReadme;
         
         private Label label35;
         private CustomControls.RJControls.RJButton btnConvert;
@@ -8765,6 +8772,7 @@ namespace Chromaseed
         private Panel panel20;
         private Label lblFileSaved;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
         //private CustomControls.RJControls.RJButton btnTextGridSortByRGBSum;
         //private CustomControls.RJControls.RJButton btnTextGridSortBySaturation;
         //private CustomControls.RJControls.RJButton btnTextGridSortByBrightness;

@@ -15,6 +15,7 @@ using CustomControls.RJControls;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 #endregion
 
 namespace Chromaseed
@@ -48,7 +49,6 @@ namespace Chromaseed
         readonly TextBox[] textBoxesColours9to16;
         readonly Control[] panelsSwatchesForColors9To16;
         readonly Control[] patternButtons;
-        readonly Control[] controlsToColor;
 
         #region pattern specific variables
         string phrase = "Chancellor on brink of second bailout for banks";
@@ -78,10 +78,12 @@ namespace Chromaseed
              );
         #endregion
 
+
         public Chromaseed()
         {
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             InitializeComponent();
+            
             this.BackgroundImage = Properties.Resources.BG1;
             activeSeedBox = textBoxSeedWord1;
             #region rounded form
@@ -126,7 +128,6 @@ namespace Chromaseed
             panelsSwatchesForColors9To16 = new Control[] { panelSwatch2, panelSwatch4, panelSwatch6, panelSwatch8, panelSwatch10, panelSwatch12, panelSwatch14, panelSwatch16 };
             patternButtons = new Control[] { btnMenuCircles, btnMenuStripes, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral, btnMenuRadial, btnMenuNoise, btnMenuHexagons, btnMenuDistortion, btnMenuBrink, btnMenuSymbols, btnMenuTiles, btnMenuMultibrot, btnMenuPhoenix, btnMenuTricorn, btnMenuJulia, btnMenuTextGrid };
             //patternButtons = new Control[] { btnMenuCircles, btnMenuSwatches, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral, btnMenuRadial, btnMenuNoise, btnMenuHexagons, btnMenuSquiggle, btnMenuBrink, btnMenuSymbols, btnMenuTiles, btnMenuMultibrot, btnMenuPhoenix, btnMenuTricorn, btnMenuJulia, btnMenuTextGrid };
-            controlsToColor = new Control[] { panelSquaresLeft, panelCirclesLeft, panelStripesLeft, panelRGBLabels, panelHexLabels };
             #endregion
 
             #region load bip39 words and set up controls
@@ -2033,7 +2034,7 @@ namespace Chromaseed
 
         #region *SQUARES
 
-        private void SetupSquares(Panel panel, List<Color> colorList)
+        private static void SetupSquares(Panel panel, List<Color> colorList)
         {
             panel.Controls.Clear();
 
@@ -2109,7 +2110,7 @@ namespace Chromaseed
 
         #region *SPIRAL
 
-        private void SetupSpiral(Panel panel, List<Color> colorList)
+        private static void SetupSpiral(Panel panel, List<Color> colorList)
         {
             panel.Controls.Clear();
 
@@ -2168,7 +2169,7 @@ namespace Chromaseed
 
         #region *MANDELBROT
 
-        private void SetupMandelbrot(Panel panel, List<Color> colorList)
+        private static void SetupMandelbrot(Panel panel, List<Color> colorList)
         {
             panel.Controls.Clear();
 
@@ -2541,7 +2542,7 @@ namespace Chromaseed
 
         #region *BRINK
 
-        private void SetupBrink(Panel panel, string phrase, List<Color> colorList)
+        private static void SetupBrink(Panel panel, string phrase, List<Color> colorList)
         {
             panel.Controls.Clear();
 
@@ -2682,7 +2683,7 @@ namespace Chromaseed
 
         #region *MULTIBROT
 
-        private void SetupMultibrotSet(Panel panel, List<Color> colorList)
+        private static void SetupMultibrotSet(Panel panel, List<Color> colorList)
         {
             panel.Controls.Clear();
 
@@ -2755,7 +2756,7 @@ namespace Chromaseed
 
         #region *PHOENIX
 
-        private void SetupPhoenixFractal(Panel panel, List<Color> colorList)
+        private static void SetupPhoenixFractal(Panel panel, List<Color> colorList)
         {
             panel.Controls.Clear();
 
@@ -2834,7 +2835,7 @@ namespace Chromaseed
 
         #region *TRICORN
 
-        private void SetupTricornFractal(Panel panel, List<Color> colorList)
+        private static void SetupTricornFractal(Panel panel, List<Color> colorList)
         {
             panel.Controls.Clear();
 
@@ -2908,7 +2909,7 @@ namespace Chromaseed
 
         #region *JULIA
 
-        private void SetupJuliaSet(Panel panel, List<Color> colorList, double realPartC, double imaginaryPartC)
+        private static void SetupJuliaSet(Panel panel, List<Color> colorList, double realPartC, double imaginaryPartC)
         {
             panel.Controls.Clear();
 
@@ -2981,7 +2982,7 @@ namespace Chromaseed
 
         #region *TEXTGRID
 
-        private void SetupTextGrid(Panel panel, List<Color> colorList, string text)
+        private static void SetupTextGrid(Panel panel, List<Color> colorList, string text)
         {
             panel.Controls.Clear();
             using Graphics g = panel.CreateGraphics();
@@ -3355,7 +3356,7 @@ namespace Chromaseed
         #endregion
 
         #region error handler
-        private void HandleException(Exception ex, string methodName)
+        private static void HandleException(Exception ex, string methodName)
         {
             string errorMessage;
             errorMessage = $"Error in {methodName}: {ex.Message}";
@@ -3377,10 +3378,53 @@ namespace Chromaseed
 
         #endregion
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             lblFileSaved.Visible = false;
             timer1.Stop();
+        }
+
+        private fullSizeLoadingScreen? FullSizeLoadingScreen;
+        bool fullScreenLoadingScreenVisible;
+        readonly bool wasOnTop = false;
+
+
+        private async void Chromaseed_Load(object sender, EventArgs e)
+        {
+            // Hide the main form initially
+            this.Opacity = 0; 
+
+            #region display loading screen
+
+            FullSizeLoadingScreen = new fullSizeLoadingScreen()
+            {
+                Owner = this,
+                StartPosition = FormStartPosition.CenterScreen,
+                FormBorderStyle = FormBorderStyle.None,
+                Opacity = 1,
+                TopMost = true
+            };
+
+            if (!fullScreenLoadingScreenVisible)
+            {
+                fullScreenLoadingScreenVisible = true;
+
+                FullSizeLoadingScreen.Show();
+                await Task.Delay(5000);
+            }
+
+            #endregion
+
+            FullSizeLoadingScreen.Close();
+            fullScreenLoadingScreenVisible = false;
+
+            this.Opacity = 1; 
+
+            if (wasOnTop)
+            {
+                this.TopMost = true;
+            }
+
         }
     }
 }
