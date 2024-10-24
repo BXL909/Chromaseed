@@ -551,7 +551,6 @@ namespace Chromaseed
             panelImageTextGrid = new Panel();
             panelTextGridRightContainer = new Panel();
             panelTextGridLeftContainer = new Panel();
-            lblErrorMessage = new Label();
             panelHelp = new Panel();
             panelDocsContainer = new Panel();
             panelDocs = new Panel();
@@ -564,6 +563,8 @@ namespace Chromaseed
             lblFileSaved = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
+            lblError = new Label();
+            timerError = new System.Windows.Forms.Timer(components);
             panelSeedWords.SuspendLayout();
             panelSuggestionBoxSurround.SuspendLayout();
             panelColours.SuspendLayout();
@@ -7885,17 +7886,6 @@ namespace Chromaseed
             panelTextGridLeftContainer.Size = new Size(651, 576);
             panelTextGridLeftContainer.TabIndex = 124;
             // 
-            // lblErrorMessage
-            // 
-            lblErrorMessage.AutoSize = true;
-            lblErrorMessage.ForeColor = Color.DarkGray;
-            lblErrorMessage.Location = new Point(884, 60);
-            lblErrorMessage.Name = "lblErrorMessage";
-            lblErrorMessage.Size = new Size(44, 15);
-            lblErrorMessage.TabIndex = 155;
-            lblErrorMessage.Text = "label27";
-            lblErrorMessage.Visible = false;
-            // 
             // panelHelp
             // 
             panelHelp.Controls.Add(panelDocsContainer);
@@ -8063,6 +8053,22 @@ namespace Chromaseed
             // 
             timer2.Interval = 6000;
             // 
+            // lblError
+            // 
+            lblError.AutoSize = true;
+            lblError.ForeColor = Color.IndianRed;
+            lblError.Location = new Point(185, 15);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(81, 15);
+            lblError.TabIndex = 161;
+            lblError.Text = "error message";
+            lblError.Visible = false;
+            // 
+            // timerError
+            // 
+            timerError.Interval = 6000;
+            timerError.Tick += timerError_Tick;
+            // 
             // Chromaseed
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -8070,6 +8076,7 @@ namespace Chromaseed
             BackColor = Color.FromArgb(30, 30, 30);
             CancelButton = btnExit;
             ClientSize = new Size(940, 689);
+            Controls.Add(lblError);
             Controls.Add(panelConverter);
             Controls.Add(panelHelp);
             Controls.Add(panelPatternTricorn);
@@ -8095,7 +8102,6 @@ namespace Chromaseed
             Controls.Add(btnExit);
             Controls.Add(btnAbout);
             Controls.Add(rjButton1);
-            Controls.Add(lblErrorMessage);
             Controls.Add(panelRGBLabels);
             Controls.Add(panelHexLabels);
             Controls.Add(panelMenu);
@@ -8724,7 +8730,6 @@ namespace Chromaseed
         private Label label34;
         private CustomControls.RJControls.RJButton btnTilesCount;
         private NumericUpDown numericUpDownMosaicTiles;
-        private Label lblErrorMessage;
         private Panel panelHelp;
         private Panel panelDocs;
         private Panel panelDocsContainer;
@@ -8775,6 +8780,8 @@ namespace Chromaseed
         private Label lblFileSaved;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private Label lblError;
+        private System.Windows.Forms.Timer timerError;
         //private CustomControls.RJControls.RJButton btnTextGridSortByRGBSum;
         //private CustomControls.RJControls.RJButton btnTextGridSortBySaturation;
         //private CustomControls.RJControls.RJButton btnTextGridSortByBrightness;

@@ -1,8 +1,8 @@
 ﻿//!░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 //+++CHROMASEED
 //!● Homepage.......... https://chromaseed.btcdir.org
-//!● Version history... tbc
-//!● Download.......... tbc
+//!● Version history... 1.0
+//!● Download.......... https://chromaseed.btcdir.org/download
 //
 //TODO LIST______________________________________________________________________________________________
 //
@@ -135,7 +135,6 @@ namespace Chromaseed
             panels9to16Colors = new Control[] { panelColor9, panelColor10, panelColor11, panelColor12, panelColor13, panelColor14, panelColor15, panelColor16 };
             panelsSwatchesForColors9To16 = new Control[] { panelSwatch2, panelSwatch4, panelSwatch6, panelSwatch8, panelSwatch10, panelSwatch12, panelSwatch14, panelSwatch16 };
             patternButtons = new Control[] { btnMenuCircles, btnMenuStripes, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral, btnMenuRadial, btnMenuNoise, btnMenuHexagons, btnMenuDistortion, btnMenuBrink, btnMenuSymbols, btnMenuTiles, btnMenuMultibrot, btnMenuPhoenix, btnMenuTricorn, btnMenuJulia, btnMenuTextGrid };
-            //patternButtons = new Control[] { btnMenuCircles, btnMenuSwatches, btnMenuSquares, btnMenuMandelbrot, btnMenuSpiral, btnMenuRadial, btnMenuNoise, btnMenuHexagons, btnMenuSquiggle, btnMenuBrink, btnMenuSymbols, btnMenuTiles, btnMenuMultibrot, btnMenuPhoenix, btnMenuTricorn, btnMenuJulia, btnMenuTextGrid };
             #endregion
 
             #region load bip39 words and set up controls
@@ -161,6 +160,8 @@ namespace Chromaseed
         #region switch between converting from seed to colours or colours to seed
         private void BtnConvert_Click(object sender, EventArgs e)
         {
+            try
+            { 
             if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 #region convert colours to words
@@ -241,6 +242,11 @@ namespace Chromaseed
                 lblColourPointer.Visible = false;
                 #endregion
             }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnConvert_Click");
+            }
         }
         #endregion
 
@@ -249,108 +255,1019 @@ namespace Chromaseed
         #region show or hide seed words
         private void BtnShowWords_Click(object sender, EventArgs e)
         {
-            foreach (TextBox textbox in textBoxesAllSeedWords)
+            try
             {
-                textbox.PasswordChar = '\0';
+                foreach (TextBox textbox in textBoxesAllSeedWords)
+                {
+                    textbox.PasswordChar = '\0';
+                }
+                btnHideWords.Enabled = true;
+                btnShowWords.Enabled = false;
             }
-            btnHideWords.Enabled = true;
-            btnShowWords.Enabled = false;
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnShowWords_Click");
+            }
         }
 
         private void BtnHideWords_Click(object sender, EventArgs e)
         {
+            try
+            { 
             foreach (TextBox textbox in textBoxesAllSeedWords)
             {
                 textbox.PasswordChar = '●';
             }
             btnHideWords.Enabled = false;
             btnShowWords.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnHideWords_Click");
+            }
         }
         #endregion
 
         #region select 12 or 24 word seed phrase
         private void Btn24SeedWords_Click(object sender, EventArgs e)
         {
-            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+            try
+            { 
+                if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+                {
+                    btn24SeedWords.Enabled = false;
+                    btn12SeedWords.Enabled = true;
+                    btn8Colours.Enabled = true;
+                    btn16Colours.Enabled = false;
+
+                    foreach (Control control in buttons9to16Colours)
+                    {
+                        control.Enabled = true;
+                        control.Text = "▔";
+                    }
+
+                    foreach (TextBox textbox in textBoxes13to24SeedWords)
+                    {
+                        textbox.Enabled = true;
+                        textbox.Text = "";
+                    }
+
+                    foreach (Control control in labels13to24SeedWords)
+                    {
+                        control.Enabled = true;
+                    }
+
+                    foreach (Control control in labels13to24WordPositions)
+                    {
+                        control.ForeColor = Color.DimGray;
+                    }
+
+                    foreach (Control control in labels9to16Merge)
+                    {
+                        control.ForeColor = Color.DimGray;
+                    }
+
+                    foreach (Control control in labels9to16ColorDecimal)
+                    {
+                        control.ForeColor = Color.DimGray;
+                    }
+
+                    foreach (Control control in labels9to16ColorHex)
+                    {
+                        control.ForeColor = Color.DimGray;
+                    }
+
+                    foreach (Control control in labels9to16ColorRGB)
+                    {
+                        control.ForeColor = Color.DimGray;
+                    }
+
+                    foreach (Control control in panels13to24SeedWords)
+                    {
+                        control.BackColor = Color.IndianRed;
+                    }
+
+                    foreach (Control control in labelsColourNumbers9to16)
+                    {
+                        control.Enabled = true;
+                    }
+
+                    foreach (TextBox textbox in textBoxesColours9to16)
+                    {
+                        textbox.Enabled = true;
+                    }
+                    LblMerge_TextChanged(sender, e);
+                }
+            }
+            catch (Exception ex)
             {
-                btn24SeedWords.Enabled = false;
-                btn12SeedWords.Enabled = true;
-                btn8Colours.Enabled = true;
-                btn16Colours.Enabled = false;
-
-                foreach (Control control in buttons9to16Colours)
-                {
-                    control.Enabled = true;
-                    control.Text = "▔";
-                }
-
-                foreach (TextBox textbox in textBoxes13to24SeedWords)
-                {
-                    textbox.Enabled = true;
-                    textbox.Text = "";
-                }
-
-                foreach (Control control in labels13to24SeedWords)
-                {
-                    control.Enabled = true;
-                }
-
-                foreach (Control control in labels13to24WordPositions)
-                {
-                    control.ForeColor = Color.DimGray;
-                }
-
-                foreach (Control control in labels9to16Merge)
-                {
-                    control.ForeColor = Color.DimGray;
-                }
-
-                foreach (Control control in labels9to16ColorDecimal)
-                {
-                    control.ForeColor = Color.DimGray;
-                }
-
-                foreach (Control control in labels9to16ColorHex)
-                {
-                    control.ForeColor = Color.DimGray;
-                }
-
-                foreach (Control control in labels9to16ColorRGB)
-                {
-                    control.ForeColor = Color.DimGray;
-                }
-
-                foreach (Control control in panels13to24SeedWords)
-                {
-                    control.BackColor = Color.IndianRed;
-                }
-
-                foreach (Control control in labelsColourNumbers9to16)
-                {
-                    control.Enabled = true;
-                }
-
-                foreach (TextBox textbox in textBoxesColours9to16)
-                {
-                    textbox.Enabled = true;
-                }
-                LblMerge_TextChanged(sender, e);
+                HandleException(ex, "Btn24SeedWords_Click");
             }
         }
 
         private void Btn12SeedWords_Click(object sender, EventArgs e)
         {
-            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+            try
+            { 
+                if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+                {
+                    btn24SeedWords.Enabled = true;
+                    btn12SeedWords.Enabled = false;
+                    btn8Colours.Enabled = false;
+                    btn16Colours.Enabled = true;
+
+                    if (lblSeedPointer.Location.Y > 283)
+                    {
+                        lblSeedPointer.Location = new Point(lblSeedPointer.Location.X, textBoxSeedWord1.Location.Y - 8);
+                    }
+
+                    foreach (TextBox textbox in textBoxes13to24SeedWords)
+                    {
+                        textbox.Enabled = false;
+                        textbox.Text = "";
+                        if (textbox == activeSeedBox)
+                        {
+                            activeSeedBox = textBoxSeedWord1;
+                        }
+                    }
+
+                    foreach (Control control in labels13to24SeedWords)
+                    {
+                        control.Enabled = false;
+                    }
+
+                    foreach (Control control in labels13to24WordPositions)
+                    {
+                        control.ForeColor = Color.Black;
+                        control.Text = "----";
+                    }
+
+                    foreach (Control control in labels9to16Merge)
+                    {
+                        control.ForeColor = Color.Black;
+                        control.Text = "------";
+                    }
+
+                    foreach (Control control in labels9to16ColorDecimal)
+                    {
+                        control.ForeColor = Color.Black;
+                        control.Text = "--------";
+                    }
+
+                    foreach (Control control in labels9to16ColorHex)
+                    {
+                        control.ForeColor = Color.Black;
+                        control.Text = "-------";
+                    }
+
+                    foreach (Control control in labels9to16ColorRGB)
+                    {
+                        control.ForeColor = Color.Black;
+                        control.Text = "---,---,---";
+                    }
+
+                    foreach (Control control in panels13to24SeedWords)
+                    {
+                        control.BackColor = Color.FromArgb(20, 20, 20);
+                    }
+
+                    foreach (Control control in buttons9to16Colours)
+                    {
+                        control.Enabled = false;
+                        control.Text = "";
+                    }
+
+                    foreach (Control control in labelsColourNumbers9to16)
+                    {
+                        control.Enabled = false;
+                    }
+
+                    foreach (TextBox textbox in textBoxesColours9to16)
+                    {
+                        textbox.Enabled = false;
+                    }
+                    LblMerge_TextChanged(sender, e);
+
+                    if (string.Compare(btnDummyButton.Text, "allcoloursset", StringComparison.Ordinal) == 0)
+                    {
+                        btnDummyButton.Text = "";
+                        btnDummyButton.Text = "allcoloursset";
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                btn24SeedWords.Enabled = true;
-                btn12SeedWords.Enabled = false;
+                HandleException(ex, "Btn12SeedWords_Click");
+            }
+        }
+        #endregion
+
+        #region autosuggest bip39 words and validate textboxes
+
+        private void SeedTextBox_Enter(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
+                {
+                    btnDummyButton.Focus();
+                    return;
+                }
+
+                if (sender is TextBox textBox)
+                {
+                    lblSeedPointer.Location = new Point(lblSeedPointer.Location.X, textBox.Location.Y - 8);
+                    activeSeedBox = textBox;
+                    SeedTextBox_TextChanged(textBox, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SeedTextBox_Enter");
+            }
+        }
+
+        private void SuggestionBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Left)
+                {
+                    activeSeedBox.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SuggestionBox_KeyDown");
+            }
+        }
+
+        private void SeedTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+                {
+                    if (sender is TextBox textBox)
+                    {
+                        activeSeedBox = textBox;
+                        string typedText = textBox.Text;
+
+                        if (string.IsNullOrEmpty(typedText)) // textbox is empty - show full bip39 list
+                        {
+                            suggestionBox.Items.Clear();
+                            suggestionBox.Items.AddRange(bip39Words.Values.ToArray());
+                        }
+
+                        // Filter words that start with the typed text
+                        var suggestions = bip39Words.Values.Where(w => w.StartsWith(typedText)).ToList();
+
+                        if (suggestions.Count > 0)
+                        {
+                            suggestionBox.Items.Clear();
+                            suggestionBox.Items.AddRange(suggestions.ToArray());
+                        }
+                        else
+                        {
+                            suggestionBox.Items.Clear();
+                        }
+
+                        #region show red/green indicator next to textbox and reset/show position in bip39 list
+                        if (!bip39Words.ContainsValue(textBox.Text))
+                        {
+                            foreach (Control control in panels1to24SeedWords)
+                            {
+                                if (control.Location.Y == textBox.Location.Y)
+                                {
+                                    control.BackColor = Color.IndianRed;
+                                    break;
+                                }
+                            }
+
+                            int wordPositionInSeedPhrase = 1;
+
+                            foreach (Control control in labelsAllSeedWords)
+                            {
+                                if (control.Location.Y == textBox.Location.Y)
+                                {
+                                    wordPositionInSeedPhrase = Convert.ToInt16(control.Text);
+                                }
+                            }
+
+                            DisplayWordPositionInBIP39List(wordPositionInSeedPhrase, "----");
+                        }
+                        else
+                        {
+                            foreach (Control control in panels1to24SeedWords)
+                            {
+                                if (control.Location.Y == textBox.Location.Y)
+                                {
+                                    control.BackColor = Color.OliveDrab;
+                                    break;
+                                }
+                            }
+
+                            int wordPositionInBIP39List = FindWordNumber(textBox.Text);
+                            int wordPositionInSeedPhrase = 1;
+
+                            foreach (Control control in labelsAllSeedWords)
+                            {
+                                if (control.Location.Y == textBox.Location.Y)
+                                {
+                                    wordPositionInSeedPhrase = Convert.ToInt16(control.Text);
+                                }
+                            }
+
+                            DisplayWordPositionInBIP39List(wordPositionInSeedPhrase, wordPositionInBIP39List.ToString("D4"));
+                        }
+                        #endregion
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SeedTextBox_TextChanged");
+            }
+        }
+
+        private void SeedTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Right) // move control to the bip39 list
+                {
+                    if (suggestionBox.SelectedItems.Count == 0)
+                    {
+                        if (suggestionBox.Items.Count > 0)
+                        {
+                            suggestionBox.SelectedIndex = 0;
+                        }
+                    }
+                    suggestionBox.Focus();
+                    e.Handled = true;
+                }
+
+                if (e.KeyCode == Keys.Left) // move control back to the textbox
+                {
+                    activeSeedBox.Focus();
+                }
+
+                if (e.KeyCode == Keys.Down) // move down the bip39 list
+                {
+                    if (suggestionBox.SelectedIndex < suggestionBox.Items.Count - 1)
+                        suggestionBox.SelectedIndex++;
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.Up) // move up the bip39 list
+                {
+                    if (suggestionBox.SelectedIndex > 0)
+                        suggestionBox.SelectedIndex--;
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab) // select highlighted word
+                {
+                    InsertSelectedSuggestion((TextBox)sender);
+                    e.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SeedTextBox_KeyDown");
+            }
+        }
+
+        private void InsertSelectedSuggestion(TextBox textBox)
+        {
+            try
+            {
+                textBox.Text = suggestionBox.SelectedItem?.ToString() ?? string.Empty;
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "InsertSelectedSuggestion");
+            }
+        }
+
+        private void SuggestionBox_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (activeSeedBox != null)
+                {
+                    InsertSelectedSuggestion(activeSeedBox);
+                    activeSeedBox.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SuggestionBox_Click");
+            }
+        }
+
+        private void SeedTextBox_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sender is TextBox textBox)
+                {
+                    if (!bip39Words.ContainsValue(textBox.Text))
+                    {
+                        //     MessageBox.Show("Invalid word. Please enter a valid BIP-39 word.");
+                        //     textBox.Focus();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SeedTextBox_Leave");
+            }
+        }
+
+        #region if autocomplete suggestion box is visible and something is selected on it, stop tab key from tabbing, and instead use it to select (same behaviour as enter key)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (suggestionBox.Visible && suggestionBox.SelectedItem != null && (keyData == Keys.Tab))
+            {
+                // Insert the suggestion when Tab is pressed
+                var selectedTextBox = activeSeedBox;
+                if (selectedTextBox != null)
+                {
+                    InsertSelectedSuggestion(selectedTextBox);
+                    return true; // Prevent focus change
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        #endregion
+        #endregion
+
+        #region word positions
+
+        #region find word position in bip39 list
+        int FindWordNumber(string word)
+        {
+            // get the index associated with the given word
+            if (bip39Words.ContainsValue(word))
+            {
+                return bip39Words.FirstOrDefault(x => string.Compare(x.Value, word, StringComparison.Ordinal) == 0).Key + 1;
+            }
+
+            return -1;
+        }
+        #endregion
+
+        #region display word position
+        private void DisplayWordPositionInBIP39List(int intPosition, string newText)
+        {
+            try
+            {
+                // Construct the label name
+                string labelName = $"lblWord{intPosition}Position";
+
+                // Find the label by its name
+
+                if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
+                {
+                    label.Text = newText;
+                }
+                else
+                {
+                    MessageBox.Show($"Label '{labelName}' not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "DisplayWordPositionInBIP39List");
+            }
+        }
+        #endregion
+
+        #region merge the word positions
+        private void WordPosition_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+                {
+                    // split into groups of 6 characters for first 12 words
+                    lblMerge1.Text = $"{lblWord1Position.Text}{lblWord2Position.Text[..2]}";
+                    lblMerge2.Text = string.Concat(lblWord2Position.Text.AsSpan(2, 2), lblWord3Position.Text);
+                    lblMerge3.Text = $"{lblWord4Position.Text}{lblWord5Position.Text[..2]}";
+                    lblMerge4.Text = string.Concat(lblWord5Position.Text.AsSpan(2, 2), lblWord6Position.Text);
+                    lblMerge5.Text = $"{lblWord7Position.Text}{lblWord8Position.Text[..2]}";
+                    lblMerge6.Text = string.Concat(lblWord8Position.Text.AsSpan(2, 2), lblWord9Position.Text);
+                    lblMerge7.Text = $"{lblWord10Position.Text}{lblWord11Position.Text[..2]}";
+                    lblMerge8.Text = string.Concat(lblWord11Position.Text.AsSpan(2, 2), lblWord12Position.Text);
+
+                    if (!btn24SeedWords.Enabled) // and the rest if 24 seed words
+                    {
+                        lblMerge9.Text = $"{lblWord13Position.Text}{lblWord14Position.Text[..2]}";
+                        lblMerge10.Text = string.Concat(lblWord14Position.Text.AsSpan(2, 2), lblWord15Position.Text);
+                        lblMerge11.Text = $"{lblWord16Position.Text}{lblWord17Position.Text[..2]}";
+                        lblMerge12.Text = string.Concat(lblWord17Position.Text.AsSpan(2, 2), lblWord18Position.Text);
+                        lblMerge13.Text = $"{lblWord19Position.Text}{lblWord20Position.Text[..2]}";
+                        lblMerge14.Text = string.Concat(lblWord20Position.Text.AsSpan(2, 2), lblWord21Position.Text);
+                        lblMerge15.Text = $"{lblWord22Position.Text}{lblWord23Position.Text[..2]}";
+                        lblMerge16.Text = string.Concat(lblWord23Position.Text.AsSpan(2, 2), lblWord24Position.Text);
+                    }
+                }
+                else
+                {
+                    int wordCount = 12;
+
+                    if (!btn16Colours.Enabled)
+                    {
+                        wordCount = 24;
+                    }
+                    // Loop through the labels and textboxes
+                    for (int i = 1; i <= wordCount; i++)
+                    {
+                        // Find the corresponding label (lblWord1Position through lblWord24Position)
+                        if (this.Controls.Find($"lblWord{i}Position", true).FirstOrDefault() is Label wordPositionLabel)
+                        {
+                            // Find the corresponding text box (textBoxSeedWord1 through textBoxSeedWord24)
+                            if (this.Controls.Find($"textBoxSeedWord{i}", true).FirstOrDefault() is TextBox seedTextBox)
+                            {
+                                // Get the 4-digit number from the label
+                                if (int.TryParse(wordPositionLabel.Text, out int positionNumber))
+                                {
+                                    // Find the corresponding word in the bip39Words dictionary
+                                    if (bip39Words.TryGetValue(positionNumber - 1, out var bip39Word))
+                                    {
+                                        seedTextBox.Text = bip39Word;
+                                    }
+                                    else
+                                    {
+                                        seedTextBox.Text = "Unknown";
+                                    }
+                                }
+                                else
+                                {
+                                    seedTextBox.Text = "Invalid";
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "WordPosition_TextChanged");
+            }
+        }
+        #endregion
+
+        #region assign sequential numbers
+        private void LblMerge_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+                {
+                    if (!btn12SeedWords.Enabled) // 12 words
+                    {
+                        lblColorDecimal1.Text = $"00{lblMerge1.Text}";
+                        lblColorDecimal2.Text = $"02{lblMerge2.Text}";
+                        lblColorDecimal3.Text = $"04{lblMerge3.Text}";
+                        lblColorDecimal4.Text = $"06{lblMerge4.Text}";
+                        lblColorDecimal5.Text = $"08{lblMerge5.Text}";
+                        lblColorDecimal6.Text = $"10{lblMerge6.Text}";
+                        lblColorDecimal7.Text = $"12{lblMerge7.Text}";
+                        lblColorDecimal8.Text = $"14{lblMerge8.Text}";
+                    }
+                    else // 24 words
+                    {
+                        lblColorDecimal1.Text = $"00{lblMerge1.Text}";
+                        lblColorDecimal2.Text = $"01{lblMerge2.Text}";
+                        lblColorDecimal3.Text = $"02{lblMerge3.Text}";
+                        lblColorDecimal4.Text = $"03{lblMerge4.Text}";
+                        lblColorDecimal5.Text = $"04{lblMerge5.Text}";
+                        lblColorDecimal6.Text = $"05{lblMerge6.Text}";
+                        lblColorDecimal7.Text = $"06{lblMerge7.Text}";
+                        lblColorDecimal8.Text = $"07{lblMerge8.Text}";
+                        lblColorDecimal9.Text = $"08{lblMerge9.Text}";
+                        lblColorDecimal10.Text = $"09{lblMerge10.Text}";
+                        lblColorDecimal11.Text = $"10{lblMerge11.Text}";
+                        lblColorDecimal12.Text = $"11{lblMerge12.Text}";
+                        lblColorDecimal13.Text = $"12{lblMerge13.Text}";
+                        lblColorDecimal14.Text = $"13{lblMerge14.Text}";
+                        lblColorDecimal15.Text = $"14{lblMerge15.Text}";
+                        lblColorDecimal16.Text = $"15{lblMerge16.Text}";
+                    }
+                }
+                else
+                {
+                    int wordCount;
+                    int colourCount;
+                    if (!btn8Colours.Enabled)
+                    {
+                        wordCount = 12;
+                        colourCount = 8;
+                    }
+                    else
+                    {
+                        wordCount = 24;
+                        colourCount = 16;
+                    }
+                    // Combine the text from lblMerge1 through lblMerge16 into one long string
+                    string combinedString = "";
+                    for (int i = 1; i <= colourCount; i++)
+                    {
+                        if (this.Controls.Find($"lblMerge{i}", true).FirstOrDefault() is Label mergeLabel)
+                        {
+                            combinedString += mergeLabel.Text;  // Concatenate the text from each label
+                        }
+                    }
+
+                    // Distribute the combined string into the lblWord1Position through lblWord24Position labels
+                    for (int i = 1; i <= wordCount; i++)
+                    {
+                        if (this.Controls.Find($"lblWord{i}Position", true).FirstOrDefault() is Label wordLabel)
+                        {
+                            // Ensure there are enough characters left in the combined string
+                            if (combinedString.Length >= (i * 4))
+                            {
+                                // Extract 4 characters from the combined string and assign to the label
+                                wordLabel.Text = combinedString.Substring((i - 1) * 4, 4);
+                            }
+                            else
+                            {
+                                // If there are fewer than 4 characters remaining, assign whatever is left
+                                wordLabel.Text = combinedString[((i - 1) * 4)..];
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "LblMerge_TextChanged");
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region colours
+
+        #region display the hex value
+        private void LblColorDecimal_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 1; i <= 16; i++)
+                {
+                    // find the decimal and hex labels
+                    if (this.Controls.Find($"lblColorDecimal{i}", true).FirstOrDefault() is Label decimalLabel && this.Controls.Find($"lblColorHex{i}", true).FirstOrDefault() is Label hexLabel)
+                    {
+                        // Parse the decimal value (assuming it's an 8-digit number)
+                        if (int.TryParse(decimalLabel.Text, out int decimalValue))
+                        {
+                            // Convert to hexadecimal and store in the hex label
+                            hexLabel.Text = $"#{decimalValue:X6}"; // "X8" for 8-character uppercase hex string
+
+                            if (!btnHex.Enabled)
+                            {
+                                if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
+                                {
+                                    textBox.Text = $"#{decimalValue:X6}";
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"TextBox textBoxColor{i} not found.");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            hexLabel.Text = "-------";
+                            if (!btnHex.Enabled)
+                            {
+                                if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
+                                {
+                                    textBox.Text = "#";
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (!btn8Colours.Enabled)
+                {
+                    foreach (TextBox textBox in textBoxesColours9to16)
+                    {
+                        textBox.Text = "";
+                    }
+                }
+
+                if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
+                {
+                    bool allColoursSet = true;
+
+                    int colorCount = 8;
+
+                    foreach (Control control in labels1to8ColorHex)
+                    {
+                        if (string.Compare(control.Text, "-------", StringComparison.Ordinal) == 0)
+                        {
+                            allColoursSet = false;
+                        }
+                    }
+
+                    if (!btn16Colours.Enabled)
+                    {
+                        foreach (Control control in labels9to16ColorHex)
+                        {
+                            if (string.Compare(control.Text, "-------", StringComparison.Ordinal) == 0)
+                            {
+                                allColoursSet = false;
+                            }
+                        }
+
+                        colorCount = 16;
+                    }
+
+                    if (allColoursSet)
+                    {
+                        // Create a list to store the numeric values from lblColorDecimal labels
+                        List<string> decimalNumbers = new();
+
+                        // Loop through the labels and extract the 8-digit number from each
+                        for (int i = 1; i <= colorCount; i++)
+                        {
+                            // Find the label
+                            if (this.Controls.Find($"lblColorDecimal{i}", true).FirstOrDefault() is Label decimalLabel)
+                            {
+                                // Extract the number, and ensure it is left-padded with zeros to 8 digits
+                                if (int.TryParse(decimalLabel.Text, out int number))
+                                {
+                                    string paddedNumber = number.ToString("D8");  // Left-fill with zeros to 8 digits
+                                    decimalNumbers.Add(paddedNumber);
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Invalid number in lblColorDecimal{i}");
+                                    return;
+                                }
+                            }
+                        }
+
+                        // sort the numbers numerically as strings (since they are padded)
+                        decimalNumbers.Sort();
+
+                        // Remove the first two digits from each number and store the 6-digit results
+                        List<string> sixDigitNumbers = decimalNumbers.Select(num => num[2..]).ToList();
+
+                        // Assign the 6-digit numbers to the lblMerge1 through lblMerge16 labels
+                        for (int i = 1; i <= colorCount; i++)
+                        {
+                            if (this.Controls.Find($"lblMerge{i}", true).FirstOrDefault() is Label mergeLabel)
+                            {
+                                mergeLabel.Text = sixDigitNumbers[i - 1]; // Assign the 6-digit number to the label
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "LblColorDecimal_TextChanged");
+            }
+        }
+        #endregion
+
+        #region display rgb value
+        private void LblColorHex_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 1; i <= 16; i++)
+                {
+                    // Find the hex and RGB labels
+                    if (this.Controls.Find($"lblColorHex{i}", true).FirstOrDefault() is Label hexLabel && this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label rgbLabel)
+                    {
+                        string hexValue = hexLabel.Text;
+
+                        // Validate and remove '#' from hex string if necessary
+                        if (!string.IsNullOrEmpty(hexValue) && hexValue.StartsWith("#") && hexValue.Length == 7)
+                        {
+                            // Convert hex to RGB
+                            int r = Convert.ToInt32(hexValue.Substring(1, 2), 16); // Red (chars 1 and 2)
+                            int g = Convert.ToInt32(hexValue.Substring(3, 2), 16); // Green (chars 3 and 4)
+                            int b = Convert.ToInt32(hexValue.Substring(5, 2), 16); // Blue (chars 5 and 6)
+
+                            // Assign the RGB value in the format "R, G, B"
+                            rgbLabel.Text = $"{r:D3},{g:D3},{b:D3}";
+
+                            if (!btnRGB.Enabled)
+                            {
+                                if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
+                                {
+                                    textBox.Text = $"{r:D3},{g:D3},{b:D3}";
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"TextBox textBoxColor{i} not found.");
+                                }
+                            }
+
+                            if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
+                            {
+                                string hex = hexLabel.Text[1..];
+
+                                // Convert hex to decimal
+                                int decimalValue = Convert.ToInt32(hex, 16);
+
+                                string labelName = $"lblColorDecimal{i}";
+
+                                if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
+                                {
+                                    label.Text = decimalValue.ToString("D8");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            rgbLabel.Text = "---,---,---";
+                            if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
+                            {
+                                textBox.Text = "";
+                            }
+                        }
+                    }
+                }
+
+                if (!btn8Colours.Enabled)
+                {
+                    foreach (TextBox textBox in textBoxesColours9to16)
+                    {
+                        textBox.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "LblColorHex_TextChanged");
+            }
+        }
+        #endregion
+
+        #region colour the colour buttons
+        private void LblColorRGB_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 1; i <= 16; i++)
+                {
+                    if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label RGBLabel && this.Controls.Find($"btnColor{i}", true).FirstOrDefault() is RJButton btnColor)
+                    {
+                        if (string.Compare(RGBLabel.Text, "---,---,---", StringComparison.Ordinal) == 0)
+                        {
+                            btnColor.Text = "▔";
+                            btnColor.BackColor = Color.FromArgb(20, 20, 20);
+                        }
+                        else
+                        {
+                            btnColor.Text = "";
+
+                            string colorString = RGBLabel.Text;
+
+                            // Split the string by commas
+                            string[] rgbValues = colorString.Split(',');
+
+                            if (rgbValues.Length == 3)
+                            {
+                                // Parse the RGB values from the string
+                                int r = int.Parse(rgbValues[0]);
+                                int g = int.Parse(rgbValues[1]);
+                                int b = int.Parse(rgbValues[2]);
+
+                                // Set the BackColor using the parsed RGB values
+                                btnColor.BackColor = Color.FromArgb(r, g, b);
+                            }
+                        }
+
+                        if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
+                        {
+                            if (!btnRGB.Enabled)
+                            {
+                                //convert to hex and copy to hex labld
+                                string[] rgbParts = RGBLabel.Text.Split(',');
+
+                                if (rgbParts.Length == 3)
+                                {
+                                    // Parse the R, G, and B values, ensure they are valid integers
+                                    if (int.TryParse(rgbParts[0].Trim(), out int r) && int.TryParse(rgbParts[1].Trim(), out int g) && int.TryParse(rgbParts[2].Trim(), out int b))
+                                    {
+                                        // Ensure the RGB values are in the valid range (0-255)
+                                        if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255)
+                                        {
+                                            // Convert RGB to Hex
+                                            string hexValue = $"#{r:X2}{g:X2}{b:X2}"; // Converts RGB to a Hex string in the format "#RRGGBB"
+
+                                            // Assign the hex value to the corresponding label
+                                            string labelName = $"lblColorHex{i}";
+                                            if (this.Controls.Find(labelName, true).FirstOrDefault() is Label hexLabel)
+                                            {
+                                                hexLabel.Text = hexValue;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // if all colours are populated enabled the patterns
+                int numberOfColours = 8;
+                if (!btn16Colours.Enabled)
+                {
+                    numberOfColours = 16;
+                }
+
+                bool allColoursSet = true;
+
+                for (int i = 1; i <= numberOfColours; i++)
+                {
+                    if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label RGBLabel)
+                    {
+                        if (string.Compare(RGBLabel.Text, "---,---,---", StringComparison.Ordinal) == 0)
+                        {
+                            allColoursSet = false;
+                        }
+                    }
+                }
+
+                if (allColoursSet)
+                {
+                    btnDummyButton.Text = "allcoloursset";
+
+                }
+                else
+                {
+                    btnDummyButton.Text = "";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "LblColorRGB_TextChanged");
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region COLOUR INPUT
+
+        #region switch between rgb and hex
+        private void BtnRGB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnRGB.Enabled = false;
+                btnHex.Enabled = true;
+                LblColorHex_TextChanged(sender, e);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnRGB_Click");
+            }
+        }
+
+        private void BtnHex_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnRGB.Enabled = true;
+                btnHex.Enabled = false;
+                LblColorDecimal_TextChanged(sender, e);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnHex_Click");
+            }
+        }
+        #endregion
+
+        #region switch between 8 and 16 colours
+        private void Btn8Colours_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+                {
+                    return;
+                }
+
                 btn8Colours.Enabled = false;
                 btn16Colours.Enabled = true;
-
-                if (lblSeedPointer.Location.Y > 283)
-                {
-                    lblSeedPointer.Location = new Point(lblSeedPointer.Location.X, textBoxSeedWord1.Location.Y - 8);
-                }
 
                 foreach (TextBox textbox in textBoxes13to24SeedWords)
                 {
@@ -416,8 +1333,13 @@ namespace Chromaseed
                 foreach (TextBox textbox in textBoxesColours9to16)
                 {
                     textbox.Enabled = false;
+                    textbox.Text = "";
                 }
-                LblMerge_TextChanged(sender, e);
+
+                btn24SeedWords.Enabled = true;
+                btn12SeedWords.Enabled = false;
+                btn8Colours.Enabled = false;
+                btn16Colours.Enabled = true;
 
                 if (string.Compare(btnDummyButton.Text, "allcoloursset", StringComparison.Ordinal) == 0)
                 {
@@ -425,976 +1347,221 @@ namespace Chromaseed
                     btnDummyButton.Text = "allcoloursset";
                 }
             }
-        }
-        #endregion
-
-        #region autosuggest bip39 words and validate textboxes
-
-        private void SeedTextBox_Enter(object sender, EventArgs e)
-        {
-            if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
+            catch (Exception ex)
             {
-                btnDummyButton.Focus();
-                return;
-            }
-
-            if (sender is TextBox textBox)
-            {
-                lblSeedPointer.Location = new Point(lblSeedPointer.Location.X, textBox.Location.Y - 8);
-                activeSeedBox = textBox;
-                SeedTextBox_TextChanged(textBox, e);
-            }
-        }
-
-        private void SuggestionBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Left)
-            {
-                activeSeedBox.Focus();
-            }
-        }
-
-        private void SeedTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
-            {
-                if (sender is TextBox textBox)
-                {
-                    activeSeedBox = textBox;
-                    string typedText = textBox.Text;
-
-                    if (string.IsNullOrEmpty(typedText)) // textbox is empty - show full bip39 list
-                    {
-                        suggestionBox.Items.Clear();
-                        suggestionBox.Items.AddRange(bip39Words.Values.ToArray());
-                    }
-
-                    // Filter words that start with the typed text
-                    var suggestions = bip39Words.Values.Where(w => w.StartsWith(typedText)).ToList();
-
-                    if (suggestions.Count > 0)
-                    {
-                        suggestionBox.Items.Clear();
-                        suggestionBox.Items.AddRange(suggestions.ToArray());
-                    }
-                    else
-                    {
-                        suggestionBox.Items.Clear();
-                    }
-
-                    #region show red/green indicator next to textbox and reset/show position in bip39 list
-                    if (!bip39Words.ContainsValue(textBox.Text))
-                    {
-                        foreach (Control control in panels1to24SeedWords)
-                        {
-                            if (control.Location.Y == textBox.Location.Y)
-                            {
-                                control.BackColor = Color.IndianRed;
-                                break;
-                            }
-                        }
-
-                        int wordPositionInSeedPhrase = 1;
-
-                        foreach (Control control in labelsAllSeedWords)
-                        {
-                            if (control.Location.Y == textBox.Location.Y)
-                            {
-                                wordPositionInSeedPhrase = Convert.ToInt16(control.Text);
-                            }
-                        }
-
-                        DisplayWordPositionInBIP39List(wordPositionInSeedPhrase, "----");
-                    }
-                    else
-                    {
-                        foreach (Control control in panels1to24SeedWords)
-                        {
-                            if (control.Location.Y == textBox.Location.Y)
-                            {
-                                control.BackColor = Color.OliveDrab;
-                                break;
-                            }
-                        }
-
-                        int wordPositionInBIP39List = FindWordNumber(textBox.Text);
-                        int wordPositionInSeedPhrase = 1;
-
-                        foreach (Control control in labelsAllSeedWords)
-                        {
-                            if (control.Location.Y == textBox.Location.Y)
-                            {
-                                wordPositionInSeedPhrase = Convert.ToInt16(control.Text);
-                            }
-                        }
-
-                        DisplayWordPositionInBIP39List(wordPositionInSeedPhrase, wordPositionInBIP39List.ToString("D4"));
-                    }
-                    #endregion
-                }
-            }
-        }
-
-        private void SeedTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Right) // move control to the bip39 list
-            {
-                if (suggestionBox.SelectedItems.Count == 0)
-                {
-                    if (suggestionBox.Items.Count > 0)
-                    {
-                        suggestionBox.SelectedIndex = 0;
-                    }
-                }
-                suggestionBox.Focus();
-                e.Handled = true;
-            }
-
-            if (e.KeyCode == Keys.Left) // move control back to the textbox
-            {
-                activeSeedBox.Focus();
-            }
-
-            if (e.KeyCode == Keys.Down) // move down the bip39 list
-            {
-                if (suggestionBox.SelectedIndex < suggestionBox.Items.Count - 1)
-                    suggestionBox.SelectedIndex++;
-                e.Handled = true;
-            }
-            else if (e.KeyCode == Keys.Up) // move up the bip39 list
-            {
-                if (suggestionBox.SelectedIndex > 0)
-                    suggestionBox.SelectedIndex--;
-                e.Handled = true;
-            }
-            else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab) // select highlighted word
-            {
-                InsertSelectedSuggestion((TextBox)sender);
-                e.Handled = true;
-            }
-        }
-
-        private void InsertSelectedSuggestion(TextBox textBox)
-        {
-            textBox.Text = suggestionBox.SelectedItem?.ToString() ?? string.Empty;
-            textBox.SelectionStart = textBox.Text.Length;
-        }
-
-        private void SuggestionBox_Click(object sender, EventArgs e)
-        {
-            if (activeSeedBox != null)
-            {
-                InsertSelectedSuggestion(activeSeedBox);
-                activeSeedBox.Focus();
-            }
-        }
-
-        private void SeedTextBox_Leave(object sender, EventArgs e)
-        {
-            if (sender is TextBox textBox)
-            {
-                if (!bip39Words.ContainsValue(textBox.Text))
-                {
-                    //     MessageBox.Show("Invalid word. Please enter a valid BIP-39 word.");
-                    //     textBox.Focus();
-                }
-            }
-        }
-
-        #region if autocomplete suggestion box is visible and something is selected on it, stop tab key from tabbing, and instead use it to select (same behaviour as enter key)
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (suggestionBox.Visible && suggestionBox.SelectedItem != null && (keyData == Keys.Tab))
-            {
-                // Insert the suggestion when Tab is pressed
-                var selectedTextBox = activeSeedBox;
-                if (selectedTextBox != null)
-                {
-                    InsertSelectedSuggestion(selectedTextBox);
-                    return true; // Prevent focus change
-                }
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-        #endregion
-        #endregion
-
-        #region word positions
-
-        #region find word position in bip39 list
-        int FindWordNumber(string word)
-        {
-            // get the index associated with the given word
-            if (bip39Words.ContainsValue(word))
-            {
-                return bip39Words.FirstOrDefault(x => string.Compare(x.Value, word, StringComparison.Ordinal) == 0).Key + 1;
-            }
-
-            return -1;
-        }
-        #endregion
-
-        #region display word position
-        private void DisplayWordPositionInBIP39List(int intPosition, string newText)
-        {
-            // Construct the label name
-            string labelName = $"lblWord{intPosition}Position";
-
-            // Find the label by its name
-
-            if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
-            {
-                label.Text = newText;
-            }
-            else
-            {
-                MessageBox.Show($"Label '{labelName}' not found.");
-            }
-        }
-        #endregion
-
-        #region merge the word positions
-        private void WordPosition_TextChanged(object sender, EventArgs e)
-        {
-            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
-            {
-                // split into groups of 6 characters for first 12 words
-                lblMerge1.Text = $"{lblWord1Position.Text}{lblWord2Position.Text[..2]}";
-                lblMerge2.Text = string.Concat(lblWord2Position.Text.AsSpan(2, 2), lblWord3Position.Text);
-                lblMerge3.Text = $"{lblWord4Position.Text}{lblWord5Position.Text[..2]}";
-                lblMerge4.Text = string.Concat(lblWord5Position.Text.AsSpan(2, 2), lblWord6Position.Text);
-                lblMerge5.Text = $"{lblWord7Position.Text}{lblWord8Position.Text[..2]}";
-                lblMerge6.Text = string.Concat(lblWord8Position.Text.AsSpan(2, 2), lblWord9Position.Text);
-                lblMerge7.Text = $"{lblWord10Position.Text}{lblWord11Position.Text[..2]}";
-                lblMerge8.Text = string.Concat(lblWord11Position.Text.AsSpan(2, 2), lblWord12Position.Text);
-
-                if (!btn24SeedWords.Enabled) // and the rest if 24 seed words
-                {
-                    lblMerge9.Text = $"{lblWord13Position.Text}{lblWord14Position.Text[..2]}";
-                    lblMerge10.Text = string.Concat(lblWord14Position.Text.AsSpan(2, 2), lblWord15Position.Text);
-                    lblMerge11.Text = $"{lblWord16Position.Text}{lblWord17Position.Text[..2]}";
-                    lblMerge12.Text = string.Concat(lblWord17Position.Text.AsSpan(2, 2), lblWord18Position.Text);
-                    lblMerge13.Text = $"{lblWord19Position.Text}{lblWord20Position.Text[..2]}";
-                    lblMerge14.Text = string.Concat(lblWord20Position.Text.AsSpan(2, 2), lblWord21Position.Text);
-                    lblMerge15.Text = $"{lblWord22Position.Text}{lblWord23Position.Text[..2]}";
-                    lblMerge16.Text = string.Concat(lblWord23Position.Text.AsSpan(2, 2), lblWord24Position.Text);
-                }
-            }
-            else
-            {
-                int wordCount = 12;
-
-                if (!btn16Colours.Enabled)
-                {
-                    wordCount = 24;
-                }
-                // Loop through the labels and textboxes
-                for (int i = 1; i <= wordCount; i++)
-                {
-                    // Find the corresponding label (lblWord1Position through lblWord24Position)
-                    if (this.Controls.Find($"lblWord{i}Position", true).FirstOrDefault() is Label wordPositionLabel)
-                    {
-                        // Find the corresponding text box (textBoxSeedWord1 through textBoxSeedWord24)
-                        if (this.Controls.Find($"textBoxSeedWord{i}", true).FirstOrDefault() is TextBox seedTextBox)
-                        {
-                            // Get the 4-digit number from the label
-                            if (int.TryParse(wordPositionLabel.Text, out int positionNumber))
-                            {
-                                // Find the corresponding word in the bip39Words dictionary
-                                if (bip39Words.TryGetValue(positionNumber - 1, out var bip39Word))
-                                {
-                                    seedTextBox.Text = bip39Word;
-                                }
-                                else
-                                {
-                                    seedTextBox.Text = "Unknown";
-                                }
-                            }
-                            else
-                            {
-                                seedTextBox.Text = "Invalid";
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-        #endregion
-
-        #region assign sequential numbers
-        private void LblMerge_TextChanged(object sender, EventArgs e)
-        {
-            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
-            {
-                if (!btn12SeedWords.Enabled) // 12 words
-                {
-                    lblColorDecimal1.Text = $"00{lblMerge1.Text}";
-                    lblColorDecimal2.Text = $"02{lblMerge2.Text}";
-                    lblColorDecimal3.Text = $"04{lblMerge3.Text}";
-                    lblColorDecimal4.Text = $"06{lblMerge4.Text}";
-                    lblColorDecimal5.Text = $"08{lblMerge5.Text}";
-                    lblColorDecimal6.Text = $"10{lblMerge6.Text}";
-                    lblColorDecimal7.Text = $"12{lblMerge7.Text}";
-                    lblColorDecimal8.Text = $"14{lblMerge8.Text}";
-                }
-                else // 24 words
-                {
-                    lblColorDecimal1.Text = $"00{lblMerge1.Text}";
-                    lblColorDecimal2.Text = $"01{lblMerge2.Text}";
-                    lblColorDecimal3.Text = $"02{lblMerge3.Text}";
-                    lblColorDecimal4.Text = $"03{lblMerge4.Text}";
-                    lblColorDecimal5.Text = $"04{lblMerge5.Text}";
-                    lblColorDecimal6.Text = $"05{lblMerge6.Text}";
-                    lblColorDecimal7.Text = $"06{lblMerge7.Text}";
-                    lblColorDecimal8.Text = $"07{lblMerge8.Text}";
-                    lblColorDecimal9.Text = $"08{lblMerge9.Text}";
-                    lblColorDecimal10.Text = $"09{lblMerge10.Text}";
-                    lblColorDecimal11.Text = $"10{lblMerge11.Text}";
-                    lblColorDecimal12.Text = $"11{lblMerge12.Text}";
-                    lblColorDecimal13.Text = $"12{lblMerge13.Text}";
-                    lblColorDecimal14.Text = $"13{lblMerge14.Text}";
-                    lblColorDecimal15.Text = $"14{lblMerge15.Text}";
-                    lblColorDecimal16.Text = $"15{lblMerge16.Text}";
-                }
-            }
-            else
-            {
-                int wordCount;
-                int colourCount;
-                if (!btn8Colours.Enabled)
-                {
-                    wordCount = 12;
-                    colourCount = 8;
-                }
-                else
-                {
-                    wordCount = 24;
-                    colourCount = 16;
-                }
-                // Combine the text from lblMerge1 through lblMerge16 into one long string
-                string combinedString = "";
-                for (int i = 1; i <= colourCount; i++)
-                {
-                    if (this.Controls.Find($"lblMerge{i}", true).FirstOrDefault() is Label mergeLabel)
-                    {
-                        combinedString += mergeLabel.Text;  // Concatenate the text from each label
-                    }
-                }
-
-                // Distribute the combined string into the lblWord1Position through lblWord24Position labels
-                for (int i = 1; i <= wordCount; i++)
-                {
-                    if (this.Controls.Find($"lblWord{i}Position", true).FirstOrDefault() is Label wordLabel)
-                    {
-                        // Ensure there are enough characters left in the combined string
-                        if (combinedString.Length >= (i * 4))
-                        {
-                            // Extract 4 characters from the combined string and assign to the label
-                            wordLabel.Text = combinedString.Substring((i - 1) * 4, 4);
-                        }
-                        else
-                        {
-                            // If there are fewer than 4 characters remaining, assign whatever is left
-                            wordLabel.Text = combinedString[((i - 1) * 4)..];
-                        }
-                    }
-                }
-
-            }
-        }
-        #endregion
-
-        #endregion
-
-        #endregion
-
-        #region colours
-
-        #region display the hex value
-        private void LblColorDecimal_TextChanged(object sender, EventArgs e)
-        {
-            for (int i = 1; i <= 16; i++)
-            {
-                // find the decimal and hex labels
-                if (this.Controls.Find($"lblColorDecimal{i}", true).FirstOrDefault() is Label decimalLabel && this.Controls.Find($"lblColorHex{i}", true).FirstOrDefault() is Label hexLabel)
-                {
-                    // Parse the decimal value (assuming it's an 8-digit number)
-                    if (int.TryParse(decimalLabel.Text, out int decimalValue))
-                    {
-                        // Convert to hexadecimal and store in the hex label
-                        hexLabel.Text = $"#{decimalValue:X6}"; // "X8" for 8-character uppercase hex string
-
-                        if (!btnHex.Enabled)
-                        {
-                            if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
-                            {
-                                textBox.Text = $"#{decimalValue:X6}";
-                            }
-                            else
-                            {
-                                MessageBox.Show($"TextBox textBoxColor{i} not found.");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        hexLabel.Text = "-------";
-                        if (!btnHex.Enabled)
-                        {
-                            if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
-                            {
-                                textBox.Text = "#";
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!btn8Colours.Enabled)
-            {
-                foreach (TextBox textBox in textBoxesColours9to16)
-                {
-                    textBox.Text = "";
-                }
-            }
-
-            if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
-            {
-                bool allColoursSet = true;
-
-                int colorCount = 8;
-
-                foreach (Control control in labels1to8ColorHex)
-                {
-                    if (string.Compare(control.Text, "-------", StringComparison.Ordinal) == 0)
-                    {
-                        allColoursSet = false;
-                    }
-                }
-
-                if (!btn16Colours.Enabled)
-                {
-                    foreach (Control control in labels9to16ColorHex)
-                    {
-                        if (string.Compare(control.Text, "-------", StringComparison.Ordinal) == 0)
-                        {
-                            allColoursSet = false;
-                        }
-                    }
-
-                    colorCount = 16;
-                }
-
-                if (allColoursSet)
-                {
-                    // Create a list to store the numeric values from lblColorDecimal labels
-                    List<string> decimalNumbers = new();
-
-                    // Loop through the labels and extract the 8-digit number from each
-                    for (int i = 1; i <= colorCount; i++)
-                    {
-                        // Find the label
-                        if (this.Controls.Find($"lblColorDecimal{i}", true).FirstOrDefault() is Label decimalLabel)
-                        {
-                            // Extract the number, and ensure it is left-padded with zeros to 8 digits
-                            if (int.TryParse(decimalLabel.Text, out int number))
-                            {
-                                string paddedNumber = number.ToString("D8");  // Left-fill with zeros to 8 digits
-                                decimalNumbers.Add(paddedNumber);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"Invalid number in lblColorDecimal{i}");
-                                return;
-                            }
-                        }
-                    }
-
-                    // sort the numbers numerically as strings (since they are padded)
-                    decimalNumbers.Sort();
-
-                    // Remove the first two digits from each number and store the 6-digit results
-                    List<string> sixDigitNumbers = decimalNumbers.Select(num => num[2..]).ToList();
-
-                    // Assign the 6-digit numbers to the lblMerge1 through lblMerge16 labels
-                    for (int i = 1; i <= colorCount; i++)
-                    {
-                        if (this.Controls.Find($"lblMerge{i}", true).FirstOrDefault() is Label mergeLabel)
-                        {
-                            mergeLabel.Text = sixDigitNumbers[i - 1]; // Assign the 6-digit number to the label
-                        }
-                    }
-                }
-            }
-        }
-        #endregion
-
-        #region display rgb value
-        private void LblColorHex_TextChanged(object sender, EventArgs e)
-        {
-            for (int i = 1; i <= 16; i++)
-            {
-                // Find the hex and RGB labels
-                if (this.Controls.Find($"lblColorHex{i}", true).FirstOrDefault() is Label hexLabel && this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label rgbLabel)
-                {
-                    string hexValue = hexLabel.Text;
-
-                    // Validate and remove '#' from hex string if necessary
-                    if (!string.IsNullOrEmpty(hexValue) && hexValue.StartsWith("#") && hexValue.Length == 7)
-                    {
-                        // Convert hex to RGB
-                        int r = Convert.ToInt32(hexValue.Substring(1, 2), 16); // Red (chars 1 and 2)
-                        int g = Convert.ToInt32(hexValue.Substring(3, 2), 16); // Green (chars 3 and 4)
-                        int b = Convert.ToInt32(hexValue.Substring(5, 2), 16); // Blue (chars 5 and 6)
-
-                        // Assign the RGB value in the format "R, G, B"
-                        rgbLabel.Text = $"{r:D3},{g:D3},{b:D3}";
-
-                        if (!btnRGB.Enabled)
-                        {
-                            if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
-                            {
-                                textBox.Text = $"{r:D3},{g:D3},{b:D3}";
-                            }
-                            else
-                            {
-                                MessageBox.Show($"TextBox textBoxColor{i} not found.");
-                            }
-                        }
-
-                        if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
-                        {
-                            string hex = hexLabel.Text[1..];
-
-                            // Convert hex to decimal
-                            int decimalValue = Convert.ToInt32(hex, 16);
-
-                            string labelName = $"lblColorDecimal{i}";
-
-                            if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
-                            {
-                                label.Text = decimalValue.ToString("D8");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        rgbLabel.Text = "---,---,---";
-                        if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
-                        {
-                            textBox.Text = "";
-                        }
-                    }
-                }
-            }
-
-            if (!btn8Colours.Enabled)
-            {
-                foreach (TextBox textBox in textBoxesColours9to16)
-                {
-                    textBox.Text = "";
-                }
-            }
-        }
-        #endregion
-
-        #region colour the colour buttons
-        private void LblColorRGB_TextChanged(object sender, EventArgs e)
-        {
-            for (int i = 1; i <= 16; i++)
-            {
-                if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label RGBLabel && this.Controls.Find($"btnColor{i}", true).FirstOrDefault() is RJButton btnColor)
-                {
-                    if (string.Compare(RGBLabel.Text, "---,---,---", StringComparison.Ordinal) == 0)
-                    {
-                        btnColor.Text = "▔";
-                        btnColor.BackColor = Color.FromArgb(20, 20, 20);
-                    }
-                    else
-                    {
-                        btnColor.Text = "";
-
-                        string colorString = RGBLabel.Text;
-
-                        // Split the string by commas
-                        string[] rgbValues = colorString.Split(',');
-
-                        if (rgbValues.Length == 3)
-                        {
-                            // Parse the RGB values from the string
-                            int r = int.Parse(rgbValues[0]);
-                            int g = int.Parse(rgbValues[1]);
-                            int b = int.Parse(rgbValues[2]);
-
-                            // Set the BackColor using the parsed RGB values
-                            btnColor.BackColor = Color.FromArgb(r, g, b);
-                        }
-                    }
-
-                    if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
-                    {
-                        if (!btnRGB.Enabled)
-                        {
-                            //convert to hex and copy to hex labld
-                            string[] rgbParts = RGBLabel.Text.Split(',');
-
-                            if (rgbParts.Length == 3)
-                            {
-                                // Parse the R, G, and B values, ensure they are valid integers
-                                if (int.TryParse(rgbParts[0].Trim(), out int r) && int.TryParse(rgbParts[1].Trim(), out int g) && int.TryParse(rgbParts[2].Trim(), out int b))
-                                {
-                                    // Ensure the RGB values are in the valid range (0-255)
-                                    if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255)
-                                    {
-                                        // Convert RGB to Hex
-                                        string hexValue = $"#{r:X2}{g:X2}{b:X2}"; // Converts RGB to a Hex string in the format "#RRGGBB"
-
-                                        // Assign the hex value to the corresponding label
-                                        string labelName = $"lblColorHex{i}";
-                                        if (this.Controls.Find(labelName, true).FirstOrDefault() is Label hexLabel)
-                                        {
-                                            hexLabel.Text = hexValue;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // if all colours are populated enabled the patterns
-            int numberOfColours = 8;
-            if (!btn16Colours.Enabled)
-            {
-                numberOfColours = 16;
-            }
-
-            bool allColoursSet = true;
-
-            for (int i = 1; i <= numberOfColours; i++)
-            {
-                if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label RGBLabel)
-                {
-                    if (string.Compare(RGBLabel.Text, "---,---,---", StringComparison.Ordinal) == 0)
-                    {
-                        allColoursSet = false;
-                    }
-                }
-            }
-
-            if (allColoursSet)
-            {
-                btnDummyButton.Text = "allcoloursset";
-
-            }
-            else
-            {
-                btnDummyButton.Text = "";
-
-            }
-        }
-        #endregion
-
-        #endregion
-
-        #region COLOUR INPUT
-
-        #region switch between rgb and hex
-        private void BtnRGB_Click(object sender, EventArgs e)
-        {
-            btnRGB.Enabled = false;
-            btnHex.Enabled = true;
-            LblColorHex_TextChanged(sender, e);
-        }
-
-        private void BtnHex_Click(object sender, EventArgs e)
-        {
-            btnRGB.Enabled = true;
-            btnHex.Enabled = false;
-            LblColorDecimal_TextChanged(sender, e);
-        }
-        #endregion
-
-        #region switch between 8 and 16 colours
-        private void Btn8Colours_Click(object sender, EventArgs e)
-        {
-            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
-            {
-                return;
-            }
-
-            btn8Colours.Enabled = false;
-            btn16Colours.Enabled = true;
-
-            foreach (TextBox textbox in textBoxes13to24SeedWords)
-            {
-                textbox.Enabled = false;
-                textbox.Text = "";
-                if (textbox == activeSeedBox)
-                {
-                    activeSeedBox = textBoxSeedWord1;
-                }
-            }
-
-            foreach (Control control in labels13to24SeedWords)
-            {
-                control.Enabled = false;
-            }
-
-            foreach (Control control in labels13to24WordPositions)
-            {
-                control.ForeColor = Color.Black;
-                control.Text = "----";
-            }
-
-            foreach (Control control in labels9to16Merge)
-            {
-                control.ForeColor = Color.Black;
-                control.Text = "------";
-            }
-
-            foreach (Control control in labels9to16ColorDecimal)
-            {
-                control.ForeColor = Color.Black;
-                control.Text = "--------";
-            }
-
-            foreach (Control control in labels9to16ColorHex)
-            {
-                control.ForeColor = Color.Black;
-                control.Text = "-------";
-            }
-
-            foreach (Control control in labels9to16ColorRGB)
-            {
-                control.ForeColor = Color.Black;
-                control.Text = "---,---,---";
-            }
-
-            foreach (Control control in panels13to24SeedWords)
-            {
-                control.BackColor = Color.FromArgb(20, 20, 20);
-            }
-
-            foreach (Control control in buttons9to16Colours)
-            {
-                control.Enabled = false;
-                control.Text = "";
-            }
-
-            foreach (Control control in labelsColourNumbers9to16)
-            {
-                control.Enabled = false;
-            }
-
-            foreach (TextBox textbox in textBoxesColours9to16)
-            {
-                textbox.Enabled = false;
-                textbox.Text = "";
-            }
-
-            btn24SeedWords.Enabled = true;
-            btn12SeedWords.Enabled = false;
-            btn8Colours.Enabled = false;
-            btn16Colours.Enabled = true;
-
-            if (string.Compare(btnDummyButton.Text, "allcoloursset", StringComparison.Ordinal) == 0)
-            {
-                btnDummyButton.Text = "";
-                btnDummyButton.Text = "allcoloursset";
+                HandleException(ex, "Btn8Colours_Click");
             }
         }
 
         private void Btn16Colours_Click(object sender, EventArgs e)
         {
-            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+            try
             {
-                return;
+                if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+                {
+                    return;
+                }
+
+                btn8Colours.Enabled = true;
+                btn16Colours.Enabled = false;
+
+                foreach (TextBox textbox in textBoxes13to24SeedWords)
+                {
+                    textbox.Enabled = true;
+                    textbox.Text = "";
+                }
+
+                foreach (Control control in labels13to24SeedWords)
+                {
+                    control.Enabled = true;
+                }
+
+                foreach (Control control in labels13to24WordPositions)
+                {
+                    control.ForeColor = Color.DimGray;
+                }
+
+                foreach (Control control in labels9to16Merge)
+                {
+                    control.ForeColor = Color.DimGray;
+                }
+
+                foreach (Control control in labels9to16ColorDecimal)
+                {
+                    control.ForeColor = Color.DimGray;
+                }
+
+                foreach (Control control in labels9to16ColorHex)
+                {
+                    control.ForeColor = Color.DimGray;
+                }
+
+                foreach (Control control in labels9to16ColorRGB)
+                {
+                    control.ForeColor = Color.DimGray;
+                }
+
+                foreach (Control control in panels13to24SeedWords)
+                {
+                    control.BackColor = Color.IndianRed;
+                }
+
+                foreach (Control control in buttons9to16Colours)
+                {
+                    control.Enabled = true;
+                    control.Text = "▔";
+                }
+
+                foreach (Control control in labelsColourNumbers9to16)
+                {
+                    control.Enabled = true;
+                }
+
+                foreach (TextBox textbox in textBoxesColours9to16)
+                {
+                    textbox.Enabled = true;
+                    textbox.Text = "#";
+                }
+
+                btn24SeedWords.Enabled = false;
+                btn12SeedWords.Enabled = true;
+                btn8Colours.Enabled = true;
+                btn16Colours.Enabled = false;
             }
-
-            btn8Colours.Enabled = true;
-            btn16Colours.Enabled = false;
-
-            foreach (TextBox textbox in textBoxes13to24SeedWords)
+            catch (Exception ex)
             {
-                textbox.Enabled = true;
-                textbox.Text = "";
+                HandleException(ex, "Btn16Colours_Click");
             }
-
-            foreach (Control control in labels13to24SeedWords)
-            {
-                control.Enabled = true;
-            }
-
-            foreach (Control control in labels13to24WordPositions)
-            {
-                control.ForeColor = Color.DimGray;
-            }
-
-            foreach (Control control in labels9to16Merge)
-            {
-                control.ForeColor = Color.DimGray;
-            }
-
-            foreach (Control control in labels9to16ColorDecimal)
-            {
-                control.ForeColor = Color.DimGray;
-            }
-
-            foreach (Control control in labels9to16ColorHex)
-            {
-                control.ForeColor = Color.DimGray;
-            }
-
-            foreach (Control control in labels9to16ColorRGB)
-            {
-                control.ForeColor = Color.DimGray;
-            }
-
-            foreach (Control control in panels13to24SeedWords)
-            {
-                control.BackColor = Color.IndianRed;
-            }
-
-            foreach (Control control in buttons9to16Colours)
-            {
-                control.Enabled = true;
-                control.Text = "▔";
-            }
-
-            foreach (Control control in labelsColourNumbers9to16)
-            {
-                control.Enabled = true;
-            }
-
-            foreach (TextBox textbox in textBoxesColours9to16)
-            {
-                textbox.Enabled = true;
-                textbox.Text = "#";
-            }
-
-            btn24SeedWords.Enabled = false;
-            btn12SeedWords.Enabled = true;
-            btn8Colours.Enabled = true;
-            btn16Colours.Enabled = false;
         }
         #endregion
 
         private void TextBoxColor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+            try
             {
-                e.Handled = true;
-                return;
-            }
-            else
-            {
-                if (!btnHex.Enabled)
+                if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
                 {
-                    TextBox textBox = (TextBox)sender;
-
-                    // Allow Backspace
-                    if (e.KeyChar == (char)Keys.Back)
-                    {
-                        // Prevent user from deleting the #
-                        if (textBox.SelectionStart == 1)
-                        {
-                            e.Handled = true;
-                        }
-                        return;
-                    }
-
-                    // Only allow input if there are less than 6 characters after #
-                    if (textBox.Text.Length >= 7 && textBox.SelectionStart > 0)
-                    {
-                        e.Handled = true;
-                        return;
-                    }
-
-                    // Allow hex characters (0-9, A-F, a-f) and only after #
-                    if (textBox.SelectionStart > 0 &&
-                        !char.IsControl(e.KeyChar) &&
-                        !Uri.IsHexDigit(e.KeyChar))
-                    {
-                        e.Handled = true;
-                    }
+                    e.Handled = true;
+                    return;
                 }
                 else
                 {
-                    TextBox? textBox = sender as TextBox;
-
-                    // Allow control keys like backspace, arrows, etc.
-                    if (char.IsControl(e.KeyChar))
+                    if (!btnHex.Enabled)
                     {
-                        return;
+                        TextBox textBox = (TextBox)sender;
+
+                        // Allow Backspace
+                        if (e.KeyChar == (char)Keys.Back)
+                        {
+                            // Prevent user from deleting the #
+                            if (textBox.SelectionStart == 1)
+                            {
+                                e.Handled = true;
+                            }
+                            return;
+                        }
+
+                        // Only allow input if there are less than 6 characters after #
+                        if (textBox.Text.Length >= 7 && textBox.SelectionStart > 0)
+                        {
+                            e.Handled = true;
+                            return;
+                        }
+
+                        // Allow hex characters (0-9, A-F, a-f) and only after #
+                        if (textBox.SelectionStart > 0 &&
+                            !char.IsControl(e.KeyChar) &&
+                            !Uri.IsHexDigit(e.KeyChar))
+                        {
+                            e.Handled = true;
+                        }
                     }
-
-                    // Only allow digits
-                    if (!char.IsDigit(e.KeyChar))
+                    else
                     {
-                        e.Handled = true;  // Prevent anything but digits
-                        return;
-                    }
+                        TextBox? textBox = sender as TextBox;
 
-                    // Handle the position of the cursor
-                    int caretPos = textBox.SelectionStart;
+                        // Allow control keys like backspace, arrows, etc.
+                        if (char.IsControl(e.KeyChar))
+                        {
+                            return;
+                        }
 
-                    // Prevent typing into commas
-                    if (caretPos == 3 || caretPos == 7)
-                    {
-                        // Automatically move the cursor past the comma if user types at comma position
-                        textBox.SelectionStart = caretPos + 1;
-                        caretPos++;
-                    }
+                        // Only allow digits
+                        if (!char.IsDigit(e.KeyChar))
+                        {
+                            e.Handled = true;  // Prevent anything but digits
+                            return;
+                        }
 
-                    // Get the parts of the RGB string (split by commas)
-                    string[] rgbParts = textBox.Text.Split(',');
+                        // Handle the position of the cursor
+                        int caretPos = textBox.SelectionStart;
 
-                    // Check which part of the RGB we are typing in (0: Red, 1: Green, 2: Blue)
-                    int partIndex = GetPartIndex(caretPos);
+                        // Prevent typing into commas
+                        if (caretPos == 3 || caretPos == 7)
+                        {
+                            // Automatically move the cursor past the comma if user types at comma position
+                            textBox.SelectionStart = caretPos + 1;
+                            caretPos++;
+                        }
 
-                    // Prevent typing more than 3 digits per part
-                    if (rgbParts[partIndex].Length >= 3)
-                    {
-                        e.Handled = true;  // Prevent adding more than 3 digits per part
+                        // Get the parts of the RGB string (split by commas)
+                        string[] rgbParts = textBox.Text.Split(',');
+
+                        // Check which part of the RGB we are typing in (0: Red, 1: Green, 2: Blue)
+                        int partIndex = GetPartIndex(caretPos);
+
+                        // Prevent typing more than 3 digits per part
+                        if (rgbParts[partIndex].Length >= 3)
+                        {
+                            e.Handled = true;  // Prevent adding more than 3 digits per part
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "TextBoxColor_KeyPress");
             }
         }
 
         private void TextBoxColor_Enter(object sender, EventArgs e)
         {
-            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
+            try
             {
-                btnDummyButton.Focus();
-            }
-            else
-            {
-                if (sender is TextBox textBox)
+                if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
                 {
-                    lblColourPointer.Location = new Point(lblColourPointer.Location.X, textBox.Location.Y - 8);
-                    if (!btnHex.Enabled)
+                    btnDummyButton.Focus();
+                }
+                else
+                {
+                    if (sender is TextBox textBox)
                     {
-                        if (textBox.Text.StartsWith("#"))
+                        lblColourPointer.Location = new Point(lblColourPointer.Location.X, textBox.Location.Y - 8);
+                        if (!btnHex.Enabled)
                         {
-                            // Move the cursor right after the #
-                            textBox.SelectionStart = textBox.Text.Length;
+                            if (textBox.Text.StartsWith("#"))
+                            {
+                                // Move the cursor right after the #
+                                textBox.SelectionStart = textBox.Text.Length;
+                            }
+                            else
+                            {
+                                // In case # is missing, make sure it's added
+                                textBox.Text = $"#{textBox.Text}";
+                                textBox.SelectionStart = textBox.Text.Length;
+                            }
                         }
                         else
                         {
-                            // In case # is missing, make sure it's added
-                            textBox.Text = $"#{textBox.Text}";
-                            textBox.SelectionStart = textBox.Text.Length;
+                            textBox.SelectionStart = 0;
+                            textBox.SelectionLength = 0;
                         }
                     }
-                    else
-                    {
-                        textBox.SelectionStart = 0;
-                        textBox.SelectionLength = 0;
-                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "TextBoxColor_Enter");
             }
         }
 
@@ -1432,219 +1599,239 @@ namespace Chromaseed
 
         private void TextBoxColor_TextChanged(object sender, EventArgs e)
         {
-            if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
+            try
             {
-                if (!btnHex.Enabled)  //HEX
+                if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
                 {
-                    TextBox textBox = (TextBox)sender;
-
-                    // Enforce # at the start
-                    if (!textBox.Text.StartsWith("#") && textBox.Enabled)
+                    if (!btnHex.Enabled)  //HEX
                     {
-                        textBox.Text = $"#{textBox.Text.TrimStart('#')}";
-                        textBox.SelectionStart = textBox.Text.Length; // Move cursor to the end
-                    }
+                        TextBox textBox = (TextBox)sender;
 
-                    if (textBox.Text.Length == 7)
-                    {
-                        int colourPositionOnForm = 1;
-
-                        foreach (Control control in labelsAllColours)
+                        // Enforce # at the start
+                        if (!textBox.Text.StartsWith("#") && textBox.Enabled)
                         {
-                            if (control.Location.Y == textBox.Location.Y)
-                            {
-                                colourPositionOnForm = Convert.ToInt16(control.Text);
-                            }
+                            textBox.Text = $"#{textBox.Text.TrimStart('#')}";
+                            textBox.SelectionStart = textBox.Text.Length; // Move cursor to the end
                         }
 
-                        // Construct the label name
-                        string labelName = $"lblColorHex{colourPositionOnForm}";
-
-                        // Find the label by its name
-                        if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
+                        if (textBox.Text.Length == 7)
                         {
-                            label.Text = textBox.Text;
+                            int colourPositionOnForm = 1;
+
+                            foreach (Control control in labelsAllColours)
+                            {
+                                if (control.Location.Y == textBox.Location.Y)
+                                {
+                                    colourPositionOnForm = Convert.ToInt16(control.Text);
+                                }
+                            }
+
+                            // Construct the label name
+                            string labelName = $"lblColorHex{colourPositionOnForm}";
+
+                            // Find the label by its name
+                            if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
+                            {
+                                label.Text = textBox.Text;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Label '{labelName}' not found.");
+                            }
+                            return;
                         }
                         else
                         {
-                            MessageBox.Show($"Label '{labelName}' not found.");
-                        }
-                        return;
-                    }
-                    else
-                    {
-                        int colourPositionOnForm = 1;
+                            int colourPositionOnForm = 1;
 
-                        foreach (Control control in labelsAllColours)
-                        {
-                            if (control.Location.Y == textBox.Location.Y)
+                            foreach (Control control in labelsAllColours)
                             {
-                                colourPositionOnForm = Convert.ToInt16(control.Text);
+                                if (control.Location.Y == textBox.Location.Y)
+                                {
+                                    colourPositionOnForm = Convert.ToInt16(control.Text);
+                                }
                             }
+
+                            // Construct the label name
+                            string labelName = $"lblColorDecimal{colourPositionOnForm}";
+
+                            // Find the label by its name
+                            if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
+                            {
+                                label.Text = "--------";
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Label '{labelName}' not found.");
+                            }
+                            return;
                         }
+                    }
+                    else //RGB
+                    {
+                        TextBox textBox = (TextBox)sender;
 
-                        // Construct the label name
-                        string labelName = $"lblColorDecimal{colourPositionOnForm}";
-
-                        // Find the label by its name
-                        if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
+                        // Prevent the user from removing the commas
+                        if (!textBox.Text.Contains(','))
                         {
-                            label.Text = "--------";
+                            textBox.Text = ",,";
+                            textBox.SelectionStart = 0;
+                        }
+                        if (textBox.Text.Length == 11)
+                        {
+                            int colourPositionOnForm = 1;
+
+                            foreach (Control control in labelsAllColours)
+                            {
+                                if (control.Location.Y == textBox.Location.Y)
+                                {
+                                    colourPositionOnForm = Convert.ToInt16(control.Text);
+                                }
+                            }
+
+                            // Construct the label name
+                            string labelName = $"lblColorRGB{colourPositionOnForm}";
+
+                            // Find the label by its name
+                            if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
+                            {
+                                label.Text = textBox.Text;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Label '{labelName}' not found.");
+                            }
+                            return;
                         }
                         else
                         {
-                            MessageBox.Show($"Label '{labelName}' not found.");
+                            int colourPositionOnForm = 1;
+
+                            foreach (Control control in labelsAllColours)
+                            {
+                                if (control.Location.Y == textBox.Location.Y)
+                                {
+                                    colourPositionOnForm = Convert.ToInt16(control.Text);
+                                }
+                            }
+
+                            // Construct the label name
+                            string labelName = $"lblColorDecimal{colourPositionOnForm}";
+
+                            // Find the label by its name
+                            if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
+                            {
+                                label.Text = "--------";
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Label '{labelName}' not found.");
+                            }
+                            return;
                         }
-                        return;
                     }
                 }
-                else //RGB
-                {
-                    TextBox textBox = (TextBox)sender;
-
-                    // Prevent the user from removing the commas
-                    if (!textBox.Text.Contains(','))
-                    {
-                        textBox.Text = ",,";
-                        textBox.SelectionStart = 0;
-                    }
-                    if (textBox.Text.Length == 11)
-                    {
-                        int colourPositionOnForm = 1;
-
-                        foreach (Control control in labelsAllColours)
-                        {
-                            if (control.Location.Y == textBox.Location.Y)
-                            {
-                                colourPositionOnForm = Convert.ToInt16(control.Text);
-                            }
-                        }
-
-                        // Construct the label name
-                        string labelName = $"lblColorRGB{colourPositionOnForm}";
-
-                        // Find the label by its name
-                        if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
-                        {
-                            label.Text = textBox.Text;
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Label '{labelName}' not found.");
-                        }
-                        return;
-                    }
-                    else
-                    {
-                        int colourPositionOnForm = 1;
-
-                        foreach (Control control in labelsAllColours)
-                        {
-                            if (control.Location.Y == textBox.Location.Y)
-                            {
-                                colourPositionOnForm = Convert.ToInt16(control.Text);
-                            }
-                        }
-
-                        // Construct the label name
-                        string labelName = $"lblColorDecimal{colourPositionOnForm}";
-
-                        // Find the label by its name
-                        if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
-                        {
-                            label.Text = "--------";
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Label '{labelName}' not found.");
-                        }
-                        return;
-                    }
-                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "TextBoxColor_TextChanged");
             }
         }
 
         private void TextBoxColor_Click(object sender, EventArgs e)
         {
-            if (sender is TextBox textBox)
+            try
             {
-                if (textBox.Text == "")
+                if (sender is TextBox textBox)
                 {
-                    textBox.SelectionStart = 0;
-                    textBox.SelectionLength = 0;
+                    if (textBox.Text == "")
+                    {
+                        textBox.SelectionStart = 0;
+                        textBox.SelectionLength = 0;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "TextBoxColor_Click");
             }
         }
 
         #region show red/green indicator next to colour textbox
         private void BtnColor_TextChanged(object sender, EventArgs e)
         {
-
-            if (sender is RJButton button)
+            try
             {
-                if (!btn8Colours.Enabled)
+                if (sender is RJButton button)
                 {
-                    foreach (Control control in panels9to16Colors)
+                    if (!btn8Colours.Enabled)
                     {
-                        if (control.Location.Y == button.Location.Y)
-                        {
-                            control.BackColor = Color.FromArgb(20, 20, 20);
-                            break;
-                        }
-                    }
-
-                    if (string.Compare(button.Text, "▔", StringComparison.Ordinal) == 0)
-                    {
-                        foreach (Control control in panels1to8Colors)
+                        foreach (Control control in panels9to16Colors)
                         {
                             if (control.Location.Y == button.Location.Y)
                             {
-                                control.BackColor = Color.IndianRed;
+                                control.BackColor = Color.FromArgb(20, 20, 20);
                                 break;
                             }
                         }
 
+                        if (string.Compare(button.Text, "▔", StringComparison.Ordinal) == 0)
+                        {
+                            foreach (Control control in panels1to8Colors)
+                            {
+                                if (control.Location.Y == button.Location.Y)
+                                {
+                                    control.BackColor = Color.IndianRed;
+                                    break;
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            foreach (Control control in panels1to8Colors)
+                            {
+                                if (control.Location.Y == button.Location.Y)
+                                {
+                                    control.BackColor = Color.OliveDrab;
+                                    break;
+                                }
+                            }
+
+                        }
                     }
                     else
                     {
-                        foreach (Control control in panels1to8Colors)
+                        if (string.Compare(button.Text, "▔", StringComparison.Ordinal) == 0)
                         {
-                            if (control.Location.Y == button.Location.Y)
+                            foreach (Control control in panels1to16Colors)
                             {
-                                control.BackColor = Color.OliveDrab;
-                                break;
+                                if (control.Location.Y == button.Location.Y)
+                                {
+                                    control.BackColor = Color.IndianRed;
+                                    break;
+                                }
                             }
-                        }
 
+                        }
+                        else
+                        {
+                            foreach (Control control in panels1to16Colors)
+                            {
+                                if (control.Location.Y == button.Location.Y)
+                                {
+                                    control.BackColor = Color.OliveDrab;
+                                    break;
+                                }
+                            }
+
+                        }
                     }
                 }
-                else
-                {
-                    if (string.Compare(button.Text, "▔", StringComparison.Ordinal) == 0)
-                    {
-                        foreach (Control control in panels1to16Colors)
-                        {
-                            if (control.Location.Y == button.Location.Y)
-                            {
-                                control.BackColor = Color.IndianRed;
-                                break;
-                            }
-                        }
-
-                    }
-                    else
-                    {
-                        foreach (Control control in panels1to16Colors)
-                        {
-                            if (control.Location.Y == button.Location.Y)
-                            {
-                                control.BackColor = Color.OliveDrab;
-                                break;
-                            }
-                        }
-
-                    }
-                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnColor_TextChanged");
             }
         }
         #endregion
@@ -1652,261 +1839,396 @@ namespace Chromaseed
 
         #endregion
 
+        #region trigger enabling/disabling patterns (colours complete/incomplete)
         private void BtnDummyButton_TextChanged(object sender, EventArgs e)
         {
-            if (string.Compare(btnDummyButton.Text, "allcoloursset", StringComparison.Ordinal) == 0)
+            try
             {
-                if (!btn8Colours.Enabled)
+                if (string.Compare(btnDummyButton.Text, "allcoloursset", StringComparison.Ordinal) == 0)
                 {
-                    eightColours = true;
-                }
-                else
-                {
-                    eightColours = false;
-                }
-
-                #region populate the colorList with 8 or 16 colours
-                for (int i = 1; i <= 16; i++)
-                {
-                    // Find the label (lblColorRGB1 through lblColorRGB16)
-                    if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label rgbLabel)
+                    if (!btn8Colours.Enabled)
                     {
-                        string rgbValue = rgbLabel.Text;
+                        eightColours = true;
+                    }
+                    else
+                    {
+                        eightColours = false;
+                    }
 
-                        // Check if the label contains a valid RGB value (not '---,---,---')
-                        if (!string.IsNullOrWhiteSpace(rgbValue) && string.Compare(rgbValue, "---,---,---", StringComparison.Ordinal) != 0)
+                    #region populate the colorList with 8 or 16 colours
+                    for (int i = 1; i <= 16; i++)
+                    {
+                        // Find the label (lblColorRGB1 through lblColorRGB16)
+                        if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label rgbLabel)
                         {
-                            // Split the RGB string into its components
-                            string[] rgbParts = rgbValue.Split(',');
+                            string rgbValue = rgbLabel.Text;
 
-                            // Ensure that there are exactly 3 parts and they are valid integers
-                            if (rgbParts.Length == 3 &&
-                                int.TryParse(rgbParts[0], out int r) &&
-                                int.TryParse(rgbParts[1], out int g) &&
-                                int.TryParse(rgbParts[2], out int b))
+                            // Check if the label contains a valid RGB value (not '---,---,---')
+                            if (!string.IsNullOrWhiteSpace(rgbValue) && string.Compare(rgbValue, "---,---,---", StringComparison.Ordinal) != 0)
                             {
-                                // Add the valid RGB value to the list
-                                colorList.Add(Color.FromArgb(r, g, b));
+                                // Split the RGB string into its components
+                                string[] rgbParts = rgbValue.Split(',');
+
+                                // Ensure that there are exactly 3 parts and they are valid integers
+                                if (rgbParts.Length == 3 &&
+                                    int.TryParse(rgbParts[0], out int r) &&
+                                    int.TryParse(rgbParts[1], out int g) &&
+                                    int.TryParse(rgbParts[2], out int b))
+                                {
+                                    // Add the valid RGB value to the list
+                                    colorList.Add(Color.FromArgb(r, g, b));
+                                }
                             }
                         }
                     }
+
+                    colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+
+                    #endregion
+                    foreach (Control control in patternButtons)
+                    {
+                        control.Enabled = true;
+                    }
                 }
-
-                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-
-                #endregion
-                foreach (Control control in patternButtons)
+                else // there are no longer 8 or 16 valid colours selected
                 {
-                    control.Enabled = true;
+                    foreach (Control control in patternButtons)
+                    {
+                        control.Enabled = false;
+                    }
+                    colorList.Clear();
+                    colorList = new List<Color>();
                 }
             }
-            else // there are no longer 8 or 16 valid colours selected
+            catch (Exception ex)
             {
-                foreach (Control control in patternButtons)
-                {
-                    control.Enabled = false;
-                }
-                colorList.Clear();
-                colorList = new List<Color>();
+                HandleException(ex, "BtnDummyButton_TextChanged");
             }
         }
+        #endregion
 
         #region MENU
         private void BtnMenuConvert_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelConverter.Visible = true;
-            panelRGBLabels.Visible = false;
-            panelHexLabels.Visible = false;
-            panelSaveImage.Visible = false;
-            panelConverter.BringToFront();
+            try
+            {
+                btnDummyButton.Focus();
+                panelConverter.Visible = true;
+                panelRGBLabels.Visible = false;
+                panelHexLabels.Visible = false;
+                panelSaveImage.Visible = false;
+                panelConverter.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuConvert_Click");
+            }
         }
 
         private void BtnMenuStripes_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternStripes.Visible = true;
-            panelPatternStripes.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupStripes();
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternStripes.Visible = true;
+                panelPatternStripes.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupStripes();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuStripes_Click");
+            }
         }
 
         private void BtnMenuCircles_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternCircles.Visible = true;
-            panelPatternCircles.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupCircles(panelImageCircles, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternCircles.Visible = true;
+                panelPatternCircles.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupCircles(panelImageCircles, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuCircles_Click");
+            }
         }
 
         private void BtnMenuSquares_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternSquares.Visible = true;
-            panelPatternSquares.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupSquares(panelImageSquares, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternSquares.Visible = true;
+                panelPatternSquares.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupSquares(panelImageSquares, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuSquares_Click");
+            }
         }
 
         private void BtnMenuMandelbrot_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternMandelbrot.Visible = true;
-            panelPatternMandelbrot.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupMandelbrot(panelImageMandelbrot, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternMandelbrot.Visible = true;
+                panelPatternMandelbrot.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupMandelbrot(panelImageMandelbrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuMandelbrot_Click");
+            }
         }
 
         private void BtnMenuSpiral_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternSpiral.Visible = true;
-            panelPatternSpiral.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupSpiral(panelImageSpiral, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternSpiral.Visible = true;
+                panelPatternSpiral.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupSpiral(panelImageSpiral, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuSpiral_Click");
+            }
         }
 
         private void BtnMenuNoise_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternNoise.Visible = true;
-            panelPatternNoise.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupNoise(panelImageNoise, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternNoise.Visible = true;
+                panelPatternNoise.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupNoise(panelImageNoise, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuNoise_Click");
+            }
         }
 
         private void BtnMenuHexagons_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternHexagons.Visible = true;
-            panelPatternHexagons.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupHexagons(panelImageHexagons, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternHexagons.Visible = true;
+                panelPatternHexagons.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupHexagons(panelImageHexagons, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuHexagons_Click");
+            }
         }
 
         private void BtnMenuSquiggle_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternSquiggle.Visible = true;
-            panelPatternSquiggle.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupDistortion(panelImageSquiggle, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternSquiggle.Visible = true;
+                panelPatternSquiggle.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupDistortion(panelImageSquiggle, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuSquiggle_Click");
+            }
         }
 
         private void BtnMenuRadial_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternRadial.Visible = true;
-            panelPatternRadial.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupRadial(panelImageRadial, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternRadial.Visible = true;
+                panelPatternRadial.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupRadial(panelImageRadial, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuRadial_Click");
+            }
         }
 
         private void BtnMenuBrink_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternBrink.Visible = true;
-            panelPatternBrink.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupBrink(panelImageBrink, phrase, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternBrink.Visible = true;
+                panelPatternBrink.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupBrink(panelImageBrink, phrase, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuBrink_Click");
+            }
         }
 
         private void BtnMenuSymbols_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternSymbols.Visible = true;
-            panelPatternSymbols.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupSymbols(panelImageSymbols, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternSymbols.Visible = true;
+                panelPatternSymbols.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupSymbols(panelImageSymbols, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuSymbols_Click");
+            }
         }
 
         private void BtnMenuTiles_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternTiles.Visible = true;
-            panelPatternTiles.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupTiles(panelImageTiles, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternTiles.Visible = true;
+                panelPatternTiles.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupTiles(panelImageTiles, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuTiles_Click");
+            }
         }
 
         private void BtnMenuMultibrot_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternMultibrot.Visible = true;
-            panelPatternMultibrot.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupMultibrotSet(panelImageMultibrot, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternMultibrot.Visible = true;
+                panelPatternMultibrot.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupMultibrotSet(panelImageMultibrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuMultibrot_Click");
+            }
         }
 
         private void BtnMenuPhoenix_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternPhoenix.Visible = true;
-            panelPatternPhoenix.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupPhoenixFractal(panelImagePhoenix, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternPhoenix.Visible = true;
+                panelPatternPhoenix.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupPhoenixFractal(panelImagePhoenix, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuPhoenix_Click");
+            }
         }
 
         private void BtnMenuTricorn_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternTricorn.Visible = true;
-            panelPatternTricorn.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupTricornFractal(panelImageTricorn, colorList);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternTricorn.Visible = true;
+                panelPatternTricorn.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupTricornFractal(panelImageTricorn, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuTricorn_Click");
+            }
         }
 
         private void BtnMenuJulia_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternJulia.Visible = true;
-            panelPatternJulia.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternJulia.Visible = true;
+                panelPatternJulia.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuJulia_Click");
+            }
         }
 
         private void BtnMenuTextGrid_Click(object sender, EventArgs e)
         {
-            btnDummyButton.Focus();
-            panelPatternTextGrid.Visible = true;
-            panelPatternTextGrid.BringToFront();
-            PopulateHexKey();
-            PopulateRGBKey();
-            ShowSaveImagePanel();
-            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            try
+            {
+                btnDummyButton.Focus();
+                panelPatternTextGrid.Visible = true;
+                panelPatternTextGrid.BringToFront();
+                PopulateHexKey();
+                PopulateRGBKey();
+                ShowSaveImagePanel();
+                SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuTextGrid_Click");
+            }
         }
 
         #endregion
@@ -1917,71 +2239,105 @@ namespace Chromaseed
 
         private void SetupStripes()
         {
-            if (eightColours)
+            try
             {
-                panelSwatch1.BackColor = colorList[0];
-                panelSwatch3.BackColor = colorList[1];
-                panelSwatch5.BackColor = colorList[2];
-                panelSwatch7.BackColor = colorList[3];
-                panelSwatch9.BackColor = colorList[4];
-                panelSwatch11.BackColor = colorList[5];
-                panelSwatch13.BackColor = colorList[6];
-                panelSwatch15.BackColor = colorList[7];
-
-                foreach (Control control in panelsSwatchesForColors9To16)
+                if (eightColours)
                 {
-                    control.Visible = false;
+                    panelSwatch1.BackColor = colorList[0];
+                    panelSwatch3.BackColor = colorList[1];
+                    panelSwatch5.BackColor = colorList[2];
+                    panelSwatch7.BackColor = colorList[3];
+                    panelSwatch9.BackColor = colorList[4];
+                    panelSwatch11.BackColor = colorList[5];
+                    panelSwatch13.BackColor = colorList[6];
+                    panelSwatch15.BackColor = colorList[7];
+
+                    foreach (Control control in panelsSwatchesForColors9To16)
+                    {
+                        control.Visible = false;
+                    }
+                }
+                else
+                {
+                    panelSwatch1.BackColor = colorList[0];
+                    panelSwatch2.BackColor = colorList[1];
+                    panelSwatch3.BackColor = colorList[2];
+                    panelSwatch4.BackColor = colorList[3];
+                    panelSwatch5.BackColor = colorList[4];
+                    panelSwatch6.BackColor = colorList[5];
+                    panelSwatch7.BackColor = colorList[6];
+                    panelSwatch8.BackColor = colorList[7];
+                    panelSwatch9.BackColor = colorList[8];
+                    panelSwatch10.BackColor = colorList[9];
+                    panelSwatch11.BackColor = colorList[10];
+                    panelSwatch12.BackColor = colorList[11];
+                    panelSwatch13.BackColor = colorList[12];
+                    panelSwatch14.BackColor = colorList[13];
+                    panelSwatch15.BackColor = colorList[14];
+                    panelSwatch16.BackColor = colorList[15];
+
+                    foreach (Control control in panelsSwatchesForColors9To16)
+                    {
+                        control.Visible = true;
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                panelSwatch1.BackColor = colorList[0];
-                panelSwatch2.BackColor = colorList[1];
-                panelSwatch3.BackColor = colorList[2];
-                panelSwatch4.BackColor = colorList[3];
-                panelSwatch5.BackColor = colorList[4];
-                panelSwatch6.BackColor = colorList[5];
-                panelSwatch7.BackColor = colorList[6];
-                panelSwatch8.BackColor = colorList[7];
-                panelSwatch9.BackColor = colorList[8];
-                panelSwatch10.BackColor = colorList[9];
-                panelSwatch11.BackColor = colorList[10];
-                panelSwatch12.BackColor = colorList[11];
-                panelSwatch13.BackColor = colorList[12];
-                panelSwatch14.BackColor = colorList[13];
-                panelSwatch15.BackColor = colorList[14];
-                panelSwatch16.BackColor = colorList[15];
-
-                foreach (Control control in panelsSwatchesForColors9To16)
-                {
-                    control.Visible = true;
-                }
+                HandleException(ex, "SetupStripes");
             }
-
         }
 
         private void BtnStripesSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupStripes();
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupStripes();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnStripesSortByBrightness_Click");
+            }
         }
 
         private void BtnStripesSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupStripes();
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupStripes();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnStripesSortByHue_Click");
+            }
         }
 
         private void BtnStripesSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupStripes();
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupStripes();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnStripesSortByRGBSum_Click");
+            }
         }
 
         private void BtnStripesSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupStripes();
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupStripes();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnStripesSortBySaturation_Click");
+            }
         }
 
         #endregion
@@ -2015,26 +2371,54 @@ namespace Chromaseed
 
         private void BtnCirclesSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupCircles(panelImageCircles, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupCircles(panelImageCircles, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnCirclesSortByHue_Click");
+            }
         }
 
         private void BtnCirclesSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupCircles(panelImageCircles, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupCircles(panelImageCircles, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnCirclesSortByBrightness_Click");
+            }
         }
 
         private void BtnCirclesSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupCircles(panelImageCircles, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupCircles(panelImageCircles, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnCirclesSortByRGBSum_Click");
+            }
         }
 
         private void BtnCirclesSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupCircles(panelImageCircles, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupCircles(panelImageCircles, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnCirclesSortBySaturation_Click");
+            }
         }
 
         #endregion
@@ -2091,26 +2475,54 @@ namespace Chromaseed
 
         private void BtnSquaresSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupSquares(panelImageSquares, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupSquares(panelImageSquares, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSquaresSortByHue_Click");
+            }
         }
 
         private void BtnSquaresSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupSquares(panelImageSquares, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupSquares(panelImageSquares, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSquaresSortByBrightness_Click");
+            }
         }
 
         private void BtnSquaresSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupSquares(panelImageSquares, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupSquares(panelImageSquares, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSquaresSortByRGBSum_Click");
+            }
         }
 
         private void BtnSquaresSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupSquares(panelImageSquares, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupSquares(panelImageSquares, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSquaresSortBySaturation_Click");
+            }
         }
 
         #endregion
@@ -2150,26 +2562,55 @@ namespace Chromaseed
 
         private void BtnSpiralSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupSpiral(panelImageSpiral, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupSpiral(panelImageSpiral, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSpiralSortByHue_Click");
+            }
         }
 
         private void BtnSpiralSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupSpiral(panelImageSpiral, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupSpiral(panelImageSpiral, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSpiralSortByBrightness_Click");
+            }
+
         }
 
         private void BtnSpiralSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupSpiral(panelImageSpiral, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupSpiral(panelImageSpiral, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSpiralSortByRGBSum_Click");
+            }
         }
 
         private void BtnSpiralSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupSpiral(panelImageSpiral, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupSpiral(panelImageSpiral, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSpiralSortBySaturation_Click");
+            }
         }
 
         #endregion
@@ -2227,26 +2668,54 @@ namespace Chromaseed
 
         private void BtnMandelbrotSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupMandelbrot(panelImageMandelbrot, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupMandelbrot(panelImageMandelbrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMandelbrotSortByHue_Click");
+            }
         }
 
         private void BtnMandelbrotSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupMandelbrot(panelImageMandelbrot, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupMandelbrot(panelImageMandelbrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMandelbrotSortByBrightness_Click");
+            }
         }
 
         private void BtnMandelbrotSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupMandelbrot(panelImageMandelbrot, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupMandelbrot(panelImageMandelbrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMandelbrotSortByRGBSum_Click");
+            }
         }
 
         private void BtnMandelbrotSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupMandelbrot(panelImageMandelbrot, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupMandelbrot(panelImageMandelbrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMandelbrotSortBySaturation_Click");
+            }
         }
 
         #endregion
@@ -2278,8 +2747,15 @@ namespace Chromaseed
 
         private void BtnNoiseSize_Click(object sender, EventArgs e)
         {
-            noiseSize = (int)numericUpDownNoiseSize.Value;
-            SetupNoise(panelImageNoise, colorList);
+            try
+            {
+                noiseSize = (int)numericUpDownNoiseSize.Value;
+                SetupNoise(panelImageNoise, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnNoiseSize_Click");
+            }
         }
 
         #endregion
@@ -2288,95 +2764,137 @@ namespace Chromaseed
 
         private void SetupRadial(Panel panel, List<Color> colorList)
         {
-            panel.Controls.Clear();
-
-            using Graphics g = panel.CreateGraphics();
-            g.Clear(panel.BackColor);
-
-            int centerX = panel.Width / 2;
-            int centerY = panel.Height / 2;
-            int colorIndex = 0;
-            double angleStep = Math.PI / radialAngle;
-
-            for (int i = 0; i < radialRays; i++)
+            try
             {
-                using SolidBrush brush = new(colorList[colorIndex]);
+                panel.Controls.Clear();
 
-                double angle = i * angleStep;
-                int outerX1 = centerX + (int)(panel.Width * Math.Cos(angle));
-                int outerY1 = centerY + (int)(panel.Height * Math.Sin(angle));
-                int outerX2 = centerX + (int)(panel.Width * Math.Cos(angle + angleStep));
-                int outerY2 = centerY + (int)(panel.Height * Math.Sin(angle + angleStep));
+                using Graphics g = panel.CreateGraphics();
+                g.Clear(panel.BackColor);
 
-                Point[] points = { new(centerX, centerY), new(outerX1, outerY1), new(outerX2, outerY2) };
-                g.FillPolygon(brush, points);
+                int centerX = panel.Width / 2;
+                int centerY = panel.Height / 2;
+                int colorIndex = 0;
+                double angleStep = Math.PI / radialAngle;
 
-                colorIndex = (colorIndex + 1) % colorList.Count;
+                for (int i = 0; i < radialRays; i++)
+                {
+                    using SolidBrush brush = new(colorList[colorIndex]);
+
+                    double angle = i * angleStep;
+                    int outerX1 = centerX + (int)(panel.Width * Math.Cos(angle));
+                    int outerY1 = centerY + (int)(panel.Height * Math.Sin(angle));
+                    int outerX2 = centerX + (int)(panel.Width * Math.Cos(angle + angleStep));
+                    int outerY2 = centerY + (int)(panel.Height * Math.Sin(angle + angleStep));
+
+                    Point[] points = { new(centerX, centerY), new(outerX1, outerY1), new(outerX2, outerY2) };
+                    g.FillPolygon(brush, points);
+
+                    colorIndex = (colorIndex + 1) % colorList.Count;
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SetupRadial");
             }
         }
 
         private void BtnRadialSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupRadial(panelImageRadial, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupRadial(panelImageRadial, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnRadialSortByHue_Click");
+            }
         }
 
         private void BtnRadialSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupRadial(panelImageRadial, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupRadial(panelImageRadial, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnRadialSortByBrightness_Click");
+            }
         }
 
         private void BtnRadialSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupRadial(panelImageRadial, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupRadial(panelImageRadial, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnRadialSortByRGBSum_Click");
+            }
         }
 
         private void BtnRadialSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupRadial(panelImageRadial, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupRadial(panelImageRadial, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnRadialSortBySaturation_Click");
+            }
         }
 
         private void BtnRadialRays_Click(object sender, EventArgs e)
         {
-            if (string.Compare(comboBoxRadialRays.Text, "32", StringComparison.Ordinal) == 0)
+            try
             {
-                radialAngle = 16;
-                radialRays = 32;
+                if (string.Compare(comboBoxRadialRays.Text, "32", StringComparison.Ordinal) == 0)
+                {
+                    radialAngle = 16;
+                    radialRays = 32;
+                }
+                if (string.Compare(comboBoxRadialRays.Text, "64", StringComparison.Ordinal) == 0)
+                {
+                    radialAngle = 32;
+                    radialRays = 64;
+                }
+                if (string.Compare(comboBoxRadialRays.Text, "128", StringComparison.Ordinal) == 0)
+                {
+                    radialAngle = 64;
+                    radialRays = 128;
+                }
+                if (string.Compare(comboBoxRadialRays.Text, "256", StringComparison.Ordinal) == 0)
+                {
+                    radialAngle = 128;
+                    radialRays = 256;
+                }
+                if (string.Compare(comboBoxRadialRays.Text, "512", StringComparison.Ordinal) == 0)
+                {
+                    radialAngle = 256;
+                    radialRays = 512;
+                }
+                if (string.Compare(comboBoxRadialRays.Text, "1024", StringComparison.Ordinal) == 0)
+                {
+                    radialAngle = 512;
+                    radialRays = 1024;
+                }
+                if (string.Compare(comboBoxRadialRays.Text, "2048", StringComparison.Ordinal) == 0)
+                {
+                    radialAngle = 1024;
+                    radialRays = 2048;
+                }
+                SetupRadial(panelImageRadial, colorList);
             }
-            if (string.Compare(comboBoxRadialRays.Text, "64", StringComparison.Ordinal) == 0)
+            catch (Exception ex)
             {
-                radialAngle = 32;
-                radialRays = 64;
+                HandleException(ex, "BtnRadialRays_Click");
             }
-            if (string.Compare(comboBoxRadialRays.Text, "128", StringComparison.Ordinal) == 0)
-            {
-                radialAngle = 64;
-                radialRays = 128;
-            }
-            if (string.Compare(comboBoxRadialRays.Text, "256", StringComparison.Ordinal) == 0)
-            {
-                radialAngle = 128;
-                radialRays = 256;
-            }
-            if (string.Compare(comboBoxRadialRays.Text, "512", StringComparison.Ordinal) == 0)
-            {
-                radialAngle = 256;
-                radialRays = 512;
-            }
-            if (string.Compare(comboBoxRadialRays.Text, "1024", StringComparison.Ordinal) == 0)
-            {
-                radialAngle = 512;
-                radialRays = 1024;
-            }
-            if (string.Compare(comboBoxRadialRays.Text, "2048", StringComparison.Ordinal) == 0)
-            {
-                radialAngle = 1024;
-                radialRays = 2048;
-            }
-            SetupRadial(panelImageRadial, colorList);
         }
 
         #endregion
@@ -2385,85 +2903,128 @@ namespace Chromaseed
 
         private void SetupHexagons(Panel panel, List<Color> colorList)
         {
-            panel.Controls.Clear();
-
-            using Graphics g = panel.CreateGraphics();
-            g.Clear(panel.BackColor);
-
-            int colorIndex = 0;
-
-            void DrawHexagon(Graphics g, float x, float y, float size, int depth)
+            try
             {
-                if (depth == 0) return;
-                using SolidBrush brush = new(colorList[colorIndex]);
+                panel.Controls.Clear();
 
-                PointF[] hexagon = new PointF[6];
-                for (int i = 0; i < 6; i++)
+                using Graphics g = panel.CreateGraphics();
+                g.Clear(panel.BackColor);
+
+                int colorIndex = 0;
+
+                void DrawHexagon(Graphics g, float x, float y, float size, int depth)
                 {
-                    double angle = i * Math.PI / 3;
-                    hexagon[i] = new PointF(x + size * (float)Math.Cos(angle), y + size * (float)Math.Sin(angle));
+                    if (depth == 0) return;
+                    using SolidBrush brush = new(colorList[colorIndex]);
+
+                    PointF[] hexagon = new PointF[6];
+                    for (int i = 0; i < 6; i++)
+                    {
+                        double angle = i * Math.PI / 3;
+                        hexagon[i] = new PointF(x + size * (float)Math.Cos(angle), y + size * (float)Math.Sin(angle));
+                    }
+                    g.FillPolygon(brush, hexagon);
+
+                    colorIndex = (colorIndex + 1) % colorList.Count;
+
+                    float newSize = size * 0.5f;
+                    for (int i = 0; i < 6; i++)
+                    {
+                        DrawHexagon(g, hexagon[i].X, hexagon[i].Y, newSize, depth - 1);
+                    }
                 }
-                g.FillPolygon(brush, hexagon);
 
-                colorIndex = (colorIndex + 1) % colorList.Count;
+                float hexSize = panel.Width / 12f;
+                float hexHeight = (float)Math.Sqrt(3) * hexSize;
 
-                float newSize = size * 0.5f;
-                for (int i = 0; i < 6; i++)
+                int rows = (int)(panel.Height / hexHeight) + 2;
+                int cols = (int)(panel.Width / (1.5 * hexSize)) + 2;
+
+                for (int row = 0; row < rows; row++)
                 {
-                    DrawHexagon(g, hexagon[i].X, hexagon[i].Y, newSize, depth - 1);
+                    for (int col = 0; col < cols; col++)
+                    {
+                        float x = col * 1.5f * hexSize;
+                        float y = row * hexHeight;
+                        if (col % 2 == 1)
+                        {
+                            y += hexHeight / 2;
+                        }
+
+                        DrawHexagon(g, x, y, hexSize, hexagonComplexity); // Depth set to 3, adjust for complexity
+                    }
                 }
             }
-
-            float hexSize = panel.Width / 12f;
-            float hexHeight = (float)Math.Sqrt(3) * hexSize;
-
-            int rows = (int)(panel.Height / hexHeight) + 2;
-            int cols = (int)(panel.Width / (1.5 * hexSize)) + 2;
-
-            for (int row = 0; row < rows; row++)
+            catch (Exception ex)
             {
-                for (int col = 0; col < cols; col++)
-                {
-                    float x = col * 1.5f * hexSize;
-                    float y = row * hexHeight;
-                    if (col % 2 == 1)
-                    {
-                        y += hexHeight / 2;
-                    }
-
-                    DrawHexagon(g, x, y, hexSize, hexagonComplexity); // Depth set to 3, adjust for complexity
-                }
+                HandleException(ex, "SetupHexagons");
             }
         }
 
+
         private void BtnHexagonsSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupHexagons(panelImageHexagons, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupHexagons(panelImageHexagons, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnHexagonsSortByHue_Click");
+            }
         }
 
         private void BtnHexagonsSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupHexagons(panelImageHexagons, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupHexagons(panelImageHexagons, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnHexagonsSortByBrightness_Click");
+            }
         }
 
         private void BtnHexagonsSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupHexagons(panelImageHexagons, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupHexagons(panelImageHexagons, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnHexagonsSortByRGBSum_Click");
+            }
         }
 
         private void BtnHexagonsSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupHexagons(panelImageHexagons, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupHexagons(panelImageHexagons, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnHexagonsSortBySaturation_Click");
+            }
         }
 
         private void BtnHexagonComplexity_Click(object sender, EventArgs e)
         {
-            hexagonComplexity = (int)numericUpDownHexagonComplexity.Value;
-            SetupHexagons(panelImageHexagons, colorList);
+            try
+            {
+                hexagonComplexity = (int)numericUpDownHexagonComplexity.Value;
+                SetupHexagons(panelImageHexagons, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnHexagonComplexity_Click");
+            }
         }
 
         #endregion
@@ -2472,75 +3033,117 @@ namespace Chromaseed
 
         private void SetupDistortion(Panel panel, List<Color> colorList)
         {
-            panel.Controls.Clear();
-
-            using Graphics g = panel.CreateGraphics();
-            g.Clear(panel.BackColor);
-
-            Random random = new();
-            int colorIndex = 0;
-            int centerX = panel.Width / 2;
-            int centerY = panel.Height / 2;
-
-            // Calculate a radius large enough to reach the farthest corners of the panel
-            int maxRadius = (int)Math.Ceiling(Math.Sqrt(centerX * centerX + centerY * centerY));
-
-            // Set a smaller step to add more circles
-            int step = 15; // Smaller step to increase circle count
-
-            // Continue drawing circles until the smallest radius is very small
-            for (int radius = maxRadius; radius > 0; radius -= step)
+            try
             {
-                // Set the color from the list
-                using Pen pen = new(colorList[colorIndex], 3);
+                panel.Controls.Clear();
 
-                PointF[] points = new PointF[360];
-                for (int angle = 0; angle < 360; angle++)
+                using Graphics g = panel.CreateGraphics();
+                g.Clear(panel.BackColor);
+
+                Random random = new();
+                int colorIndex = 0;
+                int centerX = panel.Width / 2;
+                int centerY = panel.Height / 2;
+
+                // Calculate a radius large enough to reach the farthest corners of the panel
+                int maxRadius = (int)Math.Ceiling(Math.Sqrt(centerX * centerX + centerY * centerY));
+
+                // Set a smaller step to add more circles
+                int step = 15; // Smaller step to increase circle count
+
+                // Continue drawing circles until the smallest radius is very small
+                for (int radius = maxRadius; radius > 0; radius -= step)
                 {
-                    // Create distortion by altering the radii slightly
-                    float distortion = (float)(random.NextDouble() * distortionAmount - 10); // Random deviation
-                    points[angle] = new PointF(
-                        centerX + (float)((radius + distortion) * Math.Cos(angle * Math.PI / 180)),
-                        centerY + (float)((radius + distortion) * Math.Sin(angle * Math.PI / 180))
-                    );
+                    // Set the color from the list
+                    using Pen pen = new(colorList[colorIndex], 3);
+
+                    PointF[] points = new PointF[360];
+                    for (int angle = 0; angle < 360; angle++)
+                    {
+                        // Create distortion by altering the radii slightly
+                        float distortion = (float)(random.NextDouble() * distortionAmount - 10); // Random deviation
+                        points[angle] = new PointF(
+                            centerX + (float)((radius + distortion) * Math.Cos(angle * Math.PI / 180)),
+                            centerY + (float)((radius + distortion) * Math.Sin(angle * Math.PI / 180))
+                        );
+                    }
+
+                    // Draw the distorted circle, even if parts of it are outside the panel
+                    g.DrawPolygon(pen, points);
+
+                    // Cycle through the colors, repeating if necessary
+                    colorIndex = (colorIndex + 1) % colorList.Count;
                 }
-
-                // Draw the distorted circle, even if parts of it are outside the panel
-                g.DrawPolygon(pen, points);
-
-                // Cycle through the colors, repeating if necessary
-                colorIndex = (colorIndex + 1) % colorList.Count;
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SetupDistortion");
             }
         }
 
         private void BtnDistortionSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupDistortion(panelImageSquiggle, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupDistortion(panelImageSquiggle, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnDistortionSortByHue_Click");
+            }
         }
 
         private void BtnDistortionSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupDistortion(panelImageSquiggle, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupDistortion(panelImageSquiggle, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnDistortionSortByBrightness_Click");
+            }
         }
 
         private void BtnDistortionSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupDistortion(panelImageSquiggle, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupDistortion(panelImageSquiggle, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnDistortionSortByRGBSum_Click");
+            }
         }
 
         private void BtnDistortionSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupDistortion(panelImageSquiggle, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupDistortion(panelImageSquiggle, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnDistortionSortBySaturation_Click");
+            }
         }
 
         private void BtnDistortionRefresh_Click(object sender, EventArgs e)
         {
-            distortionAmount = (int)numericUpDownDistortion.Value;
-            SetupDistortion(panelImageSquiggle, colorList);
+            try
+            {
+                distortionAmount = (int)numericUpDownDistortion.Value;
+                SetupDistortion(panelImageSquiggle, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnDistortionRefresh_Click");
+            }
         }
 
         #endregion
@@ -2586,8 +3189,15 @@ namespace Chromaseed
 
         private void BtnBrinkRefreshText_Click(object sender, EventArgs e)
         {
-            phrase = textBoxBrink.Text;
-            SetupBrink(panelImageBrink, phrase, colorList);
+            try
+            {
+                phrase = textBoxBrink.Text;
+                SetupBrink(panelImageBrink, phrase, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnBrinkRefreshText_Click");
+            }
         }
 
         #endregion
@@ -2598,38 +3208,52 @@ namespace Chromaseed
 
         private void SetupSymbols(Panel panel, List<Color> colorList)
         {
-            panel.Controls.Clear();
-
-            using Graphics g = panel.CreateGraphics();
-            g.Clear(panel.BackColor);
-
-            Random random = new();
-            int colorIndex = 0;
-
-            char[] asciiChars = { '@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.', '₿' };
-
-            using Font font = new("Courier New", fontSize, FontStyle.Bold);
-
-            int gridSize = 20;
-            for (int y = 0; y < panel.Height; y += gridSize)
+            try
             {
-                for (int x = 0; x < panel.Width; x += gridSize)
+                panel.Controls.Clear();
+
+                using Graphics g = panel.CreateGraphics();
+                g.Clear(panel.BackColor);
+
+                Random random = new();
+                int colorIndex = 0;
+
+                char[] asciiChars = { '@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.', '₿' };
+
+                using Font font = new("Courier New", fontSize, FontStyle.Bold);
+
+                int gridSize = 20;
+                for (int y = 0; y < panel.Height; y += gridSize)
                 {
-                    char asciiChar = asciiChars[random.Next(0, asciiChars.Length)];
+                    for (int x = 0; x < panel.Width; x += gridSize)
+                    {
+                        char asciiChar = asciiChars[random.Next(0, asciiChars.Length)];
 
-                    using Brush brush = new SolidBrush(colorList[colorIndex]);
+                        using Brush brush = new SolidBrush(colorList[colorIndex]);
 
-                    g.DrawString(asciiChar.ToString(), font, brush, new PointF(x, y));
+                        g.DrawString(asciiChar.ToString(), font, brush, new PointF(x, y));
 
-                    colorIndex = (colorIndex + 1) % colorList.Count;
+                        colorIndex = (colorIndex + 1) % colorList.Count;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SetupSymbols");
             }
         }
 
         private void BtnSymbolSize_Click(object sender, EventArgs e)
         {
-            fontSize = (int)numericUpDownSymbolSize.Value;
-            SetupSymbols(panelImageSymbols, colorList);
+            try
+            {
+                fontSize = (int)numericUpDownSymbolSize.Value;
+                SetupSymbols(panelImageSymbols, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSymbolSize_Click");
+            }
         }
 
         #endregion
@@ -2638,50 +3262,64 @@ namespace Chromaseed
 
         private void SetupTiles(Panel panel, List<Color> colorList)
         {
-            panel.Controls.Clear();
-
-            using Graphics g = panel.CreateGraphics();
-            g.Clear(panel.BackColor);
-
-            Random random = new();
-            int colorIndex = 0;
-
-            Point[] points = new Point[mosaicNumPoints];
-            for (int i = 0; i < mosaicNumPoints; i++)
+            try
             {
-                points[i] = new Point(random.Next(panel.Width), random.Next(panel.Height));
-            }
+                panel.Controls.Clear();
 
-            for (int x = 0; x < panel.Width; x++)
-            {
-                for (int y = 0; y < panel.Height; y++)
+                using Graphics g = panel.CreateGraphics();
+                g.Clear(panel.BackColor);
+
+                Random random = new();
+                int colorIndex = 0;
+
+                Point[] points = new Point[mosaicNumPoints];
+                for (int i = 0; i < mosaicNumPoints; i++)
                 {
-                    // Find the closest random point for each pixel
-                    int closestPointIndex = 0;
-                    double closestDistance = double.MaxValue;
-
-                    for (int i = 0; i < mosaicNumPoints; i++)
-                    {
-                        double dist = Math.Sqrt(Math.Pow(x - points[i].X, 2) + Math.Pow(y - points[i].Y, 2));
-                        if (dist < closestDistance)
-                        {
-                            closestDistance = dist;
-                            closestPointIndex = i;
-                        }
-                    }
-
-                    // Use a color based on the closest point's index
-                    colorIndex = closestPointIndex % colorList.Count;
-                    using SolidBrush brush = new(colorList[colorIndex]);
-                    g.FillRectangle(brush, x, y, 1, 1);
+                    points[i] = new Point(random.Next(panel.Width), random.Next(panel.Height));
                 }
+
+                for (int x = 0; x < panel.Width; x++)
+                {
+                    for (int y = 0; y < panel.Height; y++)
+                    {
+                        // Find the closest random point for each pixel
+                        int closestPointIndex = 0;
+                        double closestDistance = double.MaxValue;
+
+                        for (int i = 0; i < mosaicNumPoints; i++)
+                        {
+                            double dist = Math.Sqrt(Math.Pow(x - points[i].X, 2) + Math.Pow(y - points[i].Y, 2));
+                            if (dist < closestDistance)
+                            {
+                                closestDistance = dist;
+                                closestPointIndex = i;
+                            }
+                        }
+
+                        // Use a color based on the closest point's index
+                        colorIndex = closestPointIndex % colorList.Count;
+                        using SolidBrush brush = new(colorList[colorIndex]);
+                        g.FillRectangle(brush, x, y, 1, 1);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SetupTiles");
             }
         }
 
         private void BtnTilesCount_Click(object sender, EventArgs e)
         {
-            mosaicNumPoints = (int)numericUpDownMosaicTiles.Value;
-            SetupTiles(panelImageTiles, colorList);
+            try
+            {
+                mosaicNumPoints = (int)numericUpDownMosaicTiles.Value;
+                SetupTiles(panelImageTiles, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnTilesCount_Click");
+            }
         }
 
         #endregion
@@ -2734,26 +3372,54 @@ namespace Chromaseed
 
         private void BtnMultibrotSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupMultibrotSet(panelImageMultibrot, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupMultibrotSet(panelImageMultibrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMultibrotSortByHue_Click");
+            }
         }
 
         private void BtnMultibrotSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupMultibrotSet(panelImageMultibrot, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupMultibrotSet(panelImageMultibrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMultibrotSortByBrightness_Click");
+            }
         }
 
         private void BtnMultibrotSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupMultibrotSet(panelImageMultibrot, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupMultibrotSet(panelImageMultibrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMultibrotSortByRGBSum_Click");
+            }
         }
 
         private void BtnMultibrotSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupMultibrotSet(panelImageMultibrot, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupMultibrotSet(panelImageMultibrot, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMultibrotSortBySaturation_Click");
+            }
         }
 
         #endregion
@@ -2812,26 +3478,54 @@ namespace Chromaseed
 
         private void BtnPhoenixSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupPhoenixFractal(panelImagePhoenix, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupPhoenixFractal(panelImagePhoenix, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnPhoenixSortByHue_Click");
+            }
         }
 
         private void BtnPhoenixSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupPhoenixFractal(panelImagePhoenix, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupPhoenixFractal(panelImagePhoenix, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnPhoenixSortByBrightness_Click");
+            }
         }
 
         private void BtnPhoenixSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupPhoenixFractal(panelImagePhoenix, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupPhoenixFractal(panelImagePhoenix, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnPhoenixSortByRGBSum_Click");
+            }
         }
 
         private void BtnPhoenixSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupPhoenixFractal(panelImagePhoenix, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupPhoenixFractal(panelImagePhoenix, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnPhoenixSortBySaturation_Click");
+            }
         }
 
         #endregion
@@ -2885,26 +3579,54 @@ namespace Chromaseed
 
         private void BtnMenuTricornSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupTricornFractal(panelImageTricorn, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupTricornFractal(panelImageTricorn, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuTricornSortByHue_Click");
+            }
         }
 
         private void BtnMenuTricornSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupTricornFractal(panelImageTricorn, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupTricornFractal(panelImageTricorn, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuTricornSortByBrightness_Click");
+            }
         }
 
         private void BtnMenuTricornSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupTricornFractal(panelImageTricorn, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupTricornFractal(panelImageTricorn, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuTricornSortByRGBSum_Click");
+            }
         }
 
         private void BtnMenuTricornSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupTricornFractal(panelImageTricorn, colorList);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupTricornFractal(panelImageTricorn, colorList);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnMenuTricornSortBySaturation_Click");
+            }
         }
 
         #endregion
@@ -2957,26 +3679,54 @@ namespace Chromaseed
 
         private void BtnJuliaSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnJuliaSortByHue_Click");
+            }
         }
 
         private void BtnJuliaSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnJuliaSortByBrightness_Click");
+            }
         }
 
         private void BtnJuliaSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnJuliaSortByRGBSum_Click");
+            }
         }
 
         private void BtnJuliaSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupJuliaSet(panelImageJulia, colorList, 0.355, 0.355);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnJuliaSortBySaturation_Click");
+            }
         }
 
         #endregion
@@ -3028,32 +3778,67 @@ namespace Chromaseed
 
         private void BtnTextGridSortByHue_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetHue()).ToList();
-            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetHue()).ToList();
+                SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnTextGridSortByHue_Click");
+            }
         }
 
         private void BtnTextGridSortByBrightness_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
-            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetBrightness()).ToList();
+                SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnTextGridSortByBrightness_Click");
+            }
         }
 
         private void BtnTextGridSortByRGBSum_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
-            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.R + c.G + c.B).ToList();
+                SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnTextGridSortByRGBSum_Click");
+            }
         }
 
         private void BtnTextGridSortBySaturation_Click(object sender, EventArgs e)
         {
-            colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
-            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            try
+            {
+                colorList = colorList.OrderBy(c => c.GetSaturation()).ToList();
+                SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnTextGridSortBySaturation_Click");
+            }
         }
 
         private void BtnTextGridUpdatePhrase_Click(object sender, EventArgs e)
         {
-            textGridPhrase = textBoxTextGrid.Text;
-            SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            try
+            {
+                textGridPhrase = textBoxTextGrid.Text;
+                SetupTextGrid(panelImageTextGrid, colorList, textGridPhrase);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnTextGridUpdatePhrase_Click");
+            }
         }
 
 
@@ -3065,82 +3850,109 @@ namespace Chromaseed
 
         private void SaveAreaAsImage(Rectangle captureArea)
         {
-            // Convert the form-relative coordinates to screen coordinates
-            Point formLocationOnScreen = this.PointToScreen(captureArea.Location);
-
-            // Create a bitmap with the size of the capture area
-            Bitmap bitmap = new(captureArea.Width, captureArea.Height);
-
-            // Create a graphics object from the bitmap
-            using (Graphics g = Graphics.FromImage(bitmap))
+            try
             {
-                // Capture the specified area of the form into the bitmap
-                g.CopyFromScreen(formLocationOnScreen, Point.Empty, captureArea.Size);
-            }
+                // Convert the form-relative coordinates to screen coordinates
+                Point formLocationOnScreen = this.PointToScreen(captureArea.Location);
 
-            using SaveFileDialog saveFileDialog = new();
-            saveFileDialog.Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap Image|*.bmp";
-            saveFileDialog.Title = "Save area as image";
-            saveFileDialog.FileName = "Chromaseed.png";
+                // Create a bitmap with the size of the capture area
+                Bitmap bitmap = new(captureArea.Width, captureArea.Height);
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string fileExtension = System.IO.Path.GetExtension(saveFileDialog.FileName).ToLower();
-
-                switch (fileExtension)
+                // Create a graphics object from the bitmap
+                using (Graphics g = Graphics.FromImage(bitmap))
                 {
-                    case ".jpg":
-                        bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        break;
-                    case ".bmp":
-                        bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
-                        break;
-                    default:
-                        bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                        break;
+                    // Capture the specified area of the form into the bitmap
+                    g.CopyFromScreen(formLocationOnScreen, Point.Empty, captureArea.Size);
                 }
-                lblFileSaved.Visible = true;
-                timer1.Start();
 
+                using SaveFileDialog saveFileDialog = new();
+                saveFileDialog.Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap Image|*.bmp";
+                saveFileDialog.Title = "Save area as image";
+                saveFileDialog.FileName = "Chromaseed.png";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileExtension = System.IO.Path.GetExtension(saveFileDialog.FileName).ToLower();
+
+                    switch (fileExtension)
+                    {
+                        case ".jpg":
+                            bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            break;
+                        case ".bmp":
+                            bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
+                            break;
+                        default:
+                            bitmap.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                            break;
+                    }
+                    lblFileSaved.Visible = true;
+                    timer1.Start();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "SaveAreaAsImage");
             }
         }
 
         private void ShowSaveImagePanel()
         {
-            panelSaveImage.Visible = true;
-            panelSaveImage.BringToFront();
+            try
+            {
+                panelSaveImage.Visible = true;
+                panelSaveImage.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "ShowSaveImagePanel");
+            }
 
         }
 
         private void BtnSaveImage_Click(object sender, EventArgs e)
         {
-            if (checkBoxHex.Checked && checkBoxRGB.Checked)
+            try
             {
-                Rectangle captureArea = new(135, 94, 645, 570);
-                SaveAreaAsImage(captureArea);
-            }
+                if (checkBoxHex.Checked && checkBoxRGB.Checked)
+                {
+                    Rectangle captureArea = new(135, 94, 645, 570);
+                    SaveAreaAsImage(captureArea);
+                }
 
-            if (!checkBoxHex.Checked && !checkBoxRGB.Checked)
-            {
-                Rectangle captureArea = new(209, 94, 574, 570);
-                SaveAreaAsImage(captureArea);
-            }
+                if (!checkBoxHex.Checked && !checkBoxRGB.Checked)
+                {
+                    Rectangle captureArea = new(209, 94, 574, 570);
+                    SaveAreaAsImage(captureArea);
+                }
 
-            if (checkBoxHex.Checked && !checkBoxRGB.Checked)
-            {
-                Rectangle captureArea = new(135, 94, 645, 570);
-                panelRGBLabels.Visible = false;
-                SaveAreaAsImage(captureArea);
-                panelRGBLabels.Visible = true;
-            }
+                if (checkBoxHex.Checked && !checkBoxRGB.Checked)
+                {
+                    Rectangle captureArea = new(135, 94, 645, 570);
+                    panelRGBLabels.Visible = false;
+                    SaveAreaAsImage(captureArea);
+                    panelRGBLabels.Visible = true;
+                }
 
-            if (!checkBoxHex.Checked && checkBoxRGB.Checked)
-            {
-                Rectangle captureArea = new(135, 94, 645, 570);
-                panelHexLabels.Visible = false;
-                SaveAreaAsImage(captureArea);
-                panelHexLabels.Visible = true;
+                if (!checkBoxHex.Checked && checkBoxRGB.Checked)
+                {
+                    Rectangle captureArea = new(135, 94, 645, 570);
+                    panelHexLabels.Visible = false;
+                    SaveAreaAsImage(captureArea);
+                    panelHexLabels.Visible = true;
+                }
             }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnSaveImage_Click");
+            }
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            lblFileSaved.Visible = false;
+            timer1.Stop();
         }
         #endregion
 
@@ -3148,133 +3960,173 @@ namespace Chromaseed
 
         private void PopulateHexKey()
         {
-            if (eightColours)
+            try
             {
-                lblHex1.Text = lblColorHex1.Text;
-                lblHex2.Text = lblColorHex2.Text;
-                lblHex3.Text = lblColorHex3.Text;
-                lblHex4.Text = lblColorHex4.Text;
-                lblHex5.Text = lblColorHex5.Text;
-                lblHex6.Text = lblColorHex6.Text;
-                lblHex7.Text = lblColorHex7.Text;
-                lblHex8.Text = lblColorHex8.Text;
-                panelHexLabels.Height = 108;
-                panelHexLabels.Location = new Point(panelHexLabels.Location.X, 99);
+                if (eightColours)
+                {
+                    lblHex1.Text = lblColorHex1.Text;
+                    lblHex2.Text = lblColorHex2.Text;
+                    lblHex3.Text = lblColorHex3.Text;
+                    lblHex4.Text = lblColorHex4.Text;
+                    lblHex5.Text = lblColorHex5.Text;
+                    lblHex6.Text = lblColorHex6.Text;
+                    lblHex7.Text = lblColorHex7.Text;
+                    lblHex8.Text = lblColorHex8.Text;
+                    panelHexLabels.Height = 108;
+                    panelHexLabels.Location = new Point(panelHexLabels.Location.X, 99);
+                }
+                else
+                {
+                    lblHex1.Text = lblColorHex1.Text;
+                    lblHex2.Text = lblColorHex2.Text;
+                    lblHex3.Text = lblColorHex3.Text;
+                    lblHex4.Text = lblColorHex4.Text;
+                    lblHex5.Text = lblColorHex5.Text;
+                    lblHex6.Text = lblColorHex6.Text;
+                    lblHex7.Text = lblColorHex7.Text;
+                    lblHex8.Text = lblColorHex8.Text;
+                    lblHex9.Text = lblColorHex9.Text;
+                    lblHex10.Text = lblColorHex10.Text;
+                    lblHex11.Text = lblColorHex11.Text;
+                    lblHex12.Text = lblColorHex12.Text;
+                    lblHex13.Text = lblColorHex13.Text;
+                    lblHex14.Text = lblColorHex14.Text;
+                    lblHex15.Text = lblColorHex15.Text;
+                    lblHex16.Text = lblColorHex16.Text;
+                    panelHexLabels.Height = 216;
+                    panelHexLabels.Location = new Point(panelHexLabels.Location.X, 99);
+                }
+                panelHexLabels.BringToFront();
+                panelHexLabels.Visible = true;
             }
-            else
+            catch (Exception ex)
             {
-                lblHex1.Text = lblColorHex1.Text;
-                lblHex2.Text = lblColorHex2.Text;
-                lblHex3.Text = lblColorHex3.Text;
-                lblHex4.Text = lblColorHex4.Text;
-                lblHex5.Text = lblColorHex5.Text;
-                lblHex6.Text = lblColorHex6.Text;
-                lblHex7.Text = lblColorHex7.Text;
-                lblHex8.Text = lblColorHex8.Text;
-                lblHex9.Text = lblColorHex9.Text;
-                lblHex10.Text = lblColorHex10.Text;
-                lblHex11.Text = lblColorHex11.Text;
-                lblHex12.Text = lblColorHex12.Text;
-                lblHex13.Text = lblColorHex13.Text;
-                lblHex14.Text = lblColorHex14.Text;
-                lblHex15.Text = lblColorHex15.Text;
-                lblHex16.Text = lblColorHex16.Text;
-                panelHexLabels.Height = 216;
-                panelHexLabels.Location = new Point(panelHexLabels.Location.X, 99);
+                HandleException(ex, "PopulateHexKey");
             }
-            panelHexLabels.BringToFront();
-            panelHexLabels.Visible = true;
         }
 
         private void PopulateRGBKey()
         {
-            if (eightColours)
+            try
             {
-                lblRGB1.Text = lblColorRGB1.Text;
-                lblRGB2.Text = lblColorRGB2.Text;
-                lblRGB3.Text = lblColorRGB3.Text;
-                lblRGB4.Text = lblColorRGB4.Text;
-                lblRGB5.Text = lblColorRGB5.Text;
-                lblRGB6.Text = lblColorRGB6.Text;
-                lblRGB7.Text = lblColorRGB7.Text;
-                lblRGB8.Text = lblColorRGB8.Text;
-                panelRGBLabels.Height = 108;
-                panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 553);
+                if (eightColours)
+                {
+                    lblRGB1.Text = lblColorRGB1.Text;
+                    lblRGB2.Text = lblColorRGB2.Text;
+                    lblRGB3.Text = lblColorRGB3.Text;
+                    lblRGB4.Text = lblColorRGB4.Text;
+                    lblRGB5.Text = lblColorRGB5.Text;
+                    lblRGB6.Text = lblColorRGB6.Text;
+                    lblRGB7.Text = lblColorRGB7.Text;
+                    lblRGB8.Text = lblColorRGB8.Text;
+                    panelRGBLabels.Height = 108;
+                    panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 553);
+                }
+                else
+                {
+                    lblRGB1.Text = lblColorRGB1.Text;
+                    lblRGB2.Text = lblColorRGB2.Text;
+                    lblRGB3.Text = lblColorRGB3.Text;
+                    lblRGB4.Text = lblColorRGB4.Text;
+                    lblRGB5.Text = lblColorRGB5.Text;
+                    lblRGB6.Text = lblColorRGB6.Text;
+                    lblRGB7.Text = lblColorRGB7.Text;
+                    lblRGB8.Text = lblColorRGB8.Text;
+                    lblRGB9.Text = lblColorRGB9.Text;
+                    lblRGB10.Text = lblColorRGB10.Text;
+                    lblRGB11.Text = lblColorRGB11.Text;
+                    lblRGB12.Text = lblColorRGB12.Text;
+                    lblRGB13.Text = lblColorRGB13.Text;
+                    lblRGB14.Text = lblColorRGB14.Text;
+                    lblRGB15.Text = lblColorRGB15.Text;
+                    lblRGB16.Text = lblColorRGB16.Text;
+                    panelRGBLabels.Height = 216;
+                    panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 445);
+                }
+                panelRGBLabels.BringToFront();
+                panelRGBLabels.Visible = true;
             }
-            else
+            catch (Exception ex)
             {
-                lblRGB1.Text = lblColorRGB1.Text;
-                lblRGB2.Text = lblColorRGB2.Text;
-                lblRGB3.Text = lblColorRGB3.Text;
-                lblRGB4.Text = lblColorRGB4.Text;
-                lblRGB5.Text = lblColorRGB5.Text;
-                lblRGB6.Text = lblColorRGB6.Text;
-                lblRGB7.Text = lblColorRGB7.Text;
-                lblRGB8.Text = lblColorRGB8.Text;
-                lblRGB9.Text = lblColorRGB9.Text;
-                lblRGB10.Text = lblColorRGB10.Text;
-                lblRGB11.Text = lblColorRGB11.Text;
-                lblRGB12.Text = lblColorRGB12.Text;
-                lblRGB13.Text = lblColorRGB13.Text;
-                lblRGB14.Text = lblColorRGB14.Text;
-                lblRGB15.Text = lblColorRGB15.Text;
-                lblRGB16.Text = lblColorRGB16.Text;
-                panelRGBLabels.Height = 216;
-                panelRGBLabels.Location = new Point(panelRGBLabels.Location.X, 445);
+                HandleException(ex, "PopulateRGBKey");
             }
-            panelRGBLabels.BringToFront();
-            panelRGBLabels.Visible = true;
         }
 
         #endregion
 
+        #region help
+
         private void BtnReadme_Click(object sender, EventArgs e)
         {
-            panelHelp.Visible = true;
-            panelHelp.BringToFront();
+            try
+            {
+                panelHelp.Visible = true;
+                panelHelp.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnReadme_Click");
+            }
         }
 
         private void BtnDismissDocs_Click(object sender, EventArgs e)
         {
-            panelHelp.Visible = false;
-            panelHelp.SendToBack();
+            try
+            {
+                panelHelp.Visible = false;
+                panelHelp.SendToBack();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "BtnDismissDocs_Click");
+            }
         }
 
+        #endregion
+
+        #region about screen
         private void BtnAbout_Click(object sender, EventArgs e)
         {
-            // display semi-transparent overlay form
-            Form overlay = new overlay()
+            try
             {
-                Owner = this,
-                StartPosition = FormStartPosition.CenterParent,
-                FormBorderStyle = FormBorderStyle.None,
-                BackColor = Color.Black,
-                Opacity = 0.5,
-            };
-            overlay.StartPosition = FormStartPosition.CenterParent;
-            // Calculate the overlay form's location to place it in the center of the parent form
-            overlay.StartPosition = FormStartPosition.Manual;
-            int parentCenterX = this.Location.X + this.Width / 2;
-            int parentCenterY = this.Location.Y + this.Height / 2;
-            int overlayX = parentCenterX - overlay.Width / 2;
-            int overlayY = parentCenterY - overlay.Height / 2;
-            overlay.Location = new Point(overlayX, overlayY);
-            overlay.Show(this);
+                // display semi-transparent overlay form
+                Form overlay = new overlay()
+                {
+                    Owner = this,
+                    StartPosition = FormStartPosition.CenterParent,
+                    FormBorderStyle = FormBorderStyle.None,
+                    BackColor = Color.Black,
+                    Opacity = 0.5,
+                };
+                overlay.StartPosition = FormStartPosition.CenterParent;
+                // Calculate the overlay form's location to place it in the center of the parent form
+                overlay.StartPosition = FormStartPosition.Manual;
+                int parentCenterX = this.Location.X + this.Width / 2;
+                int parentCenterY = this.Location.Y + this.Height / 2;
+                int overlayX = parentCenterX - overlay.Width / 2;
+                int overlayY = parentCenterY - overlay.Height / 2;
+                overlay.Location = new Point(overlayX, overlayY);
+                overlay.Show(this);
 
-            // display about screen on top of the overlay
-            Form frm = new About()
+                // display about screen on top of the overlay
+                Form frm = new About()
+                {
+                    Owner = this,
+                    StartPosition = FormStartPosition.CenterParent,
+                };
+                frm.StartPosition = FormStartPosition.CenterParent;
+                frm.ShowDialog(this);
+
+                overlay.Close();
+                this.Focus();
+                this.BringToFront();
+            }
+            catch (Exception ex)
             {
-                Owner = this,
-                StartPosition = FormStartPosition.CenterParent,
-            };
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.ShowDialog(this);
-
-            overlay.Close();
-            this.Focus();
-            this.BringToFront();
-
+                HandleException(ex, "BtnAbout_Click");
+            }
         }
+        #endregion
 
         #region common
 
@@ -3292,10 +4144,17 @@ namespace Chromaseed
         #region load bip39 words
         void LoadBip39Words()
         {
-            string[] words = File.ReadAllLines("bip39-wordlist.txt");
-            for (int i = 0; i < words.Length; i++)
+            try
             {
-                bip39Words.Add(i, words[i]);
+                string[] words = File.ReadAllLines("bip39-wordlist.txt");
+                for (int i = 0; i < words.Length; i++)
+                {
+                    bip39Words.Add(i, words[i]);
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "LoadBip39Words");
             }
         }
         #endregion
@@ -3303,21 +4162,28 @@ namespace Chromaseed
         #region border around form
         private void Chromaseed_Paint(object sender, PaintEventArgs e)
         {
-            using var pen = new Pen(Color.FromArgb(80, 80, 80), 1);
-            var rect = ClientRectangle;
-            rect.Inflate(-1, -1);
-            e.Graphics.DrawPath(pen, GetRoundedRect(rect, 15));
+            try
+            {
+                using var pen = new Pen(Color.FromArgb(80, 80, 80), 1);
+                var rect = ClientRectangle;
+                rect.Inflate(-1, -1);
+                e.Graphics.DrawPath(pen, GetRoundedRect(rect, 15));
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "Chromaseed_Paint");
+            }
         }
 
         private static GraphicsPath GetRoundedRect(Rectangle rectangle, int radius)
         {
-            GraphicsPath path = new();
-            path.AddArc(rectangle.X, rectangle.Y, radius, radius, 180, 90);
-            path.AddArc(rectangle.Width - radius, rectangle.Y, radius, radius, 270, 90);
-            path.AddArc(rectangle.Width - radius, rectangle.Height - radius, radius, radius, 0, 90);
-            path.AddArc(rectangle.X, rectangle.Height - radius, radius, radius, 90, 90);
-            path.CloseFigure();
-            return path;
+                GraphicsPath path = new();
+                path.AddArc(rectangle.X, rectangle.Y, radius, radius, 180, 90);
+                path.AddArc(rectangle.Width - radius, rectangle.Y, radius, radius, 270, 90);
+                path.AddArc(rectangle.Width - radius, rectangle.Height - radius, radius, radius, 0, 90);
+                path.AddArc(rectangle.X, rectangle.Height - radius, radius, radius, 90, 90);
+                path.CloseFigure();
+                return path;
         }
         #endregion
 
@@ -3357,7 +4223,7 @@ namespace Chromaseed
         #endregion
 
         #region error handler
-        private static void HandleException(Exception ex, string methodName)
+        private void HandleException(Exception ex, string methodName)
         {
             string errorMessage;
             errorMessage = $"Error in {methodName}: {ex.Message}";
@@ -3369,26 +4235,54 @@ namespace Chromaseed
                 errorMessage = $"{errorMessage[..MaxErrorMessageLength]}...";
             }
 
-            //lblErrorMessage.Invoke((MethodInvoker)delegate
-            // {
-            //                lblErrorMessage.Text = errorMessage;
-
-            //          });
+            lblError.Text = errorMessage;
+            lblError.Visible = true;
+            timerError.Start();
         }
-        #endregion
 
-        #endregion
-
-        private void Timer1_Tick(object sender, EventArgs e)
+        private void timerError_Tick(object sender, EventArgs e)
         {
-            lblFileSaved.Visible = false;
-            timer1.Stop();
+            lblError.Visible = false;
+            timerError.Stop();
         }
 
+        #endregion
+
+        #region move window
+
+        private void BtnMoveWindow_Click(object sender, EventArgs e)
+        {
+            var args = e as MouseEventArgs;
+            if (args!.Button == MouseButtons.Right)
+            {
+                return;
+            }
+        }
+
+        private void BtnMoveWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void BtnMoveWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            var args = e as MouseEventArgs;
+            if (args.Button == MouseButtons.Right)
+            {
+                return;
+            }
+            btnExit.Focus();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region splash screen
         private FullSizeLoadingScreen? FullSizeLoadingScreen;
         bool fullScreenLoadingScreenVisible;
         readonly bool wasOnTop;
-
 
         private async void Chromaseed_Load_Async(object sender, EventArgs e)
         {
@@ -3434,30 +4328,6 @@ namespace Chromaseed
                 MessageBox.Show("error");
             }
         }
-
-        private void BtnMoveWindow_Click(object sender, EventArgs e)
-        {
-            var args = e as MouseEventArgs;
-            if (args!.Button == MouseButtons.Right)
-            {
-                return;
-            }
-        }
-
-        private void BtnMoveWindow_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void BtnMoveWindow_MouseUp(object sender, MouseEventArgs e)
-        {
-            var args = e as MouseEventArgs;
-            if (args.Button == MouseButtons.Right)
-            {
-                return;
-            }
-            btnExit.Focus();
-        }
+        #endregion
     }
 }
