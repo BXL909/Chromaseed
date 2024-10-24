@@ -61,7 +61,7 @@ namespace Chromaseed
         int mosaicNumPoints = 100;
         #endregion
 
-        bool eightColours = false;
+        bool eightColours;
         List<Color> colorList = new();
         #endregion
 
@@ -153,7 +153,7 @@ namespace Chromaseed
         #region switch between converting from seed to colours or colours to seed
         private void BtnConvert_Click(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 #region convert colours to words
                 foreach (TextBox textbox in textBoxesAllSeedWords)
@@ -263,7 +263,7 @@ namespace Chromaseed
         #region select 12 or 24 word seed phrase
         private void Btn24SeedWords_Click(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 btn24SeedWords.Enabled = false;
                 btn12SeedWords.Enabled = true;
@@ -332,7 +332,7 @@ namespace Chromaseed
 
         private void Btn12SeedWords_Click(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 btn24SeedWords.Enabled = true;
                 btn12SeedWords.Enabled = false;
@@ -411,7 +411,7 @@ namespace Chromaseed
                 }
                 LblMerge_TextChanged(sender, e);
 
-                if (btnDummyButton.Text == "allcoloursset")
+                if (string.Compare(btnDummyButton.Text, "allcoloursset", StringComparison.Ordinal) == 0)
                 {
                     btnDummyButton.Text = "";
                     btnDummyButton.Text = "allcoloursset";
@@ -424,7 +424,7 @@ namespace Chromaseed
 
         private void SeedTextBox_Enter(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "◀")
+            if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
             {
                 btnDummyButton.Focus();
                 return;
@@ -448,7 +448,7 @@ namespace Chromaseed
 
         private void SeedTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 if (sender is TextBox textBox)
                 {
@@ -619,7 +619,7 @@ namespace Chromaseed
             // get the index associated with the given word
             if (bip39Words.ContainsValue(word))
             {
-                return bip39Words.FirstOrDefault(x => x.Value == word).Key + 1;
+                return bip39Words.FirstOrDefault(x => string.Compare(x.Value, word, StringComparison.Ordinal) == 0).Key + 1;
             }
 
             return -1;
@@ -630,7 +630,7 @@ namespace Chromaseed
         private void DisplayWordPositionInBIP39List(int intPosition, string newText)
         {
             // Construct the label name
-            string labelName = "lblWord" + intPosition.ToString() + "Position";
+            string labelName = $"lblWord{intPosition}Position";
 
             // Find the label by its name
 
@@ -648,27 +648,27 @@ namespace Chromaseed
         #region merge the word positions
         private void WordPosition_TextChanged(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 // split into groups of 6 characters for first 12 words
-                lblMerge1.Text = lblWord1Position.Text + lblWord2Position.Text[..2];
+                lblMerge1.Text = $"{lblWord1Position.Text}{lblWord2Position.Text[..2]}";
                 lblMerge2.Text = string.Concat(lblWord2Position.Text.AsSpan(2, 2), lblWord3Position.Text);
-                lblMerge3.Text = lblWord4Position.Text + lblWord5Position.Text[..2];
+                lblMerge3.Text = $"{lblWord4Position.Text}{lblWord5Position.Text[..2]}";
                 lblMerge4.Text = string.Concat(lblWord5Position.Text.AsSpan(2, 2), lblWord6Position.Text);
-                lblMerge5.Text = lblWord7Position.Text + lblWord8Position.Text[..2];
+                lblMerge5.Text = $"{lblWord7Position.Text}{lblWord8Position.Text[..2]}";
                 lblMerge6.Text = string.Concat(lblWord8Position.Text.AsSpan(2, 2), lblWord9Position.Text);
-                lblMerge7.Text = lblWord10Position.Text + lblWord11Position.Text[..2];
+                lblMerge7.Text = $"{lblWord10Position.Text}{lblWord11Position.Text[..2]}";
                 lblMerge8.Text = string.Concat(lblWord11Position.Text.AsSpan(2, 2), lblWord12Position.Text);
 
                 if (!btn24SeedWords.Enabled) // and the rest if 24 seed words
                 {
-                    lblMerge9.Text = lblWord13Position.Text + lblWord14Position.Text[..2];
+                    lblMerge9.Text = $"{lblWord13Position.Text}{lblWord14Position.Text[..2]}";
                     lblMerge10.Text = string.Concat(lblWord14Position.Text.AsSpan(2, 2), lblWord15Position.Text);
-                    lblMerge11.Text = lblWord16Position.Text + lblWord17Position.Text[..2];
+                    lblMerge11.Text = $"{lblWord16Position.Text}{lblWord17Position.Text[..2]}";
                     lblMerge12.Text = string.Concat(lblWord17Position.Text.AsSpan(2, 2), lblWord18Position.Text);
-                    lblMerge13.Text = lblWord19Position.Text + lblWord20Position.Text[..2];
+                    lblMerge13.Text = $"{lblWord19Position.Text}{lblWord20Position.Text[..2]}";
                     lblMerge14.Text = string.Concat(lblWord20Position.Text.AsSpan(2, 2), lblWord21Position.Text);
-                    lblMerge15.Text = lblWord22Position.Text + lblWord23Position.Text[..2];
+                    lblMerge15.Text = $"{lblWord22Position.Text}{lblWord23Position.Text[..2]}";
                     lblMerge16.Text = string.Concat(lblWord23Position.Text.AsSpan(2, 2), lblWord24Position.Text);
                 }
             }
@@ -717,37 +717,37 @@ namespace Chromaseed
         #region assign sequential numbers
         private void LblMerge_TextChanged(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 if (!btn12SeedWords.Enabled) // 12 words
                 {
-                    lblColorDecimal1.Text = "00" + lblMerge1.Text;
-                    lblColorDecimal2.Text = "02" + lblMerge2.Text;
-                    lblColorDecimal3.Text = "04" + lblMerge3.Text;
-                    lblColorDecimal4.Text = "06" + lblMerge4.Text;
-                    lblColorDecimal5.Text = "08" + lblMerge5.Text;
-                    lblColorDecimal6.Text = "10" + lblMerge6.Text;
-                    lblColorDecimal7.Text = "12" + lblMerge7.Text;
-                    lblColorDecimal8.Text = "14" + lblMerge8.Text;
+                    lblColorDecimal1.Text = $"00{lblMerge1.Text}";
+                    lblColorDecimal2.Text = $"02{lblMerge2.Text}";
+                    lblColorDecimal3.Text = $"04{lblMerge3.Text}";
+                    lblColorDecimal4.Text = $"06{lblMerge4.Text}";
+                    lblColorDecimal5.Text = $"08{lblMerge5.Text}";
+                    lblColorDecimal6.Text = $"10{lblMerge6.Text}";
+                    lblColorDecimal7.Text = $"12{lblMerge7.Text}";
+                    lblColorDecimal8.Text = $"14{lblMerge8.Text}";
                 }
                 else // 24 words
                 {
-                    lblColorDecimal1.Text = "00" + lblMerge1.Text;
-                    lblColorDecimal2.Text = "01" + lblMerge2.Text;
-                    lblColorDecimal3.Text = "02" + lblMerge3.Text;
-                    lblColorDecimal4.Text = "03" + lblMerge4.Text;
-                    lblColorDecimal5.Text = "04" + lblMerge5.Text;
-                    lblColorDecimal6.Text = "05" + lblMerge6.Text;
-                    lblColorDecimal7.Text = "06" + lblMerge7.Text;
-                    lblColorDecimal8.Text = "07" + lblMerge8.Text;
-                    lblColorDecimal9.Text = "08" + lblMerge9.Text;
-                    lblColorDecimal10.Text = "09" + lblMerge10.Text;
-                    lblColorDecimal11.Text = "10" + lblMerge11.Text;
-                    lblColorDecimal12.Text = "11" + lblMerge12.Text;
-                    lblColorDecimal13.Text = "12" + lblMerge13.Text;
-                    lblColorDecimal14.Text = "13" + lblMerge14.Text;
-                    lblColorDecimal15.Text = "14" + lblMerge15.Text;
-                    lblColorDecimal16.Text = "15" + lblMerge16.Text;
+                    lblColorDecimal1.Text = $"00{lblMerge1.Text}";
+                    lblColorDecimal2.Text = $"01{lblMerge2.Text}";
+                    lblColorDecimal3.Text = $"02{lblMerge3.Text}";
+                    lblColorDecimal4.Text = $"03{lblMerge4.Text}";
+                    lblColorDecimal5.Text = $"04{lblMerge5.Text}";
+                    lblColorDecimal6.Text = $"05{lblMerge6.Text}";
+                    lblColorDecimal7.Text = $"06{lblMerge7.Text}";
+                    lblColorDecimal8.Text = $"07{lblMerge8.Text}";
+                    lblColorDecimal9.Text = $"08{lblMerge9.Text}";
+                    lblColorDecimal10.Text = $"09{lblMerge10.Text}";
+                    lblColorDecimal11.Text = $"10{lblMerge11.Text}";
+                    lblColorDecimal12.Text = $"11{lblMerge12.Text}";
+                    lblColorDecimal13.Text = $"12{lblMerge13.Text}";
+                    lblColorDecimal14.Text = $"13{lblMerge14.Text}";
+                    lblColorDecimal15.Text = $"14{lblMerge15.Text}";
+                    lblColorDecimal16.Text = $"15{lblMerge16.Text}";
                 }
             }
             else
@@ -815,13 +815,13 @@ namespace Chromaseed
                     if (int.TryParse(decimalLabel.Text, out int decimalValue))
                     {
                         // Convert to hexadecimal and store in the hex label
-                        hexLabel.Text = "#" + decimalValue.ToString("X6"); // "X8" for 8-character uppercase hex string
+                        hexLabel.Text = $"#{decimalValue.ToString("X6")}"; // "X8" for 8-character uppercase hex string
 
                         if (!btnHex.Enabled)
                         {
                             if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
                             {
-                                textBox.Text = "#" + decimalValue.ToString("X6");
+                                textBox.Text = $"#{decimalValue.ToString("X6")}";
                             }
                             else
                             {
@@ -851,7 +851,7 @@ namespace Chromaseed
                 }
             }
 
-            if (btnConvert.Text == "◀")
+            if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
             {
                 bool allColoursSet = true;
 
@@ -859,7 +859,7 @@ namespace Chromaseed
 
                 foreach (Control control in labels1to8ColorHex)
                 {
-                    if (control.Text == "-------")
+                    if (string.Compare(control.Text, "-------", StringComparison.Ordinal) == 0)
                     {
                         allColoursSet = false;
                     }
@@ -869,7 +869,7 @@ namespace Chromaseed
                 {
                     foreach (Control control in labels9to16ColorHex)
                     {
-                        if (control.Text == "-------")
+                        if (string.Compare(control.Text, "-------", StringComparison.Ordinal) == 0)
                         {
                             allColoursSet = false;
                         }
@@ -955,14 +955,14 @@ namespace Chromaseed
                             }
                         }
 
-                        if (btnConvert.Text == "◀")
+                        if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
                         {
                             string hex = hexLabel.Text[1..];
 
                             // Convert hex to decimal
                             int decimalValue = Convert.ToInt32(hex, 16);
 
-                            string labelName = "lblColorDecimal" + i;
+                            string labelName = $"lblColorDecimal{i}";
 
                             if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
                             {
@@ -998,7 +998,7 @@ namespace Chromaseed
             {
                 if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label RGBLabel && this.Controls.Find($"btnColor{i}", true).FirstOrDefault() is RJButton btnColor)
                 {
-                    if (RGBLabel.Text == "---,---,---")
+                    if (string.Compare(RGBLabel.Text, "---,---,---", StringComparison.Ordinal) == 0)
                     {
                         btnColor.Text = "▔";
                         btnColor.BackColor = Color.FromArgb(20, 20, 20);
@@ -1024,7 +1024,7 @@ namespace Chromaseed
                         }
                     }
 
-                    if (btnConvert.Text == "◀")
+                    if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
                     {
                         if (!btnRGB.Enabled)
                         {
@@ -1069,7 +1069,7 @@ namespace Chromaseed
             {
                 if (this.Controls.Find($"lblColorRGB{i}", true).FirstOrDefault() is Label RGBLabel)
                 {
-                    if (RGBLabel.Text == "---,---,---")
+                    if (string.Compare(RGBLabel.Text, "---,---,---", StringComparison.Ordinal) == 0)
                     {
                         allColoursSet = false;
                     }
@@ -1112,7 +1112,7 @@ namespace Chromaseed
         #region switch between 8 and 16 colours
         private void Btn8Colours_Click(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 return;
             }
@@ -1192,7 +1192,7 @@ namespace Chromaseed
             btn8Colours.Enabled = false;
             btn16Colours.Enabled = true;
 
-            if (btnDummyButton.Text == "allcoloursset")
+            if (string.Compare(btnDummyButton.Text, "allcoloursset", StringComparison.Ordinal) == 0)
             {
                 btnDummyButton.Text = "";
                 btnDummyButton.Text = "allcoloursset";
@@ -1201,7 +1201,7 @@ namespace Chromaseed
 
         private void Btn16Colours_Click(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 return;
             }
@@ -1276,7 +1276,7 @@ namespace Chromaseed
 
         private void TextBoxColor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 e.Handled = true;
                 return;
@@ -1358,7 +1358,7 @@ namespace Chromaseed
 
         private void TextBoxColor_Enter(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "▶")
+            if (string.Compare(btnConvert.Text, "▶", StringComparison.Ordinal) == 0)
             {
                 btnDummyButton.Focus();
             }
@@ -1377,7 +1377,7 @@ namespace Chromaseed
                         else
                         {
                             // In case # is missing, make sure it's added
-                            textBox.Text = "#" + textBox.Text;
+                            textBox.Text = $"#{textBox.Text}";
                             textBox.SelectionStart = textBox.Text.Length;
                         }
                     }
@@ -1393,7 +1393,7 @@ namespace Chromaseed
         #region validate rgb input
         private void TextBoxColor_Leave(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "◀")
+            if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
             {
                 if (!btnRGB.Enabled)
                 {
@@ -1424,7 +1424,7 @@ namespace Chromaseed
 
         private void TextBoxColor_TextChanged(object sender, EventArgs e)
         {
-            if (btnConvert.Text == "◀")
+            if (string.Compare(btnConvert.Text, "◀", StringComparison.Ordinal) == 0)
             {
                 if (!btnHex.Enabled)  //HEX
                 {
@@ -1433,7 +1433,7 @@ namespace Chromaseed
                     // Enforce # at the start
                     if (!textBox.Text.StartsWith("#") && textBox.Enabled)
                     {
-                        textBox.Text = "#" + textBox.Text.TrimStart('#');
+                        textBox.Text = $"#{textBox.Text.TrimStart('#')}";
                         textBox.SelectionStart = textBox.Text.Length; // Move cursor to the end
                     }
 
@@ -1450,7 +1450,7 @@ namespace Chromaseed
                         }
 
                         // Construct the label name
-                        string labelName = "lblColorHex" + colourPositionOnForm.ToString();
+                        string labelName = $"lblColorHex{colourPositionOnForm.ToString()}";
 
                         // Find the label by its name
                         if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
@@ -1476,7 +1476,7 @@ namespace Chromaseed
                         }
 
                         // Construct the label name
-                        string labelName = "lblColorDecimal" + colourPositionOnForm.ToString();
+                        string labelName = $"lblColorDecimal{colourPositionOnForm.ToString()}";
 
                         // Find the label by its name
                         if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
@@ -1513,7 +1513,7 @@ namespace Chromaseed
                         }
 
                         // Construct the label name
-                        string labelName = "lblColorRGB" + colourPositionOnForm.ToString();
+                        string labelName = $"lblColorRGB{colourPositionOnForm.ToString()}";
 
                         // Find the label by its name
                         if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
@@ -1539,7 +1539,7 @@ namespace Chromaseed
                         }
 
                         // Construct the label name
-                        string labelName = "lblColorDecimal" + colourPositionOnForm.ToString();
+                        string labelName = $"lblColorDecimal{colourPositionOnForm.ToString()}";
 
                         // Find the label by its name
                         if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
@@ -1585,8 +1585,7 @@ namespace Chromaseed
                         }
                     }
 
-
-                    if (button.Text == "▔")
+                    if (string.Compare(button.Text, "▔", StringComparison.Ordinal) == 0)
                     {
                         foreach (Control control in panels1to8Colors)
                         {
@@ -1613,7 +1612,7 @@ namespace Chromaseed
                 }
                 else
                 {
-                    if (button.Text == "▔")
+                    if (string.Compare(button.Text, "▔", StringComparison.Ordinal) == 0)
                     {
                         foreach (Control control in panels1to16Colors)
                         {
@@ -1647,7 +1646,7 @@ namespace Chromaseed
 
         private void BtnDummyButton_TextChanged(object sender, EventArgs e)
         {
-            if (btnDummyButton.Text == "allcoloursset")
+            if (string.Compare(btnDummyButton.Text, "allcoloursset", StringComparison.Ordinal) == 0)
             {
                 if (!btn8Colours.Enabled)
                 {
@@ -1667,7 +1666,7 @@ namespace Chromaseed
                         string rgbValue = rgbLabel.Text;
 
                         // Check if the label contains a valid RGB value (not '---,---,---')
-                        if (!string.IsNullOrWhiteSpace(rgbValue) && rgbValue != "---,---,---")
+                        if (!string.IsNullOrWhiteSpace(rgbValue) && string.Compare(rgbValue, "---,---,---", StringComparison.Ordinal) != 0)
                         {
                             // Split the RGB string into its components
                             string[] rgbParts = rgbValue.Split(',');
@@ -2286,7 +2285,6 @@ namespace Chromaseed
             using Graphics g = panel.CreateGraphics();
             g.Clear(panel.BackColor);
 
-            Random random = new();
             int centerX = panel.Width / 2;
             int centerY = panel.Height / 2;
             int colorIndex = 0;
@@ -2335,37 +2333,37 @@ namespace Chromaseed
 
         private void BtnRadialRays_Click(object sender, EventArgs e)
         {
-            if (comboBoxRadialRays.Text == "32")
+            if (string.Compare(comboBoxRadialRays.Text, "32", StringComparison.Ordinal) == 0)
             {
                 radialAngle = 16;
                 radialRays = 32;
             }
-            if (comboBoxRadialRays.Text == "64")
+            if (string.Compare(comboBoxRadialRays.Text, "64", StringComparison.Ordinal) == 0)
             {
                 radialAngle = 32;
                 radialRays = 64;
             }
-            if (comboBoxRadialRays.Text == "128")
+            if (string.Compare(comboBoxRadialRays.Text, "128", StringComparison.Ordinal) == 0)
             {
                 radialAngle = 64;
                 radialRays = 128;
             }
-            if (comboBoxRadialRays.Text == "256")
+            if (string.Compare(comboBoxRadialRays.Text, "256", StringComparison.Ordinal) == 0)
             {
                 radialAngle = 128;
                 radialRays = 256;
             }
-            if (comboBoxRadialRays.Text == "512")
+            if (string.Compare(comboBoxRadialRays.Text, "512", StringComparison.Ordinal) == 0)
             {
                 radialAngle = 256;
                 radialRays = 512;
             }
-            if (comboBoxRadialRays.Text == "1024")
+            if (string.Compare(comboBoxRadialRays.Text, "1024", StringComparison.Ordinal) == 0)
             {
                 radialAngle = 512;
                 radialRays = 1024;
             }
-            if (comboBoxRadialRays.Text == "2048")
+            if (string.Compare(comboBoxRadialRays.Text, "2048", StringComparison.Ordinal) == 0)
             {
                 radialAngle = 1024;
                 radialRays = 2048;
@@ -2384,7 +2382,6 @@ namespace Chromaseed
             using Graphics g = panel.CreateGraphics();
             g.Clear(panel.BackColor);
 
-            Random random = new();
             int colorIndex = 0;
 
             void DrawHexagon(Graphics g, float x, float y, float size, int depth)
@@ -2695,7 +2692,6 @@ namespace Chromaseed
             Bitmap bitmap = new(width, height);
 
             int colorCount = colorList.Count;
-            Random random = new();
 
             double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
             double xscale = (xmax - xmin) / width;
@@ -2768,7 +2764,6 @@ namespace Chromaseed
             Bitmap bitmap = new(width, height);
 
             int colorCount = colorList.Count;
-            Random random = new();
 
             double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
             double xscale = (xmax - xmin) / width;
@@ -2847,8 +2842,7 @@ namespace Chromaseed
             Bitmap bitmap = new(width, height);
 
             int colorCount = colorList.Count;
-            Random random = new();
-
+            
             double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
             double xscale = (xmax - xmin) / width;
             double yscale = (ymax - ymin) / height;
@@ -2921,8 +2915,7 @@ namespace Chromaseed
             Bitmap bitmap = new(width, height);
 
             int colorCount = colorList.Count;
-            Random random = new();
-
+            
             double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
             double xscale = (xmax - xmin) / width;
             double yscale = (ymax - ymin) / height;
@@ -2993,8 +2986,8 @@ namespace Chromaseed
 
             int rows = 10;
             int cols = 10;
-            float cellWidth = panel.Width / cols;
-            float cellHeight = panel.Height / rows;
+            float cellWidth = (float)panel.Width / cols;
+            float cellHeight = (float)panel.Height / rows;
 
             using Font font = new("Arial", 24, FontStyle.Bold);
 
@@ -3386,45 +3379,52 @@ namespace Chromaseed
 
         private fullSizeLoadingScreen? FullSizeLoadingScreen;
         bool fullScreenLoadingScreenVisible;
-        readonly bool wasOnTop = false;
+        readonly bool wasOnTop;
 
 
-        private async void Chromaseed_Load(object sender, EventArgs e)
+        private async void Chromaseed_Load_Async(object sender, EventArgs e)
         {
-            // Hide the main form initially
-            this.Opacity = 0; 
-
-            #region display loading screen
-
-            FullSizeLoadingScreen = new fullSizeLoadingScreen()
+            try
             {
-                Owner = this,
-                StartPosition = FormStartPosition.CenterScreen,
-                FormBorderStyle = FormBorderStyle.None,
-                Opacity = 1,
-                TopMost = true
-            };
+                // Hide the main form initially
+                this.Opacity = 0;
 
-            if (!fullScreenLoadingScreenVisible)
-            {
-                fullScreenLoadingScreenVisible = true;
+                #region display loading screen
 
-                FullSizeLoadingScreen.Show();
-                await Task.Delay(5000);
+                FullSizeLoadingScreen = new fullSizeLoadingScreen()
+                {
+                    Owner = this,
+                    StartPosition = FormStartPosition.CenterScreen,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Opacity = 1,
+                    TopMost = true
+                };
+
+                if (!fullScreenLoadingScreenVisible)
+                {
+                    fullScreenLoadingScreenVisible = true;
+
+                    FullSizeLoadingScreen.Show();
+                    await Task.Delay(5000).ConfigureAwait(true);
+
+                }
+
+                #endregion
+
+                FullSizeLoadingScreen.Close();
+                fullScreenLoadingScreenVisible = false;
+
+                this.Opacity = 1;
+
+                if (wasOnTop)
+                {
+                    this.TopMost = true;
+                }
             }
-
-            #endregion
-
-            FullSizeLoadingScreen.Close();
-            fullScreenLoadingScreenVisible = false;
-
-            this.Opacity = 1; 
-
-            if (wasOnTop)
+            catch
             {
-                this.TopMost = true;
+                MessageBox.Show("error");
             }
-
         }
     }
 }

@@ -64,7 +64,6 @@ namespace Chromaseed
         {
             try
             {
-                // On Windows
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = url,
@@ -73,18 +72,13 @@ namespace Chromaseed
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to open URL: " + ex.Message);
+                MessageBox.Show($"Failed to open URL: {ex.Message}");
             }
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             OpenUrl("https://bxl909.github.io");
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            OpenUrl("https://chromaseed.btcdir.org");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

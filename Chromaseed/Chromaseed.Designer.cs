@@ -8105,7 +8105,7 @@ namespace Chromaseed
             Name = "Chromaseed";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Chromaseed";
-            Load += Chromaseed_Load;
+            Load += Chromaseed_Load_Async;
             Paint += Chromaseed_Paint;
             panelSeedWords.ResumeLayout(false);
             panelSeedWords.PerformLayout();

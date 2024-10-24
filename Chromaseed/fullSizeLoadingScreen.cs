@@ -44,23 +44,6 @@ namespace Chromaseed
             this.BackgroundImage = Properties.Resources.splash;
         }
 
-        private void fullSizeLoadingScreen_Paint(object sender, PaintEventArgs e)
-        {
-            using var pen = new Pen(Color.FromArgb(80, 80, 80), 1);
-            var rect = ClientRectangle;
-            rect.Inflate(-1, -1);
-            e.Graphics.DrawPath(pen, GetRoundedRect(rect, 15));
-        }
 
-        private static GraphicsPath GetRoundedRect(Rectangle rectangle, int radius)
-        {
-            GraphicsPath path = new();
-            path.AddArc(rectangle.X, rectangle.Y, radius, radius, 180, 90);
-            path.AddArc(rectangle.Width - radius, rectangle.Y, radius, radius, 270, 90);
-            path.AddArc(rectangle.Width - radius, rectangle.Height - radius, radius, radius, 0, 90);
-            path.AddArc(rectangle.X, rectangle.Height - radius, radius, radius, 90, 90);
-            path.CloseFigure();
-            return path;
-        }
     }
 }
