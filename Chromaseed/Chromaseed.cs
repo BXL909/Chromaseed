@@ -78,12 +78,20 @@ namespace Chromaseed
              );
         #endregion
 
+        #region custom move form button
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]  // needed for the code that moves the form
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.dll", EntryPoint = "SendMessage")] // needed for the code that moves the form
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        #endregion
+
 
         public Chromaseed()
         {
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             InitializeComponent();
-            
+
             this.BackgroundImage = Properties.Resources.BG1;
             activeSeedBox = textBoxSeedWord1;
             #region rounded form
@@ -815,13 +823,13 @@ namespace Chromaseed
                     if (int.TryParse(decimalLabel.Text, out int decimalValue))
                     {
                         // Convert to hexadecimal and store in the hex label
-                        hexLabel.Text = $"#{decimalValue.ToString("X6")}"; // "X8" for 8-character uppercase hex string
+                        hexLabel.Text = $"#{decimalValue:X6}"; // "X8" for 8-character uppercase hex string
 
                         if (!btnHex.Enabled)
                         {
                             if (this.Controls.Find($"textBoxColor{i}", true).FirstOrDefault() is TextBox textBox)
                             {
-                                textBox.Text = $"#{decimalValue.ToString("X6")}";
+                                textBox.Text = $"#{decimalValue:X6}";
                             }
                             else
                             {
@@ -1450,7 +1458,7 @@ namespace Chromaseed
                         }
 
                         // Construct the label name
-                        string labelName = $"lblColorHex{colourPositionOnForm.ToString()}";
+                        string labelName = $"lblColorHex{colourPositionOnForm}";
 
                         // Find the label by its name
                         if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
@@ -1476,7 +1484,7 @@ namespace Chromaseed
                         }
 
                         // Construct the label name
-                        string labelName = $"lblColorDecimal{colourPositionOnForm.ToString()}";
+                        string labelName = $"lblColorDecimal{colourPositionOnForm}";
 
                         // Find the label by its name
                         if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
@@ -1513,7 +1521,7 @@ namespace Chromaseed
                         }
 
                         // Construct the label name
-                        string labelName = $"lblColorRGB{colourPositionOnForm.ToString()}";
+                        string labelName = $"lblColorRGB{colourPositionOnForm}";
 
                         // Find the label by its name
                         if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
@@ -1539,7 +1547,7 @@ namespace Chromaseed
                         }
 
                         // Construct the label name
-                        string labelName = $"lblColorDecimal{colourPositionOnForm.ToString()}";
+                        string labelName = $"lblColorDecimal{colourPositionOnForm}";
 
                         // Find the label by its name
                         if (this.Controls.Find(labelName, true).FirstOrDefault() is Label label)
@@ -2842,7 +2850,7 @@ namespace Chromaseed
             Bitmap bitmap = new(width, height);
 
             int colorCount = colorList.Count;
-            
+
             double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
             double xscale = (xmax - xmin) / width;
             double yscale = (ymax - ymin) / height;
@@ -2915,7 +2923,7 @@ namespace Chromaseed
             Bitmap bitmap = new(width, height);
 
             int colorCount = colorList.Count;
-            
+
             double xmin = -2.0, xmax = 2.0, ymin = -2.0, ymax = 2.0;
             double xscale = (xmax - xmin) / width;
             double yscale = (ymax - ymin) / height;
@@ -3377,7 +3385,7 @@ namespace Chromaseed
             timer1.Stop();
         }
 
-        private fullSizeLoadingScreen? FullSizeLoadingScreen;
+        private FullSizeLoadingScreen? FullSizeLoadingScreen;
         bool fullScreenLoadingScreenVisible;
         readonly bool wasOnTop;
 
@@ -3391,7 +3399,7 @@ namespace Chromaseed
 
                 #region display loading screen
 
-                FullSizeLoadingScreen = new fullSizeLoadingScreen()
+                FullSizeLoadingScreen = new FullSizeLoadingScreen()
                 {
                     Owner = this,
                     StartPosition = FormStartPosition.CenterScreen,
@@ -3425,6 +3433,31 @@ namespace Chromaseed
             {
                 MessageBox.Show("error");
             }
+        }
+
+        private void BtnMoveWindow_Click(object sender, EventArgs e)
+        {
+            var args = e as MouseEventArgs;
+            if (args!.Button == MouseButtons.Right)
+            {
+                return;
+            }
+        }
+
+        private void BtnMoveWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void BtnMoveWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            var args = e as MouseEventArgs;
+            if (args.Button == MouseButtons.Right)
+            {
+                return;
+            }
+            btnExit.Focus();
         }
     }
 }

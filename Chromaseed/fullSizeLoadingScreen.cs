@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Chromaseed
 {
-    public partial class fullSizeLoadingScreen : Form
+    public partial class FullSizeLoadingScreen : Form
     {
         #region rounded form
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -27,7 +27,7 @@ namespace Chromaseed
              );
         #endregion
 
-        public fullSizeLoadingScreen()
+        public FullSizeLoadingScreen()
         {
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace Chromaseed
             #endregion
         }
 
-        private void fullSizeLoadingScreen_Load(object sender, EventArgs e)
+        private void FullSizeLoadingScreen_Load(object sender, EventArgs e)
         {
             this.BackgroundImage = Properties.Resources.splash;
         }

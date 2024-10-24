@@ -7889,7 +7889,7 @@ namespace Chromaseed
             // 
             lblErrorMessage.AutoSize = true;
             lblErrorMessage.ForeColor = Color.DarkGray;
-            lblErrorMessage.Location = new Point(656, 32);
+            lblErrorMessage.Location = new Point(884, 60);
             lblErrorMessage.Name = "lblErrorMessage";
             lblErrorMessage.Size = new Size(44, 15);
             lblErrorMessage.TabIndex = 155;
@@ -8062,7 +8062,6 @@ namespace Chromaseed
             // timer2
             // 
             timer2.Interval = 6000;
-            // timer2.Tick += timer2_Tick;
             // 
             // Chromaseed
             // 
@@ -8106,7 +8105,10 @@ namespace Chromaseed
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Chromaseed";
             Load += Chromaseed_Load_Async;
+            Click += BtnMoveWindow_Click;
             Paint += Chromaseed_Paint;
+            MouseDown += BtnMoveWindow_MouseDown;
+            MouseUp += BtnMoveWindow_MouseUp;
             panelSeedWords.ResumeLayout(false);
             panelSeedWords.PerformLayout();
             panelSuggestionBoxSurround.ResumeLayout(false);

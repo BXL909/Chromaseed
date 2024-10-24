@@ -72,7 +72,7 @@
             linkLabel3.TabStop = true;
             linkLabel3.Text = "Tips / support";
             linkLabel3.VisitedLinkColor = Color.FromArgb(255, 128, 0);
-            linkLabel3.LinkClicked += linkLabel3_LinkClicked;
+            linkLabel3.LinkClicked += LinkLabel3_LinkClicked;
             // 
             // linkLabel2
             // 
@@ -86,7 +86,7 @@
             linkLabel2.TabStop = true;
             linkLabel2.Text = "More BXL909 projects";
             linkLabel2.VisitedLinkColor = Color.FromArgb(255, 128, 0);
-            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+            linkLabel2.LinkClicked += LinkLabel2_LinkClicked;
             // 
             // linkLabel1
             // 

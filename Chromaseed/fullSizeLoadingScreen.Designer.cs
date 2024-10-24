@@ -1,6 +1,6 @@
 ﻿namespace Chromaseed
 {
-    partial class fullSizeLoadingScreen
+    partial class FullSizeLoadingScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fullSizeLoadingScreen";
-            Load += fullSizeLoadingScreen_Load;
+            Load += FullSizeLoadingScreen_Load;
             ResumeLayout(false);
         }
 
