@@ -7941,7 +7941,7 @@ namespace Chromaseed
             label27.ForeColor = Color.DarkGray;
             label27.Location = new Point(3, 5);
             label27.Name = "label27";
-            label27.Size = new Size(778, 476);
+            label27.Size = new Size(778, 551);
             label27.TabIndex = 0;
             label27.Text = resources.GetString("label27.Text");
             // 
@@ -8076,9 +8076,9 @@ namespace Chromaseed
             BackColor = Color.FromArgb(30, 30, 30);
             CancelButton = btnExit;
             ClientSize = new Size(940, 689);
+            Controls.Add(panelHelp);
             Controls.Add(lblError);
             Controls.Add(panelConverter);
-            Controls.Add(panelHelp);
             Controls.Add(panelPatternTricorn);
             Controls.Add(panelPatternTiles);
             Controls.Add(panelPatternTextGrid);

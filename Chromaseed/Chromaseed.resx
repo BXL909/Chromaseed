@@ -121,9 +121,9 @@
     <value>105, 17</value>
   </metadata>
   <data name="label27.Text" xml:space="preserve">
-    <value>Before you start using Chromaseed it is important to understand that the software relies on you typing in your seed phrase. Chromaseed itself has no online capability but it's important not to ever type your seed phrase in to an internet-connected device, and ideally not to ever type it in to ANY device, other than a dedicated signing device. Therefore, it is recommended that you do not use Chromaseed for any amount of bitcoin that you consider significant.
+    <value>Chromaseed is designed to convert your 12 or 24-word BIP39 seed phrase into a unique, visually coded series of colors. This process requires the input of your seed phrase, and while Chromaseed itself has no online functionality and minimizes the need for full typing, it’s crucial to exercise extreme caution when inputting sensitive information like a seed phrase on any internet-connected device. Ideally, seed phrases should be handled only on dedicated signing devices. Therefore, Chromaseed should not be used to safeguard significant quantities of bitcoin (you could use the manual method below) . Additionally, Chromaseed should not be used to manually generate seed phrases, as this method relies on user input and lacks sufficient entropy for secure generation. It is intended for encoding/decoding existing seed phrases only.
 
-Chromaseed converts your 12 or 24 word seed phrase into a series of 8 or 16 colours. Unlike your seed phrase, where the order of the words is of utmost importance, the order of the colours is not important at all. When the colours are translated back to words, the original order is preserved. The process is exactly the same as that first described by @EnteroPositivo (https://github.com/enteropositivo/bip39colors/tree/main/manual), and is easy to replicate manually, as below.
+The process used by Chromaseed is exactly the same as that first described by @EnteroPositivo (https://github.com/enteropositivo/bip39colors/tree/main/manual), and is easy to replicate manually, as below.
 
 Convert seed to colour:
 1. Create a single numeric string of 48 or 96 digits. The string is made up of sets of 4 digits. Each 4 digit set represents the position of each seed word in the alphabetically sorted BIP39 word list (filled with leading zeros if necessary).
@@ -139,9 +139,7 @@ Convert colour to seed:
 5. Split the string into groups of 4 digits.
 6. Look up the positions in the alphabetically sorted BIP39 word list to determine the original seed phrase.
 
-Chromaseed produces a variety of coloured designs based on the colours derived from your seed phrase. These have been designed to use all of 'your' colours. Nevertheless, it's strongly recommended that when saving any of the designs, you also choose to save the actual colour values too. The colour values can be gleaned from the images using a colour picker tool, but given that your bitcoin relies on it*, it's recommended that you record the list of number values too.
-
-* refer back to the initial paragraph!</value>
+Chromaseed can generate a variety of intricate designs based on the colors derived from your seed phrase. These designs aim to incorporate each color in the series, creating a unique visual representation of your phrase. When saving these designs, it’s strongly advised to also record the specific color values in numerical form. Although the colors can be recovered using a color picker tool, noting the exact hexadecimal and/or RGB values ensures that the integrity of the colors—and thereby your seed—is preserved.</value>
   </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>203, 17</value>
