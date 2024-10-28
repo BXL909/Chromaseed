@@ -1,0 +1,6 @@
+﻿<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
+	<Costura>
+		<!-- Optional: Settings for including/excluding certain libraries -->
+		<!-- ExcludeAssemblies: Exclude some assemblies from being merged -->
+	</Costura>
+</Weavers>

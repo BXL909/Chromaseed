@@ -8067,7 +8067,7 @@ namespace Chromaseed
             // timerError
             // 
             timerError.Interval = 6000;
-            timerError.Tick += timerError_Tick;
+            timerError.Tick += TimerError_Tick;
             // 
             // Chromaseed
             // 

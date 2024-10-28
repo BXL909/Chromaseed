@@ -4240,7 +4240,7 @@ namespace Chromaseed
             timerError.Start();
         }
 
-        private void timerError_Tick(object sender, EventArgs e)
+        private void TimerError_Tick(object sender, EventArgs e)
         {
             lblError.Visible = false;
             timerError.Stop();
